@@ -1,16 +1,17 @@
 DROP TABLE IF EXISTS utente, richiesta_affitto, richiesta_affitto, lavoro, mezzo_trasporto, gestore
 
 
+-- Form registrazione --
 CREATE TABLE utente (
 	id varchar(255) PRIMARY KEY,
-	email varchar(255) NOT NULL,
+	email varchar(255) NOT NULL UNIQUE,
 	password varchar(255) NOT NULL,
 	nome varchar(255) NOT NULL,
 	cognome varchar(255) NOT NULL,
-	ruolo varchar(255) NOT NULL,
-	CHECK (ruolo IN ('Admin', 'User'))
+	isAdmin BOOLEAN NOT NULL DEFAULT 0
 );
 
+-- Form richiesta affitto --
 CREATE TABLE richiesta_affitto (
 	id varchar(255) PRIMARY KEY,
 	inizio date NOT NULL,
@@ -19,37 +20,40 @@ CREATE TABLE richiesta_affitto (
 	FOREIGN KEY (utente) REFERENCES Utente(id)
 );
 
+-- Form richiesta preventivo --
 CREATE TABLE richiesta_preventivo (
 	id int PRIMARY KEY,
 	descrizione varchar(255) NOT NULL,
 	data date NOT NULL,
 	foto varchar(255) NOT NULL,
 	luogo varchar(255) NOT NULL,
-	TipoLavoro varchar(255) NOT NULL,
+	tipolavoro varchar(255) NOT NULL,
 	utente varchar(255) NOT NULL,
 	FOREIGN KEY (utente) REFERENCES Utente(id)
 );
 
+-- per il template PHP della pagina sui lavori --
 CREATE TABLE lavoro (
 	id varchar(255) PRIMARY KEY,
 	utente varchar(255),
-	DataInizio date NOT NULL,
-	DataFine date NOT NULL,
-	Descrizione varchar(255) NOT NULL,
-	Svolto varchar(255) NOT NULL,
-	CHECK (Svolto IN ('Sì', 'No'))
+	datainizio date NOT NULL,
+	datafine date NOT NULL,
+	descrizione varchar(255) NOT NULL,
+	svolto boolean NOT NULL,
 );
 
+-- per il template PHP della pagina sui mezzi di trasporto --
 CREATE TABLE mezzo_trasporto (
-	Targa varchar(255) PRIMARY KEY,
-	TipoVeicolo varchar(255) NOT NULL,
-	TipoPatenteNecessaria varchar(255) NOT NULL,
-	PrezzoOrario float NOT NULL
+	targa varchar(255) PRIMARY KEY,
+	tipoveicolo varchar(255) NOT NULL,
+	tipopatentenecessaria varchar(255) NOT NULL,
+	prezzoorario float NOT NULL
 );
 
+-- per il template PHP della pagina sui gestori --
 CREATE TABLE gestore (
 	email varchar(255) PRIMARY KEY,
-	foto varchar(255) NOT NULL,
+	foto LONGBLOB NOT NULL,
 	nome varchar(255) NOT NULL,
 	cognome varchar(255) NOT NULL,
 	biografia varchar(255) NOT NULL
