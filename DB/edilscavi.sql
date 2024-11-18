@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS utente, richiesta_affitto, richiesta_affitto, lavoro, mezzo_trasporto, gestore
+DROP TABLE IF EXISTS richiesta_affitto, richiesta_preventivo, lavoro, mezzo_trasporto, gestore, utente;
 
 
 -- Form registrazione --
@@ -8,7 +8,7 @@ CREATE TABLE utente (
 	password varchar(255) NOT NULL,
 	nome varchar(255) NOT NULL,
 	cognome varchar(255) NOT NULL,
-	isAdmin BOOLEAN NOT NULL DEFAULT 0
+	isadmin BOOLEAN NOT NULL DEFAULT 0
 );
 
 -- Form richiesta affitto --
@@ -17,7 +17,7 @@ CREATE TABLE richiesta_affitto (
 	inizio date NOT NULL,
 	fine date NOT NULL,
 	utente varchar(255) NOT NULL,
-	FOREIGN KEY (utente) REFERENCES utente(username)
+	FOREIGN KEY (utente) REFERENCES utente(username) ON DELETE CASCADE
 );
 
 -- Form richiesta preventivo --
@@ -29,7 +29,7 @@ CREATE TABLE richiesta_preventivo (
 	luogo varchar(255) NOT NULL,
 	tipolavoro varchar(255) NOT NULL,
 	utente varchar(255) NOT NULL,
-	FOREIGN KEY (utente) REFERENCES utente(username)
+	FOREIGN KEY (utente) REFERENCES utente(username) ON DELETE CASCADE
 );
 
 -- per il template PHP della pagina sui lavori --
@@ -40,6 +40,7 @@ CREATE TABLE lavoro (
 	datafine date NOT NULL,
 	descrizione varchar(255) NOT NULL,
 	svolto boolean NOT NULL,
+	FOREIGN KEY (utente) REFERENCES utente(username) ON DELETE CASCADE
 );
 
 -- per il template PHP della pagina sui mezzi di trasporto --
