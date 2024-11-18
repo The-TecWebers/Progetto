@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS utente, richiesta_affitto, richiesta_affitto, lavoro, mezzo
 
 -- Form registrazione --
 CREATE TABLE utente (
-	id varchar(255) PRIMARY KEY,
+	username varchar(255) PRIMARY KEY,
 	email varchar(255) NOT NULL UNIQUE,
 	password varchar(255) NOT NULL,
 	nome varchar(255) NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE richiesta_affitto (
 	inizio date NOT NULL,
 	fine date NOT NULL,
 	utente varchar(255) NOT NULL,
-	FOREIGN KEY (utente) REFERENCES Utente(id)
+	FOREIGN KEY (utente) REFERENCES utente(username)
 );
 
 -- Form richiesta preventivo --
@@ -29,7 +29,7 @@ CREATE TABLE richiesta_preventivo (
 	luogo varchar(255) NOT NULL,
 	tipolavoro varchar(255) NOT NULL,
 	utente varchar(255) NOT NULL,
-	FOREIGN KEY (utente) REFERENCES Utente(id)
+	FOREIGN KEY (utente) REFERENCES utente(username)
 );
 
 -- per il template PHP della pagina sui lavori --
