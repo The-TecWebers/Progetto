@@ -1,14 +1,14 @@
-DROP TABLE IF EXISTS utente, richiesta_affitto, richiesta_affitto, lavoro, mezzo_trasporto, gestore
+DROP TABLE IF EXISTS utente, richiesta_affitto, richiesta_preventivo, lavoro, mezzo_trasporto, gestore
 
 
 -- Form registrazione --
 CREATE TABLE utente (
-	username varchar(255) PRIMARY KEY,
+	id varchar(255) PRIMARY KEY,
 	email varchar(255) NOT NULL UNIQUE,
 	password varchar(255) NOT NULL,
 	nome varchar(255) NOT NULL,
 	cognome varchar(255) NOT NULL,
-	isAdmin BOOLEAN NOT NULL DEFAULT 0
+	is_admin BOOLEAN NOT NULL DEFAULT 0
 );
 
 -- Form richiesta affitto --
@@ -17,7 +17,8 @@ CREATE TABLE richiesta_affitto (
 	inizio date NOT NULL,
 	fine date NOT NULL,
 	utente varchar(255) NOT NULL,
-	FOREIGN KEY (utente) REFERENCES utente(username)
+	FOREIGN KEY (utente) REFERENCES utente(id),
+	CONSTRAINT chk_data_fine CHECK (fine > inizio)
 );
 
 -- Form richiesta preventivo --
@@ -27,33 +28,39 @@ CREATE TABLE richiesta_preventivo (
 	data date NOT NULL,
 	foto varchar(255) NOT NULL,
 	luogo varchar(255) NOT NULL,
-	tipolavoro varchar(255) NOT NULL,
+	tipo_lavoro varchar(255) NOT NULL,
 	utente varchar(255) NOT NULL,
-	FOREIGN KEY (utente) REFERENCES utente(username)
+	FOREIGN KEY (utente) REFERENCES utente(id)
 );
 
 -- per il template PHP della pagina sui lavori --
 CREATE TABLE lavoro (
 	id varchar(255) PRIMARY KEY,
 	utente varchar(255),
-	datainizio date NOT NULL,
-	datafine date NOT NULL,
+	data_inizio date NOT NULL,
+	data_fine date NOT NULL,
 	descrizione varchar(255) NOT NULL,
 	svolto boolean NOT NULL,
+	FOREIGN KEY (utente) REFERENCES utente(id)
 );
 
 -- per il template PHP della pagina sui mezzi di trasporto --
 CREATE TABLE mezzo_trasporto (
-	targa varchar(255) PRIMARY KEY,
-	tipoveicolo varchar(255) NOT NULL,
-	tipopatentenecessaria varchar(255) NOT NULL,
-	prezzoorario float NOT NULL
+    targa varchar(255) PRIMARY KEY,
+    tipo_veicolo varchar(255) NOT NULL,
+    prezzo_orario float NOT NULL,
+    FOREIGN KEY (tipo_veicolo) REFERENCES tipo_veicolo(tipo_veicolo)
+);
+
+CREATE TABLE tipo_veicolo (
+    tipo_veicolo varchar(255) PRIMARY KEY,
+    tipo_patente varchar(255) NOT NULL
 );
 
 -- per il template PHP della pagina sui gestori --
 CREATE TABLE gestore (
 	email varchar(255) PRIMARY KEY,
-	foto LONGBLOB NOT NULL,
+	foto varchar(255) NOT NULL,
 	nome varchar(255) NOT NULL,
 	cognome varchar(255) NOT NULL,
 	biografia varchar(255) NOT NULL
