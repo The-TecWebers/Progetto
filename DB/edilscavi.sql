@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS utente, richiesta_affitto, richiesta_preventivo, lavoro, me
 -- Form registrazione --
 CREATE TABLE utente (
 	id varchar(255) PRIMARY KEY,
+	username varchar(255) NOT NULL UNIQUE,
 	email varchar(255) NOT NULL UNIQUE,
 	password varchar(255) NOT NULL,
 	nome varchar(255) NOT NULL,
