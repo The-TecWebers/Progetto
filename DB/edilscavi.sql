@@ -1,61 +1,60 @@
-DROP TABLE IF EXISTS richiesta_affitto, richiesta_preventivo, lavoro, mezzo_trasporto, gestore, utente;
+DROP TABLE IF EXISTS richiesta_affitto, richiesta_preventivo, lavoro, mezzo_trasporto, tipo_veicolo, gestore, utente;
 
 
--- Form registrazione --
+-- Form registrazione
 CREATE TABLE utente (
-	username varchar(255) PRIMARY KEY,
+	id varchar(255) PRIMARY KEY,
+	username varchar(255) NOT NULL UNIQUE,
 	email varchar(255) NOT NULL UNIQUE,
 	password varchar(255) NOT NULL,
 	nome varchar(255) NOT NULL,
 	cognome varchar(255) NOT NULL,
-	isadmin BOOLEAN NOT NULL DEFAULT 0
+	is_admin BOOLEAN NOT NULL DEFAULT 0
 );
 
--- Form richiesta affitto --
+-- Form richiesta affitto
 CREATE TABLE richiesta_affitto (
 	id varchar(255) PRIMARY KEY,
 	inizio date NOT NULL,
 	fine date NOT NULL,
 	utente varchar(255) NOT NULL,
-	FOREIGN KEY (utente) REFERENCES utente(username) ON DELETE CASCADE
+	FOREIGN KEY (utente) REFERENCES utente(id) ON DELETE CASCADE,
+	CONSTRAINT chk_data_fine CHECK (fine > inizio)
 );
 
--- Form richiesta preventivo --
+-- Form richiesta preventivo
 CREATE TABLE richiesta_preventivo (
 	id int PRIMARY KEY,
 	descrizione varchar(255) NOT NULL,
 	data date NOT NULL,
 	foto varchar(255) NOT NULL,
 	luogo varchar(255) NOT NULL,
-	tipolavoro varchar(255) NOT NULL,
+	tipo_lavoro varchar(255) NOT NULL,
 	utente varchar(255) NOT NULL,
-	FOREIGN KEY (utente) REFERENCES utente(username) ON DELETE CASCADE
+	FOREIGN KEY (utente) REFERENCES utente(id) ON DELETE CASCADE
 );
 
--- per il template PHP della pagina sui lavori --
+-- per il template PHP della pagina sui lavori
 CREATE TABLE lavoro (
 	id varchar(255) PRIMARY KEY,
 	utente varchar(255),
-	datainizio date NOT NULL,
-	datafine date NOT NULL,
+	data_inizio date NOT NULL,
+	data_fine date NOT NULL,
 	descrizione varchar(255) NOT NULL,
 	svolto boolean NOT NULL,
-	FOREIGN KEY (utente) REFERENCES utente(username) ON DELETE CASCADE
+	FOREIGN KEY (utente) REFERENCES utente(id) ON DELETE CASCADE
 );
 
--- per il template PHP della pagina sui mezzi di trasporto --
+-- tabella di supporto per evitare la dipendenza funzionale tra veicolo e patente
+CREATE TABLE tipo_veicolo (
+    tipo_veicolo varchar(255) PRIMARY KEY,
+    tipo_patente varchar(255) NOT NULL
+);
+
+-- per il template PHP della pagina sui mezzi di trasporto
 CREATE TABLE mezzo_trasporto (
 	targa varchar(255) PRIMARY KEY,
-	tipoveicolo varchar(255) NOT NULL,
-	tipopatentenecessaria varchar(255) NOT NULL,
-	prezzoorario float NOT NULL
-);
-
--- per il template PHP della pagina sui gestori --
-CREATE TABLE gestore (
-	email varchar(255) PRIMARY KEY,
-	foto LONGBLOB NOT NULL,
-	nome varchar(255) NOT NULL,
-	cognome varchar(255) NOT NULL,
-	biografia varchar(255) NOT NULL
+        tipo_veicolo varchar(255) NOT NULL,
+        prezzo_orario float NOT NULL,
+        FOREIGN KEY (tipo_veicolo) REFERENCES tipo_veicolo(tipo_veicolo) ON DELETE CASCADE
 );
