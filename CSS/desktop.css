@@ -56,15 +56,6 @@ body {
     padding: 0 15px;
 }
 
-/* Non c'è nessun'ancora dentro il logo */
-/*
-.header .logo a {
-    font-size: 30px;
-    color: #fdfffd; /* var(--link_bgGreen); quando sarà disponibile *//*
-    text-transform: uppercase;
-}
-*/
-
 .header .nav ul li {
     display: inline-block;
     margin-left:10px;
