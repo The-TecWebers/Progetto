@@ -44,4 +44,35 @@
     top: 0;
     transform: rotate(-45deg);
 }
-    
+
+.grid-container{
+    row-gap: 15px;
+    margin-bottom: 10px;
+}
+
+.footer .grid-container{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-around;
+    vertical-align: middle;
+}
+
+.footer .grid-container
+{
+    text-decoration: none;
+    font-size: 17px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: 600;
+    border-radius: 2em;
+    color: #ffffff;
+}
+
+.footer .grid-container a{
+    color: #ffffff;
+}
+
+.footer .grid-container ul{
+    list-style: none;
+    font-weight: 300;
+}

@@ -1,21 +1,11 @@
 :root {
-    /* Colori per lo sfondo bianco */
-    --text_bgWhite: #000000;
-    --bg_bgWhite: #fdfffd;
-    --link_bgWhite: #008933;
-    --visitedLink_bgWhite: #C935A1;
-
-    /* Colori per lo sfondo verde */
-    --text_bgGreen: #fdfffd;
-    --bg_bgGreen: #008933;
-    /*--link_bgGreen: ;
-    --visitedLink_bgGreen: ;*/
+    --color-1: #008933;
 }
 
 body {
     line-height: 1.5;
     font-family: sans-serif;
-    background-color: var(--bg_bgWhite);
+    background-color: #ffffff;
 }
 
 * {
@@ -46,7 +36,7 @@ body {
 }
 
 .header {
-    background-color: var(--bg_bgGreen);
+    background-color: var(--color-1);
     padding: 12px;
     position: relative;
 }
@@ -54,6 +44,12 @@ body {
 .header .logo,
 .header .nav {
     padding: 0 15px;
+}
+
+.header .logo a {
+    font-size: 30px;
+    color: #ffffff;
+    text-transform: uppercase;
 }
 
 .header .nav ul li {
@@ -67,7 +63,7 @@ body {
     font-weight: 600;
     border-radius: 2em;
     padding: 10px;
-    color: #fdfffd; /* var(--link_bgGreen); quando sarà disponibile */
+    color: #ffffff;
     text-transform: uppercase;
 }
 
@@ -85,7 +81,7 @@ body {
 .nav-toggler {
     height: 34px;
     width: 44px;
-    background-color: var(--bg_bgWhite);
+    background-color: #ffffff;
     border-radius: 4px;
     cursor: pointer;
     display: none;
@@ -98,7 +94,7 @@ body {
     display: block;
     height: 2px;
     width: 20px;
-    background-color: var(--bg_bgGreen);
+    background-color: var(--color-1);
     position: relative;
 }
 
@@ -108,7 +104,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: var(--bg_bgGreen);
+    background-color: var(--color-1);
     left: 0;
 }
 
@@ -125,8 +121,8 @@ body {
     bottom: 0;
     padding: 5px;
     left: 0;
-    background-color: var(--bg_bgGreen);
-    color: var(--text_bgGreen);
+    background-color: #008933;
+    color: #ffffff;
     width: 100%;
     text-align: center;
 }
@@ -146,11 +142,11 @@ body {
     padding-right: 5px;
     font-weight: 600;
     border-radius: 2em;
-    color: var(--text_bgGreen);
+    color: #ffffff;
 }
 
 .footer .grid-container a{
-    color: #fdfffd; /* var(--link_bgGreen); quando sarà disponibile */
+    color: #ffffff;
 }
 
 .footer .grid-container ul{
