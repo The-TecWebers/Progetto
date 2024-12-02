@@ -11,7 +11,7 @@
     left: 0;
     top: 100%;
     width: 100%;
-    background-color: var(--color-1);
+    background-color: var(--bg_bgGreen);
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     opacity: 0;
     visibility: hidden;
@@ -65,11 +65,11 @@
     padding-right: 5px;
     font-weight: 600;
     border-radius: 2em;
-    color: #ffffff;
+    color: var(--text_bgGreen);
 }
 
 .footer .grid-container a{
-    color: #ffffff;
+    color: #fdfffd; /* var(--link_bgGreen); quando sarà disponibile */
 }
 
 .footer .grid-container ul{
