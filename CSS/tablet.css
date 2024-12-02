@@ -1,0 +1,47 @@
+.nav-toggler {
+    display: flex;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.header .nav {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    background-color: var(--color-1);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.header .nav ul li {
+    display: block;
+    margin: 0;
+}
+
+.header #nav-check:checked~.nav {
+    opacity: 1;
+    visibility: visible;
+}
+
+.header #nav-check:focus~.nav-toggler {
+    box-shadow: 0 0 15px #000000;
+}
+
+.header #nav-check:checked~.nav-toggler span {
+    background-color: transparent;
+}
+
+.header #nav-check:checked~.nav-toggler span::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.header #nav-check:checked~.nav-toggler span::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+    
