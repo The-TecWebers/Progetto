@@ -1,78 +1,31 @@
-    .nav-toggler {
-        display: flex;
-    }
+.grid-container{
+    row-gap: 15px;
+    margin-bottom: 10px;
+}
 
-    .justify-content-between {
-        justify-content: space-between;
-    }
+.footer .grid-container{
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: space-around;
+    vertical-align: middle;
+}
 
-    .header .nav {
-        position: absolute;
-        left: 0;
-        top: 100%;
-        width: 100%;
-        background-color: var(--color-1);
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        opacity: 0;
-        visibility: hidden;
-    }
+.footer .grid-container
+{
+    text-decoration: none;
+    font-size: 17px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: 600;
+    border-radius: 2em;
+    color: #ffffff;
+}
 
-    .header .nav ul li {
-        display: block;
-        margin: 0;
-    }
+.footer .grid-container a{
+    color: #ffffff;
+}
 
-    .header #nav-check:checked~.nav {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    .header #nav-check:focus~.nav-toggler {
-        box-shadow: 0 0 15px #000000;
-    }
-
-    .header #nav-check:checked~.nav-toggler span {
-        background-color: transparent;
-    }
-
-    .header #nav-check:checked~.nav-toggler span::before {
-        top: 0;
-        transform: rotate(45deg);
-    }
-
-    .header #nav-check:checked~.nav-toggler span::after {
-        top: 0;
-        transform: rotate(-45deg);
-    }
-    
-    .grid-container{
-        row-gap: 15px;
-        margin-bottom: 10px;
-    }
-
-    .footer .grid-container{
-        display: grid;
-        grid-template-columns: auto;
-        justify-content: space-around;
-        vertical-align: middle;
-    }
-    
-    .footer .grid-container
-    {
-        text-decoration: none;
-        font-size: 17px;
-        padding-left: 5px;
-        padding-right: 5px;
-        font-weight: 600;
-        border-radius: 2em;
-        color: #ffffff;
-    }
-    
-    .footer .grid-container a{
-        color: #ffffff;
-    }
-    
-    .footer .grid-container ul{
-        list-style: none;
-        font-weight: 300;
-    }
+.footer .grid-container ul{
+    list-style: none;
+    font-weight: 300;
+}
