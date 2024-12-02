@@ -18,11 +18,11 @@
     padding-right: 5px;
     font-weight: 600;
     border-radius: 2em;
-    color: #ffffff;
+    color: var(--text_bgGreen);
 }
 
 .footer .grid-container a{
-    color: #ffffff;
+    color: #fdfffd; /* var(--link_bgGreen); quando sarà disponibile */
 }
 
 .footer .grid-container ul{
