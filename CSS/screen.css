@@ -153,3 +153,8 @@ body {
     list-style: none;
     font-weight: 300;
 }
+
+.bold
+{
+    font-weight: 600;
+}
