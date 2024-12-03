@@ -1,4 +1,10 @@
-.footer .grid-container{
+/*
+===============
+SEZIONE FOOTER
+===============
+*/
+
+.footer-grid-container{
     display: grid;
     grid-template-columns: auto;
     justify-content: space-around;

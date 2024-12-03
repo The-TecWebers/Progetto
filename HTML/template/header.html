@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
    <title>EdilScavi</title>
    <meta charset="utf-8">
@@ -11,28 +11,30 @@
    <link rel="stylesheet" href="CSS/print.css" media="print">
 </head>
 <body>
+   <header>
+      <div class="row">
+         <img id="logo" src="Images/EdilScavi logo.png" height="35" width="200" alt="EdilScavi logo">
 
+         <!-- Menù ad hamburger -->
+         <input type="checkbox" id="nav-check" aria-label="Toggle navigation menu" aria-label="Open navigation menu">
+         <label for="nav-check" class="nav-toggler">
+            <span></span>
+         </label>
 
-   <header class="header">
-      <div class="container">
-         <div class="row align-items-center justify-content-between">
-            <div class="logo">
-               <img src="Images/EdilScavi logo.png" height="35" width="200" alt="EdilScavi logo">
-            </div>
-            <input type="checkbox" id="nav-check" aria-label="Toggle navigation menu" aria-label="Open navigation menu">
-            <label for="nav-check" class="nav-toggler">
-               <span></span>
-            </label>
-            <nav class="nav">
-               <ul>
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">Storia</a></li>
-                  <li><a href="#">Mezzi</a></li>
-                  <li><a href="#">Lavori svolti</a></li>
-                  <li><a href="#">Preventivi</a></li>
-                  <li><a href="#">Su di noi</a></li>
-               </ul>
-            </nav>
+         <nav>
+            <ul>
+               <li><a href="#">Home</a></li>
+               <li><a href="#">Storia</a></li>
+               <li><a href="#">Mezzi</a></li>
+               <li><a href="#">Lavori svolti</a></li>
+               <li><a href="#">Preventivi</a></li>
+               <li><a href="#">Su di noi</a></li>
+            </ul>
+         </nav>
+
+         <div class="sign-buttons">
+            <button id="btn-register">Registrati</button>
+            <button id="btn-login">Accedi</button>
          </div>
       </div>
    </header>

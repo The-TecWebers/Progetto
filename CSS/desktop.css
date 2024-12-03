@@ -1,20 +1,21 @@
+/*
+=========
+GENERALE
+=========
+*/
+
 :root {
     /* Colori per lo sfondo bianco */
     --text_bgWhite: #000000;
     --bg_bgWhite: #fdfffd;
     --link_bgWhite: #008933;
     --visitedLink_bgWhite: #C935A1;
+
     /* Colori per lo sfondo verde */
     --text_bgGreen: #fdfffd;
     --bg_bgGreen: #008933;
     /*--link_bgGreen: ;
     --visitedLink_bgGreen: ;*/
-}
-
-body {
-    line-height: 1.5;
-    font-family: sans-serif;
-    background-color: var(--bg_bgWhite);
 }
 
 * {
@@ -23,44 +24,54 @@ body {
     padding: 0;
 }
 
-.nav ul li a {
-    text-decoration: none;
+body {
+    line-height: 1.5;
+    font-family: sans-serif;
+    background-color: var(--bg_bgWhite);
 }
 
-.nav ul {
-    list-style: none;
-}
 
-.container {
-    margin: auto;
-}
 
-.row {
-    display: flex;
-    flex-wrap: wrap;
-}
+/*
+===============
+SEZIONE HEADER
+===============
+*/
 
-.align-items-center {
-    align-items: center;
-}
-
-.header {
+header {
     background-color: var(--bg_bgGreen);
     padding: 12px;
     position: relative;
 }
 
-.header .logo,
-.header .nav {
-    padding: 0 15px;
+.row {
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.header .nav ul li {
+#logo {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+header nav {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+header nav ul {
+    list-style: none;
+}
+
+header nav ul li {
     display: inline-block;
     margin-left:10px;
 }
 
-.header .nav ul li a {
+header nav ul li a {
+    text-decoration: none;
     display: block;
     font-size: 20px;
     font-weight: 600;
@@ -70,16 +81,60 @@ body {
     text-transform: uppercase;
 }
 
-.header .nav ul li a:hover,
-.header .nav ul li a.active {
+header nav ul li a:hover,
+header nav ul li a.active {
     background-color: #000000;
 }
 
-.header #nav-check {
+header #nav-check {
     position: absolute;
     opacity: 0;
     pointer-events: none;
 }
+
+
+
+/*
+================================
+BOTTONI REGISTRAZIONE E ACCESSO
+================================
+*/
+
+.sign-buttons {
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.sign-buttons button {
+    background-color: var(--visitedLink_bgWhite); /* Eventualmente possiamo cambiare questo colore in futuro */
+    color: var(--text_bgGreen); /* Eventualmente possiamo cambiare questo colore in futuro */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.sign-buttons button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+ 
+.sign-buttons button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+
+/*
+=================
+MENÙ AD HAMBURGER
+=================
+*/
 
 .nav-toggler {
     height: 34px;
@@ -119,7 +174,15 @@ body {
     top: 6px;
 }
 
-.footer{
+
+
+/*
+===============
+SEZIONE FOOTER
+===============
+*/
+
+footer{
     position: absolute;
     bottom: 0;
     padding: 5px;
@@ -130,15 +193,12 @@ body {
     text-align: center;
 }
 
-.footer .grid-container{
+.footer-grid-container
+{
     display: grid;
     grid-template-columns: auto auto;
     justify-content: space-around;
     vertical-align: middle;
-}
-
-.footer .grid-container
-{
     text-decoration: none;
     font-size: 17px;
     padding-left: 5px;
@@ -148,16 +208,16 @@ body {
     color: var(--text_bgGreen);
 }
 
-.footer .grid-container a{
+.footer-grid-container a{
     color: #fdfffd; /* var(--link_bgGreen); quando sarà disponibile */
 }
 
-.footer .grid-container ul{
+.footer-grid-container ul{
     list-style: none;
     font-weight: 300;
 }
 
-.bold
+footer .contacts
 {
     font-weight: 600;
 }
