@@ -1,47 +1,127 @@
-.nav-toggler {
-    display: flex;
-}
+/*
+===============
+SEZIONE HEADER
+===============
+*/
 
-.justify-content-between {
+header nav {
     justify-content: space-between;
-}
-
-.header .nav {
     position: absolute;
     left: 0;
     top: 100%;
     width: 100%;
-    background-color: var(--color-1);
+    background-color: var(--bg_bgGreen);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    margin-top: 5.5em;
+}
+
+header nav ul li {
+    display: block;
+    margin: 0;
+}
+
+
+
+/*
+================================
+BOTTONI REGISTRAZIONE E ACCESSO
+================================
+*/
+
+.sign-buttons {
+    display: block;
+    margin: 0;
+    justify-content: space-between;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    background-color: var(--bg_bgGreen);
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     opacity: 0;
     visibility: hidden;
 }
 
-.header .nav ul li {
+.sign-buttons button {
     display: block;
-    margin: 0;
+    width: 100%;
+    text-align: center;
+    margin: 5px 0;
 }
 
-.header #nav-check:checked~.nav {
+
+
+/*
+=================
+MENÙ AD HAMBURGER
+=================
+*/
+
+.nav-toggler {
+    display: flex;
+    margin-left: auto;
+}
+
+header #nav-check:checked~nav {
     opacity: 1;
     visibility: visible;
 }
 
-.header #nav-check:focus~.nav-toggler {
+header #nav-check:checked~.sign-buttons {
+    opacity: 1;
+    visibility: visible;
+}
+
+header #nav-check:focus~.nav-toggler {
     box-shadow: 0 0 15px #000000;
 }
 
-.header #nav-check:checked~.nav-toggler span {
+header #nav-check:checked~.nav-toggler span {
     background-color: transparent;
 }
 
-.header #nav-check:checked~.nav-toggler span::before {
+header #nav-check:checked~.nav-toggler span::before {
     top: 0;
     transform: rotate(45deg);
 }
 
-.header #nav-check:checked~.nav-toggler span::after {
+header #nav-check:checked~.nav-toggler span::after {
     top: 0;
     transform: rotate(-45deg);
 }
-    
+
+
+
+/*
+===============
+SEZIONE FOOTER
+===============
+*/
+
+.footer-grid-container
+{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-around;
+    vertical-align: middle;
+    row-gap: 15px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    font-size: 17px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: 600;
+    border-radius: 2em;
+    color: var(--text_bgGreen);
+}
+
+.footer-grid-container a{
+    color: #fdfffd; /* var(--link_bgGreen); quando sarà disponibile */
+}
+
+.footer-grid-container ul{
+    list-style: none;
+    font-weight: 300;
+}
