@@ -37,6 +37,7 @@ main{
 }
 
 
+
 /*
 ================================
 BOTTONI REGISTRAZIONE E ACCESSO
@@ -104,6 +105,8 @@ header #nav-check:checked~.nav-toggler span::after {
     top: 0;
     transform: rotate(-45deg);
 }
+
+
 
 /*
 ===============

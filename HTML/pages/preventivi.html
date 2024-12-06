@@ -1,13 +1,13 @@
 <main>
-    <div class="site-map">
-        <a href="index.php">Home</a>
-        <img src="Images/icons/arrow-fw.svg">
-        <a>Preventivi</a>
-    </div>
+    <nav class="breadcrumb" aria-label="breadcrumb">
+        <a href="index.php" lang="en-US">Home</a>
+        <img src="Images/icons/arrow-fw.svg" alt="">
+        <span aria-current="page">Preventivi</span>
+    </nav>
     <h1 class="page-title">Preventivi</h1>
-    <form class="form" method="POST" action="">
-        <fieldset class="fieldset">
-            <h2 class="fieldset-header">Inserisci qui i tuoi dati per richiedere un preventivo</h2>
+    <form method="POST" action="..........">
+        <fieldset>
+            <legend class="fieldset-header">Inserisci qui i tuoi dati per richiedere un preventivo</legend>
             <label class="form-label" for="name">Nome</label>
             <input class="form-input" type="text" id="name" name="name" placeholder="Nome">
             <label class="form-label" for="surname">Cognome</label>
@@ -18,7 +18,7 @@
             <textarea class="form-input" type="text" id="description" name="description"
                 placeholder="Descrizione"></textarea>
             <div class="form-buttons">
-                <button type="submit" class="button">Invia</button>
+                <button type="submit">Invia</button>
             </div>
         </fieldset>
     </form>

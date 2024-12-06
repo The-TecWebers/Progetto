@@ -244,20 +244,28 @@ TITOLO PAGINA
 
 }
 
-.site-map {
+
+
+/*
+===========
+BREADCRUMB
+===========
+*/
+
+.breadcrumb {
     display: flex;
     padding-left: 50px;
     padding-top: 25px;
     align-items: center;
 }
 
-.site-map a {
+.breadcrumb a, .breadcrumb span {
     color: #000; 
     padding: 0 5px;
     font-size: 25px;
 }
 
-.site-map img {
+.breadcrumb img {
     width: 25px;
     height: 25px;
     margin: 0 5px;
@@ -271,7 +279,7 @@ FORM
 =====
 */
 
-.form{
+form{
     display: flex;
     flex-direction: column;
     justify-self: center;
@@ -305,7 +313,7 @@ textarea.form-input {
     margin-top: 5px;
 }
 
-.button{
+.form-buttons button{
     background-color: #008933;
     color: #fdfffd;
     padding: 10px 20px 10px 20px;
@@ -314,7 +322,7 @@ textarea.form-input {
     font-size: 20px;
 }
 
-.fieldset{
+fieldset{
     padding: 20px;
     border-radius: 1em;
     border: 0 solid;
