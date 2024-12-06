@@ -231,10 +231,12 @@ footer .contacts
     font-weight: 600;
 }
 
+
+
 /*
-===============
+==============
 TITOLO PAGINA
-===============
+==============
 */
 
 .page-title{
@@ -260,6 +262,14 @@ TITOLO PAGINA
     height: 25px;
     margin: 0 5px;
 }
+
+
+
+/*
+=====
+FORM
+=====
+*/
 
 .form{
     display: flex;
