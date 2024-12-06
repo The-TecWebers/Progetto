@@ -10,3 +10,36 @@ SEZIONE FOOTER
     justify-content: space-around;
     vertical-align: middle;
 }
+
+.page-title{
+    padding:0;
+    justify-self: center;
+
+}
+
+.site-map {
+    display: flex;
+    padding-left:0px;
+    padding-top: 10px;
+    justify-self: center;
+}
+
+.site-map a {
+    color: #000; 
+    padding: 0;
+    font-size: 25px;
+}
+
+.site-map img {
+    width: 25px;
+    height: 25px;
+    margin: 0;
+}
+
+.form{
+    width: 80%;
+}
+
+.fieldset-header{
+    text-align: center;
+}
