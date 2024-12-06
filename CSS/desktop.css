@@ -14,8 +14,8 @@ GENERALE
     /* Colori per lo sfondo verde */
     --text_bgGreen: #fdfffd;
     --bg_bgGreen: #008933;
-    /*--link_bgGreen: ;
-    --visitedLink_bgGreen: ;*/
+    --link_bgGreen: #120001;   /* da cambiare */
+    --visitedLink_bgGreen: #010023; /* da cambiare */
 }
 
 * {
@@ -77,13 +77,18 @@ header nav ul li a {
     font-weight: 600;
     border-radius: 2em;
     padding: 10px;
-    color: #fdfffd; /* var(--link_bgGreen); quando sarà disponibile */
+    color: var(--link_bgGreen);
     text-transform: uppercase;
 }
 
 header nav ul li a:hover,
 header nav ul li a.active {
     background-color: #000000;
+    color: var(--text_bgGreen);
+}
+
+header nav ul li a:visited {
+    color: var(--visitedLink_bgGreen);
 }
 
 header #nav-check {
@@ -209,7 +214,11 @@ footer{
 }
 
 .footer-grid-container a{
-    color: #fdfffd; /* var(--link_bgGreen); quando sarà disponibile */
+    color: var(--link_bgGreen);
+}
+
+.footer-grid-container a:visited{
+    color: var(--visitedLink_bgGreen);
 }
 
 .footer-grid-container ul{

@@ -118,7 +118,7 @@ SEZIONE FOOTER
 }
 
 .footer-grid-container a{
-    color: #fdfffd; /* var(--link_bgGreen); quando sarà disponibile */
+    color: var(--link_bgGreen);
 }
 
 .footer-grid-container ul{
