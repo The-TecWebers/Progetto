@@ -160,6 +160,10 @@ MENÙ AD HAMBURGER
 =================
 */
 
+#nav-check {
+    display: none;
+}
+
 .nav-toggler {
     height: 2.125em;
     width: 2.75em;

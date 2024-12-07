@@ -73,6 +73,10 @@ MENÙ AD HAMBURGER
 =================
 */
 
+#nav-check {
+    display: inline;
+}
+
 .nav-toggler {
     display: flex;
     text-indent: -999em;
