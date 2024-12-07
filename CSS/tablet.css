@@ -75,6 +75,7 @@ MENÙ AD HAMBURGER
 
 .nav-toggler {
     display: flex;
+    text-indent: -999em;
     margin-left: auto;
 }
 
