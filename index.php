@@ -1,5 +1,7 @@
 <?php
-echo (file_get_contents('HTML/template/header.html'));
-echo (file_get_contents('index.html'));
-echo (file_get_contents('HTML/template/footer.html'));
-?>
+$titolo = "EdilScavi";
+$descrizione= "EdilScavi SRL Brescia";
+$keywords = "Scavi, edilizia, scavi brescia, lavori edilizi";
+include "./PHP/template/header.php";
+echo(file_get_contents('./index.html'));
+include "./PHP/template/footer.php";
