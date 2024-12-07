@@ -12,10 +12,10 @@ GENERALE
     --visitedLink_bgWhite: #C935A1;
 
     /* Colori per lo sfondo verde */
-    --text_bgGreen: #fdfffd;
+    --text_bgGreen: #000000;
     --bg_bgGreen: #008933;
     --link_bgGreen: #ffffb4;
-    --visitedLink_bgGreen: #010023; /* forse è da cambiare */
+    --visitedLink_bgGreen: #ffffff;
 }
 
 * {
@@ -39,7 +39,7 @@ html, body {
 
 main{
     flex: 1;
-    padding-bottom: 20px;
+    padding-bottom: 1.25em;
 }
 
 
@@ -52,7 +52,7 @@ SEZIONE HEADER
 
 header {
     background-color: var(--bg_bgGreen);
-    padding: 12px;
+    padding: 0.75em;
     position: relative;
 }
 
@@ -79,16 +79,16 @@ header nav ul {
 
 header nav ul li {
     display: inline-block;
-    margin-left:10px;
+    margin-left: 0.625em;
 }
 
 header nav ul li a {
     text-decoration: none;
     display: block;
-    font-size: 20px;
+    font-size: 1.25em;
     font-weight: 600;
     border-radius: 2em;
-    padding: 10px;
+    padding: 0.625em;
     color: var(--link_bgGreen);
     text-transform: uppercase;
 }
@@ -103,7 +103,7 @@ header nav ul li a:visited {
 header nav ul li a:hover,
 header nav ul li a.active {
     background-color: #000000;
-    color: var(--text_bgGreen);
+    color: var(--link_bgGreen);
 }
 
 header #nav-check {
@@ -130,9 +130,9 @@ BOTTONI REGISTRAZIONE E ACCESSO
     background-color: var(--visitedLink_bgWhite); /* Eventualmente possiamo cambiare questo colore in futuro */
     color: var(--text_bgGreen); /* Eventualmente possiamo cambiare questo colore in futuro */
     border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 14px;
+    border-radius: 0.3125em;
+    padding: 0.625em 1.25em;
+    font-size: 0.875em;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
@@ -140,12 +140,12 @@ BOTTONI REGISTRAZIONE E ACCESSO
 
 .sign-buttons button:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.2);
 }
  
 .sign-buttons button:active {
     transform: scale(0.95);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0.125em 0.25em rgba(0, 0, 0, 0.3);
 }
 
 
@@ -157,21 +157,21 @@ MENÙ AD HAMBURGER
 */
 
 .nav-toggler {
-    height: 34px;
-    width: 44px;
+    height: 2.125em;
+    width: 2.75em;
     background-color: var(--bg_bgWhite);
-    border-radius: 4px;
+    border-radius: 0.25em;
     cursor: pointer;
     display: none;
     align-items: center;
     justify-content: center;
-    margin-right: 15px;
+    margin-right: 0.9375em;
 }
 
 .nav-toggler span {
     display: block;
-    height: 2px;
-    width: 20px;
+    height: 0.125em;
+    width: 1.25em;
     background-color: var(--bg_bgGreen);
     position: relative;
 }
@@ -187,11 +187,11 @@ MENÙ AD HAMBURGER
 }
 
 .nav-toggler span::before {
-    top: -6px;
+    top: -0.375em;
 }
 
 .nav-toggler span::after {
-    top: 6px;
+    top: 0.375em;
 }
 
 
@@ -203,7 +203,7 @@ SEZIONE FOOTER
 */
 
 footer {
-    padding: 5px;
+    padding: 0.3125em;
     background-color: var(--bg_bgGreen);
     color: var(--text_bgGreen);
     text-align: center;
@@ -217,9 +217,9 @@ footer {
     justify-content: space-around;
     vertical-align: middle;
     text-decoration: none;
-    font-size: 17px;
-    padding-left: 5px;
-    padding-right: 5px;
+    font-size: 1.0625em;
+    padding-left: 0.3125em;
+    padding-right: 0.3125em;
     font-weight: 600;
     border-radius: 2em;
     color: var(--text_bgGreen);
@@ -265,14 +265,14 @@ BREADCRUMB
 
 .breadcrumb {
     display: flex;
-    padding-left: 50px;
-    padding-top: 25px;
+    padding-left: 3.125em;
+    padding-top: 1.5625em;
     align-items: center;
 }
 
 .breadcrumb a, .breadcrumb span {
-    padding: 0 5px;
-    font-size: 25px;
+    padding: 0 0.3125em;
+    font-size: 1.5625em;
 }
 
 .breadcrumb a {
@@ -288,9 +288,9 @@ BREADCRUMB
 }
 
 .breadcrumb img {
-    width: 25px;
-    height: 25px;
-    margin: 0 5px;
+    width: 1.5625em;
+    height: 1.5625em;
+    margin: 0 0.3125em;
 }
 
 
@@ -309,67 +309,67 @@ form{
 }
 
 .form-input {
-    border: 2px solid #000000;
+    border: 0.125em solid #000000;
     background-color: var(--bg_bgWhite);
     border-radius: 1em;
     width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    font-size: 16px;
+    padding: 0.75em 1.25em;
+    margin: 0.5em 0;
+    font-size: 1em;
 }
 
 .form-input:focus {
     border-color: var(--link_bgWhite);
-    box-shadow: 0 0 3px var(--link_bgWhite);
+    box-shadow: 0 0 0.1875em var(--link_bgWhite);
     outline: none;
 }
 
 textarea.form-input {
     resize: vertical;
-    height: 150px;
+    height: 9.375em;
 }
 
 .form-buttons{
     display: flex;
     justify-content: center;
-    margin-top: 5px;
+    margin-top: 0.3125em;
 }
 
 .form-buttons button{
     background-color: var(--bg_bgGreen);
     color: var(--text_bgGreen);
-    padding: 10px 20px 10px 20px;
+    padding: 0.625em 1.25em 0.625em 1.25em;
     border: 0 solid;
     border-radius: 1em;
-    font-size: 20px;
+    font-size: 1.25em;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
 
 .form-buttons button:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.2);
 }
  
 .form-buttons button:active {
     transform: scale(0.95);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0.125em 0.25em rgba(0, 0, 0, 0.3);
 }
 
 fieldset{
-    padding: 20px;
+    padding: 1.25em;
     border-radius: 1em;
     border: 0 solid;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.125em 0.3125em rgba(0, 0, 0, 0.2);
 }
 
 .legend-container {
-    margin-top: 15px;
+    margin-top: 0.9375em;
     text-align: center;
 }
 
 legend {
-    font-size: 24px;
+    font-size: 1.5em;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 0.625em;
 }
