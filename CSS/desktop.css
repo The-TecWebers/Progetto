@@ -329,6 +329,13 @@ fieldset{
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.fieldset-header{
-    justify-self: center;
+.legend-container {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.legend-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
 }
