@@ -292,7 +292,7 @@ FORM
 form{
     display: flex;
     flex-direction: column;
-    justify-self: center;
+    margin: auto;
     width: 50%;
 }
 
