@@ -260,9 +260,20 @@ BREADCRUMB
 }
 
 .breadcrumb a, .breadcrumb span {
-    color: #000; 
     padding: 0 5px;
     font-size: 25px;
+}
+
+.breadcrumb a {
+    color: var(--link_bgWhite);
+}
+
+.breadcrumb a:visited {
+    color: var(--visitedLink_bgWhite);
+}
+
+.breadcrumb span {
+    color: var(--text_bgWhite);
 }
 
 .breadcrumb img {
@@ -288,7 +299,7 @@ form{
 
 .form-input {
     border: 2px solid #000000;
-    background-color: #fdfffd;
+    background-color: var(--bg_bgWhite);
     border-radius: 1em;
     width: 100%;
     padding: 12px 20px;
@@ -297,8 +308,8 @@ form{
 }
 
 .form-input:focus {
-    border-color: #008933;
-    box-shadow: 0 0 3px #008933;
+    border-color: var(--link_bgWhite);
+    box-shadow: 0 0 3px var(--link_bgWhite);
     outline: none;
 }
 
@@ -314,12 +325,24 @@ textarea.form-input {
 }
 
 .form-buttons button{
-    background-color: #008933;
-    color: #fdfffd;
+    background-color: var(--bg_bgGreen);
+    color: var(--text_bgGreen);
     padding: 10px 20px 10px 20px;
     border: 0 solid;
     border-radius: 1em;
     font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.form-buttons button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+ 
+.form-buttons button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 fieldset{
@@ -334,7 +357,7 @@ fieldset{
     text-align: center;
 }
 
-.legend-header {
+legend {
     font-size: 24px;
     font-weight: bold;
     margin-top: 10px;
