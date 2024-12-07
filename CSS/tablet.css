@@ -4,7 +4,7 @@ SEZIONE HEADER
 ===============
 */
 
-header nav {
+#menu {
     justify-content: space-between;
     position: absolute;
     left: 0;
@@ -17,7 +17,7 @@ header nav {
     margin-top: 5em;
 }
 
-header nav ul li {
+#menu ul li {
     display: block;
     margin: 0;
 }
@@ -60,9 +60,9 @@ BOTTONI REGISTRAZIONE E ACCESSO
 
 .sign-buttons button {
     display: block;
-    width: 100%;
+    width: 95%;
     text-align: center;
-    margin: 0.3125em 0;
+    margin: 0.357em auto; /* Ha un valore di em diverso perchè è stato cambiato il font-size */
 }
 
 
@@ -121,12 +121,12 @@ SEZIONE FOOTER
     grid-template-columns: auto auto;
     justify-content: space-around;
     vertical-align: middle;
-    row-gap: 0.9375em;
-    margin-bottom: 0.625em;
+    row-gap: 0.882em;
+    margin-bottom: 0.588em;
     text-decoration: none;
-    font-size: 1.0625em;
-    padding-left: 0.3125em;
-    padding-right: 0.3125em;
+    font-size: 1.0625em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    padding-left: 0.294em;
+    padding-right: 0.294em;
     font-weight: 600;
     border-radius: 2em;
     color: var(--text_bgGreen);

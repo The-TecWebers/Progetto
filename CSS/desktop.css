@@ -79,16 +79,16 @@ header nav ul {
 
 header nav ul li {
     display: inline-block;
-    margin-left: 0.625em;
+    margin-left: 0.1875em;
 }
 
 header nav ul li a {
     text-decoration: none;
     display: block;
-    font-size: 1.25em;
+    font-size: 1.25em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     font-weight: 600;
     border-radius: 2em;
-    padding: 0.625em;
+    padding: 0.5em;
     color: var(--link_bgGreen);
     text-transform: uppercase;
 }
@@ -130,22 +130,22 @@ BOTTONI REGISTRAZIONE E ACCESSO
     background-color: var(--visitedLink_bgWhite); /* Eventualmente possiamo cambiare questo colore in futuro */
     color: var(--text_bgGreen); /* Eventualmente possiamo cambiare questo colore in futuro */
     border: none;
-    border-radius: 0.3125em;
-    padding: 0.625em 1.25em;
-    font-size: 0.875em;
+    border-radius: 0.357em;
+    padding: 0.714em 1.428em;
+    font-size: 0.875em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
 
-.sign-buttons button:hover {
+.sign-buttons button:hover { /* Anche qua l'em è diverso */
     transform: scale(1.05);
-    box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.285em 0.428em rgba(0, 0, 0, 0.2);
 }
  
-.sign-buttons button:active {
+.sign-buttons button:active { /* Anche qua l'em è diverso */
     transform: scale(0.95);
-    box-shadow: 0 0.125em 0.25em rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0.142em 0.285em rgba(0, 0, 0, 0.3);
 }
 
 
@@ -217,9 +217,9 @@ footer {
     justify-content: space-around;
     vertical-align: middle;
     text-decoration: none;
-    font-size: 1.0625em;
-    padding-left: 0.3125em;
-    padding-right: 0.3125em;
+    font-size: 1.0625em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    padding-left: 0.294em;
+    padding-right: 0.294em;
     font-weight: 600;
     border-radius: 2em;
     color: var(--text_bgGreen);
@@ -271,8 +271,8 @@ BREADCRUMB
 }
 
 .breadcrumb a, .breadcrumb span {
-    padding: 0 0.3125em;
-    font-size: 1.5625em;
+    padding: 0 0.2em;
+    font-size: 1.5625em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
 }
 
 .breadcrumb a {
@@ -315,7 +315,7 @@ form{
     width: 100%;
     padding: 0.75em 1.25em;
     margin: 0.5em 0;
-    font-size: 1em;
+    font-size: 1em; /* Rimane lo stesso */
 }
 
 .form-input:focus {
@@ -338,10 +338,10 @@ textarea.form-input {
 .form-buttons button{
     background-color: var(--bg_bgGreen);
     color: var(--text_bgGreen);
-    padding: 0.625em 1.25em 0.625em 1.25em;
+    padding: 0.5em 1em 0.5em 1em;
     border: 0 solid;
     border-radius: 1em;
-    font-size: 1.25em;
+    font-size: 1.25em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
@@ -369,7 +369,29 @@ fieldset{
 }
 
 legend {
-    font-size: 1.5em;
+    font-size: 1.5em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     font-weight: bold;
-    margin-top: 0.625em;
+    margin-top: 0.416em;
+}
+
+
+
+/*
+=============
+AIUTI ALLA NAVIGAZIONE
+=============
+*/
+
+.navigationHelp{
+    position: absolute;
+    text-indent: -999em;
+}
+
+.navigationHelp:focus{
+    position: static;
+    text-indent: 0;
+}
+
+.listHelp{
+    list-style-type: none;
 }
