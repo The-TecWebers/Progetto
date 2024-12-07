@@ -12,22 +12,38 @@ GENERALE
     --visitedLink_bgWhite: #C935A1;
 
     /* Colori per lo sfondo verde */
-    --text_bgGreen: #fdfffd;
+    --text_bgGreen: #000000;
     --bg_bgGreen: #008933;
-    --link_bgGreen: #120001;   /* da cambiare */
-    --visitedLink_bgGreen: #010023; /* da cambiare */
+    --link_bgGreen: #ffffb4;
+    --visitedLink_bgGreen: #ffffff;
 }
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 body {
     line-height: 1.5;
-    font-family: sans-serif;
     background-color: var(--bg_bgWhite);
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    flex: 1;
+    padding-bottom: 1.25em;
+}
+
+main a {
+    text-decoration: underline;
 }
 
 
@@ -40,7 +56,7 @@ SEZIONE HEADER
 
 header {
     background-color: var(--bg_bgGreen);
-    padding: 12px;
+    padding: 0.75em;
     position: relative;
 }
 
@@ -67,28 +83,31 @@ header nav ul {
 
 header nav ul li {
     display: inline-block;
-    margin-left:10px;
+    margin-left: 0.1875em;
 }
 
 header nav ul li a {
     text-decoration: none;
     display: block;
-    font-size: 20px;
+    font-size: 1.25em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     font-weight: 600;
     border-radius: 2em;
-    padding: 10px;
+    padding: 0.5em;
     color: var(--link_bgGreen);
     text-transform: uppercase;
 }
 
+header nav ul li a:visited {
+    color: var(--visitedLink_bgGreen);
+}
+
+/* È importante mettere prima a:visited e poi a:hover e a:active, cioè questi due devono essere gli ultimi.
+   Perchè altrimenti, mettendo lo stato visited in basso, esso andrebbe a sovrascrivere lo stato hover e active, che noi vogliamo si manifestino! */
+
 header nav ul li a:hover,
 header nav ul li a.active {
     background-color: #000000;
-    color: var(--text_bgGreen);
-}
-
-header nav ul li a:visited {
-    color: var(--visitedLink_bgGreen);
+    color: var(--link_bgGreen);
 }
 
 header #nav-check {
@@ -115,22 +134,22 @@ BOTTONI REGISTRAZIONE E ACCESSO
     background-color: var(--visitedLink_bgWhite); /* Eventualmente possiamo cambiare questo colore in futuro */
     color: var(--text_bgGreen); /* Eventualmente possiamo cambiare questo colore in futuro */
     border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 14px;
+    border-radius: 0.357em;
+    padding: 0.714em 1.428em;
+    font-size: 0.875em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
 
-.sign-buttons button:hover {
+.sign-buttons button:hover { /* Anche qua l'em è diverso */
     transform: scale(1.05);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.285em 0.428em rgba(0, 0, 0, 0.2);
 }
  
-.sign-buttons button:active {
+.sign-buttons button:active { /* Anche qua l'em è diverso */
     transform: scale(0.95);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0.142em 0.285em rgba(0, 0, 0, 0.3);
 }
 
 
@@ -141,22 +160,26 @@ MENÙ AD HAMBURGER
 =================
 */
 
+#nav-check {
+    display: none;
+}
+
 .nav-toggler {
-    height: 34px;
-    width: 44px;
+    height: 2.125em;
+    width: 2.75em;
     background-color: var(--bg_bgWhite);
-    border-radius: 4px;
+    border-radius: 0.25em;
     cursor: pointer;
     display: none;
     align-items: center;
     justify-content: center;
-    margin-right: 15px;
+    margin-right: 0.9375em;
 }
 
 .nav-toggler span {
     display: block;
-    height: 2px;
-    width: 20px;
+    height: 0.125em;
+    width: 1.25em;
     background-color: var(--bg_bgGreen);
     position: relative;
 }
@@ -172,11 +195,11 @@ MENÙ AD HAMBURGER
 }
 
 .nav-toggler span::before {
-    top: -6px;
+    top: -0.375em;
 }
 
 .nav-toggler span::after {
-    top: 6px;
+    top: 0.375em;
 }
 
 
@@ -187,15 +210,12 @@ SEZIONE FOOTER
 ===============
 */
 
-footer{
-    position: absolute;
-    bottom: 0;
-    padding: 5px;
-    left: 0;
+footer {
+    padding: 0.3125em;
     background-color: var(--bg_bgGreen);
     color: var(--text_bgGreen);
-    width: 100%;
     text-align: center;
+    width: 100%;
 }
 
 .footer-grid-container
@@ -205,9 +225,9 @@ footer{
     justify-content: space-around;
     vertical-align: middle;
     text-decoration: none;
-    font-size: 17px;
-    padding-left: 5px;
-    padding-right: 5px;
+    font-size: 1.0625em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    padding-left: 0.294em;
+    padding-right: 0.294em;
     font-weight: 600;
     border-radius: 2em;
     color: var(--text_bgGreen);
@@ -229,4 +249,157 @@ footer{
 footer .contacts
 {
     font-weight: 600;
+}
+
+
+
+/*
+==============
+TITOLO PAGINA
+==============
+*/
+
+h1{
+    text-align: center;
+}
+
+
+
+/*
+===========
+BREADCRUMB
+===========
+*/
+
+.breadcrumb {
+    display: flex;
+    padding-left: 3.125em;
+    padding-top: 1.5625em;
+    align-items: center;
+}
+
+.breadcrumb a, .breadcrumb span {
+    padding: 0 0.2em;
+    font-size: 1.5625em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+}
+
+.breadcrumb a {
+    color: var(--link_bgWhite);
+}
+
+.breadcrumb a:visited {
+    color: var(--visitedLink_bgWhite);
+}
+
+.breadcrumb span {
+    color: var(--text_bgWhite);
+}
+
+.breadcrumb img {
+    width: 1.5625em;
+    height: 1.5625em;
+    margin: 0 0.3125em;
+}
+
+
+
+/*
+=====
+FORM
+=====
+*/
+
+form{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 50%;
+}
+
+.form-input {
+    border: 0.125em solid #000000;
+    background-color: var(--bg_bgWhite);
+    border-radius: 1em;
+    width: 100%;
+    padding: 0.75em 1.25em;
+    margin: 0.5em 0;
+    font-size: 1em; /* Rimane lo stesso */
+}
+
+.form-input:focus {
+    border-color: var(--link_bgWhite);
+    box-shadow: 0 0 0.1875em var(--link_bgWhite);
+    outline: none;
+}
+
+textarea.form-input {
+    resize: vertical;
+    height: 9.375em;
+}
+
+.form-buttons{
+    display: flex;
+    justify-content: center;
+    margin-top: 0.3125em;
+}
+
+.form-buttons button{
+    background-color: var(--bg_bgGreen);
+    color: var(--text_bgGreen);
+    padding: 0.5em 1em 0.5em 1em;
+    border: 0 solid;
+    border-radius: 1em;
+    font-size: 1.25em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.form-buttons button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.2);
+}
+ 
+.form-buttons button:active {
+    transform: scale(0.95);
+    box-shadow: 0 0.125em 0.25em rgba(0, 0, 0, 0.3);
+}
+
+fieldset{
+    padding: 1.25em;
+    border-radius: 1em;
+    border: 0 solid;
+    box-shadow: 0 0.125em 0.3125em rgba(0, 0, 0, 0.2);
+}
+
+.legend-container {
+    margin-top: 0.9375em;
+    text-align: center;
+}
+
+legend {
+    font-size: 1.5em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    font-weight: bold;
+    margin-top: 0.416em;
+}
+
+
+
+/*
+=============
+AIUTI ALLA NAVIGAZIONE
+=============
+*/
+
+.navigationHelp{
+    position: absolute;
+    text-indent: -999em;
+}
+
+.navigationHelp:focus{
+    position: static;
+    text-indent: 0;
+}
+
+.listHelp{
+    list-style-type: none;
 }

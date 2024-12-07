@@ -13,28 +13,36 @@
    <link rel="stylesheet" href="CSS/print.css" media="print">
 
    <!-- Favicons -->
-   <link rel="apple-touch-icon" sizes="180x180" href="Images/apple-touch-icon.png">
-   <link rel="icon" type="image/png" sizes="32x32" href="Images/favicon-32x32.png">
-   <link rel="icon" type="image/png" sizes="16x16" href="Images/favicon-16x16.png">
+   <link rel="apple-touch-icon" sizes="180x180" href="Images/favicons/apple-touch-icon.png">
+   <link rel="icon" type="image/png" sizes="32x32" href="Images/favicons/favicon-32x32.png">
+   <link rel="icon" type="image/png" sizes="16x16" href="Images/favicons/favicon-16x16.png">
 </head>
 <body>
    <header>
       <div class="row">
+         <nav aria-label="Aiuti alla navigazione">
+            <ul class="listHelp">
+                <li><a href="#content" class="navigationHelp">Vai al contenuto</a></li>
+                <li><a href="#menu" class="navigationHelp">Vai alla navigazione</a></li>
+            </ul>
+         </nav>
          <img id="logo" src="Images/EdilScavi logo.png" height="35" width="200" alt="EdilScavi logo">
 
          <!-- Menù ad hamburger -->
          <input type="checkbox" id="nav-check" aria-label="Toggle navigation menu" aria-label="Open navigation menu">
-         <label for="nav-check" class="nav-toggler">
+         <label for="nav-check" class="nav-toggler" aria-hidden="true">
+            Menu
             <span></span>
          </label>
 
-         <nav>
+         <nav id="menu">
             <ul>
-               <li><a href="#">Home</a></li>
+               <li><a href="#content" class="navigationHelp">Salta il menù di navigazione</a></li>
+               <li><a href="/index.php">Home</a></li>
                <li><a href="#">Storia</a></li>
                <li><a href="#">Mezzi</a></li>
                <li><a href="#">Lavori svolti</a></li>
-               <li><a href="#">Preventivi</a></li>
+               <li><a href="/preventivi.php">Preventivi</a></li>
                <li><a href="#">Su di noi</a></li>
             </ul>
          </nav>
@@ -44,4 +52,18 @@
             <button id="btn-login">Accedi</button>
          </div>
       </div>
+
+      <nav id="breadcrumb" aria-label="breadcrumb">
+         <!-- <ul-to-replace></ul-to-replace> -->
+
+         <!--Example-->
+         <!--
+         <a href="index.php" lang="en">Home</a>
+        <img src="Images/icons/arrow-fw.svg" alt="">
+        <span aria-current="page">Preventivi</span>
+        -->
+      </nav>
+
+      <!-- Go up button (Decommentiamo quando ci sarà il CSS dedicato, sennò appare brutto) -->
+      <!--<a class="goup" aria-label="torna su" href="#">^</a>-->
    </header>
