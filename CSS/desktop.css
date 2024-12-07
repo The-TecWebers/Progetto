@@ -19,15 +19,27 @@ GENERALE
 }
 
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 body {
     line-height: 1.5;
-    font-family: sans-serif;
     background-color: var(--bg_bgWhite);
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    flex: 1;
+    padding-bottom: 20px;
 }
 
 
@@ -187,15 +199,12 @@ SEZIONE FOOTER
 ===============
 */
 
-footer{
-    position: absolute;
-    bottom: 0;
+footer {
     padding: 5px;
-    left: 0;
     background-color: var(--bg_bgGreen);
     color: var(--text_bgGreen);
-    width: 100%;
     text-align: center;
+    width: 100%;
 }
 
 .footer-grid-container
@@ -229,4 +238,135 @@ footer{
 footer .contacts
 {
     font-weight: 600;
+}
+
+
+
+/*
+==============
+TITOLO PAGINA
+==============
+*/
+
+h1{
+    padding-left: 80px;
+}
+
+
+
+/*
+===========
+BREADCRUMB
+===========
+*/
+
+.breadcrumb {
+    display: flex;
+    padding-left: 50px;
+    padding-top: 25px;
+    align-items: center;
+}
+
+.breadcrumb a, .breadcrumb span {
+    padding: 0 5px;
+    font-size: 25px;
+}
+
+.breadcrumb a {
+    color: var(--link_bgWhite);
+}
+
+.breadcrumb a:visited {
+    color: var(--visitedLink_bgWhite);
+}
+
+.breadcrumb span {
+    color: var(--text_bgWhite);
+}
+
+.breadcrumb img {
+    width: 25px;
+    height: 25px;
+    margin: 0 5px;
+}
+
+
+
+/*
+=====
+FORM
+=====
+*/
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    width: 50%;
+}
+
+.form-input {
+    border: 2px solid #000000;
+    background-color: var(--bg_bgWhite);
+    border-radius: 1em;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+.form-input:focus {
+    border-color: var(--link_bgWhite);
+    box-shadow: 0 0 3px var(--link_bgWhite);
+    outline: none;
+}
+
+textarea.form-input {
+    resize: vertical;
+    height: 150px;
+}
+
+.form-buttons{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.form-buttons button{
+    background-color: var(--bg_bgGreen);
+    color: var(--text_bgGreen);
+    padding: 10px 20px 10px 20px;
+    border: 0 solid;
+    border-radius: 1em;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.form-buttons button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+ 
+.form-buttons button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+fieldset{
+    padding: 20px;
+    border-radius: 1em;
+    border: 0 solid;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.legend-container {
+    margin-top: 15px;
+    text-align: center;
+}
+
+legend {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
 }
