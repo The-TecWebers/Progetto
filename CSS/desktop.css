@@ -14,8 +14,8 @@ GENERALE
     /* Colori per lo sfondo verde */
     --text_bgGreen: #fdfffd;
     --bg_bgGreen: #008933;
-    --link_bgGreen: #120001;   /* da cambiare */
-    --visitedLink_bgGreen: #010023; /* da cambiare */
+    --link_bgGreen: #ffffb4;
+    --visitedLink_bgGreen: #010023; /* forse è da cambiare */
 }
 
 * {
@@ -93,14 +93,17 @@ header nav ul li a {
     text-transform: uppercase;
 }
 
+header nav ul li a:visited {
+    color: var(--visitedLink_bgGreen);
+}
+
+/* È importante mettere prima a:visited e poi a:hover e a:active, cioè questi due devono essere gli ultimi.
+   Perchè altrimenti, mettendo lo stato visited in basso, esso andrebbe a sovrascrivere lo stato hover e active, che noi vogliamo si manifestino! */
+
 header nav ul li a:hover,
 header nav ul li a.active {
     background-color: #000000;
     color: var(--text_bgGreen);
-}
-
-header nav ul li a:visited {
-    color: var(--visitedLink_bgGreen);
 }
 
 header #nav-check {
