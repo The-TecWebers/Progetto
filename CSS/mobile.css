@@ -10,3 +10,50 @@ SEZIONE FOOTER
     justify-content: space-around;
     vertical-align: middle;
 }
+
+
+
+/*
+==============
+TITOLO PAGINA
+==============
+*/
+
+h1{
+    padding:0;
+    justify-self: center;
+}
+
+
+
+/*
+===========
+BREADCRUMB
+===========
+*/
+
+.breadcrumb {
+    padding-left:0px;
+    padding-top: 10px;
+    justify-self: center;
+}
+
+.breadcrumb a, .breadcrumb span {
+    padding: 0;
+}
+
+.breadcrumb img {
+    margin: 0;
+}
+
+
+
+/*
+=====
+FORM
+=====
+*/
+
+form{
+    width: 80%;
+}
