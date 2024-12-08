@@ -1,0 +1,23 @@
+<main>
+    <h1>Registrati</h1>
+    <form name="validatedForm" onsubmit="return validateRegister()" action="reg_wrap.php" method="post">
+        <fieldset>
+            <div class="legend-container">
+                <legend>Registrati a Edil Scavi</legend>
+            </div>
+            <label class="form-label" for="email">Inserisci la tua <span lang="en">email</span></label>
+            <input class="inputext" type="email" id="email" name="email" placeholder="E-mail" onblur="validateEmail()">
+            <label class="form-label" for="username">Inserisci uno username</label>
+            <input class="inputext" type="text" id="reg_username" name="username" placeholder="Username" onblur="validateUsername()">
+            <label class="form-label" for="password">Inserisci una password</label>
+            <input type="password" name="password1" id="reg_password1" placeholder="Password" onblur="validatePassword()">
+            <label class="form-label" for="password">Reinserisci la password</label>
+            <input type="password" name="password2" id="reg_password2" placeholder="Password" onblur="validateSecondPassword()">
+            <div class="form-buttons">
+                <button type="submit">Registrati</button>
+            </div>
+            <!-- errors -->
+            <p>Hai già un account? <a href="accedi.php">Accedi qui</a></p>
+        </fieldset>
+    </form>
+</main>
