@@ -5,6 +5,8 @@ GENERALE
 */
 
 :root {
+    --bg_body: whitesmoke;
+
     /* Colori per lo sfondo bianco */
     --text_bgWhite: #000000;
     --bg_bgWhite: #fdfffd;
@@ -27,7 +29,7 @@ GENERALE
 
 body {
     line-height: 1.5;
-    background-color: var(--bg_bgWhite);
+    background-color: var(--bg_body);
 }
 
 html, body {
@@ -119,6 +121,28 @@ header #nav-check {
 
 
 /*
+=============
+AIUTI ALLA NAVIGAZIONE
+=============
+*/
+
+.navigationHelp{
+    position: absolute;
+    text-indent: -999em;
+}
+
+.navigationHelp:focus{
+    position: static;
+    text-indent: 0;
+}
+
+.listHelp{
+    list-style-type: none;
+}
+
+
+
+/*
 ================================
 BOTTONI REGISTRAZIONE E ACCESSO
 ================================
@@ -205,67 +229,6 @@ MENÙ AD HAMBURGER
 
 
 /*
-===============
-SEZIONE FOOTER
-===============
-*/
-
-footer {
-    padding: 0.3125em;
-    background-color: var(--bg_bgGreen);
-    color: var(--text_bgGreen);
-    text-align: center;
-    width: 100%;
-}
-
-.footer-grid-container
-{
-    display: grid;
-    grid-template-columns: auto auto;
-    justify-content: space-around;
-    vertical-align: middle;
-    text-decoration: none;
-    font-size: 1.0625em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-    padding-left: 0.294em;
-    padding-right: 0.294em;
-    font-weight: 600;
-    border-radius: 2em;
-    color: var(--text_bgGreen);
-}
-
-.footer-grid-container a{
-    color: var(--link_bgGreen);
-}
-
-.footer-grid-container a:visited{
-    color: var(--visitedLink_bgGreen);
-}
-
-.footer-grid-container ul{
-    list-style: none;
-    font-weight: 300;
-}
-
-footer .contacts
-{
-    font-weight: 600;
-}
-
-
-
-/*
-==============
-TITOLO PAGINA
-==============
-*/
-
-h1{
-    text-align: center;
-}
-
-
-
-/*
 ===========
 BREADCRUMB
 ===========
@@ -299,6 +262,32 @@ BREADCRUMB
     width: 1.5625em;
     height: 1.5625em;
     margin: 0 0.3125em;
+}
+
+
+
+/*
+==============
+TITOLO PAGINA
+==============
+*/
+
+h1{
+    text-align: center;
+}
+
+
+
+/*
+=====
+MAIN
+=====
+*/
+
+main{
+    max-width: 1200px;
+    margin: auto;
+    background-color: var(--bg_bgWhite);
 }
 
 
@@ -385,21 +374,48 @@ legend {
 
 
 /*
-=============
-AIUTI ALLA NAVIGAZIONE
-=============
+===============
+SEZIONE FOOTER
+===============
 */
 
-.navigationHelp{
-    position: absolute;
-    text-indent: -999em;
+footer {
+    padding: 0.3125em;
+    background-color: var(--bg_bgGreen);
+    color: var(--text_bgGreen);
+    text-align: center;
+    width: 100%;
 }
 
-.navigationHelp:focus{
-    position: static;
-    text-indent: 0;
+.footer-grid-container
+{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-around;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: 1.0625em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    padding-left: 0.294em;
+    padding-right: 0.294em;
+    font-weight: 600;
+    border-radius: 2em;
+    color: var(--text_bgGreen);
 }
 
-.listHelp{
-    list-style-type: none;
+.footer-grid-container a{
+    color: var(--link_bgGreen);
+}
+
+.footer-grid-container a:visited{
+    color: var(--visitedLink_bgGreen);
+}
+
+.footer-grid-container ul{
+    list-style: none;
+    font-weight: 300;
+}
+
+footer .contacts
+{
+    font-weight: 600;
 }
