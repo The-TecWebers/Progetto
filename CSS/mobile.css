@@ -1,19 +1,4 @@
 /*
-===============
-SEZIONE FOOTER
-===============
-*/
-
-.footer-grid-container{
-    display: grid;
-    grid-template-columns: auto;
-    justify-content: space-around;
-    vertical-align: middle;
-}
-
-
-
-/*
 ==============
 TITOLO PAGINA
 ==============
@@ -56,4 +41,19 @@ FORM
 
 form{
     width: 80%;
+}
+
+
+
+/*
+===============
+SEZIONE FOOTER
+===============
+*/
+
+.footer-grid-container{
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: space-around;
+    vertical-align: middle;
 }
