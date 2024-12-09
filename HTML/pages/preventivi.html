@@ -1,22 +1,31 @@
 <main>
     <h1>Preventivi</h1>
-    <form method="POST" action="..........">
-        <fieldset>
-            <div class="legend-container">
-                <legend>Inserisci qui i tuoi dati per richiedere un preventivo</legend>
-            </div>
-            <label class="form-label" for="name">Nome</label>
-            <input class="form-input" type="text" id="name" name="name" placeholder="Nome">
-            <label class="form-label" for="surname">Cognome</label>
-            <input class="form-input" type="text" id="surname" name="surname" placeholder="Cognome">
-            <label class="form-label" for="email"><span lang="en">E-mail</span></label>
-            <input class="form-input" type="text" id="email" name="email" placeholder="Email">
-            <label class="form-label" for="description">Descrizione</label>
-            <textarea class="form-input" type="text" id="description" name="description"
-                placeholder="Descrizione"></textarea>
-            <div class="form-buttons">
-                <button type="submit">Invia</button>
-            </div>
-        </fieldset>
-    </form>
+    <div class="form-buttons">
+        <button id="caricaPreventivi" class="outline-green">I tuoi preventivi</button>
+        <button id="creaPreventivo">Crea nuovo</button>
+    </div>
+    <div id="form-preventivi">
+        <form method="POST" action="..........">
+            <fieldset>
+                <div class="legend-container">
+                    <legend>Inserisci qui i tuoi dati per richiedere un preventivo</legend>
+                </div>
+                <label class="form-label" for="name">Nome</label>
+                <input class="form-input" type="text" id="name" name="name" placeholder="Nome">
+                <label class="form-label" for="surname">Cognome</label>
+                <input class="form-input" type="text" id="surname" name="surname" placeholder="Cognome">
+                <label class="form-label" for="email"><span lang="en">E-mail</span></label>
+                <input class="form-input" type="text" id="email" name="email" placeholder="Email">
+                <label class="form-label" for="description">Descrizione</label>
+                <textarea class="form-input" type="text" id="description" name="description"
+                    placeholder="Descrizione"></textarea>
+                <div class="form-buttons">
+                    <button type="submit">Invia</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="container text-center" id="listaPreventivi">
+        <h2>Effettua il login per visualizzare i tuoi preventivi</h2>
+    </div>
 </main>
