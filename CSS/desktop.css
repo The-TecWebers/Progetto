@@ -6,6 +6,8 @@ GENERALE
 
 :root {
     --bg_body: whitesmoke;
+    --hover: #000000;
+    --border: #000000;
 
     /* Colori per lo sfondo bianco */
     --text_bgWhite: #000000;
@@ -108,7 +110,7 @@ header nav ul li a:visited {
 
 header nav ul li a:hover,
 header nav ul li a.active {
-    background-color: #000000;
+    background-color: var(--hover);
     color: var(--link_bgGreen);
 }
 
@@ -306,7 +308,7 @@ form{
 }
 
 .form-input {
-    border: 0.125em solid #000000;
+    border: 0.125em solid var(--border);
     background-color: var(--bg_bgWhite);
     border-radius: 1em;
     width: 100%;
