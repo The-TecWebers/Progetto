@@ -97,6 +97,17 @@ header nav ul li a {
     text-transform: uppercase;
 }
 
+header nav ul li.current-link{
+    text-decoration: none;
+    font-size: 1.25em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    font-weight: 600;
+    border-radius: 2em;
+    padding: 0.5em;
+    color: var(--link_bgGreen);
+    text-transform: uppercase;
+    background-color: #000000;
+}
+
 header nav ul li a:visited {
     color: var(--visitedLink_bgGreen);
 }
