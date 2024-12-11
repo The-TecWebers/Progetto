@@ -1,7 +1,7 @@
 $(document).ready(function(){
     creaPreventivo();
-    $("#caricaPreventivi").on('click',mostraPreventivi);
-    $("#creaPreventivo").on('click',creaPreventivo);
+    $("#caricaPreventivi").on('click', mostraPreventivi);
+    $("#creaPreventivo").on('click', creaPreventivo);
 });
 
 function creaPreventivo(){
@@ -11,8 +11,7 @@ function creaPreventivo(){
     $("#caricaPreventivi").addClass('outline-green');
 }
 
-function mostraPreventivi()
-{
+function mostraPreventivi(){
     $("#listaPreventivi").removeClass('hidden');
     $("#form-preventivi").addClass('hidden');
     $("#creaPreventivo").addClass('outline-green');
