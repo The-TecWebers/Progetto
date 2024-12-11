@@ -53,9 +53,9 @@ main a {
 
 
 /*
-===============
-SEZIONE HEADER
-===============
+========
+HEADER
+========
 */
 
 header {
@@ -101,6 +101,17 @@ header nav ul li a {
     text-transform: uppercase;
 }
 
+header nav ul li.current-link{
+    text-decoration: none;
+    font-size: 1.25em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    font-weight: 600;
+    border-radius: 2em;
+    padding: 0.5em;
+    color: var(--link_bgGreen);
+    text-transform: uppercase;
+    background-color: var(--hover);
+}
+
 header nav ul li a:visited {
     color: var(--visitedLink_bgGreen);
 }
@@ -123,9 +134,9 @@ header #nav-check {
 
 
 /*
-=============
+=======================
 AIUTI ALLA NAVIGAZIONE
-=============
+=======================
 */
 
 .navigationHelp{
@@ -181,9 +192,9 @@ BOTTONI REGISTRAZIONE E ACCESSO
 
 
 /*
-=================
+==================
 MENÙ AD HAMBURGER
-=================
+==================
 */
 
 #nav-check {
@@ -330,19 +341,29 @@ textarea.form-input {
 
 .form-buttons{
     display: flex;
+    flex-direction: row;
     justify-content: center;
     margin-top: 0.3125em;
+    margin-bottom: 0.3125em;
 }
 
-.form-buttons button{
+button{
     background-color: var(--bg_bgGreen);
     color: var(--text_bgGreen);
     padding: 0.5em 1em 0.5em 1em;
     border: 0 solid;
+    margin-left: 1em;
+    margin-right: 1em;
     border-radius: 1em;
     font-size: 1.25em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
+}
+
+.outline-green{
+    background-color: var(--bg_bgWhite);
+    color: var(--bg_bgGreen);
+    border: 0.1em solid var(--link_bgWhite);
 }
 
 .form-buttons button:hover {
@@ -362,7 +383,7 @@ fieldset{
     box-shadow: 0 0.125em 0.3125em rgba(0, 0, 0, 0.2);
 }
 
-.legend-container {
+.legend-containser {
     margin-top: 0.9375em;
     text-align: center;
 }
@@ -376,9 +397,9 @@ legend {
 
 
 /*
-===============
-SEZIONE FOOTER
-===============
+=======
+FOOTER
+=======
 */
 
 footer {
@@ -420,4 +441,28 @@ footer {
 footer .contacts
 {
     font-weight: 600;
+}
+
+
+
+/*
+==========
+CONTAINERS
+==========
+*/
+
+.container{
+    display: flex;
+    flex-direction: row;
+}
+
+.text-center{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 80vh;
+}
+
+.hidden{
+    display: none;
 }
