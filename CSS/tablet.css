@@ -94,7 +94,7 @@ header #nav-check:checked~.sign-buttons {
 }
 
 header #nav-check:focus~.nav-toggler {
-    box-shadow: 0 0 0.9375em #000000;
+    box-shadow: 0 0 0.9375em var(--border);
 }
 
 header #nav-check:checked~.nav-toggler span {
