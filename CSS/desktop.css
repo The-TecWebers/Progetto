@@ -11,12 +11,12 @@ GENERALE
     /* Colori per lo sfondo bianco */
     --text_bgWhite: #000000;
     --bg_bgWhite: #fdfffd;
-    --link_bgWhite: #008933;
+    --link_bgWhite: #0F8713;
     --visitedLink_bgWhite: #C935A1;
 
     /* Colori per lo sfondo verde */
     --text_bgGreen: #000000;
-    --bg_bgGreen: #008933;
+    --bg_bgGreen: #0F8713;
     --link_bgGreen: #ffffb4;
     --visitedLink_bgGreen: #ffffff;
 }
