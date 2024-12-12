@@ -5,7 +5,6 @@ GENERALE
 */
 
 :root {
-    --bg_body: whitesmoke;
     --hover: #000000;
     --border: #000000;
 
@@ -31,7 +30,7 @@ GENERALE
 
 body {
     line-height: 1.5;
-    background-color: var(--bg_body);
+    background-color: var(--bg_bgWhite);
 }
 
 html, body {
@@ -287,20 +286,6 @@ TITOLO PAGINA
 
 h1{
     text-align: center;
-}
-
-
-
-/*
-=====
-MAIN
-=====
-*/
-
-main{
-    max-width: 1200px;
-    margin: auto;
-    background-color: var(--bg_bgWhite);
 }
 
 
