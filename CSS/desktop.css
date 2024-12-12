@@ -286,6 +286,8 @@ TITOLO PAGINA
 
 h1{
     text-align: center;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 
@@ -332,8 +334,9 @@ textarea.form-input {
     margin-bottom: 0.3125em;
 }
 
-button{
+.btn-link, button{
     background-color: var(--bg_bgGreen);
+    text-decoration: none;
     color: var(--text_bgGreen);
     padding: 0.5em 1em 0.5em 1em;
     border: 0 solid;
@@ -344,6 +347,7 @@ button{
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
+
 
 .outline-green{
     background-color: var(--bg_bgWhite);
@@ -368,8 +372,7 @@ fieldset{
     box-shadow: 0 0.125em 0.3125em rgba(0, 0, 0, 0.2);
 }
 
-.legend-containser {
-    margin-top: 0.9375em;
+.legend-container {
     text-align: center;
 }
 
@@ -441,13 +444,48 @@ CONTAINERS
     flex-direction: row;
 }
 
-.text-center{
-    justify-content: center;
-    align-items: center;
+.h-100{
+    height: 100vh;
+}
+
+.text-centered{
     text-align: center;
-    height: 80vh;
+}
+
+.justify-content-center{
+    justify-content: center;
+}
+
+.align-items-center{
+    align-items: center;
+}
+
+.centered{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .hidden{
     display: none;
+}
+
+
+/*
+==========
+MARGINI
+==========
+*/
+
+.mt-auto{
+    margin-top: auto;
+}
+
+.mb-auto{
+    margin-bottom: auto;
+}
+
+.m-auto{
+    margin: auto;
 }
