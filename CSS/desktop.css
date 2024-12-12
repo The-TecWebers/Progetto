@@ -285,6 +285,13 @@ main{
 main h1{
     text-align: center;
     margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+#introductionParagraph{
+    text-align: center;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 main h2{
@@ -375,7 +382,9 @@ button{
 }
 
 fieldset{
-    padding: 1.25em;
+    padding-left: 1.25em;
+    padding-right: 1.25em;
+    padding-bottom: 1.25em;
     border-radius: 1em;
     border: 0 solid;
     box-shadow: 0 0.125em 0.3125em rgba(0, 0, 0, 0.2);
@@ -392,6 +401,11 @@ legend {
     margin-top: 0.416em;
 }
 
+.change-form {
+    text-align: center;
+    margin-top: 0.9375em;
+    margin-bottom: 0.9375em;
+}
 
 
 /*
