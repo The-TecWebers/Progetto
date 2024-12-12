@@ -5,6 +5,10 @@ GENERALE
 */
 
 :root {
+    --bg_body: whitesmoke;
+    --hover: #000000;
+    --border: #000000;
+
     /* Colori per lo sfondo bianco */
     --text_bgWhite: #000000;
     --bg_bgWhite: #fdfffd;
@@ -27,7 +31,7 @@ GENERALE
 
 body {
     line-height: 1.5;
-    background-color: var(--bg_bgWhite);
+    background-color: var(--bg_body);
 }
 
 html, body {
@@ -49,9 +53,9 @@ main a {
 
 
 /*
-===============
-SEZIONE HEADER
-===============
+========
+HEADER
+========
 */
 
 header {
@@ -105,7 +109,7 @@ header nav ul li.current-link{
     padding: 0.5em;
     color: var(--link_bgGreen);
     text-transform: uppercase;
-    background-color: #000000;
+    background-color: var(--hover);
 }
 
 header nav ul li a:visited {
@@ -117,7 +121,7 @@ header nav ul li a:visited {
 
 header nav ul li a:hover,
 header nav ul li a.active {
-    background-color: #000000;
+    background-color: var(--hover);
     color: var(--link_bgGreen);
 }
 
@@ -125,6 +129,28 @@ header #nav-check {
     position: absolute;
     opacity: 0;
     pointer-events: none;
+}
+
+
+
+/*
+=======================
+AIUTI ALLA NAVIGAZIONE
+=======================
+*/
+
+.navigationHelp{
+    position: absolute;
+    text-indent: -999em;
+}
+
+.navigationHelp:focus{
+    position: static;
+    text-indent: 0;
+}
+
+.listHelp{
+    list-style-type: none;
 }
 
 
@@ -166,9 +192,9 @@ BOTTONI REGISTRAZIONE E ACCESSO
 
 
 /*
-=================
+==================
 MENÙ AD HAMBURGER
-=================
+==================
 */
 
 #nav-check {
@@ -216,9 +242,164 @@ MENÙ AD HAMBURGER
 
 
 /*
-===============
-SEZIONE FOOTER
-===============
+===========
+BREADCRUMB
+===========
+*/
+
+.breadcrumb {
+    display: flex;
+    padding-left: 3.125em;
+    padding-top: 1.5625em;
+    align-items: center;
+}
+
+.breadcrumb a, .breadcrumb span {
+    padding: 0 0.2em;
+    font-size: 1.5625em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+}
+
+.breadcrumb a {
+    color: var(--link_bgWhite);
+}
+
+.breadcrumb a:visited {
+    color: var(--visitedLink_bgWhite);
+}
+
+.breadcrumb span {
+    color: var(--text_bgWhite);
+}
+
+.breadcrumb img {
+    width: 1.5625em;
+    height: 1.5625em;
+    margin: 0 0.3125em;
+}
+
+
+
+/*
+==============
+TITOLO PAGINA
+==============
+*/
+
+h1{
+    text-align: center;
+}
+
+
+
+/*
+=====
+MAIN
+=====
+*/
+
+main{
+    max-width: 1200px;
+    margin: auto;
+    background-color: var(--bg_bgWhite);
+}
+
+
+
+/*
+=====
+FORM
+=====
+*/
+
+form{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 50%;
+}
+
+.form-input {
+    border: 0.125em solid var(--border);
+    background-color: var(--bg_bgWhite);
+    border-radius: 1em;
+    width: 100%;
+    padding: 0.75em 1.25em;
+    margin: 0.5em 0;
+    font-size: 1em; /* Rimane lo stesso */
+}
+
+.form-input:focus {
+    border-color: var(--link_bgWhite);
+    box-shadow: 0 0 0.1875em var(--link_bgWhite);
+    outline: none;
+}
+
+textarea.form-input {
+    resize: vertical;
+    height: 9.375em;
+}
+
+.form-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 0.3125em;
+    margin-bottom: 0.3125em;
+}
+
+button{
+    background-color: var(--bg_bgGreen);
+    color: var(--text_bgGreen);
+    padding: 0.5em 1em 0.5em 1em;
+    border: 0 solid;
+    margin-left: 1em;
+    margin-right: 1em;
+    border-radius: 1em;
+    font-size: 1.25em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.outline-green{
+    background-color: var(--bg_bgWhite);
+    color: var(--bg_bgGreen);
+    border: 0.1em solid var(--link_bgWhite);
+}
+
+.form-buttons button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.2);
+}
+ 
+.form-buttons button:active {
+    transform: scale(0.95);
+    box-shadow: 0 0.125em 0.25em rgba(0, 0, 0, 0.3);
+}
+
+fieldset{
+    padding: 1.25em;
+    border-radius: 1em;
+    border: 0 solid;
+    box-shadow: 0 0.125em 0.3125em rgba(0, 0, 0, 0.2);
+}
+
+.legend-containser {
+    margin-top: 0.9375em;
+    text-align: center;
+}
+
+legend {
+    font-size: 1.5em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    font-weight: bold;
+    margin-top: 0.416em;
+}
+
+
+
+/*
+=======
+FOOTER
+=======
 */
 
 footer {
@@ -265,170 +446,9 @@ footer .contacts
 
 
 /*
-==============
-TITOLO PAGINA
-==============
-*/
-
-h1{
-    text-align: center;
-}
-
-
-
-/*
-===========
-BREADCRUMB
-===========
-*/
-
-.breadcrumb {
-    display: flex;
-    padding-left: 3.125em;
-    padding-top: 1.5625em;
-    align-items: center;
-}
-
-.breadcrumb a, .breadcrumb span {
-    padding: 0 0.2em;
-    font-size: 1.5625em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-}
-
-.breadcrumb a {
-    color: var(--link_bgWhite);
-}
-
-.breadcrumb a:visited {
-    color: var(--visitedLink_bgWhite);
-}
-
-.breadcrumb span {
-    color: var(--text_bgWhite);
-}
-
-.breadcrumb img {
-    width: 1.5625em;
-    height: 1.5625em;
-    margin: 0 0.3125em;
-}
-
-
-
-/*
-=====
-FORM
-=====
-*/
-
-form{
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    width: 50%;
-}
-
-.form-input {
-    border: 0.125em solid #000000;
-    background-color: var(--bg_bgWhite);
-    border-radius: 1em;
-    width: 100%;
-    padding: 0.75em 1.25em;
-    margin: 0.5em 0;
-    font-size: 1em; /* Rimane lo stesso */
-}
-
-.form-input:focus {
-    border-color: var(--link_bgWhite);
-    box-shadow: 0 0 0.1875em var(--link_bgWhite);
-    outline: none;
-}
-
-textarea.form-input {
-    resize: vertical;
-    height: 9.375em;
-}
-
-.form-buttons{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 0.3125em;
-    margin-bottom: 0.3125em;
-}
-
-button{
-    background-color: var(--bg_bgGreen);
-    color: var(--text_bgGreen);
-    padding: 0.5em 1em 0.5em 1em;
-    border: 0 solid;
-    margin-left: 1em;
-    margin-right: 1em;
-    border-radius: 1em;
-    font-size: 1.25em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.outline-green{
-    background-color: var(--bg_bgWhite);
-    color: var(--bg_bgGreen);
-    border: 0.1em solid #008933;
-}
-
-.form-buttons button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.2);
-}
- 
-.form-buttons button:active {
-    transform: scale(0.95);
-    box-shadow: 0 0.125em 0.25em rgba(0, 0, 0, 0.3);
-}
-
-fieldset{
-    padding: 1.25em;
-    border-radius: 1em;
-    border: 0 solid;
-    box-shadow: 0 0.125em 0.3125em rgba(0, 0, 0, 0.2);
-}
-
-.legend-containser {
-    margin-top: 0.9375em;
-    text-align: center;
-}
-
-legend {
-    font-size: 1.5em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-    font-weight: bold;
-    margin-top: 0.416em;
-}
-
-
-
-/*
-=============
-AIUTI ALLA NAVIGAZIONE
-=============
-*/
-
-.navigationHelp{
-    position: absolute;
-    text-indent: -999em;
-}
-
-.navigationHelp:focus{
-    position: static;
-    text-indent: 0;
-}
-
-.listHelp{
-    list-style-type: none;
-}
-
-/*
-=============
+==========
 CONTAINERS
-=============
+==========
 */
 
 .container{

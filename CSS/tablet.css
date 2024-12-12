@@ -1,7 +1,21 @@
 /*
-===============
-SEZIONE HEADER
-===============
+=========
+GENERALE
+=========
+*/
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*
+=======
+HEADER
+=======
 */
 
 #menu {
@@ -14,26 +28,18 @@ SEZIONE HEADER
     border-top: 0.0625em solid rgba(255, 255, 255, 0.2);
     opacity: 0;
     visibility: hidden;
-    margin-top: 5em;
+    margin-top: 5.5em;
+}
+
+#menu ul {
+    width: 95%;
+    margin: 0 auto;
 }
 
 #menu ul li {
     display: block;
     margin: 0;
-}
-
-
-html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-
-main{
-    flex: 1;
-    padding-bottom: 1.25em;
+    text-align: center;
 }
 
 
@@ -94,7 +100,7 @@ header #nav-check:checked~.sign-buttons {
 }
 
 header #nav-check:focus~.nav-toggler {
-    box-shadow: 0 0 0.9375em #000000;
+    box-shadow: 0 0 0.9375em var(--border);
 }
 
 header #nav-check:checked~.nav-toggler span {
@@ -114,9 +120,22 @@ header #nav-check:checked~.nav-toggler span::after {
 
 
 /*
-===============
-SEZIONE FOOTER
-===============
+=====
+MAIN
+=====
+*/
+
+main{
+    flex: 1;
+    padding-bottom: 1.25em;
+}
+
+
+
+/*
+=======
+FOOTER
+=======
 */
 
 .footer-grid-container
