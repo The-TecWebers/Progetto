@@ -40,15 +40,6 @@ html, body {
     flex-direction: column;
 }
 
-main{
-    flex: 1;
-    padding-bottom: 1.25em;
-}
-
-main a {
-    text-decoration: underline;
-}
-
 
 
 /*
@@ -279,13 +270,35 @@ BREADCRUMB
 
 
 /*
-==============
-TITOLO PAGINA
-==============
+======
+MAIN
+======
 */
 
-h1{
+main{
+    flex: 1;
+    padding-bottom: 1.25em;
+    max-width: 1200px;
+    margin: auto;
+}
+
+main h1{
     text-align: center;
+    margin-top: 0.5em;
+}
+
+main h2{
+    text-align: center;
+    background-color: var(--bg_bgGreen);
+    color: var(--text_bgGreen);
+    border-radius: 1em;
+    margin-top: 0.6em;
+    margin-bottom: 0.5em;
+}
+
+main a {
+    color: var(--link_bgWhite);
+    text-decoration: underline;
 }
 
 
