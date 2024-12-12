@@ -5,19 +5,18 @@ GENERALE
 */
 
 :root {
-    --bg_body: whitesmoke;
     --hover: #000000;
     --border: #000000;
 
     /* Colori per lo sfondo bianco */
     --text_bgWhite: #000000;
     --bg_bgWhite: #fdfffd;
-    --link_bgWhite: #008933;
+    --link_bgWhite: #0F8713;
     --visitedLink_bgWhite: #C935A1;
 
     /* Colori per lo sfondo verde */
     --text_bgGreen: #000000;
-    --bg_bgGreen: #008933;
+    --bg_bgGreen: #0F8713;
     --link_bgGreen: #ffffb4;
     --visitedLink_bgGreen: #ffffff;
 }
@@ -31,7 +30,7 @@ GENERALE
 
 body {
     line-height: 1.5;
-    background-color: var(--bg_body);
+    background-color: var(--bg_bgWhite);
 }
 
 html, body {
@@ -287,20 +286,6 @@ TITOLO PAGINA
 
 h1{
     text-align: center;
-}
-
-
-
-/*
-=====
-MAIN
-=====
-*/
-
-main{
-    max-width: 1200px;
-    margin: auto;
-    background-color: var(--bg_bgWhite);
 }
 
 
