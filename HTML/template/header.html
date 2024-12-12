@@ -20,6 +20,12 @@
 <body>
    <header>
       <div class="row">
+         <nav aria-label="Aiuti alla navigazione">
+            <ul class="listHelp">
+                <li><a href="#content" class="navigationHelp">Vai al contenuto</a></li>
+                <li><a href="#menu" class="navigationHelp">Vai alla navigazione</a></li>
+            </ul>
+         </nav>
          <img id="logo" src="Images/EdilScavi logo.png" height="35" width="200" alt="EdilScavi logo">
 
          <!-- Menù ad hamburger -->
@@ -29,8 +35,9 @@
             <span></span>
          </label>
 
-         <nav>
+         <nav id="menu">
             <ul>
+               <li><a href="#content" class="navigationHelp">Salta il menù di navigazione</a></li>
                <li><a href="/index.php">Home</a></li>
                <li><a href="#">Storia</a></li>
                <li><a href="#">Mezzi</a></li>
@@ -50,9 +57,13 @@
          <!-- <ul-to-replace></ul-to-replace> -->
 
          <!--Example-->
-         <!--<p class="breadcrumb_paragraph">Ti trovi in: <a href="index.php" lang="en-US">Home</a> &gt;&gt; <span aria-current="page">Offerte</span></p>-->
+         <!--
+         <a href="index.php" lang="en">Home</a>
+        <img src="Images/icons/arrow-fw.svg" alt="">
+        <span aria-current="page">Preventivi</span>
+        -->
       </nav>
 
-      <!-- Go up button (Decommentiamo quando ci sarà il CSS) -->
+      <!-- Go up button (Decommentiamo quando ci sarà il CSS dedicato, sennò appare brutto) -->
       <!--<a class="goup" aria-label="torna su" href="#">^</a>-->
    </header>
