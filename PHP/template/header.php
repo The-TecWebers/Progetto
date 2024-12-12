@@ -13,9 +13,8 @@ switch ($current_page) {
     case "index.php":
         $header = str_replace('<li><a href="index.php">Home</a></li>', '<li class="current-link">Home</li>', $header);
         break;
-    case "preventivi.php":
-        $header = str_replace('<li><a href="preventivi.php">Preventivi</a></li>', '<li class="current-link">Preventivi</li>', $header);
-        $header = str_replace('<script></script>', '<script src="JS\jquery.js" defer></script> <script src="JS\preventivi.js" defer></script>', $header);
+    case "lista_preventivi.php":
+        $header = str_replace('<li><a href="lista_preventivi.php">Preventivi</a></li>', '<li class="current-link">Preventivi</li>', $header);
         break;
     default:
         break;
