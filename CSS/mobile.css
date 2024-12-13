@@ -65,10 +65,15 @@ HOME PAGE
 */
 
 .info-section {
-    flex-direction: column; /* Gli elementi diventano verticali */
+    flex-direction: column; /* Dispone gli elementi in colonna */
 }
 
-.info-section > figure,
-.info-section > p {
-    flex: 1 1 100%; /* L'immagine e il testo occupano tutta la larghezza */
+.info-section > figure, .info-section > p {
+    flex: 1 1 100%; /* Ogni elemento occupa tutta la larghezza */
+    padding: 0.5em;
+}
+
+.info-section img {
+    max-width: 100%; 
+    height: auto; 
 }
