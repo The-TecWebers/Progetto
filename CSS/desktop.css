@@ -459,29 +459,28 @@ HOME PAGE
 =========
 */
 
-.info-section{
+.info-section {
     display: flex;
-    flex-wrap: wrap;
-    margin-left: 1em;
-    margin-right: 1em;
+    flex-wrap: nowrap;
+    margin: 1em;
     padding: 0;
     border-bottom: #000000 0.125em solid;
 }
 
 .info-section > figure, .info-section > p {
-    padding: 1em;
-    flex: 1 1 50%;
+    padding: 0em 0.5em;
+    flex: 1 1 50%; 
     text-align: center;
 }
 
 .info-section img {
-    max-width: 100%;
-    height: auto; /* Mantiene le proporzioni */
+    max-width: none; 
+    height: auto; 
 }
 
-.section-title{
+.section-title {
     text-align: center;
-    font-size: 2em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    font-size: 2em;
     font-weight: bold;
-    margin-top: 1em;
+    margin-top: 0.2em;
 }
