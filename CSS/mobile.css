@@ -57,3 +57,18 @@ FOOTER
     justify-content: space-around;
     vertical-align: middle;
 }
+
+/*
+=========
+HOME PAGE 
+=========
+*/
+
+.info-section {
+    flex-direction: column; /* Gli elementi diventano verticali */
+}
+
+.info-section > figure,
+.info-section > p {
+    flex: 1 1 100%; /* L'immagine e il testo occupano tutta la larghezza */
+}

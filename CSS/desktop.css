@@ -487,12 +487,26 @@ HOME PAGE
 .info-section{
     display: flex;
     flex-wrap: wrap;
-    margin: 0;
+    margin-left: 1em;
+    margin-right: 1em;
     padding: 0;
-
+    border-bottom: #000000 0.125em solid;
 }
 
-.info-section > * {
+.info-section > figure, .info-section > p {
     padding: 1em;
-    flex: 1 1 200px;;    
+    flex: 1 1 50%;
+    text-align: center;
+}
+
+.info-section img {
+    max-width: 100%;
+    height: auto; /* Mantiene le proporzioni */
+}
+
+.section-title{
+    text-align: center;
+    font-size: 2em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    font-weight: bold;
+    margin-top: 1em;
 }
