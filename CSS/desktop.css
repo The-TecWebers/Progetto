@@ -476,3 +476,23 @@ CONTAINERS
 .hidden{
     display: none;
 }
+
+
+/*
+=========
+HOME PAGE 
+=========
+*/
+
+.info-section{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+
+}
+
+.info-section > * {
+    padding: 1em;
+    flex: 1 1 200px;;    
+}
