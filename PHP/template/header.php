@@ -16,6 +16,9 @@ switch ($current_page) {
     case "lista_preventivi.php":
         $header = str_replace('<li><a href="lista_preventivi.php">Preventivi</a></li>', '<li class="current-link">Preventivi</li>', $header);
         break;
+    case "su_di_noi.php":
+        $header = str_replace('<li><a href="su_di_noi.php">Su di noi</a></li>', '<li class="current-link">Su di noi</li>', $header);
+        break;
     default:
         break;
 }
