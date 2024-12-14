@@ -275,7 +275,7 @@ MAIN
 ======
 */
 
-main{
+#histoyMain{
     flex: 1;
     padding-bottom: 1.25em;
     max-width: 1200px;
