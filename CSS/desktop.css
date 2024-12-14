@@ -40,6 +40,9 @@ html, body {
     flex-direction: column;
 }
 
+#listaPreventivi > h2{
+    padding: 0% 10%;
+}
 
 
 /*
