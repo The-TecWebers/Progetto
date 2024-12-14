@@ -503,12 +503,12 @@ HOME PAGE
     height: auto; 
 }
 
-.section-title {
+/* .section-title {
     text-align: center;
     font-size: 2em;
     font-weight: bold;
     margin-top: 0.2em;
-}
+} */
 
 .cta-container {
     display: flex;
