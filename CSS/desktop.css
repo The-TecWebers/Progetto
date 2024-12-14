@@ -275,9 +275,12 @@ MAIN
 ======
 */
 
-#histoyMain{
+main{
     flex: 1;
     padding-bottom: 1.25em;
+}
+
+#historyMain{
     max-width: 1200px;
     margin: auto;
 }
