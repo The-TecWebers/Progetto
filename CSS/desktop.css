@@ -167,8 +167,8 @@ BOTTONI REGISTRAZIONE E ACCESSO
 }
 
 .sign-buttons button {
-    background-color: var(--visitedLink_bgWhite); /* Eventualmente possiamo cambiare questo colore in futuro */
-    color: var(--text_bgGreen); /* Eventualmente possiamo cambiare questo colore in futuro */
+    background-color: var(--visitedLink_bgWhite);
+    color: var(--text_bgGreen);
     border: none;
     border-radius: 0.357em;
     padding: 0.714em 1.428em;
