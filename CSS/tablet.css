@@ -164,3 +164,19 @@ FOOTER
     list-style: none;
     font-weight: 300;
 }
+
+/*
+=========
+HOME PAGE 
+=========
+*/
+
+.info-section {
+    flex-wrap: wrap; 
+    margin: 0.5em;
+}
+
+.info-section img {
+    max-width: 100%; 
+    height: auto; 
+}
