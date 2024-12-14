@@ -464,7 +464,7 @@ HOME PAGE
     flex-wrap: nowrap;
     margin: 1em;
     padding: 0;
-    border-bottom: #000000 0.125em solid;
+    border-bottom: var(--border) 0.125em solid;
 }
 
 .info-section > figure, .info-section > p {
