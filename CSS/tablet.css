@@ -171,12 +171,12 @@ HOME PAGE
 =========
 */
 
-.info-section {
+.home-section {
     flex-wrap: wrap; 
     margin: 0.5em;
 }
 
-.info-section img {
+.home-section img {
     max-width: 100%; 
     height: auto; 
 }

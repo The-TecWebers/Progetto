@@ -72,16 +72,16 @@ HOME PAGE
 =========
 */
 
-.info-section {
+.home-section {
     flex-direction: column; /* Dispone gli elementi in colonna */
 }
 
-.info-section > figure, .info-section > p {
+.home-section > figure, .home-section > p {
     flex: 1 1 100%; /* Ogni elemento occupa tutta la larghezza */
     padding: 0.5em;
 }
 
-.info-section img {
+.home-section img {
     max-width: 100%; 
     height: auto; 
 }
