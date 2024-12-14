@@ -44,6 +44,38 @@ html, body {
     padding: 0% 10%;
 }
 
+.cta-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+div.cta-container  a {
+    background-color: var(--bg_bgGreen);
+    color: var(--text_bgGreen);
+    border: 0 solid;
+    border-radius: 1em;
+    padding: 0.5em 1em;
+    font-size: 1.25em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+div.cta-container  a:visited {
+    background-color: var(--bg_bgGreen);
+    color: var(--visitedLink_bgGreen);
+}
+
+div.cta-container  a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.2);
+}
+ 
+a.cta-container:active {
+    transform: scale(0.95);
+}
+
 
 /*
 ========
@@ -616,35 +648,3 @@ HOME PAGE
     height: auto; 
 }
 
-.cta-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 1em;
-}
-
-div.cta-container  a {
-    background-color: var(--bg_bgGreen);
-    color: var(--text_bgGreen);
-    border: 0 solid;
-    border-radius: 1em;
-    padding: 0.5em 1em;
-    font-size: 1.25em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-div.cta-container  a:visited {
-    background-color: var(--bg_bgGreen);
-    color: var(--visitedLink_bgGreen);
-}
-
-div.cta-container  a:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.2);
-}
- 
-a.cta-container:active {
-    transform: scale(0.95);
-}
-    
