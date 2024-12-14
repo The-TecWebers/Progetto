@@ -428,7 +428,7 @@ MEZZI
 */
 
 
-.equipment-section{
+.mezzi-section{
     display: flex;
     flex-wrap: wrap;
     gap: 2em; 
@@ -437,17 +437,17 @@ MEZZI
     justify-content: center;
 }
 
-.equipment-section figure{
+.mezzi-section figure{
     text-align: center;
 }
 
-.equipment-section img{
+.mezzi-section img{
     width: 20em;
     height: 10em;
     
 }
 
-#equipment-h1{
+#mezzi-h1{
     text-align: center;
     background-color: var(--bg_bgGreen);
     color: var(--text_bgGreen);
