@@ -4,7 +4,7 @@ TITOLO PAGINA
 ==============
 */
 
-h1{
+main h1{
     padding:0;
     justify-self: center;
 }
@@ -43,15 +43,7 @@ form{
     width: 80%;
 }
 
-/*
-=======
-AREAPRIVATA
-=======
-*/
 
-.privatearea-container{
-    display: block;
-}
 
 /*
 =======
@@ -65,6 +57,8 @@ FOOTER
     justify-content: space-around;
     vertical-align: middle;
 }
+
+
 
 /*
 =========
@@ -84,4 +78,16 @@ HOME PAGE
 .home-section img {
     max-width: 100%; 
     height: auto; 
+}
+
+
+
+/*
+=======
+AREAPRIVATA
+=======
+*/
+
+.privatearea-container{
+    display: block;
 }

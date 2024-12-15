@@ -12,6 +12,7 @@ html, body {
 }
 
 
+
 /*
 =======
 HEADER
@@ -132,7 +133,6 @@ main{
 
 
 
-
 /*
 =======
 FOOTER
@@ -164,6 +164,8 @@ FOOTER
     list-style: none;
     font-weight: 300;
 }
+
+
 
 /*
 =========
