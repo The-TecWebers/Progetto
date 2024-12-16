@@ -720,31 +720,34 @@ MEZZI
 =======
 */
 
-.mezzi-section {
+.mezzi-section{
     display: flex;
     flex-wrap: wrap;
-    gap: 2em;
-    max-width: 70em;
-    margin: 0 auto;
+    gap: 4em; 
+    max-width: 90em; 
+    margin: 5em auto; 
     justify-content: center;
 }
 
-.mezzi-section figure {
+.mezzi-section figure{
     text-align: center;
 }
 
-.mezzi-section img {
-    width: 20em;
-    height: 10em;
+.mezzi-section img{
+    width: 25em;
+    height: 18em;
+    object-fit: fill;
+    object-position: center;
+    border-radius: 0.9em; 
 }
 
-#mezzi-h1 {
+#mezzi-h1{
     text-align: center;
     background-color: var(--bg_bgGreen);
     color: var(--text_bgGreen);
     border-radius: 1em;
+    justify-content: center;
     margin-top: 1em;
-    margin-bottom: 1em;
 }
 
 
