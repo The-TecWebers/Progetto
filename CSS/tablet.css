@@ -11,7 +11,9 @@ html, body {
     flex-direction: column;
 }
 
-
+#logo {
+    margin: 0;
+}
 
 /*
 =======

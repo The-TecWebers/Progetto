@@ -9,6 +9,10 @@ main h1{
     justify-self: center;
 }
 
+#logo {
+    margin: 0;
+}
+
 
 
 /*

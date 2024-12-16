@@ -70,8 +70,12 @@ header {
 }
 
 #logo {
-    margin-top: auto;
-    margin-bottom: auto;
+    text-indent: -999em;
+    background-image: url('../Images/EdilScavi logo.png');
+    background-size: contain;
+    width: 212px;  /* 491px */
+    height: 38px;   /* 88px */
+    margin: auto;
 }
 
 header nav {
