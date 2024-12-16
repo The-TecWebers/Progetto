@@ -43,7 +43,15 @@ form{
     width: 80%;
 }
 
+/*
+=======
+AREAPRIVATA
+=======
+*/
 
+.privatearea-container{
+    display: block;
+}
 
 /*
 =======

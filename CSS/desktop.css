@@ -611,15 +611,22 @@ AREAPRIVATA
     justify-content: center;
     text-align: center;
     font-size:2em;
+    font-weight: bold;
 }
 
 .container-404 span{
-    margin: 0.5em;
+    margin: 0.5em auto;
 }
 
 .container-404  img {
-    max-width: 70%;
+    max-width: 50%;
 }
+
+.container-404 h1{
+    font-size: 1em;
+}
+
+
 
 a.cta {
     background-color: var(--bg_bgGreen);

@@ -182,3 +182,24 @@ HOME PAGE
     max-width: 100%; 
     height: auto; 
 }
+
+/*
+=======
+AREAPRIVATA
+=======
+*/
+
+.privatearea-container{
+    display: block;
+}
+
+/*
+=======
+404
+=======
+*/
+.container-404  img {
+    max-width: 70%;
+}
+
+
