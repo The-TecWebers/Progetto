@@ -50,39 +50,6 @@ main {
     padding-bottom: 1.25em;
 }
 
-.cta-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 1em;
-}
-
-div.cta-container  a {
-    background-color: var(--bg_bgGreen);
-    color: var(--link_bgGreen);
-    border: 0 solid;
-    border-radius: 1em;
-    padding: 0.5em 1em;
-    font-size: 1.25em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-div.cta-container  a:visited {
-    background-color: var(--bg_bgGreen);
-    color: var(--visitedLink_bgGreen);
-}
-
-div.cta-container  a:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.2);
-}
- 
-a.cta-container:active {
-    transform: scale(0.95);
-}
-
-
 
 /*
 ========
@@ -333,6 +300,7 @@ main{
 }
 
 main h1{
+    text-transform: uppercase;
     text-align: center;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
@@ -345,6 +313,7 @@ main h1{
 }
 
 main h2{
+    text-transform: capitalize;
     text-align: center;
     background-color: var(--bg_bgGreen);
     color: var(--text_bgGreen);
@@ -457,8 +426,6 @@ legend {
     margin-top: 0.416em;
 }
 
-
-
 /*
 =======
 FOOTER
@@ -505,8 +472,6 @@ footer .contacts {
     font-weight: 600;
 }
 
-
-
 /*
 ==========
 CONTAINERS
@@ -546,6 +511,45 @@ CONTAINERS
 
 .hidden {
     display: none;
+}
+
+/* 
+==============================
+CONTAINER CTA = Call To Action
+==============================
+*/
+
+.container-cta-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+div.container-cta-link  a {
+    background-color: var(--bg_bgGreen);
+    color: var(--link_bgGreen);
+    border: 0 solid;
+    border-radius: 1em;
+    padding: 0.5em 1em;
+    font-size: 1.25em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    text-decoration: none;
+}
+
+div.container-cta-link  a:visited {
+    background-color: var(--bg_bgGreen);
+    color: var(--visitedLink_bgGreen);
+}
+
+div.container-cta-link  a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.2);
+}
+ 
+a.container-cta-link:active {
+    transform: scale(0.95);
 }
 
 /*
@@ -631,17 +635,6 @@ MEZZI
     width: 20em;
     height: 10em;
 }
-
-#mezzi-h1{
-    text-align: center;
-    background-color: var(--bg_bgGreen);
-    color: var(--text_bgGreen);
-    border-radius: 1em;
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-
-
 
 /* 
 =======
