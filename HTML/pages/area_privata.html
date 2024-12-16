@@ -1,4 +1,4 @@
-<main>
+<main id="content">
     <h1>Area privata</h1>
     <form id="user-form" action="...php" method="post">
         <div class="privatearea-container">
@@ -27,7 +27,11 @@
                 <input class="form-input" type="password" name="repeated_password" id="repeated_password">
         </fieldset>
     </div>
-    <button id="confirmbutton" type="submit" aria-describedby="button-description">Conferma</button>  
+
+    <div class="form-buttons">
+        <button id="confirmbutton" type="submit" aria-describedby="button-description">Conferma</button>  
+    </div>
+
     <span id="confirmbutton-description">Premi qui per confermare le modifiche</span>
         
     </form>

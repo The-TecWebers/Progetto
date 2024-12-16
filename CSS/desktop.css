@@ -346,7 +346,7 @@ form {
     padding: 0.75em 1.25em;
     margin: 0.5em 0;
     font-size: 1em;
-    /* Rimane lo stesso */
+    /* Rimane lo stesso font-size */
 }
 
 .form-input:focus {
@@ -364,8 +364,14 @@ textarea.form-input {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 0.3125em;
+    margin-top: 0.9375em;
     margin-bottom: 0.3125em;
+}
+
+.form-buttons button{
+    width: 100%;
+    color: var(--visitedLink_bgGreen);
+    font-weight: bold;
 }
 
 .btn-link,
@@ -567,6 +573,7 @@ div.container-cta-link  a {
     border-radius: 1em;
     padding: 0.5em 1em;
     font-size: 1.25em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
     text-decoration: none;
@@ -812,6 +819,18 @@ SU DI NOI
 
 
 
+/*
+=======
+ACCEDI
+=======
+*/
+
+#loginButton {
+    margin-top: 0.5em;
+}
+
+
+
 /* 
 =======
 AREA PRIVATA
@@ -825,12 +844,12 @@ AREA PRIVATA
 }
 
 #confirmbutton-description {
-
     text-align: center;
+    text-indent: -999em;
 }
 
 #confirmbutton {
-    margin-top: 3em;
+    margin-top: 0.2em;
 }
 
 

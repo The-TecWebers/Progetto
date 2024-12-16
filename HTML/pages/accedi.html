@@ -1,4 +1,4 @@
-<main>
+<main id="content">
     <h1>Accedi</h1>
     <form name="loginForm" onsubmit="return validateLogin()" action="auth_wrap.php" method="post" autocomplete="on">
         <fieldset>
@@ -12,7 +12,7 @@
             <input class="form-input" type="password" id="login_password" name="password" placeholder="Password" onblur="validatePassword()"/>
             <a href="#">Password dimenticata?</a>
             <div class="form-buttons">
-                <button type="submit">Accedi</button>
+                <button id="loginButton" type="submit">Accedi</button>
             </div>
             <!-- errors -->
         </fieldset>
