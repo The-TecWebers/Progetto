@@ -33,7 +33,8 @@ body {
     background-color: var(--bg_bgWhite);
 }
 
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     display: flex;
@@ -42,6 +43,11 @@ html, body {
 
 #listaPreventivi > h2{
     padding: 0% 10%;
+}
+
+main {
+    flex: 1;
+    padding-bottom: 1.25em;
 }
 
 .cta-container {
@@ -119,17 +125,19 @@ header nav ul li {
 header nav ul li a {
     text-decoration: none;
     display: block;
-    font-size: 1.25em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    font-size: 1.25em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     font-weight: 600;
     border-radius: 2em;
-    padding: 0.5em;
+    padding: 0.4em;
     color: var(--link_bgGreen);
     text-transform: uppercase;
 }
 
-header nav ul li.current-link{
+header nav ul li.current-link {
     text-decoration: none;
-    font-size: 1.25em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    font-size: 1.25em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     font-weight: 600;
     border-radius: 2em;
     padding: 0.5em;
@@ -165,17 +173,17 @@ AIUTI ALLA NAVIGAZIONE
 =======================
 */
 
-.navigationHelp{
+.navigationHelp {
     position: absolute;
     text-indent: -999em;
 }
 
-.navigationHelp:focus{
+.navigationHelp:focus {
     position: static;
     text-indent: 0;
 }
 
-.listHelp{
+.listHelp {
     list-style-type: none;
 }
 
@@ -195,22 +203,28 @@ BOTTONI REGISTRAZIONE E ACCESSO
 
 .sign-buttons button {
     background-color: var(--visitedLink_bgWhite);
+
+    /* Eventualmente possiamo cambiare questo colore in futuro */
     color: var(--text_bgGreen);
+    /* Eventualmente possiamo cambiare questo colore in futuro */
     border: none;
     border-radius: 0.357em;
     padding: 0.714em 1.428em;
-    font-size: 0.875em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    font-size: 0.875em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
 
-.sign-buttons button:hover { /* Anche qua l'em è diverso */
+.sign-buttons button:hover {
+    /* Anche qua l'em è diverso */
     transform: scale(1.05);
     box-shadow: 0 0.285em 0.428em rgba(0, 0, 0, 0.2);
 }
- 
-.sign-buttons button:active { /* Anche qua l'em è diverso */
+
+.sign-buttons button:active {
+    /* Anche qua l'em è diverso */
     transform: scale(0.95);
     box-shadow: 0 0.142em 0.285em rgba(0, 0, 0, 0.3);
 }
@@ -280,9 +294,11 @@ BREADCRUMB
     align-items: center;
 }
 
-.breadcrumb a, .breadcrumb span {
+.breadcrumb a,
+.breadcrumb span {
     padding: 0 0.2em;
-    font-size: 1.5625em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    font-size: 1.5625em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
 }
 
 .breadcrumb a {
@@ -350,7 +366,7 @@ FORM
 =====
 */
 
-form{
+form {
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -364,7 +380,8 @@ form{
     width: 100%;
     padding: 0.75em 1.25em;
     margin: 0.5em 0;
-    font-size: 1em; /* Rimane lo stesso */
+    font-size: 1em;
+    /* Rimane lo stesso */
 }
 
 .form-input:focus {
@@ -378,7 +395,7 @@ textarea.form-input {
     height: 9.375em;
 }
 
-.form-buttons{
+.form-buttons {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -386,20 +403,24 @@ textarea.form-input {
     margin-bottom: 0.3125em;
 }
 
-button{
+.btn-link,
+button {
     background-color: var(--bg_bgGreen);
+    text-decoration: none;
     color: var(--text_bgGreen);
     padding: 0.5em 1em 0.5em 1em;
     border: 0 solid;
     margin-left: 1em;
     margin-right: 1em;
     border-radius: 1em;
-    font-size: 1.25em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    font-size: 1.25em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
 
-.outline-green{
+
+.outline-green {
     background-color: var(--bg_bgWhite);
     color: var(--bg_bgGreen);
     border: 0.1em solid var(--link_bgWhite);
@@ -409,7 +430,7 @@ button{
     transform: scale(1.05);
     box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.2);
 }
- 
+
 .form-buttons button:active {
     transform: scale(0.95);
     box-shadow: 0 0.125em 0.25em rgba(0, 0, 0, 0.3);
@@ -430,7 +451,8 @@ fieldset{
 }
 
 legend {
-    font-size: 1.5em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    font-size: 1.5em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     font-weight: bold;
     margin-top: 0.416em;
 }
@@ -451,14 +473,14 @@ footer {
     width: 100%;
 }
 
-.footer-grid-container
-{
+.footer-grid-container {
     display: grid;
     grid-template-columns: auto auto;
     justify-content: space-around;
     vertical-align: middle;
     text-decoration: none;
-    font-size: 1.0625em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    font-size: 1.0625em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     padding-left: 0.294em;
     padding-right: 0.294em;
     font-weight: 600;
@@ -466,21 +488,20 @@ footer {
     color: var(--text_bgGreen);
 }
 
-.footer-grid-container a{
+.footer-grid-container a {
     color: var(--link_bgGreen);
 }
 
-.footer-grid-container a:visited{
+.footer-grid-container a:visited {
     color: var(--visitedLink_bgGreen);
 }
 
-.footer-grid-container ul{
+.footer-grid-container ul {
     list-style: none;
     font-weight: 300;
 }
 
-footer .contacts
-{
+footer .contacts {
     font-weight: 600;
 }
 
@@ -492,23 +513,40 @@ CONTAINERS
 ==========
 */
 
-.container{
-    display: flex;
-    flex-direction: row;
+.vh-100 {
+    height: 100vh;
 }
 
-.text-center{
-    justify-content: center;
-    align-items: center;
+.h-50{
+    height: 50%;
+}
+
+.w-50{
+    width: 50%;
+}
+
+.text-centered {
     text-align: center;
-    height: 80vh;
 }
 
-.hidden{
+.justify-content-center {
+    justify-content: center;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.centered {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.hidden {
     display: none;
 }
-
-
 
 /*
 =========
@@ -535,9 +573,43 @@ HOME PAGE
     height: auto; 
 }
 
+.container {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.container-col {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.about-us-container{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.about-us-desc{
+    width: 100%;
+    overflow: visible;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.about-us-image{
+    width: 100%;
+}
+
+.about-us-image img{
+    width: 100%;
+    height: 100%;
+}
+
 
 
 /*
+<<<<<<< HEAD
 =======
 MEZZI
 =======
@@ -660,3 +732,21 @@ a.cta:active {
     margin-bottom: 0.9375em;
 }
 
+
+/*
+==========
+MARGINI
+==========
+*/
+
+.mt-auto {
+    margin-top: auto;
+}
+
+.mb-auto {
+    margin-bottom: auto;
+}
+
+.m-auto {
+    margin: auto;
+}
