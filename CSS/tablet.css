@@ -12,6 +12,7 @@ html, body {
 }
 
 
+
 /*
 =======
 HEADER
@@ -132,7 +133,6 @@ main{
 
 
 
-
 /*
 =======
 FOOTER
@@ -164,3 +164,42 @@ FOOTER
     list-style: none;
     font-weight: 300;
 }
+
+
+
+/*
+=========
+HOME PAGE 
+=========
+*/
+
+.home-section {
+    flex-wrap: wrap; 
+    margin: 0.5em;
+}
+
+.home-section img {
+    max-width: 100%; 
+    height: auto; 
+}
+
+/*
+=======
+AREAPRIVATA
+=======
+*/
+
+.privatearea-container{
+    display: block;
+}
+
+/*
+=======
+404
+=======
+*/
+.container-404  img {
+    max-width: 70%;
+}
+
+

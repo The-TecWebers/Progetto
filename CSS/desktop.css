@@ -40,13 +40,40 @@ html, body {
     flex-direction: column;
 }
 
-main{
-    flex: 1;
-    padding-bottom: 1.25em;
+#listaPreventivi > h2{
+    padding: 0% 10%;
 }
 
-main a {
-    text-decoration: underline;
+.cta-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+div.cta-container  a {
+    background-color: var(--bg_bgGreen);
+    color: var(--text_bgGreen);
+    border: 0 solid;
+    border-radius: 1em;
+    padding: 0.5em 1em;
+    font-size: 1.25em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+div.cta-container  a:visited {
+    background-color: var(--bg_bgGreen);
+    color: var(--visitedLink_bgGreen);
+}
+
+div.cta-container  a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.2);
+}
+ 
+a.cta-container:active {
+    transform: scale(0.95);
 }
 
 
@@ -279,13 +306,40 @@ BREADCRUMB
 
 
 /*
-==============
-TITOLO PAGINA
-==============
+======
+MAIN
+======
 */
 
-h1{
+main{
+    flex: 1;
+    padding-bottom: 1.25em;
+}
+
+main h1{
     text-align: center;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+#introductionParagraph{
+    text-align: center;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+main h2{
+    text-align: center;
+    background-color: var(--bg_bgGreen);
+    color: var(--text_bgGreen);
+    border-radius: 1em;
+    margin-top: 0.6em;
+    margin-bottom: 0.5em;
+}
+
+main a {
+    color: var(--link_bgWhite);
+    text-decoration: underline;
 }
 
 
@@ -362,7 +416,9 @@ button{
 }
 
 fieldset{
-    padding: 1.25em;
+    padding-left: 1.25em;
+    padding-right: 1.25em;
+    padding-bottom: 1.25em;
     border-radius: 1em;
     border: 0 solid;
     box-shadow: 0 0.125em 0.3125em rgba(0, 0, 0, 0.2);
@@ -379,114 +435,6 @@ legend {
     margin-top: 0.416em;
 }
 
-/*
-=======
-AREAPRIVATA
-=======
-*/
-
-
-.privatearea-container{
-    margin-top: 1em;
-    display: flex;
-    gap: 1em;
-}
-
-#confirmbutton-description{
-
-    text-align: center;
-}
-
-#confirmbutton{
-    margin-top: 3em;
-}
-
-/*
-=======
-MEZZI
-=======
-*/
-
-
-.equipment-section{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2em; 
-    max-width: 70em; 
-    margin: 0 auto; 
-    justify-content: center;
-}
-
-.equipment-section figure{
-    text-align: center;
-}
-
-.equipment-section img{
-    width: 20em;
-    height: 10em;
-    
-}
-
-#equipment-h1{
-    text-align: center;
-    background-color: var(--bg_bgGreen);
-    color: var(--text_bgGreen);
-    border-radius: 1em;
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-
-/*
-=======
-404
-=======
-*/
-.container-404 {
-    display: flex;
-    flex-direction: column; /* This will stack the children vertically */
-    align-items: center; 
-    flex-wrap: wrap;
-    max-width: 100%; 
-    margin: auto; 
-    justify-content: center;
-    text-align: center;
-    font-size:2em;
-
-}
-
-.container-404 span{
-    margin: 0.5em;
-}
-
-.container-404  img {
-    max-width: 70%;
-}
-
-
-a.cta-home {
-    background-color: var(--bg_bgGreen);
-    color: var(--text_bgGreen);
-    border: 0 solid;
-    border-radius: 1em;
-    padding: 0.5em 1em;
-    font-size: 1.25em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-a.cta-home:visited {
-    background-color: var(--bg_bgGreen);
-    color: var(--visitedLink_bgGreen);
-}
-
-a.cta-home:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.2);
-}
- 
-a.cta-home:active {
-    transform: scale(0.95);
-}
 
 
 /*
@@ -559,3 +507,156 @@ CONTAINERS
 .hidden{
     display: none;
 }
+
+
+
+/*
+=========
+HOME PAGE 
+=========
+*/
+
+.home-section {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 1em;
+    padding: 0;
+    border-bottom: var(--border) 0.125em solid;
+}
+
+.home-section > figure, .home-section > p {
+    padding: 0em 0.5em;
+    flex: 1 1 50%; 
+    text-align: center;
+}
+
+.home-section img {
+    max-width: none; 
+    height: auto; 
+}
+
+
+
+/*
+=======
+MEZZI
+=======
+*/
+
+.mezzi-section{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em; 
+    max-width: 70em; 
+    margin: 0 auto; 
+    justify-content: center;
+}
+
+.mezzi-section figure{
+    text-align: center;
+}
+
+.mezzi-section img{
+    width: 20em;
+    height: 10em;
+}
+
+#mezzi-h1{
+    text-align: center;
+    background-color: var(--bg_bgGreen);
+    color: var(--text_bgGreen);
+    border-radius: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+
+
+/* 
+=======
+AREAPRIVATA
+=======
+*/
+
+.privatearea-container{
+    margin-top: 1em;
+    display: flex;
+    gap: 1em;
+}
+
+#confirmbutton-description{
+
+    text-align: center;
+}
+
+#confirmbutton{
+    margin-top: 3em;
+}
+
+
+
+/*
+=======
+404
+=======
+*/
+
+.container-404 {
+    display: flex;
+    flex-direction: column; /* This will stack the children vertically */
+    align-items: center; 
+    flex-wrap: wrap;
+    max-width: 100%; 
+    margin: auto; 
+    justify-content: center;
+    text-align: center;
+    font-size:2em;
+    font-weight: bold;
+}
+
+.container-404 span{
+    margin: 0.5em auto;
+}
+
+.container-404  img {
+    max-width: 50%;
+}
+
+.container-404 h1{
+    font-size: 1em;
+}
+
+
+
+a.cta {
+    background-color: var(--bg_bgGreen);
+    color: var(--text_bgGreen);
+    border: 0 solid;
+    border-radius: 1em;
+    padding: 0.5em 1em;
+    font-size: 1.25em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+a.cta:visited {
+    background-color: var(--bg_bgGreen);
+    color: var(--visitedLink_bgGreen);
+}
+
+a.cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.2);
+}
+ 
+a.cta:active {
+    transform: scale(0.95);
+    box-shadow: 0 0.125em 0.25em rgba(0, 0, 0, 0.3);
+}
+
+.change-form {
+    text-align: center;
+    margin-top: 0.9375em;
+    margin-bottom: 0.9375em;
+}
+
