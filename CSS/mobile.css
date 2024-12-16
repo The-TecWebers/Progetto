@@ -140,3 +140,23 @@ CONTAINERS
     height: 100%;
 }
 
+
+
+/*
+==========
+SU DI NOI
+==========
+*/
+.card {
+    width: 100%;
+}
+
+.card > p{
+    width: 95%;
+    margin: 0.5em;
+}
+
+.cols-2{
+    grid-template-columns: auto;
+    gap: 1em;
+}
