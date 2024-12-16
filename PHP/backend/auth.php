@@ -1,5 +1,27 @@
 <?php
 
+require_once('php/backend/user_manager.php');
+
+function is_logged(){
+    return isset($_SESSION["username"]);
+}
+
+function is_admin(){
+    if (!is_logged())
+        return false;
+    $result = user_manager::get_admin($_SESSION["username"]);
+    if ($result == false || count($result) == 0)
+        return false;
+    return true;
+}
+
+function server_error(){
+    http_response_code(500);
+    $relative_path = dirname(__FILE__) . '/../../html/500.html';
+    echo file_get_contents($relative_path);
+    die();
+}
+
 function pulisci_input($value){
     // elimina gli spazi
     $value = trim($value);
