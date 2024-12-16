@@ -59,7 +59,7 @@ main {
 
 div.cta-container  a {
     background-color: var(--bg_bgGreen);
-    color: var(--text_bgGreen);
+    color: var(--link_bgGreen);
     border: 0 solid;
     border-radius: 1em;
     padding: 0.5em 1em;
@@ -525,7 +525,7 @@ CONTAINERS
     width: 50%;
 }
 
-.text-centered {
+.text-centered { 
     text-align: center;
 }
 
@@ -609,7 +609,6 @@ HOME PAGE
 
 
 /*
-<<<<<<< HEAD
 =======
 MEZZI
 =======
@@ -702,7 +701,7 @@ AREAPRIVATA
 
 a.cta {
     background-color: var(--bg_bgGreen);
-    color: var(--text_bgGreen);
+    color: var(--link_bgGreen);
     border: 0 solid;
     border-radius: 1em;
     padding: 0.5em 1em;
