@@ -1,13 +1,8 @@
 /*
-==============
-TITOLO PAGINA
-==============
+=======
+HEADER
+=======
 */
-
-main h1{
-    padding:0;
-    justify-self: center;
-}
 
 #logo {
     margin: 0;
@@ -39,6 +34,19 @@ BREADCRUMB
 
 /*
 =====
+MAIN
+=====
+*/
+
+main h1{
+    padding:0;
+    justify-self: center;
+}
+
+
+
+/*
+=====
 FORM
 =====
 */
@@ -47,15 +55,7 @@ form{
     width: 80%;
 }
 
-/*
-=======
-AREAPRIVATA
-=======
-*/
 
-.privatearea-container{
-    display: block;
-}
 
 /*
 =======
@@ -73,40 +73,9 @@ FOOTER
 
 
 /*
-=========
-HOME PAGE 
-=========
-*/
-
-.home-section {
-    flex-direction: column; /* Dispone gli elementi in colonna */
-}
-
-.home-section > figure, .home-section > p {
-    flex: 1 1 100%; /* Ogni elemento occupa tutta la larghezza */
-    padding: 0.5em;
-}
-
-.home-section img {
-    max-width: 100%; 
-    height: auto; 
-}
-
-
-
-/*
-=======
-AREAPRIVATA
-=======
-*/
-
-.privatearea-container{
-    display: block;
-}
-/*
-=======
+===========
 CONTAINERS
-=======
+===========
 */
 
 
@@ -142,6 +111,48 @@ CONTAINERS
 
 
 
+
+
+
+
+
+
+
+
+
+/*
+============================
+           PAGINE
+============================
+*/
+
+
+
+
+
+
+/*
+=========
+HOME PAGE 
+=========
+*/
+
+.home-section {
+    flex-direction: column; /* Dispone gli elementi in colonna */
+}
+
+.home-section > figure, .home-section > p {
+    flex: 1 1 100%; /* Ogni elemento occupa tutta la larghezza */
+    padding: 0.5em;
+}
+
+.home-section img {
+    max-width: 100%; 
+    height: auto; 
+}
+
+
+
 /*
 ==========
 SU DI NOI
@@ -159,4 +170,16 @@ SU DI NOI
 .cols-2{
     grid-template-columns: auto;
     gap: 1em;
+}
+
+
+
+/*
+=======
+AREAPRIVATA
+=======
+*/
+
+.privatearea-container{
+    display: block;
 }

@@ -11,15 +11,17 @@ html, body {
     flex-direction: column;
 }
 
-#logo {
-    margin: 0;
-}
+
 
 /*
 =======
 HEADER
 =======
 */
+
+#logo {
+    margin: 0;
+}
 
 #menu {
     justify-content: space-between;
@@ -169,6 +171,26 @@ FOOTER
 
 
 
+
+
+
+
+
+
+
+
+
+/*
+============================
+           PAGINE
+============================
+*/
+
+
+
+
+
+
 /*
 =========
 HOME PAGE 
@@ -185,6 +207,8 @@ HOME PAGE
     height: auto; 
 }
 
+
+
 /*
 =======
 AREAPRIVATA
@@ -194,6 +218,8 @@ AREAPRIVATA
 .privatearea-container{
     display: block;
 }
+
+
 
 /*
 =======
