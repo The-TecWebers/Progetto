@@ -1,0 +1,29 @@
+<main>
+    <h1>Registrati</h1>
+    <form name="validatedForm" onsubmit="return validateRegister()" action="reg_wrap.php" method="post">
+        <fieldset>
+            <div class="legend-container">
+                <legend>Registrati a Edil Scavi</legend>
+            </div>
+            <p class="change-form">Hai già un account? <a href="accedi.php">Accedi qui</a></p>
+            <label class="form-label" for="name">Inserisci il tuo nome</label>
+            <input class="form-input" type="text" id="name" name="name" placeholder="Nome" onblur="validateName()">
+            <label class="form-label" for="surname">Inserisci il tuo cognome</label>
+            <input class="form-input" type="text" id="surname" name="surname" placeholder="Surname" onblur="validateSurname()">
+            <label class="form-label" for="email">Inserisci la tua <span lang="en">email</span></label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="E-mail" onblur="validateEmail()">
+            <label class="form-label" for="username">Inserisci uno username</label>
+            <input class="form-input" type="text" id="reg_username" name="username" placeholder="Username" onblur="validateUsername()">
+            <label class="form-label" for="password">Inserisci una password</label>
+            <input class="form-input" type="password" name="password1" id="reg_password1" placeholder="Password" onblur="validatePassword()">
+            <label class="form-label" for="password">Reinserisci la password</label>
+            <input class="form-input" type="password" name="password2" id="reg_password2" placeholder="Password" onblur="validateRepeatedPassword()">
+            <label class="form-label" for="hint">Scrivi un suggerimento per ricordarti la password</label>
+            <input class="form-input" type="text" name="hint" id="hint" placeholder="Suggerimento" onblur="validateHint()">
+            <div class="form-buttons">
+                <button type="submit">Registrati</button>
+            </div>
+            <!-- errors -->
+        </fieldset>
+    </form>
+</main>

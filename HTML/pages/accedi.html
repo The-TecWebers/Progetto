@@ -1,0 +1,20 @@
+<main>
+    <h1>Accedi</h1>
+    <form name="loginForm" onsubmit="return validateLogin()" action="auth_wrap.php" method="post" autocomplete="on">
+        <fieldset>
+            <div class="legend-container">
+                <legend>Esegui l'accesso a <strong>Edil Scavi</strong></legend>
+            </div>
+            <p class="change-form">Non hai un account? <a href="registrati.php">Registrati qui</a></p>
+            <label class="form-label" for="username">Inserisci lo <span lang="en">username</span></label>
+            <input class="form-input" type="text" id="login_username" name="username" placeholder="Username" onblur="validateUsername()"/>
+            <label class="form-label" for="password">Inserisci la <span lang="en">password</span></label>
+            <input class="form-input" type="password" id="login_password" name="password" placeholder="Password" onblur="validatePassword()"/>
+            <a href="#">Password dimenticata?</a>
+            <div class="form-buttons">
+                <button type="submit">Accedi</button>
+            </div>
+            <!-- errors -->
+        </fieldset>
+    </form>
+</main>
