@@ -138,6 +138,18 @@ main{
 
 
 /*
+=====
+FORM
+=====
+*/
+
+.double-column {
+    display: block;
+}
+
+
+
+/*
 =======
 FOOTER
 =======
@@ -211,21 +223,10 @@ HOME PAGE
 
 /*
 =======
-AREAPRIVATA
-=======
-*/
-
-.privatearea-container{
-    display: block;
-}
-
-
-
-/*
-=======
 404
 =======
 */
+
 .container-404  img {
     max-width: 70%;
 }
