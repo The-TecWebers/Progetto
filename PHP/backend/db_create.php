@@ -1,5 +1,5 @@
 <?php
-require('DBController.php');
+require('./controllers/DBController.php');
 
 $conn = DBController::connect();
 // Create database

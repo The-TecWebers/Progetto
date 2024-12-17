@@ -84,7 +84,7 @@ function register()
         !isset($_POST["password2"]) || 
         !isset($_POST["name"]) || 
         !isset($_POST["surname"]) || 
-        !isset($_POST["hint"])) {
+        !isset($_POST["suggerimento_password"])) {
         return "Per favore, compila tutti i campi";
     }
 
@@ -95,7 +95,7 @@ function register()
     $pass2 = $_POST["password2"];
     $name = pulisci_input($_POST["name"]);
     $surname = pulisci_input($_POST["surname"]);
-    $hint = pulisci_input($_POST["hint"]);
+    $suggerimento_password = pulisci_input($_POST["suggerimento_password"]);
 
     // Validazioni dei campi
     if (is_mail($email) !== true) {
@@ -135,7 +135,7 @@ function register()
     }
 
     // Aggiungi l'utente
-    user_manager::add($username, $email, $pass, $name, $surname, $hint);
+    user_manager::add($username, $email, $pass, $name, $surname, $suggerimento_password);
     return true;
 }
 
