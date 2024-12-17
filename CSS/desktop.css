@@ -327,6 +327,7 @@ form {
     flex-direction: column;
     margin: auto;
     width: 50%;
+    margin-bottom: 1em;
 }
 
 .change-form {
@@ -403,25 +404,33 @@ button {
     box-shadow: 0 0.125em 0.25em rgba(0, 0, 0, 0.3);
 }
 
-fieldset {
+.surrounding-box {
     padding-left: 1.25em;
     padding-right: 1.25em;
     padding-bottom: 1.25em;
     border-radius: 1em;
-    border: 0 solid;
+    border: 0.0625em solid;
     box-shadow: 0 0.125em 0.3125em rgba(0, 0, 0, 0.2);
 }
 
-.legend-container {
-    margin-top: 0.9375em;
+.form-description {
     text-align: center;
+    font-size: 1.5em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    font-weight: bold;
+    margin-top: 0.75em;
+}
+
+.double-column {
+    margin-top: 1em;
+    display: flex;
+    gap: 1em;
 }
 
 legend {
     font-size: 1.5em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     font-weight: bold;
-    margin-top: 0.416em;
 }
 
 
@@ -717,7 +726,7 @@ MEZZI
 =======
 */
 
-.mezzi-section{
+.mezzi-container{
     display: flex;
     flex-wrap: wrap;
     gap: 4em; 
@@ -726,11 +735,11 @@ MEZZI
     justify-content: center;
 }
 
-.mezzi-section figure{
+.mezzi-container figure{
     text-align: center;
 }
 
-.mezzi-section img{
+.mezzi-container img{
     width: 25em;
     height: 18em;
     object-fit: fill;
@@ -836,17 +845,6 @@ ACCEDI
 AREA PRIVATA
 =======
 */
-
-.privatearea-container {
-    margin-top: 1em;
-    display: flex;
-    gap: 1em;
-}
-
-#confirmbutton-description {
-    text-align: center;
-    text-indent: -999em;
-}
 
 #confirmbutton {
     margin-top: 0.2em;

@@ -1,29 +1,34 @@
 <main id="content">
     <h1>Registrati</h1>
+    <p class="form-description">Registrati a <strong>Edil Scavi</strong></p>
+    <p class="change-form">Hai già un account? <a href="accedi.php">Accedi qui</a></p>
     <form name="validatedForm" onsubmit="return validateRegister()" action="reg_wrap.php" method="post">
-        <fieldset>
-            <div class="legend-container">
-                <legend>Registrati a Edil Scavi</legend>
-            </div>
-            <p class="change-form">Hai già un account? <a href="accedi.php">Accedi qui</a></p>
-            <label class="form-label" for="name">Inserisci il tuo nome</label>
-            <input class="form-input" type="text" id="name" name="name" placeholder="Nome" onblur="validateName()">
-            <label class="form-label" for="surname">Inserisci il tuo cognome</label>
-            <input class="form-input" type="text" id="surname" name="surname" placeholder="Surname" onblur="validateSurname()">
-            <label class="form-label" for="email">Inserisci la tua <span lang="en">email</span></label>
-            <input class="form-input" type="email" id="email" name="email" placeholder="E-mail" onblur="validateEmail()">
-            <label class="form-label" for="username">Inserisci uno username</label>
-            <input class="form-input" type="text" id="username" name="username" placeholder="Username" onblur="validateUsername()">
-            <label class="form-label" for="password">Inserisci una password</label>
-            <input class="form-input" type="password" name="password" id="password" placeholder="Password" onblur="validatePassword()">
-            <label class="form-label" for="password">Reinserisci la password</label>
-            <input class="form-input" type="password" name="password_confirmation" id="password_confirmation" placeholder="Password" onblur="validateRepeatedPassword()">
-            <label class="form-label" for="suggerimento_password">Scrivi un suggerimento per ricordarti la password</label>
-            <input class="form-input" type="text" name="suggerimento_password" id="suggerimento_password" placeholder="Suggerimento" onblur="validatesuggerimento_password()">
-            <div class="form-buttons">
-                <button type="submit">Registrati</button>
-            </div>
-            <!-- errors -->
-        </fieldset>
+        <!-- errors -->
+        <div class="double-column">
+            <fieldset class="surrounding-box">
+                <legend>Dati personali</legend>
+                <label class="form-label" for="name">Inserisci il tuo nome</label>
+                <input class="form-input" type="text" id="name" name="name" placeholder="Nome">
+                <label class="form-label" for="surname">Inserisci il tuo cognome</label>
+                <input class="form-input" type="text" id="surname" name="surname" placeholder="Cognome">
+                <label class="form-label" for="email">Inserisci la tua <span lang="en">email</span></label>
+                <input class="form-input" type="email" id="email" name="email" placeholder="E-mail">
+            </fieldset>
+            <fieldset class="surrounding-box">
+                <legend>Dati di accesso</legend>
+                <label class="form-label" for="username">Inserisci uno username</label>
+                <input class="form-input" type="text" id="username" name="username" placeholder="Username">
+                <label class="form-label" for="password">Inserisci una password</label>
+                <input class="form-input" type="password" name="password" id="password" placeholder="Password">
+                <label class="form-label" for="password">Reinserisci la password</label>
+                <input class="form-input" type="password" name="password_confirmation" id="password_confirmation" placeholder="Password">
+                <label class="form-label" for="suggerimento_password">Scrivi un suggerimento per ricordarti la password</label>
+                <input class="form-input" type="text" name="suggerimento_password" id="suggerimento_password" placeholder="Suggerimento">
+            </fieldset>
+        </div>
+
+        <div class="form-buttons">
+            <button type="submit" aria-label="Registrati a Edil Scavi">Registrati</button>
+        </div>
     </form>
 </main>
