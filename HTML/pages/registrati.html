@@ -13,13 +13,13 @@
             <label class="form-label" for="email">Inserisci la tua <span lang="en">email</span></label>
             <input class="form-input" type="email" id="email" name="email" placeholder="E-mail" onblur="validateEmail()">
             <label class="form-label" for="username">Inserisci uno username</label>
-            <input class="form-input" type="text" id="reg_username" name="username" placeholder="Username" onblur="validateUsername()">
+            <input class="form-input" type="text" id="username" name="username" placeholder="Username" onblur="validateUsername()">
             <label class="form-label" for="password">Inserisci una password</label>
-            <input class="form-input" type="password" name="password1" id="reg_password1" placeholder="Password" onblur="validatePassword()">
+            <input class="form-input" type="password" name="password" id="password" placeholder="Password" onblur="validatePassword()">
             <label class="form-label" for="password">Reinserisci la password</label>
-            <input class="form-input" type="password" name="password2" id="reg_password2" placeholder="Password" onblur="validateRepeatedPassword()">
-            <label class="form-label" for="hint">Scrivi un suggerimento per ricordarti la password</label>
-            <input class="form-input" type="text" name="hint" id="hint" placeholder="Suggerimento" onblur="validateHint()">
+            <input class="form-input" type="password" name="password_confirmation" id="password_confirmation" placeholder="Password" onblur="validateRepeatedPassword()">
+            <label class="form-label" for="suggerimento_password">Scrivi un suggerimento per ricordarti la password</label>
+            <input class="form-input" type="text" name="suggerimento_password" id="suggerimento_password" placeholder="Suggerimento" onblur="validatesuggerimento_password()">
             <div class="form-buttons">
                 <button type="submit">Registrati</button>
             </div>
