@@ -2,13 +2,16 @@
 include('../models/User.php');
 class AuthController
 {
-    public function login(User $user)
+    public static function login(User $user)
     {
-
+        session_start();
+        $_SESSION['username'] = $user->getUsername();
     }
 
-    public function logout(User $user)
+    public static function logout()
     {
-
+        session_start();
+        $_SESSION = [];
+        session_destroy();
     }
 }

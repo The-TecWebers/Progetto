@@ -50,7 +50,7 @@ class DBController
     if ($result == false || ($result->num_rows) <= 0) {
       return false;
     }
-    $result_data = $result->fetch_all(MYSQLI_ASSOC);
+    $result_data = $result->fetch_assoc();
 
 
     $q->close();

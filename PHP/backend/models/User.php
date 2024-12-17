@@ -14,13 +14,18 @@ class User
         $this->email = $array['email'];
         $this->username = $array['username'];
         $this->password = $array['password'];
-        $this->name = $array['username'];
+        $this->name = $array['nome'];
+        $this->surname = $array['cognome'];
         $this->suggerimento_password = $array['suggerimento_password'];
     }
 
     public function getEmail()
     {
         return $this->email;
+    }
+    public function getUsername()
+    {
+        return $this->username;
     }
     public function getPassword()
     {
