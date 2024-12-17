@@ -13,7 +13,7 @@ class DBAccess {
 	private const USERNAME = "root";
 	private const PASSWORD = "root";
 
-    private static function connect($host = "db", $username = "root", $password = "q", $dbname = "onoranze")
+    private static function connect()
     {
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
