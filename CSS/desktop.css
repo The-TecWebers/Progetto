@@ -154,7 +154,7 @@ AIUTI ALLA NAVIGAZIONE
 
 /*
 ================================
-BOTTONI REGISTRAZIONE E ACCESSO
+PULSANTI REGISTRAZIONE E ACCESSO
 ================================
 */
 
@@ -164,30 +164,27 @@ BOTTONI REGISTRAZIONE E ACCESSO
     margin-bottom: auto;
 }
 
-.sign-buttons button {
+.sign-buttons a {
+    display: inline-block;
+    text-decoration: none;
     background-color: var(--visitedLink_bgWhite);
-
-    /* Eventualmente possiamo cambiare questo colore in futuro */
     color: var(--text_bgGreen);
-    /* Eventualmente possiamo cambiare questo colore in futuro */
     border: none;
     border-radius: 0.357em;
     padding: 0.714em 1.428em;
     font-size: 0.875em;
-    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     font-weight: bold;
+    text-align: center;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
 
-.sign-buttons button:hover {
-    /* Anche qua l'em è diverso */
+.sign-buttons a:hover {
     transform: scale(1.05);
     box-shadow: 0 0.285em 0.428em rgba(0, 0, 0, 0.2);
 }
 
-.sign-buttons button:active {
-    /* Anche qua l'em è diverso */
+.sign-buttons a:active {
     transform: scale(0.95);
     box-shadow: 0 0.142em 0.285em rgba(0, 0, 0, 0.3);
 }

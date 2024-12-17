@@ -33,7 +33,7 @@ HEADER
     border-top: 0.0625em solid rgba(255, 255, 255, 0.2);
     opacity: 0;
     visibility: hidden;
-    margin-top: 5.5em;
+    margin-top: 6.1em;
 }
 
 #menu ul {
@@ -51,7 +51,7 @@ HEADER
 
 /*
 ================================
-BOTTONI REGISTRAZIONE E ACCESSO
+PULSANTI REGISTRAZIONE E ACCESSO
 ================================
 */
 
@@ -69,7 +69,7 @@ BOTTONI REGISTRAZIONE E ACCESSO
     visibility: hidden;
 }
 
-.sign-buttons button {
+.sign-buttons a {
     display: block;
     width: 95%;
     text-align: center;
