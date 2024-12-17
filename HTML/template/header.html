@@ -4,8 +4,8 @@
    <title></title>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="description" content=""/>
-   <meta name="keywords" content=""/>
+   <meta name="description" content="">
+   <meta name="keywords" content="">
 
    <!-- CSS stylesheets -->
    <link rel="stylesheet" href="CSS/desktop.css" media="screen">
@@ -34,13 +34,13 @@
          <h1 id="logo">Edil Scavi</h1>
 
          <!-- Menù ad hamburger -->
-         <input type="checkbox" id="nav-check" aria-label="Toggle navigation menu" aria-label="Open navigation menu">
+         <input type="checkbox" id="nav-check" aria-label="Toggle navigation menu">
          <label for="nav-check" class="nav-toggler" aria-hidden="true">
             Menu
             <span></span>
          </label>
 
-         <nav id="menu">
+         <nav id="menu" aria-label="Menù di navigazione">
             <ul>
                <li><a href="#content" class="navigationHelp">Salta il menù di navigazione</a></li>
                <li><a href="index.php">Home</a></li>
@@ -53,8 +53,8 @@
          </nav>
 
          <div class="sign-buttons">
-            <button id="btn-register">Registrati</button>
-            <button id="btn-login">Accedi</button>
+            <a id="btn-register" href="registrati.php">Registrati</a>
+            <a id="btn-login" href="accedi.php">Accedi</a>
          </div>
       </div>
 

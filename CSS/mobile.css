@@ -171,15 +171,3 @@ SU DI NOI
     grid-template-columns: auto;
     gap: 1em;
 }
-
-
-
-/*
-=======
-AREAPRIVATA
-=======
-*/
-
-.privatearea-container{
-    display: block;
-}
