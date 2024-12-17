@@ -50,7 +50,11 @@ class DBController
     if ($result == false || ($result->num_rows) <= 0) {
       return false;
     }
+<<<<<<< HEAD
     $result_data = $result->fetch_assoc();
+=======
+    $result_data = $result->fetch_all(MYSQLI_ASSOC);
+>>>>>>> 7f5a842 (Aggiunto model User, aggiunto getter su controller, uniformato input come su database)
 
 
     $q->close();
