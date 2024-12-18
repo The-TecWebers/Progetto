@@ -154,6 +154,36 @@ HOME PAGE
 
 
 /*
+======================
+STORIA - LAVORI SVOLTI
+======================
+*/
+
+.paragraph-image-container{
+    flex-direction: column;
+}
+
+.paragraph-image-container > figure, .paragraph-image-container > p {
+    flex: 1 1 100%;
+    padding: 0.5em;
+}
+
+.paragraph-image-container figure{
+    max-width: 100%;
+}
+
+.paragraph-image-container img{
+    max-width: 100%;
+    height: auto;
+}
+
+.paragraph-image-container img:first-child{
+    margin-bottom: 1em;
+}
+
+
+
+/*
 ==========
 SU DI NOI
 ==========

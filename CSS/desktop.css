@@ -314,6 +314,10 @@ main a {
     text-decoration: underline;
 }
 
+section{
+    border-bottom: var(--border) 0.125em solid;
+}
+
 
 
 /*
@@ -681,9 +685,9 @@ MARGINI
 
 
 /*
-=========
-HOME PAGE 
-=========
+==========
+HOME PAGE
+==========
 */
 
 .home-section {
@@ -691,14 +695,13 @@ HOME PAGE
     flex-wrap: nowrap;
     margin: 1em;
     padding: 0;
-    border-bottom: var(--border) 0.125em solid;
+    align-items: center;
 }
 
 .home-section>figure,
 .home-section>p {
     padding: 0em 0.5em;
     flex: 1 1 50%;
-    text-align: center;
 }
 
 .home-section img {
@@ -706,16 +709,43 @@ HOME PAGE
     height: auto;
 }
 
-.container {
-    display: flex;
-    flex-direction: row;
 
+
+/*
+=======================
+STORIA - LAVORI SVOLTI
+=======================
+*/
+
+.no-capitalize{
+    text-transform: none;
 }
 
-.container-col {
+.paragraph-image-container {
     display: flex;
-    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
 
+.paragraph-image-container figure {
+    max-width: 35%;
+    height: auto;
+    margin-right: 0.625em;
+    margin-left: 0.625em;
+}
+
+.paragraph-image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: fill;
+    object-position: center;
+    border-radius: 0.625em;
+}
+
+.paragraph-image-container p {
+    flex: 1;
+    margin-right: 0.625em;
+    margin-left: 0.625em;
 }
 
 
@@ -841,9 +871,9 @@ ACCEDI
 
 
 /* 
-=======
+=============
 AREA PRIVATA
-=======
+=============
 */
 
 #confirmbutton {
