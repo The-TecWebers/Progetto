@@ -65,8 +65,8 @@ header {
     text-indent: -999em;
     background-image: url('../Images/EdilScavi logo.png');
     background-size: contain;
-    width: 212px;  /* 491px */
-    height: 38px;   /* 88px */
+    width: 6.7em;
+    height: 1.2em;
     margin: auto;
 }
 
@@ -318,6 +318,14 @@ section{
     border-bottom: var(--border) 0.125em solid;
 }
 
+figcaption {
+    text-align: center;
+    font-style: italic;
+    font-size: 1.125em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
 
 
 /*
@@ -704,9 +712,16 @@ HOME PAGE
     flex: 1 1 50%;
 }
 
+.home-section>figure {
+    text-align: center;
+}
+
 .home-section img {
     max-width: none;
     height: auto;
+    object-fit: fill;
+    object-position: center;
+    border-radius: 0.625em;
 }
 
 
@@ -716,6 +731,11 @@ HOME PAGE
 STORIA - LAVORI SVOLTI
 =======================
 */
+
+.strict-content{
+    max-width: 90em;
+    margin: auto;
+}
 
 .no-capitalize{
     text-transform: none;
