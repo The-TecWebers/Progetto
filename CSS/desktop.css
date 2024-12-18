@@ -854,14 +854,13 @@ AREA PRIVATA
 
 /*
 =======
-404
+404-505
 =======
 */
 
-.container-404 {
+.container-error {
     display: flex;
     flex-direction: column;
-    /* This will stack the children vertically */
     align-items: center;
     flex-wrap: wrap;
     max-width: 100%;
@@ -872,18 +871,18 @@ AREA PRIVATA
     font-weight: bold;
 }
 
-.container-404 span {
+.container-error span {
     margin: 0.5em auto;
 }
 
-.container-404 img {
+.container-error img {
     max-width: 50%;
 }
 
-.container-404 h1 {
+.container-error h1 {
     font-size: 1em;
 }
 
-#cta-404 {
+#cta-error {
     margin-bottom: 1em;
 }
