@@ -63,7 +63,7 @@ header {
 
 #logo {
     text-indent: -999em;
-    background-image: url('../Images/EdilScavi logo.png');
+    background-image: url('../Images/Edil_Scavi_logo_colore-nuovo.png');
     background-size: contain;
     width: 6.7em;
     height: 1.2em;
@@ -741,6 +741,10 @@ STORIA - LAVORI SVOLTI
     text-transform: none;
 }
 
+.block{
+    display: block;
+}
+
 .paragraph-image-container {
     display: flex;
     flex-wrap: nowrap;
@@ -756,7 +760,7 @@ STORIA - LAVORI SVOLTI
 
 .paragraph-image-container img {
     width: 100%;
-    height: auto;
+    max-height: 25em;
     object-fit: fill;
     object-position: center;
     border-radius: 0.625em;
