@@ -13,6 +13,15 @@ switch ($current_page) {
     case "index.php":
         $header = str_replace('<li><a href="index.php">Home</a></li>', '<li class="current-link">Home</li>', $header);
         break;
+    case "storia.php":
+        $header = str_replace('<li><a href="storia.php">Storia</a></li>', '<li class="current-link">Storia</li>', $header);
+        break;
+    case "mezzi.php":
+        $header = str_replace('<li><a href="mezzi.php">Mezzi</a></li>', '<li class="current-link">Mezzi</li>', $header);
+        break;
+    case "lavori_svolti.php":
+        $header = str_replace('<li><a href="lavori_svolti.php">Lavori svolti</a></li>', '<li class="current-link">Lavori svolti</li>', $header);
+        break;
     case "lista_preventivi.php":
         $header = str_replace('<li><a href="lista_preventivi.php">Preventivi</a></li>', '<li class="current-link">Preventivi</li>', $header);
         break;
@@ -23,5 +32,6 @@ switch ($current_page) {
         break;
 }
 echo($header);
+
 
 
