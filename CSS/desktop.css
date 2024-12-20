@@ -117,7 +117,7 @@ header nav ul li a:visited {
    Perchè altrimenti, mettendo lo stato visited in basso, esso andrebbe a sovrascrivere lo stato hover e active, che noi vogliamo si manifestino! */
 
 header nav ul li a:hover,
-header nav ul li a.active {
+header nav ul li a:active {
     background-color: var(--hover);
     color: var(--link_bgGreen);
 }
@@ -139,6 +139,7 @@ AIUTI ALLA NAVIGAZIONE
 .navigationHelp {
     position: absolute;
     text-indent: -999em;
+    padding: 0;
 }
 
 .navigationHelp:focus {
