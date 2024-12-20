@@ -152,6 +152,24 @@ HOME PAGE
 }
 
 
+/*
+=======
+MEZZI
+=======
+*/
+
+figure.escavatori {
+    max-width: none;
+}
+
+figure.escavatori img {
+    max-width: 25em; 
+}
+
+figure.escavatori figcaption {
+    display: flex; 
+    flex-direction: column; 
+}
 
 /*
 ==========
