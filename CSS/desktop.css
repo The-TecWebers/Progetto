@@ -742,10 +742,6 @@ STORIA - LAVORI SVOLTI
     text-transform: none;
 }
 
-.block{
-    display: block;
-}
-
 .paragraph-image-container {
     display: flex;
     flex-wrap: nowrap;
