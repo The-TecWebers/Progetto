@@ -1,6 +1,4 @@
 DROP TABLE IF EXISTS richiesta_affitto, richiesta_preventivo, lavoro, mezzo_trasporto, tipo_veicolo, gestore, utente;
-DROP DATABASE IF EXISTS EdilScavi;
-CREATE DATABASE IF NOT EXISTS EdilScavi;
 -- Form registrazione
 CREATE TABLE utente (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -15,20 +13,20 @@ CREATE TABLE utente (
 
 -- Form richiesta preventivo
 CREATE TABLE richiesta_preventivo (
-	id INT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
 	descrizione VARCHAR(255) NOT NULL,
 	data DATE NOT NULL,
 	foto VARCHAR(255) NOT NULL,
 	luogo VARCHAR(255) NOT NULL,
 	tipo_lavoro VARCHAR(255) NOT NULL,
-	utente VARCHAR(255) NOT NULL,
+	utente INT NOT NULL,
 	FOREIGN KEY (utente) REFERENCES utente(id) ON DELETE CASCADE
 );
 
 -- per il template PHP della pagina sui lavori svolti
 CREATE TABLE lavoro (
-	id VARCHAR(255) PRIMARY KEY,
-	utente VARCHAR(255),
+    id INT AUTO_INCREMENT PRIMARY KEY,
+	utente INT,
 	data_inizio DATE NOT NULL,
 	data_fine DATE NOT NULL,
 	descrizione VARCHAR(255) NOT NULL,

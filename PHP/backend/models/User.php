@@ -1,5 +1,5 @@
 <?php
-include('InputController.php');
+include(__DIR__.'/../controllers/InputController.php');
 class User
 {
     private $username;
