@@ -61,37 +61,4 @@ class UserController extends AbstractController
 
 }
 
-//TESTS
-/*if (!UserController::isDuplicate('testuser', 'testuser@example.com')) {
-=======
-
-
-    //Getters
-
-    public static function getUserByEmail($email)
-    {
-        $conn = DBController::connect();
-        $sql = "SELECT * FROM utente WHERE email = '$email'";
-        $result = $conn->query($sql);
-        if($result->num_rows>0)
-        {
-            $user = new User($result->fetch_assoc());
-            return $user;
-        }
-    }
-
-}
-
-
-if (!UserController::isDuplicate('testuser', 'testuser@example.com')) {
-    $_POST['email'] = 'testuser@example.com';
-    $_POST['username'] = 'testuser';
-    $_POST['password'] = 'password123';
-    $_POST['password_confirmation'] = 'password123';
-    $_POST['nome'] = 'John';
-    $_POST['cognome'] = 'Doe';
-    $_POST['suggerimento_password'] = 'Password suggerimento_password example';
-
-    UserController::create();
-}
 
