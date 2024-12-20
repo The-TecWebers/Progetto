@@ -7,19 +7,8 @@ class UserController extends AbstractController
 {
     public static function create()
     {
-        //Sanificazione input
-        $input['email'] = InputController::SanitizeInput($_POST['email']);
-        $input['username'] = InputController::SanitizeInput(($_POST['username']));
-        $input['password'] = InputController::SanitizeInput($_POST['password']);
-        $password_confirmation = InputController::SanitizeInput(($_POST['password_confirmation']));
-        $input['nome'] = InputController::SanitizeInput($_POST['nome']);
-        $input['cognome'] = InputController::SanitizeInput($_POST['cognome']);
-        $input['suggerimento_password'] = InputController::SanitizeInput($_POST['suggerimento_password']);
-
-        //Hashing password
-        $input['password'] = password_hash($input['password'], PASSWORD_BCRYPT);
-
-        //Logica di salvataggio
+        $input = InputController::SanitizeInput($_POST);
+        $input['password'] = InputController::HashPassword($input['password']);
         if(!UserController::isDuplicate($input['username'], email: $input['email']))
         {
             $user = new User($input);
@@ -56,8 +45,6 @@ class UserController extends AbstractController
             return $user;
         }
     }
-    //Autenticazione
-
 
 }
 
