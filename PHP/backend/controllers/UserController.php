@@ -5,7 +5,7 @@ require_once(__DIR__ . '/../models/User.php');
 require_once('DBController.php');
 class UserController extends AbstractController
 {
-    public static function create()
+    public static function create():bool
     {
         $input = InputController::SanitizeInput($_POST);
         if($input['password']==$input['password_confirmation'])
@@ -17,9 +17,9 @@ class UserController extends AbstractController
                 $user->save();
                 return true;
             }
-            return "L'utente è duplicato";
+            return false;
         }
-        return 'password_confirmation_error';
+        return false;
 
 
     }
@@ -44,6 +44,16 @@ class UserController extends AbstractController
     public static function getUserByEmail($email)
     {
         $result = DBController::runQuery("SELECT * FROM utente WHERE email = ?", $email);
+        if(count($result)>0)
+        {
+            $user = new User($result);
+            return $user;
+        }
+    }
+
+    public static function getUserByUsername($username)
+    {
+        $result = DBController::runQuery("SELECT * FROM utente WHERE username = ?", $username);
         if(count($result)>0)
         {
             $user = new User($result);
