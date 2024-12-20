@@ -291,6 +291,8 @@ MAIN
 main {
     flex: 1;
     padding-bottom: 1.25em;
+    max-width: 90%;
+    margin: auto;
 }
 
 main h1{
@@ -733,29 +735,24 @@ STORIA - LAVORI SVOLTI
 =======================
 */
 
-.strict-content{
-    max-width: 90em;
-    margin: auto;
-}
-
 .no-capitalize{
     text-transform: none;
 }
 
-.paragraph-image-container {
+.figure-paragraph-container {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
 }
 
-.paragraph-image-container figure {
+.figure-paragraph-container figure {
     max-width: 35%;
     height: auto;
     margin-right: 0.625em;
     margin-left: 0.625em;
 }
 
-.paragraph-image-container img {
+.figure-paragraph-container img {
     width: 100%;
     max-height: 25em;
     object-fit: fill;
@@ -763,7 +760,7 @@ STORIA - LAVORI SVOLTI
     border-radius: 0.625em;
 }
 
-.paragraph-image-container p {
+.figure-paragraph-container p {
     flex: 1;
     margin-right: 0.625em;
     margin-left: 0.625em;

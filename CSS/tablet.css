@@ -227,11 +227,11 @@ STORIA - LAVORI SVOLTI
 =======================
 */
 
-.paragraph-image-container{
+.figure-paragraph-container{
     flex-wrap: wrap;
 }
 
-.paragraph-image-container img{
+.figure-paragraph-container img{
     max-width: 100%;
     height: auto;
 }

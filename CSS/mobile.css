@@ -159,25 +159,25 @@ STORIA - LAVORI SVOLTI
 ======================
 */
 
-.paragraph-image-container{
+.figure-paragraph-container{
     flex-direction: column;
 }
 
-.paragraph-image-container > figure, .paragraph-image-container > p {
+.figure-paragraph-container > figure, .figure-paragraph-container > p {
     flex: 1 1 100%;
     padding: 0.5em;
 }
 
-.paragraph-image-container figure{
+.figure-paragraph-container figure{
     max-width: 100%;
 }
 
-.paragraph-image-container img{
+.figure-paragraph-container img{
     max-width: 100%;
     height: auto;
 }
 
-.paragraph-image-container img:first-child{
+.figure-paragraph-container img:first-child{
     margin-bottom: 1em;
 }
 
