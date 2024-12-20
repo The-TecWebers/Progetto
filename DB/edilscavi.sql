@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS richiesta_affitto, richiesta_preventivo, lavoro, mezzo_trasporto, tipo_veicolo, gestore, utente;
-
+DROP DATABASE IF EXISTS EdilScavi;
+CREATE DATABASE IF NOT EXISTS EdilScavi;
 -- Form registrazione
 CREATE TABLE utente (
     id INT AUTO_INCREMENT PRIMARY KEY,

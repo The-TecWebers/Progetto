@@ -59,4 +59,16 @@ class DBController
     return $result_data;
   }
 
+  public static function createDB()
+  {
+    $conn = self::connect();
+    $sql = file_get_contents(realpath("./../../../DB/edilscavi.sql"));
+    if ($conn->multi_query($sql) !== TRUE) {
+      die("Error creating database: " . $conn->error);
+    }
+    $conn->close();
+  }
+
 }
+
+DBController::createDB();
