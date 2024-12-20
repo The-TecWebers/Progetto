@@ -741,10 +741,10 @@ MEZZI
 
 .mezzi-container img{
     width: 25em;
-    height: 18em;
+    height: auto;
     object-fit: fill;
     object-position: center;
-    border-radius: 0.9em; 
+    border-radius: 0.2em; 
 }
 
 #mezzi-h1{
