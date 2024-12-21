@@ -788,11 +788,39 @@ MEZZI
 }
 
 .mezzi-container img{
-    width: 25em;
-    height: 18em;
+    border: var(--border) 0.125em solid;
+    width: 25em;    /* 400px circa */
+    height: auto;
     object-fit: fill;
     object-position: center;
-    border-radius: 0.9em; 
+    border-radius: 0.2em; 
+}
+
+.mezzi-descrizione{
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+figure.escavatori {
+    margin: 5em auto; 
+    text-align: center;
+    max-width: 90%;
+}
+
+figure.escavatori img {
+    border: var(--border) 0.125em solid;
+    max-width: 80%; /* Adjusted for better fit */
+    height: auto;
+    border-radius: 0.2em;
+}
+
+figure.escavatori figcaption {
+    text-align: center;
+}
+
+figure.escavatori figcaption span {
+    margin: 0 5%;
 }
 
 #mezzi-h1{
