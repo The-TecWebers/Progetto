@@ -1,5 +1,5 @@
 <?php
-$titolo = "EdilScavi";
+$titolo = "Lista preventivi - EdilScavi";
 $descrizione= "EdilScavi SRL Brescia";
 $keywords = "Scavi, edilizia, scavi brescia, lavori edilizi";
 include "./PHP/template/header.php";

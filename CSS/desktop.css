@@ -63,10 +63,10 @@ header {
 
 #logo {
     text-indent: -999em;
-    background-image: url('../Images/EdilScavi logo.png');
+    background-image: url('../Images/Edil_Scavi_logo_colore-nuovo.png');
     background-size: contain;
-    width: 212px;  /* 491px */
-    height: 38px;   /* 88px */
+    width: 6.7em;
+    height: 1.2em;
     margin: auto;
 }
 
@@ -103,7 +103,7 @@ header nav ul li.current-link {
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     font-weight: 600;
     border-radius: 2em;
-    padding: 0.5em;
+    padding: 0.3em;
     color: var(--link_bgGreen);
     text-transform: uppercase;
     background-color: var(--hover);
@@ -117,7 +117,7 @@ header nav ul li a:visited {
    Perchè altrimenti, mettendo lo stato visited in basso, esso andrebbe a sovrascrivere lo stato hover e active, che noi vogliamo si manifestino! */
 
 header nav ul li a:hover,
-header nav ul li a.active {
+header nav ul li a:active {
     background-color: var(--hover);
     color: var(--link_bgGreen);
 }
@@ -139,6 +139,7 @@ AIUTI ALLA NAVIGAZIONE
 .navigationHelp {
     position: absolute;
     text-indent: -999em;
+    padding: 0;
 }
 
 .navigationHelp:focus {
@@ -290,6 +291,8 @@ MAIN
 main {
     flex: 1;
     padding-bottom: 1.25em;
+    max-width: 90%;
+    margin: auto;
 }
 
 main h1{
@@ -300,7 +303,6 @@ main h1{
 }
 
 main h2{
-    text-transform: capitalize;
     text-align: center;
     background-color: var(--bg_bgGreen);
     color: var(--text_bgGreen);
@@ -314,6 +316,24 @@ main a {
     text-decoration: underline;
 }
 
+section{
+    border-bottom: var(--border) 0.125em solid;
+}
+
+#introductionParagraph {
+    text-align: center;
+    margin-top: 0.5em;
+    margin-bottom: 1.5em;
+}
+
+figcaption {
+    text-align: center;
+    font-style: italic;
+    font-size: 1.125em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
 
 
 /*
@@ -681,9 +701,9 @@ MARGINI
 
 
 /*
-=========
-HOME PAGE 
-=========
+==========
+HOME PAGE
+==========
 */
 
 .home-section {
@@ -691,31 +711,62 @@ HOME PAGE
     flex-wrap: nowrap;
     margin: 1em;
     padding: 0;
-    border-bottom: var(--border) 0.125em solid;
+    align-items: center;
 }
 
 .home-section>figure,
 .home-section>p {
     padding: 0em 0.5em;
     flex: 1 1 50%;
+}
+
+.home-section>figure {
     text-align: center;
 }
 
 .home-section img {
     max-width: none;
     height: auto;
+    object-fit: fill;
+    object-position: center;
+    border-radius: 0.625em;
+    border: var(--border) 0.125em solid;
 }
 
-.container {
-    display: flex;
-    flex-direction: row;
 
+
+/*
+=======================
+STORIA - LAVORI SVOLTI
+=======================
+*/
+
+.figure-paragraph-container, .img-list-container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
 }
 
-.container-col {
-    display: flex;
-    flex-direction: row;
+.figure-paragraph-container figure {
+    max-width: 35%;
+    height: auto;
+    margin-right: 0.625em;
+    margin-left: 0.625em;
+}
 
+.figure-paragraph-container img {
+    width: 100%;
+    max-height: 25em;
+    object-fit: fill;
+    object-position: center;
+    border-radius: 0.625em;
+    border: var(--border) 0.125em solid;
+}
+
+.figure-paragraph-container p {
+    flex: 1;
+    margin-right: 0.625em;
+    margin-left: 0.625em;
 }
 
 
@@ -740,11 +791,33 @@ MEZZI
 }
 
 .mezzi-container img{
-    width: 25em;
-    height: 18em;
+    border: var(--border) 0.125em solid;
+    width: 25em;    /* 400px circa */
+    height: auto;
     object-fit: fill;
     object-position: center;
-    border-radius: 0.9em; 
+    border-radius: 0.625em; 
+}
+
+figure.escavatori {
+    margin: 5em auto; 
+    text-align: center;
+    max-width: 90%;
+}
+
+figure.escavatori img {
+    border: var(--border) 0.125em solid;
+    max-width: 80%; /* Adjusted for better fit */
+    height: auto;
+    border-radius: 0.625em;
+}
+
+figure.escavatori figcaption {
+    text-align: center;
+}
+
+figure.escavatori figcaption span {
+    margin: 0 5%;
 }
 
 #mezzi-h1{
@@ -758,16 +831,36 @@ MEZZI
 
 
 
+
+
 /*
 ==============
 LAVORI SVOLTI
 ==============
 */
 
-#introductionParagraph {
-    text-align: center;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+dt {
+    font-weight: bold;
+}
+
+.img-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    margin: 1em;
+}
+
+.img-list-container img{
+    max-width: 23%;
+    height: auto;
+    margin: 0.625em;
+    width: 100%;
+    max-height: 25em;
+    object-fit: fill;
+    object-position: center;
+    border-radius: 0.625em;
+    border: var(--border) 0.125em solid;
 }
 
 
@@ -841,9 +934,9 @@ ACCEDI
 
 
 /* 
-=======
+=============
 AREA PRIVATA
-=======
+=============
 */
 
 #confirmbutton {

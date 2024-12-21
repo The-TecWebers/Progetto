@@ -154,6 +154,57 @@ HOME PAGE
 
 
 /*
+======================
+STORIA - LAVORI SVOLTI
+======================
+*/
+
+.figure-paragraph-container{
+    flex-direction: column;
+}
+
+.figure-paragraph-container > figure, .figure-paragraph-container > p {
+    flex: 1 1 100%;
+    padding: 0.5em;
+}
+
+.figure-paragraph-container figure{
+    max-width: 100%;
+}
+
+.figure-paragraph-container img{
+    max-width: 100%;
+    height: auto;
+}
+
+.figure-paragraph-container img:first-child{
+    margin-bottom: 1em;
+}
+
+
+
+/*
+=======
+MEZZI
+=======
+*/
+
+figure.escavatori {
+    max-width: none;
+}
+
+figure.escavatori img {
+    max-width: 25em; 
+}
+
+figure.escavatori figcaption {
+    display: flex; 
+    flex-direction: column; 
+}
+
+
+
+/*
 ==========
 SU DI NOI
 ==========

@@ -222,6 +222,23 @@ HOME PAGE
 
 
 /*
+=======================
+STORIA - LAVORI SVOLTI
+=======================
+*/
+
+.figure-paragraph-container{
+    flex-wrap: wrap;
+}
+
+.figure-paragraph-container img{
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+/*
 =======
 404
 =======
