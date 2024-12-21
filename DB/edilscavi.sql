@@ -1,5 +1,6 @@
-DROP TABLE IF EXISTS richiesta_affitto, richiesta_preventivo, lavoro, mezzo_trasporto, tipo_veicolo, gestore, utente;
--- Form registrazione
+DROP TABLE IF EXISTS richiesta_preventivo, utente;
+
+-- Form registrazione, accesso e modifica dati utente
 CREATE TABLE utente (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) NOT NULL UNIQUE,
@@ -22,15 +23,3 @@ CREATE TABLE richiesta_preventivo (
 	utente INT NOT NULL,
 	FOREIGN KEY (utente) REFERENCES utente(id) ON DELETE CASCADE
 );
-
--- per il template PHP della pagina sui lavori svolti
-CREATE TABLE lavoro (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-	utente INT,
-	data_inizio DATE NOT NULL,
-	data_fine DATE NOT NULL,
-	descrizione VARCHAR(255) NOT NULL,
-	svolto BOOLEAN NOT NULL,
-	FOREIGN KEY (utente) REFERENCES utente(id) ON DELETE CASCADE
-);
-
