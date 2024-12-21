@@ -1,18 +1,10 @@
 <?php
-require('db_connect.php');
-// Create database
-$sql = "CREATE DATABASE IF NOT EXISTS OneSports";
-
-if ($conn->query($sql) !== TRUE) {
-  die("Error creating database: " . $conn->error);
-}
-/*
-if ($conn->query($sql) === TRUE) {
-  echo "Database created successfully";
+require_once(__DIR__."/backend/controllers/DBController.php");
+$conn = DBController::connect();
+$sql = file_get_contents(__DIR__ . "/../DB/edilscavi.sql");
+if ($conn->multi_query($sql) !== TRUE) {
+    die("Error creating database: " . $conn->error);
 } else {
-  echo "Error creating database: " . $conn->error;
+    echo "Database tables created successfully.";
 }
-*/
-
 $conn->close();
-?>
