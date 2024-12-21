@@ -6,11 +6,11 @@ class InputController
     {
         $sanitized = [];
         if (array_key_exists('password', $array)) {
-            $sanitized['password'] = htmlentities($array['password']);
+            $sanitized['password'] = strip_tags($array['password']);
         }
 
         if (array_key_exists('password_confirmation', $array)) {
-            $sanitized['password_confirmation'] = htmlentities($array['password_confirmation']);
+            $sanitized['password_confirmation'] = strip_tags($array['password_confirmation']);
         }
 
         foreach ($array as $key => $value) {
