@@ -725,6 +725,7 @@ HOME PAGE
     object-fit: fill;
     object-position: center;
     border-radius: 0.625em;
+    border: var(--border) 0.125em solid;
 }
 
 
@@ -758,6 +759,7 @@ STORIA - LAVORI SVOLTI
     object-fit: fill;
     object-position: center;
     border-radius: 0.625em;
+    border: var(--border) 0.125em solid;
 }
 
 .figure-paragraph-container p {
@@ -793,7 +795,7 @@ MEZZI
     height: auto;
     object-fit: fill;
     object-position: center;
-    border-radius: 0.2em; 
+    border-radius: 0.625em; 
 }
 
 .mezzi-descrizione{
@@ -812,7 +814,7 @@ figure.escavatori img {
     border: var(--border) 0.125em solid;
     max-width: 80%; /* Adjusted for better fit */
     height: auto;
-    border-radius: 0.2em;
+    border-radius: 0.625em;
 }
 
 figure.escavatori figcaption {
