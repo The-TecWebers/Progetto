@@ -58,5 +58,6 @@ class DBController
 
     return $result_data;
   }
-
 }
+
+?>

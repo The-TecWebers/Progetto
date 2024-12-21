@@ -7,3 +7,5 @@ abstract class AbstractController
     abstract static public function update();
     abstract static public function delete();
 }
+
+?>

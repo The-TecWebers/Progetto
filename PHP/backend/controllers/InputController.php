@@ -30,3 +30,5 @@ class InputController
         return null;
     }
 }
+
+?>

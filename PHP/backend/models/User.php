@@ -1,4 +1,5 @@
 <?php
+
 include(__DIR__.'/../controllers/InputController.php');
 class User
 {
@@ -48,3 +49,5 @@ class User
         DBController::runQuery("INSERT INTO utente (username, email, password, suggerimento_password, nome, cognome) VALUES (?,?,?,?,?,?);", $this->username, $this->email, $this->password, $this->suggerimento_password, $this->nome, $this->cognome);
     }
 }
+
+?>
