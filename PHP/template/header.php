@@ -28,15 +28,6 @@ switch ($current_page) {
     case "su_di_noi.php":
         $header = str_replace('<li><a href="su_di_noi.php">Su di noi</a></li>', '<li class="current-link">Su di noi</li>', $header);
         break;
-    case "storia.php":
-        $header = str_replace('<li><a href="storia.php">Storia</a></li>', '<li class="current-link">Storia</li>', $header);
-        break;
-    case "mezzi.php":
-        $header = str_replace('<li><a href="mezzi.php">Mezzi</a></li>', '<li class="current-link">Mezzi</li>', $header);
-        break;
-    case "lavori_svolti.php":
-        $header = str_replace('<li><a href="lavori_svolti.php">Lavori svolti</a></li>', '<li class="current-link">Lavori svolti</li>', $header);
-        break;
     default:
         break;
 }
