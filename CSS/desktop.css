@@ -740,20 +740,20 @@ STORIA - LAVORI SVOLTI
     text-transform: none;
 }
 
-.figure-paragraph-container, .figure-list-container {
+.figure-paragraph-container, .img-list-container {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
 }
 
-.figure-paragraph-container figure, .figure-list-container figure {
+.figure-paragraph-container figure {
     max-width: 35%;
     height: auto;
     margin-right: 0.625em;
     margin-left: 0.625em;
 }
 
-.figure-paragraph-container img, .figure-list-container img {
+.figure-paragraph-container img {
     width: 100%;
     max-height: 25em;
     object-fit: fill;
@@ -852,6 +852,26 @@ LAVORI SVOLTI
 
 dt {
     font-weight: bold;
+}
+
+.img-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    margin: 1em;
+}
+
+.img-list-container img{
+    max-width: 23%;
+    height: auto;
+    margin: 0.625em;
+    width: 100%;
+    max-height: 25em;
+    object-fit: fill;
+    object-position: center;
+    border-radius: 0.625em;
+    border: var(--border) 0.125em solid;
 }
 
 
