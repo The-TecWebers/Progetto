@@ -724,13 +724,13 @@ HOME PAGE
     align-items: center;
 }
 
-.home-section>figure,
-.home-section>p {
+.home-section > figure,
+.home-section > p {
     padding: 0em 0.5em;
     flex: 1 1 50%;
 }
 
-.home-section>figure {
+.home-section > figure {
     text-align: center;
 }
 
@@ -741,6 +741,7 @@ HOME PAGE
     border-radius: 0.625em;
     padding: auto;
 }
+
 .home-section:has(> iframe) {
     padding-bottom: 2em;
 }
@@ -754,6 +755,13 @@ HOME PAGE
     border: var(--border) 0.125em solid;
 }
 
+.home-section.reversed > p {
+    order: 2; 
+}
+
+.home-section.reversed > figure {
+    order: 1; 
+}
 
 
 /*
