@@ -30,7 +30,7 @@ try {
 
     echo $template;
 } catch (Exception $e) {
-    server_error();
+    AuthController::serverError();
 }
 include "PHP/template/footer.php";
 

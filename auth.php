@@ -10,13 +10,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     if ($action === 'register') {
         $result = UserController::create();
+
         if ($result === true) {
             $_SESSION['error-reg'] = null;
             // string_replace dei bottoni di registrazione e login
             header('Location: area_privata.php');
-        } 
-        $_SESSION['error-reg'] = $result;
-        header("Location: registrati.php");
+        }
+        else {
+            $_SESSION['error-reg'] = $result;
+            header("Location: registrati.php");
+        }
     }
     elseif ($action == "login") {
         $result = UserController::login();

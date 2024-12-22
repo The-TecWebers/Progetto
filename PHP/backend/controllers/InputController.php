@@ -12,10 +12,10 @@ class InputController
             !isset($array["cognome"]) ||
             !isset($array["email"]) ||
             !isset($array["username"]) ||
-            !isset($array["password1"]) ||
-            !isset($array["password2"]) ||
+            !isset($array["password"]) ||
+            !isset($array["password_confirmation"]) ||
             !isset($array["suggerimento_password"])) {
-            return "<p>Per favore, compila tutti i campi</p>";
+            return "<p class=\"errorMessages\">Per favore, compila tutti i campi</p>";
         }
 
         return true;
@@ -48,7 +48,7 @@ class InputController
         // Il ritornare una stringa è una soluzione per lo sviluppatore, non per l'utente finale
         // La Gaggi ha creato un tag <ul> mostrando i messaggi di errore in <li>. Questo è un esempio di come si può fare.
         // ...
-        $errorMessages = "<ul>";
+        $errorMessages = "<ul class=\"errorMessages\">";
 
         $name = $array['nome'];
         $surname = $array['cognome'];
@@ -78,18 +78,18 @@ class InputController
         }
 
         // Controllo univocità dello username
-        if (UserController::getUserByUsername($username)) {
+        if (UserController::getUserByUsername($username)) { // Il fatto che getUserByUsername ritorni un risulato viene considerato un "true"
             $errorMessages .= "<li>Esiste già un utente registrato con questo <span lang=\"en\">username</span></li>";
         }
 
         // Controllo univocità della email
-        if (UserController::getUserByEmail($email)) {
+        if (UserController::getUserByEmail($email)) { // Il fatto che getUserByEmail ritorni un risulato viene considerato un "true"
             $errorMessages .= "<li>Esiste già un utente registrato con questa <span lang=\"en\">email</span></li>";
         }
 
         $errorMessages .= "</ul>";
 
-        if ($errorMessages != "<ul></ul>") {
+        if ($errorMessages != "<ul class=\"errorMessages\"></ul>") {
             return $errorMessages;
         }
 

@@ -68,7 +68,7 @@ class UserController extends AbstractController
         }
 
         AuthController::login($user);
-        
+
         return true;
     }
 
@@ -93,6 +93,12 @@ class UserController extends AbstractController
     public static function getUserByEmail($email)
     {
         $result = DBController::runQuery("SELECT * FROM utente WHERE email = ?", $email);
+
+        if($result === false)
+        {
+            return false;
+        }
+
         if(count($result)>0)
         {
             $user = new User($result);
@@ -103,6 +109,12 @@ class UserController extends AbstractController
     public static function getUserByUsername($username)
     {
         $result = DBController::runQuery("SELECT * FROM utente WHERE username = ?", $username);
+
+        if($result === false)
+        {
+            return false;
+        }
+
         if(count($result)>0)
         {
             $user = new User($result);
