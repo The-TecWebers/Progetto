@@ -7,6 +7,14 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action = $_GET['action'] ?? null;
+
+    $_SESSION['nome*'] = $_POST['nome'] ?? null;
+    $_SESSION['cognome*'] = $_POST['cognome'] ?? null;
+    $_SESSION['email*'] = $_POST['email'] ?? null;
+    $_SESSION['username*'] = $_POST['username'] ?? null;
+    $_SESSION['password*'] = $_POST['password'] ?? null;
+    $_SESSION['password_confirmation*'] = $_POST['password_confirmation'] ?? null;
+    $_SESSION['suggerimento_password*'] = $_POST['suggerimento_password'] ?? null;
     
     if ($action === 'register') {
         $result = UserController::create();

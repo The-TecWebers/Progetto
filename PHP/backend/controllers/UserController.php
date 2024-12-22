@@ -12,6 +12,7 @@ class UserController extends AbstractController
 
         if(InputController::registrationFieldsNotEmpty($input) !== true)
         {
+            error_log("Dovrebbe entrare qua dentroooooooo", 3, "miolog.log");
             return InputController::registrationFieldsNotEmpty($input);
         }
 
