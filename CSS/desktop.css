@@ -82,7 +82,6 @@ header nav ul {
 
 header nav ul li {
     display: inline-block;
-    margin-left: 0.1875em;
 }
 
 header nav ul li a {
@@ -91,10 +90,14 @@ header nav ul li a {
     font-size: 1.25em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     font-weight: 600;
-    border-radius: 2em;
-    padding: 0.3em;
+    border-radius: 1em;
+    padding: 0.4em 0.6em;
     color: var(--link_bgGreen);
     text-transform: uppercase;
+}
+
+nav#menu ul li a:not(.navigationHelp), nav#menu ul li.current-link {
+    border: var(--border) 0.125em solid;
 }
 
 header nav ul li.current-link {
@@ -102,8 +105,8 @@ header nav ul li.current-link {
     font-size: 1.25em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     font-weight: 600;
-    border-radius: 2em;
-    padding: 0.3em;
+    border-radius: 1em;
+    padding: 0.4em 0.6em;
     color: var(--link_bgGreen);
     text-transform: uppercase;
     background-color: var(--hover);
@@ -160,9 +163,7 @@ PULSANTI REGISTRAZIONE E ACCESSO
 */
 
 .sign-buttons {
-    margin-left: auto;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin: auto;
 }
 
 .sign-buttons a {
