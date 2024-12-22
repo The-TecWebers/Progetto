@@ -19,6 +19,12 @@ GENERALE
     --bg_bgGreen: #0F8713;
     --link_bgGreen: #ffffb4;
     --visitedLink_bgGreen: #ffffff;
+
+    /* Colori per lo sfondo fucsia */
+    --bg_bgFuchsia: #C935A1;
+    --link_bgFuchsia: #000000;
+    --visitedLink_bgFuchsia: #ffffff;
+
 }
 
 * {
@@ -169,8 +175,8 @@ PULSANTI REGISTRAZIONE E ACCESSO
 .sign-buttons a {
     display: inline-block;
     text-decoration: none;
-    background-color: var(--visitedLink_bgWhite);
-    color: var(--text_bgGreen);
+    background-color: var(--bg_bgFuchsia);
+    color: var(--link_bgFuchsia);
     border: none;
     border-radius: 0.357em;
     padding: 0.714em 1.428em;
@@ -179,6 +185,9 @@ PULSANTI REGISTRAZIONE E ACCESSO
     text-align: center;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
+}
+.sign-buttons a:visited {
+    color: var(--visitedLink_bgFuchsia);
 }
 
 .sign-buttons a:hover {
