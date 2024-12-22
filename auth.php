@@ -1,6 +1,8 @@
 <?php
-require_once(__DIR__ . '/PHP/backend/controllers/UserController.php');
-require_once(__DIR__.'/PHP/backend/controllers/AuthController.php');
+
+require_once(__DIR__ . DIRECTORY_SEPARATOR . 'PHP' . DIRECTORY_SEPARATOR . 'backend' . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . 'UserController.php');
+require_once(__DIR__ . DIRECTORY_SEPARATOR . 'PHP' . DIRECTORY_SEPARATOR . 'backend' . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . 'AuthController.php');
+
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
