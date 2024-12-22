@@ -7,12 +7,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action = $_GET['action'] ?? null;
     
     if ($action === 'register') {
-        if (UserController::create() == true) {
-            // string_replace
+        if (UserController::create() === true) {
+            // string_replace dei bottoni di registrazione e login
             header('Location: area_privata.php');
         } 
         else {
-            // string_replace
+            // string_replace con i messaggi di errore
             header('Location: registrati.php');
         }
     }

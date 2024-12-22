@@ -4,12 +4,12 @@ require_once('UserController.php');
 
 class InputController
 {
-    public static function registrationFieldsNotEmpty($array): bool
+    public static function registrationFieldsNotEmpty($array): bool|string
     {
         // Controlla che tutti i campi siano presenti
         if (empty($array) ||
-            !isset($array["name"]) ||
-            !isset($array["surname"]) ||
+            !isset($array["nome"]) ||
+            !isset($array["cognome"]) ||
             !isset($array["email"]) ||
             !isset($array["username"]) ||
             !isset($array["password1"]) ||
@@ -40,7 +40,7 @@ class InputController
         return $sanitized;
     }
 
-    public static function validateRegistration($array): bool
+    public static function validateRegistration($array): bool|string
     {
         // Validazioni dei campi
         // ...
@@ -88,7 +88,8 @@ class InputController
         return true;
     }
 
-    private static function isName($name){
+    private static function isName($name): bool|string
+    {
         $name_pattern = '/^[a-zA-ZàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚçÇñÑ\-\s]{2,40}$/';
         if (!preg_match($name_pattern, $name)) {
             return "Il nome può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
@@ -96,7 +97,8 @@ class InputController
         return true;
     }
     
-    private static function isSurname($surname){
+    private static function isSurname($surname): bool|string
+    {
         $surname_pattern = '/^[a-zA-ZàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚçÇñÑ\-\s]{2,40}$/';
         if (!preg_match($surname_pattern, $surname)) {
             return "Il cognome può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
@@ -104,7 +106,8 @@ class InputController
         return true;
     }
     
-    private static function isMail($mail){
+    private static function isMail($mail): bool|string
+    {
         if (strlen($mail) > 256) {
             return "La <span lang=\"en\">mail</span> può essere lunga al massimo 256 caratteri";
         }
@@ -114,7 +117,8 @@ class InputController
         return true;
     }
     
-    private static function isUsername($username){
+    private static function isUsername($username): bool|string
+    {
         $username_pattern = '/^[\wàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚçÇñÑ\-]{1,40}$/';
         if (!preg_match($username_pattern, $username)) {
             return "<span lang=\"en\">Username</span> può contenere solo lettere, numeri, trattini e <span lang=\"en\">underscore</span>, non può contenere spazi e deve essere lungo al massimo 40 caratteri";
@@ -122,7 +126,8 @@ class InputController
         return true;
     }
     
-    private static function isPassword($pass){
+    private static function isPassword($pass): bool|string
+    {
         $password_pattern = '/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\s])[\S]{8,256}$/';
         if (!preg_match($password_pattern, $pass)) {
             return "La <span lang=\"en\">password</span> deve essere lunga almeno 8 caratteri e massimo 256, deve contenere almeno un carattere maiuscolo, un carattere minuscolo, un numero e un carattere speciale";

@@ -3,9 +3,10 @@
 require_once('AbstractController.php');
 require_once(__DIR__ . '/../models/User.php');
 require_once('DBController.php');
+
 class UserController extends AbstractController
 {
-    public static function create():bool
+    public static function create(): bool|string
     {
         $input = $_POST;
 
@@ -26,6 +27,8 @@ class UserController extends AbstractController
         $user = new User($input);
         $user->save();
 
+        error_log("Utente registrato con successo", 3, "miolog.log");
+
         return true;
     }
 
@@ -41,7 +44,7 @@ class UserController extends AbstractController
     {
     }
 
-    public static function isUsernameDuplicate($username) // Controlla se esistono utenti duplicati
+    public static function isUsernameDuplicate($username): bool
     {
         $result=DBController::runQuery("SELECT username FROM utente WHERE username = ?", $username);
         if ($result && count($result) > 0) {
@@ -50,7 +53,7 @@ class UserController extends AbstractController
         return false;
     }
 
-    public static function isEmailDuplicate($email) // Controlla se esistono utenti duplicati
+    public static function isEmailDuplicate($email): bool
     {
         $result=DBController::runQuery("SELECT username FROM utente WHERE email = ?", $email);
         if ($result && count($result) > 0) {
