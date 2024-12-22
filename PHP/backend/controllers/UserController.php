@@ -12,7 +12,6 @@ class UserController extends AbstractController
 
         if(InputController::registrationFieldsNotEmpty($input) !== true)
         {
-            error_log("Dovrebbe entrare qua dentroooooooo", 3, "miolog.log");
             return InputController::registrationFieldsNotEmpty($input);
         }
 
@@ -60,14 +59,14 @@ class UserController extends AbstractController
         $user = self::getUserByUsername($username);
 
         if ($user == null) {
-            return "<p>Credenziali non valide</p>";
+            return "<ul class=\"errorMessages\"><li>Credenziali non valide</li></ul>";
         }
         
         $userPassword = $user->getPassword();
 
         if(!password_verify($password, $userPassword))
         {
-            return "<p>Credenziali non valide</p>";
+            return "<ul class=\"errorMessages\"><li>Credenziali non valide</li></ul>";
         }
 
         AuthController::login($user);

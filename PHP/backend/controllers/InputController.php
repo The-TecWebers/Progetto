@@ -6,9 +6,6 @@ class InputController
 {
     public static function registrationFieldsNotEmpty($array): bool|string
     {
-        $arrayString = "Array: " . print_r($array, true);
-        error_log($arrayString, 3, 'mio_log.log');
-
         // Controlla che tutti i campi siano presenti
         if (empty($array) ||
             empty($array["nome"]) ||
@@ -18,8 +15,6 @@ class InputController
             empty($array["password"]) ||
             empty($array["password_confirmation"]) ||
             empty($array["suggerimento_password"])) {
-            
-            error_log("Io qua ci sono entrato!!!", 3, "miolog.log");
 
             return "<ul class=\"errorMessages\"><li>Per favore, compila tutti i campi</li></ul>";
         }
@@ -163,7 +158,7 @@ class InputController
         if (empty($array) ||
             !isset($array["username"]) ||
             !isset($array["password"])) {
-            return "<p>Per favore, compila tutti i campi</p>";
+            return "<ul class=\"errorMessages\"><li>Per favore, compila tutti i campi</li></ul>";
         }
 
         return true;
