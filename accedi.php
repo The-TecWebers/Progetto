@@ -20,9 +20,6 @@ try {
 
     $err = isset($_SESSION['error-login']) ? $_SESSION['error-login'] : null;
 
-    session_write_close();
-    session_abort();
-
     include "PHP/template/header.php";
 
     if (isset($err)){
@@ -30,6 +27,9 @@ try {
         $template = str_replace("placeholder=\"Username\"", "value=\"" . $_SESSION['username*'] . "\"", $template);
         $template = str_replace("placeholder=\"Password\"", "value=\"" . $_SESSION['password*'] . "\"", $template);
     }
+
+    session_write_close();
+    session_abort();
 
     echo $template;
 } catch (Exception $e) {

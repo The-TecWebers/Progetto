@@ -51,12 +51,20 @@ try {
     AuthController::serverError();
 }
 
+include "PHP/template/header.php";
+$template = file_get_contents('html/pages/area_privata.html');
+
+if(isset($_SESSION['nome']) && isset($_SESSION['cognome']) && isset($_SESSION['email']) && isset($_SESSION['username'])){
+    $template = str_replace("[Nome]", $_SESSION['nome'], $template);
+    $template = str_replace("[Cognome]", $_SESSION['cognome'], $template);
+    $template = str_replace("[Email]", $_SESSION['email'], $template);
+    $template = str_replace("[Username]", $_SESSION['username'], $template);
+}
+
+session_write_close();
 session_abort();
 
-include "PHP/template/header.php";
-$DOM = file_get_contents('html/pages/area_privata.html');
-
-echo ($DOM);
+echo ($template);
 
 include "PHP/template/footer.php";
 
