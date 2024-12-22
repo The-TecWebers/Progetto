@@ -734,6 +734,17 @@ HOME PAGE
     text-align: center;
 }
 
+.home-section > iframe {
+    width: 70%;
+    height: 25em;
+    border: var(--border) 0.125em solid;
+    border-radius: 0.625em;
+    padding: auto;
+}
+.home-section:has(> iframe) {
+    padding-bottom: 2em;
+}
+
 .home-section img {
     max-width: none;
     height: auto;
