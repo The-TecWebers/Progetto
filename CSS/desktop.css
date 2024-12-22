@@ -19,6 +19,12 @@ GENERALE
     --bg_bgGreen: #0F8713;
     --link_bgGreen: #ffffb4;
     --visitedLink_bgGreen: #ffffff;
+
+    /* Colori per lo sfondo fucsia */
+    --bg_bgFuchsia: #C935A1;
+    --link_bgFuchsia: #000000;
+    --visitedLink_bgFuchsia: #ffffff;
+
 }
 
 * {
@@ -82,7 +88,6 @@ header nav ul {
 
 header nav ul li {
     display: inline-block;
-    margin-left: 0.1875em;
 }
 
 header nav ul li a {
@@ -91,10 +96,14 @@ header nav ul li a {
     font-size: 1.25em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     font-weight: 600;
-    border-radius: 2em;
-    padding: 0.3em;
+    border-radius: 1em;
+    padding: 0.4em 0.6em;
     color: var(--link_bgGreen);
     text-transform: uppercase;
+}
+
+nav#menu ul li a:not(.navigationHelp), nav#menu ul li.current-link {
+    border: var(--border) 0.125em solid;
 }
 
 header nav ul li.current-link {
@@ -102,8 +111,8 @@ header nav ul li.current-link {
     font-size: 1.25em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     font-weight: 600;
-    border-radius: 2em;
-    padding: 0.3em;
+    border-radius: 1em;
+    padding: 0.4em 0.6em;
     color: var(--link_bgGreen);
     text-transform: uppercase;
     background-color: var(--hover);
@@ -160,16 +169,14 @@ PULSANTI REGISTRAZIONE E ACCESSO
 */
 
 .sign-buttons {
-    margin-left: auto;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin: auto;
 }
 
 .sign-buttons a {
     display: inline-block;
     text-decoration: none;
-    background-color: var(--visitedLink_bgWhite);
-    color: var(--text_bgGreen);
+    background-color: var(--bg_bgFuchsia);
+    color: var(--link_bgFuchsia);
     border: none;
     border-radius: 0.357em;
     padding: 0.714em 1.428em;
@@ -178,6 +185,9 @@ PULSANTI REGISTRAZIONE E ACCESSO
     text-align: center;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
+}
+.sign-buttons a:visited {
+    color: var(--visitedLink_bgFuchsia);
 }
 
 .sign-buttons a:hover {

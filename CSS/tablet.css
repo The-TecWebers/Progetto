@@ -41,12 +41,12 @@ HEADER
     margin: 0 auto;
 }
 
-#menu ul li {
+#menu ul li{
     display: block;
     margin: 0;
     text-align: center;
+    padding: 0.5em 0;
 }
-
 
 
 /*
