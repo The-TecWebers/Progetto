@@ -7,12 +7,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action = $_GET['action'] ?? null;
     
     if ($action === 'register') {
-        if (UserController::create()) {
-            header('Location: accedi.php');
+        if (UserController::create() == true) {
+            // string_replace
+            header('Location: area_privata.php');
         } 
+        else {
+            // string_replace
+            header('Location: registrati.php');
+        }
     }
     elseif ($action == "login") {
-        $sanitized = InputController::SanitizeInput($_POST);
+        if(InputController::loginFieldsNotEmpty($_POST) !== true)
+        {
+            return InputController::loginFieldsNotEmpty($_POST);
+        }
+
+        $sanitized = InputController::sanitizeLogin($_POST);
 
         $username = $sanitized['username'];
         $password = $sanitized['password'];
@@ -24,8 +34,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             if (password_verify($password, $userPassword)) {
                 AuthController::login($user);
-                var_dump($_SESSION);
+                // var_dump($_SESSION);   Per stampare la variabile di sessione
+                header('Location: area_privata.php');
             }
+            else {
+                // string_replace
+                header('Location: login.php');
+            }
+        }
+        else {
+            // string_replace
+            header('Location: login.php');
         }
     }
 }

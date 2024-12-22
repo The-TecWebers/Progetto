@@ -35,6 +35,13 @@ function pulisci_input($value){
     return $value;
 }
 
+function pulisci_password($value){
+    // rimuove tag html
+    $value = strip_tags($value);
+
+    return $value;
+}
+
 $tagPermessi ='<em><strong><ul><li>';
 
 function pulisci_note($value){
@@ -49,13 +56,12 @@ function pulisci_note($value){
   	return $value;
 }
 
-function login()
-{
+function login(){
     if (empty($_POST) || !isset($_POST["username"]) || !isset($_POST["password"]))
         return "Completa tutti i campi";
 
     $user = pulisci_input($_POST["username"]);
-    $pass = $_POST["password"];
+    $pass = pulisci_password($_POST["password"]);
 
     if (is_username($user) !== True)
         return is_username($user);
@@ -74,44 +80,48 @@ function login()
     return "Errore nell'accesso";
 }
 
-function register()
-{
+function register(){
     // Controlla che tutti i campi siano presenti
     if (empty($_POST) || 
+        !isset($_POST["name"]) || 
+        !isset($_POST["surname"]) || 
         !isset($_POST["email"]) || 
         !isset($_POST["username"]) || 
         !isset($_POST["password1"]) || 
         !isset($_POST["password2"]) || 
-        !isset($_POST["name"]) || 
-        !isset($_POST["surname"]) || 
         !isset($_POST["suggerimento_password"])) {
         return "Per favore, compila tutti i campi";
     }
 
     // Estrai i dati dal form
-    $email = pulisci_input($_POST["email"]);
-    $username = pulisci_input($_POST["username"]);
-    $pass1 = $_POST["password1"];
-    $pass2 = $_POST["password2"];
     $name = pulisci_input($_POST["name"]);
     $surname = pulisci_input($_POST["surname"]);
+    $email = pulisci_input($_POST["email"]);
+    $username = pulisci_input($_POST["username"]);
+    $pass1 = pulisci_password($_POST["password1"]);
+    $pass2 = pulisci_password($_POST["password2"]);
     $suggerimento_password = pulisci_input($_POST["suggerimento_password"]);
 
     // Validazioni dei campi
+    // ...
+    // Bisogna pensare proprio al sistema alla validazione, cioè a come vogliamo che i risultati siano restituiti all'utente!
+    // Il ritornare una stringa è una soluzione per lo sviluppatore, non per l'utente finale
+    // La Gaggi ha creato un tag <ul> mostrando i messaggi di errore in <li>. Questo è un esempio di come si può fare.
+    // ...
+    if(is_name($name) !== true){
+        return is_name($name);
+    }
+    if(is_surname($surname) !== true){
+        return is_surname($surname);
+    }
     if (is_mail($email) !== true) {
         return is_mail($email);
-    }
-    if (is_password($pass1) !== true) {
-        return is_password($pass1);
     }
     if (is_username($username) !== true) {
         return is_username($username);
     }
-    if (empty($name) || strlen($name) > 50) {
-        return "Il nome deve essere lungo al massimo 50 caratteri";
-    }
-    if (empty($surname) || strlen($surname) > 50) {
-        return "Il cognome deve essere lungo al massimo 50 caratteri";
+    if (is_password($pass1) !== true) {
+        return is_password($pass1);
     }
 
     if ($pass1 != $pass2) {
@@ -119,7 +129,6 @@ function register()
     }
 
     // Sanitizza i dati
-    // Serve inserire le funzioni di sanitizzazione della Gaggi ...................
     $email = filter_var($email, FILTER_SANITIZE_EMAIL);
     $pass = hash("sha256", $pass1);
 
@@ -139,8 +148,23 @@ function register()
     return true;
 }
 
-function is_mail($mail)
-{
+function is_name($name){
+    $name_pattern = '/^[a-zA-ZàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚçÇñÑ\-\s]{2,40}$/';
+    if (!preg_match($name_pattern, $name)) {
+        return "Il nome può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
+    }
+    return true;
+}
+
+function is_surname($surname){
+    $surname_pattern = '/^[a-zA-ZàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚçÇñÑ\-\s]{2,40}$/';
+    if (!preg_match($surname_pattern, $surname)) {
+        return "Il cognome può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
+    }
+    return true;
+}
+
+function is_mail($mail){
     if (strlen($mail) > 256) {
         return "La <span lang=\"en\">mail</span> può essere lunga al massimo 256 caratteri";
     }
@@ -150,20 +174,18 @@ function is_mail($mail)
     return true;
 }
 
-function is_password($pass)
-{
-    $password_pattern = '/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s])[\S]{8,256}$/';
-    if (!preg_match($password_pattern, $pass)) {
-        return "La <span lang=\"en\">password</span> deve essere lunga almeno 8 caratteri e massimo 256, deve contenere almeno un carattere maiuscolo, un carattere minuscolo, un numero e un carattere speciale";
+function is_username($username){
+    $username_pattern = '/^[\wàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚçÇñÑ\-]{1,40}$/';
+    if (!preg_match($username_pattern, $username)) {
+        return "<span lang=\"en\">Username</span> può contenere solo lettere, numeri, trattini e <span lang=\"en\">underscore</span>, non può contenere spazi e deve essere lungo al massimo 40 caratteri";
     }
     return true;
 }
 
-function is_username($username)
-{
-    $username_pattern = '/^[\w]{1,40}$/';
-    if (!preg_match($username_pattern, $username)) {
-        return "<span lang=\"en\">Username</span> può contenere solo lettere, numeri e <span lang=\"en\">underscore</span> e deve essere lungo al massimo 40 caratteri";
+function is_password($pass){
+    $password_pattern = '/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\s])[\S]{8,256}$/';
+    if (!preg_match($password_pattern, $pass)) {
+        return "La <span lang=\"en\">password</span> deve essere lunga almeno 8 caratteri e massimo 256, deve contenere almeno un carattere maiuscolo, un carattere minuscolo, un numero e un carattere speciale";
     }
     return true;
 }
