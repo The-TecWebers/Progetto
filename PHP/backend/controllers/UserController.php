@@ -27,8 +27,6 @@ class UserController extends AbstractController
         $user = new User($input);
         $user->save();
 
-        error_log("Utente registrato con successo", 3, "miolog.log");
-
         return true;
     }
 
@@ -42,6 +40,36 @@ class UserController extends AbstractController
 
     public static function delete()
     {
+    }
+
+    public static function login()
+    {
+        if(InputController::loginFieldsNotEmpty($_POST) !== true)
+        {
+            return InputController::loginFieldsNotEmpty($_POST);
+        }
+
+        $sanitized = InputController::sanitizeLogin($_POST);
+
+        $username = $sanitized['username'];
+        $password = $sanitized['password'];
+
+        $user = self::getUserByUsername($username);
+
+        if ($user == null) {
+            return "<p>Credenziali non valide</p>";
+        }
+        
+        $userPassword = $user->getPassword();
+
+        if(!password_verify($password, $userPassword))
+        {
+            return "<p>Credenziali non valide</p>";
+        }
+
+        AuthController::login($user);
+        
+        return true;
     }
 
     public static function isUsernameDuplicate($username): bool

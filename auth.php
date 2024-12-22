@@ -9,45 +9,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action = $_GET['action'] ?? null;
     
     if ($action === 'register') {
-        if (UserController::create() === true) {
+        $result = UserController::create();
+        if ($result === true) {
+            $_SESSION['error-reg'] = null;
             // string_replace dei bottoni di registrazione e login
             header('Location: area_privata.php');
         } 
-        else {
-            // string_replace con i messaggi di errore
-            header('Location: registrati.php');
-        }
+        $_SESSION['error-reg'] = $result;
+        header("Location: registrati.php");
     }
     elseif ($action == "login") {
-        if(InputController::loginFieldsNotEmpty($_POST) !== true)
-        {
-            return InputController::loginFieldsNotEmpty($_POST);
+        $result = UserController::login();
+        if ($result === true) {
+            $_SESSION['error-login'] = null;
+            header('Location: area_privata.php');
         }
-
-        $sanitized = InputController::sanitizeLogin($_POST);
-
-        $username = $sanitized['username'];
-        $password = $sanitized['password'];
-
-        $user = UserController::getUserByUsername($username);
-        
-        if ($user != null) {
-            $userPassword = $user->getPassword();
-            
-            if (password_verify($password, $userPassword)) {
-                AuthController::login($user);
-                // var_dump($_SESSION);   Per stampare la variabile di sessione
-                header('Location: area_privata.php');
-            }
-            else {
-                // string_replace
-                header('Location: login.php');
-            }
-        }
-        else {
-            // string_replace
-            header('Location: login.php');
-        }
+        $_SESSION['error-login'] = $result;
+        header("Location: accedi.php");
     }
 }
 

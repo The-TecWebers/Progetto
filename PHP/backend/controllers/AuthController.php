@@ -13,6 +13,21 @@ class AuthController
     {
 
     }
+
+    public static function isLogged(){
+        return isset($_SESSION["username"]);
+    }
+    
+    /*
+    public static function isAdmin(){
+        if (!is_logged())
+            return false;
+        $result = user_manager::get_admin($_SESSION["username"]);
+        if ($result == false || count($result) == 0)
+            return false;
+        return true;
+    }
+    */
 }
 
 ?>

@@ -15,7 +15,7 @@ class InputController
             !isset($array["password1"]) ||
             !isset($array["password2"]) ||
             !isset($array["suggerimento_password"])) {
-            return "Per favore, compila tutti i campi";
+            return "<p>Per favore, compila tutti i campi</p>";
         }
 
         return true;
@@ -48,6 +48,8 @@ class InputController
         // Il ritornare una stringa è una soluzione per lo sviluppatore, non per l'utente finale
         // La Gaggi ha creato un tag <ul> mostrando i messaggi di errore in <li>. Questo è un esempio di come si può fare.
         // ...
+        $errorMessages = "<ul>";
+
         $name = $array['nome'];
         $surname = $array['cognome'];
         $email = $array['email'];
@@ -56,33 +58,39 @@ class InputController
         $pass2 = $array['password_confirmation'];
 
         if(self::isName($name) !== true){
-            return self::isName($name);
+            $errorMessages .= self::isName($name);
         }
         if(self::isSurname($surname) !== true){
-            return self::isSurname($surname);
+            $errorMessages .= self::isSurname($surname);
         }
         if (self::isMail($email) !== true) {
-            return self::isMail($email);
+            $errorMessages .= self::isMail($email);
         }
         if (self::isUsername($username) !== true) {
-            return self::isUsername($username);
+            $errorMessages .= self::isUsername($username);
         }
         if (self::isPassword($pass1) !== true) {
-            return self::isPassword($pass1);
+            $errorMessages .= self::isPassword($pass1);
         }
 
         if ($pass1 != $pass2) {
-            return "Le <span lang=\"en\">password</span> non sono uguali";
+            $errorMessages .= "<li>Le <span lang=\"en\">password</span> non sono uguali</li>";
         }
 
         // Controllo univocità dello username
         if (UserController::getUserByUsername($username)) {
-            return "Esiste già un utente registrato con questo <span lang=\"en\">username</span>";
+            $errorMessages .= "<li>Esiste già un utente registrato con questo <span lang=\"en\">username</span></li>";
         }
 
         // Controllo univocità della email
         if (UserController::getUserByEmail($email)) {
-            return "Esiste già un utente registrato con questa <span lang=\"en\">email</span>";
+            $errorMessages .= "<li>Esiste già un utente registrato con questa <span lang=\"en\">email</span></li>";
+        }
+
+        $errorMessages .= "</ul>";
+
+        if ($errorMessages != "<ul></ul>") {
+            return $errorMessages;
         }
 
         return true;
@@ -92,7 +100,7 @@ class InputController
     {
         $name_pattern = '/^[a-zA-ZàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚçÇñÑ\-\s]{2,40}$/';
         if (!preg_match($name_pattern, $name)) {
-            return "Il nome può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
+            return "<li>Il nome può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri</li>";
         }
         return true;
     }
@@ -101,7 +109,7 @@ class InputController
     {
         $surname_pattern = '/^[a-zA-ZàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚçÇñÑ\-\s]{2,40}$/';
         if (!preg_match($surname_pattern, $surname)) {
-            return "Il cognome può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
+            return "<li>Il cognome può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri</li>";
         }
         return true;
     }
@@ -109,10 +117,10 @@ class InputController
     private static function isMail($mail): bool|string
     {
         if (strlen($mail) > 256) {
-            return "La <span lang=\"en\">mail</span> può essere lunga al massimo 256 caratteri";
+            return "<li>La <span lang=\"en\">mail</span> può essere lunga al massimo 256 caratteri</li>";
         }
         if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-            return "<span lang=\"en\">Mail</span> non valida";
+            return "<li><span lang=\"en\">Mail</span> non valida</li>";
         }
         return true;
     }
@@ -121,7 +129,7 @@ class InputController
     {
         $username_pattern = '/^[\wàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚçÇñÑ\-]{1,40}$/';
         if (!preg_match($username_pattern, $username)) {
-            return "<span lang=\"en\">Username</span> può contenere solo lettere, numeri, trattini e <span lang=\"en\">underscore</span>, non può contenere spazi e deve essere lungo al massimo 40 caratteri";
+            return "<li><span lang=\"en\">Username</span> può contenere solo lettere, numeri, trattini e <span lang=\"en\">underscore</span>, non può contenere spazi e deve essere lungo al massimo 40 caratteri</li>";
         }
         return true;
     }
@@ -130,7 +138,7 @@ class InputController
     {
         $password_pattern = '/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\s])[\S]{8,256}$/';
         if (!preg_match($password_pattern, $pass)) {
-            return "La <span lang=\"en\">password</span> deve essere lunga almeno 8 caratteri e massimo 256, deve contenere almeno un carattere maiuscolo, un carattere minuscolo, un numero e un carattere speciale";
+            return "<li>La <span lang=\"en\">password</span> deve essere lunga almeno 8 caratteri e massimo 256, deve contenere almeno un carattere maiuscolo, un carattere minuscolo, un numero e un carattere speciale</li>";
         }
         return true;
     }
@@ -149,7 +157,7 @@ class InputController
         if (empty($array) ||
             !isset($array["username"]) ||
             !isset($array["password"])) {
-            return "Per favore, compila tutti i campi";
+            return "<p>Per favore, compila tutti i campi</p>";
         }
 
         return true;
