@@ -13,7 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($result === true) {
             $_SESSION['error-reg'] = null;
-            // string_replace dei bottoni di registrazione e login
+            // string_replace dei bottoni di registrazione e login con il bottone di logout
+
             header('Location: area_privata.php');
         }
         else {

@@ -27,6 +27,8 @@ class UserController extends AbstractController
         $user = new User($input);
         $user->save();
 
+        AuthController::login($user);
+
         return true;
     }
 
