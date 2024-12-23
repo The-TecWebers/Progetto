@@ -5,6 +5,7 @@ $keywords = "registrati, Edil Scavi, account, Dati personali, Dati di accesso, r
 
 require_once "PHP/backend/controllers/AuthController.php";
 
+session_start();
 
 try {
     if (AuthController::isLogged()) {

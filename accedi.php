@@ -6,7 +6,6 @@ $keywords = "accedi, Edil Scavi, login, account, informazioni personali, accesso
 
 require_once "PHP/backend/controllers/AuthController.php";
 
-
 session_start();
 
 try {
