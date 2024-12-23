@@ -3,7 +3,7 @@ $titolo = "Area privata - EdilScavi";
 $descrizione = "EdilScavi Srl Brescia...........";
 $keywords = "area privata, account, Edil Scavi, dati personali, dati di accesso";
 
-require_once "php/backend/controllers/AuthController.php";
+require_once(__DIR__ . '/PHP/backend/controllers/AuthController.php');
 
 session_start();
 
@@ -51,7 +51,7 @@ try {
     AuthController::serverError();
 }
 
-$template = file_get_contents('html/pages/area_privata.html');
+$template = file_get_contents('HTML/pages/area_privata.html');
 
 if(isset($_SESSION['nome']) && isset($_SESSION['cognome']) && isset($_SESSION['email']) && isset($_SESSION['username'])){
     $template = str_replace("[Nome]", $_SESSION['nome'], $template);
