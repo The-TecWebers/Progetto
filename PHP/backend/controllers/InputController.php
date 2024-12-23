@@ -153,7 +153,7 @@ class InputController
         return null;
     }
 
-    public static function loginFieldsNotEmpty($array): bool
+    public static function loginFieldsNotEmpty($array): bool|string
     {
         if (empty($array) ||
             !isset($array["username"]) ||
