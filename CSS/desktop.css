@@ -4,6 +4,7 @@ GENERALE
 =========
 */
 
+
 :root {
     --hover: #000000;
     --border: #000000;
@@ -11,13 +12,13 @@ GENERALE
     /* Colori per lo sfondo bianco */
     --text_bgWhite: #000000;
     --bg_bgWhite: #fdfffd;
-    --link_bgWhite: #0F8713;
+    --link_bgWhite: #0F8555;
     --visitedLink_bgWhite: #C935A1;
 
     /* Colori per lo sfondo verde */
     --text_bgGreen: #000000;
-    --bg_bgGreen: #0F8713;
-    --link_bgGreen: #ffffb4;
+    --bg_bgGreen: #0F8555;
+    --link_bgGreen: #FFFFBD;
     --visitedLink_bgGreen: #ffffff;
 
     /* Colori per lo sfondo fucsia */
