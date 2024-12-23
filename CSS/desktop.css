@@ -154,9 +154,9 @@ AIUTI ALLA NAVIGAZIONE
 
 
 /*
-================================
-PULSANTI REGISTRAZIONE E ACCESSO
-================================
+=================
+PULSANTI ACCOUNT
+=================
 */
 
 .sign-buttons {
@@ -485,6 +485,10 @@ MESSAGGI DI ERRORE - VALIDAZIONE PHP
     color: #d10000;
     margin-bottom: 0.5em;
     font-weight: bold;
+}
+
+.errorMessages li:last-child {
+    margin-bottom: 0;
 }
 
 .errorMessages li::before {
