@@ -51,7 +51,6 @@ try {
     AuthController::serverError();
 }
 
-include "PHP/template/header.php";
 $template = file_get_contents('html/pages/area_privata.html');
 
 if(isset($_SESSION['nome']) && isset($_SESSION['cognome']) && isset($_SESSION['email']) && isset($_SESSION['username'])){
@@ -63,6 +62,8 @@ if(isset($_SESSION['nome']) && isset($_SESSION['cognome']) && isset($_SESSION['e
 
 session_write_close();
 session_abort();
+
+include "PHP/template/header.php";
 
 echo ($template);
 

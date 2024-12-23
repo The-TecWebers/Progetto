@@ -20,8 +20,6 @@ try {
 
     $err = isset($_SESSION['error-login']) ? $_SESSION['error-login'] : null;
 
-    include "PHP/template/header.php";
-
     if (isset($err)){
         $template = str_replace("<!-- errorMessages -->", $err, $template);
         $template = str_replace("placeholder=\"Username\"", "value=\"" . $_SESSION['username*'] . "\"", $template);
@@ -30,11 +28,14 @@ try {
 
     session_write_close();
     session_abort();
-
-    echo $template;
 } catch (Exception $e) {
     AuthController::serverError();
 }
+
+include "PHP/template/header.php";
+
+echo $template;
+
 include "PHP/template/footer.php";
 
 ?>

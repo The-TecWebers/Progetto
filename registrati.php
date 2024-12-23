@@ -6,8 +6,6 @@ $keywords = "registrati, Edil Scavi, account, Dati personali, Dati di accesso, r
 require_once "PHP/backend/controllers/AuthController.php";
 
 
-session_start();
-
 try {
     if (AuthController::isLogged()) {
         /*if (AuthController::isAdmin())
@@ -18,8 +16,6 @@ try {
     $template = (file_get_contents('HTML/pages/registrati.html'));
 
     $err = isset($_SESSION['error-reg']) ? $_SESSION['error-reg'] : null;
-
-    include "./PHP/template/header.php";
 
     if (isset($err)) {
         $template = str_replace("<!-- errorMessages -->", $err, $template);
@@ -34,10 +30,14 @@ try {
 
     session_write_close();
     session_abort();
-
-    echo $template;
 } catch (Exception $e) {
     AuthController::serverError();
 }
+
+include "./PHP/template/header.php";
+
+echo $template;
+
 include "./PHP/template/footer.php";
+
 ?>
