@@ -1,6 +1,7 @@
 <?php
 
-include(__DIR__.'/../controllers/InputController.php');
+include(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . 'InputController.php');
+
 class User
 {
     private $username;

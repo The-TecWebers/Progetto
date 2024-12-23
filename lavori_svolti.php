@@ -1,8 +1,8 @@
 <?php
 $titolo = "Lavori svolti - EdilScavi";
 $descrizione= "Lavori svolti nel corso degli anni da EdilScavi Srl Brescia";
-$keywords = "EdilScavi, lavori edilizi, ............................................[serve conoscere il contenuto della pagina]";
+$keywords = "EdilScavi, lavori edilizi, scavi, costruzioni, ristrutturazioni, ...[aggiungi altre keyword pertinenti]";
 
-include "./PHP/template/header.php";
-echo(file_get_contents('./HTML/pages/lavori_svolti.html'));
-include "./PHP/template/footer.php";
+include __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "template" . DIRECTORY_SEPARATOR . "header.php";
+echo(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . "HTML" . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "lavori_svolti.html"));
+include __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "template" . DIRECTORY_SEPARATOR . "footer.php";

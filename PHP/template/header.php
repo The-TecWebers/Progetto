@@ -1,6 +1,6 @@
 <?php
 
-$path = realpath(__DIR__ . '/../../HTML/template/header.html');
+$path = realpath(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'HTML' . DIRECTORY_SEPARATOR . 'template' . DIRECTORY_SEPARATOR . 'header.html');
 $header = file_get_contents($path);
 
 $header = str_replace('<title></title>', '<title>' . $titolo . '</title>', $header);
@@ -40,11 +40,11 @@ if (isset($_SESSION['nome'])) {
         '<div class="sign-buttons">
             <a id="btn-register" href="registrati.php">Registrati</a>
             <a id="btn-login" href="accedi.php">Accedi</a>
-         </div>',
+        </div>',
         '<div class="sign-buttons">
             <a id="btn-private_area" href="area_privata.php" title="Vai all\'area privata">' . htmlspecialchars($_SESSION['nome']) . '</a>
             <a id="btn-logout" href="logout.php">Esci</a>
-         </div>',
+        </div>',
         $header
     );
 }
