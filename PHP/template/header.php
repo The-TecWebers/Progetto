@@ -53,6 +53,3 @@ session_abort();
 
 
 echo($header);
-
-
-

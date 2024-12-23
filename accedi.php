@@ -36,5 +36,3 @@ include "PHP/template/header.php";
 echo $template;
 
 include "PHP/template/footer.php";
-
-?>

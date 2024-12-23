@@ -6,4 +6,3 @@ $keywords = "errore 404, pagina non trovata, edilizia, scavi brescia, servizi Ed
 include "./PHP/template/header.php";
 echo(file_get_contents('./HTML/pages/404.html'));
 include "./PHP/template/footer.php";
-?>

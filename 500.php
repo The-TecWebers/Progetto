@@ -6,4 +6,3 @@ $keywords = "errore 500, pagina non trovata, edilizia, scavi brescia, servizi Ed
 include "./PHP/template/header.php";
 echo(file_get_contents('./HTML/pages/500.html'));
 include "./PHP/template/footer.php";
-?>

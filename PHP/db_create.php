@@ -9,5 +9,3 @@ if ($conn->multi_query($sql) !== TRUE) {
     echo "Database tables created successfully.";
 }
 $conn->close();
-
-?>

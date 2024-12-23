@@ -189,5 +189,3 @@ function is_password($pass){
     }
     return true;
 }
-
-?>
