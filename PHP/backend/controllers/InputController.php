@@ -99,7 +99,8 @@ class InputController
 
     private static function isName($name): bool|string
     {
-        $name_pattern = '/^[a-zA-ZàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚçÇñÑ\-\s]{2,40}$/';
+        $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
+        $name_pattern = '/^[a-zA-Z' . $accentedCharacters . '\-\s]{2,40}$/';
         if (!preg_match($name_pattern, $name)) {
             return "<li>Il nome può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri</li>";
         }
@@ -108,7 +109,8 @@ class InputController
     
     private static function isSurname($surname): bool|string
     {
-        $surname_pattern = '/^[a-zA-ZàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚçÇñÑ\-\s]{2,40}$/';
+        $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
+        $surname_pattern = '/^[a-zA-Z' . $accentedCharacters . '\-\s]{2,40}$/';
         if (!preg_match($surname_pattern, $surname)) {
             return "<li>Il cognome può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri</li>";
         }
@@ -128,7 +130,8 @@ class InputController
     
     private static function isUsername($username): bool|string
     {
-        $username_pattern = '/^[\wàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚçÇñÑ\-]{1,40}$/';
+        $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
+        $username_pattern = '/^[\w' . $accentedCharacters . '\-]{1,40}$/';
         if (!preg_match($username_pattern, $username)) {
             return "<li><span lang=\"en\">Username</span> può contenere solo lettere, numeri, trattini e <span lang=\"en\">underscore</span>, non può contenere spazi e deve essere lungo al massimo 40 caratteri</li>";
         }

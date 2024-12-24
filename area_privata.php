@@ -33,7 +33,8 @@ try {
 
     /*
     if (isset($_POST['change-username'])) {
-        $username_pattern = '/^[\wàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚçÇñÑ\-]{1,40}$/';
+        $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
+        $username_pattern = '/^[\w' . $accentedCharacters . '\-]{1,40}$/';
         if (isset($_POST['username']) && !empty($_POST['username'])){
             if (preg_match($username_pattern, $_POST['username'])){
                 $olduser = $_SESSION['username'];

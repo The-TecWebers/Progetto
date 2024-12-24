@@ -149,7 +149,8 @@ function register(){
 }
 
 function is_name($name){
-    $name_pattern = '/^[a-zA-ZàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚçÇñÑ\-\s]{2,40}$/';
+    $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
+    $name_pattern = '/^[a-zA-Z' . $accentedCharacters . '\-\s]{2,40}$/';
     if (!preg_match($name_pattern, $name)) {
         return "Il nome può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
     }
@@ -157,7 +158,8 @@ function is_name($name){
 }
 
 function is_surname($surname){
-    $surname_pattern = '/^[a-zA-ZàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚçÇñÑ\-\s]{2,40}$/';
+    $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
+    $surname_pattern = '/^[a-zA-Z' . $accentedCharacters . '\-\s]{2,40}$/';
     if (!preg_match($surname_pattern, $surname)) {
         return "Il cognome può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
     }
@@ -175,7 +177,8 @@ function is_mail($mail){
 }
 
 function is_username($username){
-    $username_pattern = '/^[\wàèìòùÀÈÌÒÙáéíóúÁÉÍÓÚçÇñÑ\-]{1,40}$/';
+    $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
+    $username_pattern = '/^[\w' . $accentedCharacters . '\-]{1,40}$/';
     if (!preg_match($username_pattern, $username)) {
         return "<span lang=\"en\">Username</span> può contenere solo lettere, numeri, trattini e <span lang=\"en\">underscore</span>, non può contenere spazi e deve essere lungo al massimo 40 caratteri";
     }
