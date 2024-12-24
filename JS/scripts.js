@@ -1,4 +1,8 @@
-// Torna su
+/*
+=========
+TORNA SU
+=========
+*/
 
 window.onscroll = function() {
     const scrollUp = document.getElementById('goUp');
