@@ -35,12 +35,16 @@ CONTROLLI SUI CAMPI DEI FORM
 =============================
 */
 
-function checkName(){
-  ...
+var accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
+
+function checkName(name){
+  regex = '/^[a-zA-Z' + accentedCharacters + '\-\s]{2,40}$/';
+  return regex.test(name);
 }
 
-function checkSurname(){
-  ...
+function checkSurname(surname){
+  regex = '/^[a-zA-Z' + accentedCharacters + '\-\s]{2,40}$/';
+  return regex.test(surname);
 }
 
 function checkEmail(email){
@@ -49,12 +53,19 @@ function checkEmail(email){
 }
 
 function checkUsername(username){
-  ...
+  regex = '/^[\w' + accentedCharacters + '\-]{1,40}$/';
+  return regex.test(username);
 }
 
 function checkPassword(password){
   var regex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
   return regex.test(password);
+}
+
+/*
+function checkDate(date){
+  var regex = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
+  return regex.test(date);
 }
 
 function checkImgPath(imgPath) { 
@@ -65,6 +76,7 @@ function checkImgPath(imgPath) {
   }
   return false;
 }
+*/
 
 
 
@@ -74,15 +86,35 @@ VALIDAZIONE DEI CAMPI DEI FORM
 ===============================
 */
 
-function validateUsername(){
-  var x = document.getElementById("username");
+function validateName(){
+  let x = document.getElementById("nome");
   const node = document.createElement("p");
   node.classList.add("error-label");
   node.setAttribute("role", "alert");
-  var username_pattern = /^[\w]{1,40}$/;
-  if (!username_pattern.test(x.value)) {
+  node.setAttribute("aria-live", "assertive");
+  if (x.value == "") {
+    if (x.parentElement.childNodes.length < 2) {
+      const textnode = document.createTextNode("Devi inserire il tuo nome!");
+      node.appendChild(textnode);
+      x.parentElement.append(node);
+    }
+    return false;
+  } else if (x.parentElement.childNodes.length > 1) {
+    x.parentElement.removeChild(x.parentElement.lastChild);
+  }
+  if (!checkName(x.value)) {
+    if (x.parentElement.childNodes.length < 2) {
+      const textnode = document.createTextNode("Il nome può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri");
+      node.appendChild(textnode);
+      x.parentElement.append(node);
+    }
+    return false;
+  } else if (x.parentElement.childNodes.length > 1) {
+    x.parentElement.removeChild(x.parentElement.lastChild);
+  }
+  if (x.value.length > 256) {
     if (x.parentElement.childNodes.length < 2){
-      const textnode = document.createTextNode("Devi inserire un nome utente");
+      const textnode = document.createTextNode("Il nome non può essere più lungo di 256 caratteri");
       node.appendChild(textnode);
       x.parentElement.append(node);
     }
@@ -90,9 +122,116 @@ function validateUsername(){
   } else if (x.parentElement.childNodes.length > 1){
     x.parentElement.removeChild(x.parentElement.lastChild);
   }
-  if (x.value.length > 255) {
+  return true;
+}
+
+function validateSurname(){
+    let x = document.getElementById("cognome");
+    const node = document.createElement("p");
+    node.classList.add("error-label");
+    node.setAttribute("role", "alert");
+    node.setAttribute("aria-live", "assertive");
+    if (x.value == "") {
+      if (x.parentElement.childNodes.length < 2) {
+        const textnode = document.createTextNode("Devi inserire il tuo cognome!");
+        node.appendChild(textnode);
+        x.parentElement.append(node);
+      }
+      return false;
+    } else if (x.parentElement.childNodes.length > 1) {
+      x.parentElement.removeChild(x.parentElement.lastChild);
+    }
+    if (!checkSurname(x.value)) {
+      if (x.parentElement.childNodes.length < 2) {
+        const textnode = document.createTextNode("Il cognome può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri");
+        node.appendChild(textnode);
+        x.parentElement.append(node);
+      }
+      return false;
+    } else if (x.parentElement.childNodes.length > 1) {
+      x.parentElement.removeChild(x.parentElement.lastChild);
+    }
+    if (x.value.length > 256) {
+      if (x.parentElement.childNodes.length < 2){
+        const textnode = document.createTextNode("Il cognome non può essere più lungo di 256 caratteri");
+        node.appendChild(textnode);
+        x.parentElement.append(node);
+      }
+      return false;
+    } else if (x.parentElement.childNodes.length > 1){
+      x.parentElement.removeChild(x.parentElement.lastChild);
+    }
+    return true;
+  }
+
+function validateEmail(){
+  var x = document.getElementById("email");
+  const node = document.createElement("p");
+  node.classList.add("error-label");
+  node.setAttribute("role", "alert");
+  node.setAttribute("aria-live", "assertive");
+  if (x.value == "") {
+    if (x.parentElement.childNodes.length < 2) {
+      const textnode = document.createTextNode("Devi inserire un'<span lang=\"en\">email</span>!");
+      node.appendChild(textnode);
+      x.parentElement.append(node);
+    }
+    return false;
+  } else if (x.parentElement.childNodes.length > 1) {
+    x.parentElement.removeChild(x.parentElement.lastChild);
+  }
+  if (!checkEmail(x.value)) {
     if (x.parentElement.childNodes.length < 2){
-      const textnode = document.createTextNode("L'username deve essere lungo al massimo 255 caratteri");
+      const textnode = document.createTextNode("<span lang=\"en\">Email</span> non valida");
+      node.appendChild(textnode);
+      x.parentElement.append(node);
+    }
+    return false;
+  } else if (x.parentElement.childNodes.length > 1){
+    x.parentElement.removeChild(x.parentElement.lastChild);
+  }
+  if (x.value.length > 256) {
+    if (x.parentElement.childNodes.length < 2){
+      const textnode = document.createTextNode("L'<span lang=\"en\">email</span> deve essere lunga al massimo 256 caratteri");
+      node.appendChild(textnode);
+      x.parentElement.append(node);
+    }
+    return false;
+  } else if (x.parentElement.childNodes.length > 1){
+    x.parentElement.removeChild(x.parentElement.lastChild);
+  }
+  return true;
+}
+
+function validateUsername(){
+  var x = document.getElementById("username");
+  const node = document.createElement("p");
+  node.classList.add("error-label");
+  node.setAttribute("role", "alert");
+  node.setAttribute("aria-live", "assertive");
+  if (x.value == "") {
+    if (x.parentElement.childNodes.length < 2) {
+      const textnode = document.createTextNode("Devi inserire uno <span lang=\"en\">username</span>!");
+      node.appendChild(textnode);
+      x.parentElement.append(node);
+    }
+    return false;
+  } else if (x.parentElement.childNodes.length > 1) {
+    x.parentElement.removeChild(x.parentElement.lastChild);
+  }
+  if (!checkUsername(x.value)) {
+    if (x.parentElement.childNodes.length < 2){
+      const textnode = document.createTextNode("Lo <span lang=\"en\">Username</span> può contenere solo lettere, numeri, trattini e <span lang=\"en\">underscore</span>, non può contenere spazi e deve essere lungo al massimo 40 caratteri");
+      node.appendChild(textnode);
+      x.parentElement.append(node);
+    }
+    return false;
+  } else if (x.parentElement.childNodes.length > 1){
+    x.parentElement.removeChild(x.parentElement.lastChild);
+  }
+  if (x.value.length > 256) {
+    if (x.parentElement.childNodes.length < 2){
+      const textnode = document.createTextNode("Lo <span lang=\"en\">username</span> deve essere lungo al massimo 256 caratteri");
       node.appendChild(textnode);
       x.parentElement.append(node);
     }
@@ -108,9 +247,10 @@ function validatePassword(){
   const node = document.createElement("p");
   node.classList.add("error-label");
   node.setAttribute("role", "alert");
+  node.setAttribute("aria-live", "assertive");
   if (x.value == "") {
     if (x.parentElement.childNodes.length < 2) {
-      const textnode = document.createTextNode("Devi inserire una password");
+      const textnode = document.createTextNode("Devi inserire una <span lang=\"en\">password</span>!");
       node.appendChild(textnode);
       x.parentElement.append(node);
     }
@@ -118,47 +258,19 @@ function validatePassword(){
   } else if (x.parentElement.childNodes.length > 1) {
     x.parentElement.removeChild(x.parentElement.lastChild);
   }
-  if (x.value.length > 255) {
+  if (!checkPassword(x.value)) {
     if (x.parentElement.childNodes.length < 2){
-      const textnode = document.createTextNode("La password deve essere lunga al massimo 255 caratteri");
-      node.appendChild(textnode);
-      x.parentElement.append(node);
+      const textnode = document.createTextNode("La <span lang=\"en\">password</span> deve contenere almeno 8 caratteri, di cui almeno una lettera maiuscola, una minuscola, un numero e un carattere speciale");
+        node.appendChild(textnode);
+        x.parentElement.append(node);
     }
     return false;
   } else if (x.parentElement.childNodes.length > 1){
     x.parentElement.removeChild(x.parentElement.lastChild);
   }
-  return true;
-}
-
-function validateEmail(){
-  var x = document.getElementById("email");
-  const node = document.createElement("p");
-  node.classList.add("error-label");
-  node.setAttribute("role", "alert");
-  if (x.value == "") {
-    if (x.parentElement.childNodes.length < 2) {
-      const textnode = document.createTextNode("Devi inserire un'email");
-      node.appendChild(textnode);
-      x.parentElement.append(node);
-    }
-    return false;
-  } else if (x.parentElement.childNodes.length > 1) {
-    x.parentElement.removeChild(x.parentElement.lastChild);
-  }
-  if (!checkMail(x.value)) {
+  if (x.value.length > 256) {
     if (x.parentElement.childNodes.length < 2){
-      const textnode = document.createTextNode("Email non valida");
-      node.appendChild(textnode);
-      x.parentElement.append(node);
-    }
-    return false;
-  } else if (x.parentElement.childNodes.length > 1){
-    x.parentElement.removeChild(x.parentElement.lastChild);
-  }
-  if (x.value.length > 255) {
-    if (x.parentElement.childNodes.length < 2){
-      const textnode = document.createTextNode("L'email deve essere lunga al massimo 255 caratteri");
+      const textnode = document.createTextNode("La <span lang=\"en\">password</span> deve essere lunga al massimo 256 caratteri");
       node.appendChild(textnode);
       x.parentElement.append(node);
     }
@@ -175,19 +287,10 @@ function validateSecondPassword(){
   const node = document.createElement("p");
   node.classList.add("error-label");
   node.setAttribute("role", "alert");
+  node.setAttribute("aria-live", "assertive");
   if (x.value != x2.value) {
     if (x.parentElement.childNodes.length < 2){
-      const textnode = document.createTextNode("Le password non coincidono");
-      node.appendChild(textnode);
-      x.parentElement.append(node);
-    }
-    return false;
-  } else if (x.parentElement.childNodes.length > 1){
-    x.parentElement.removeChild(x.parentElement.lastChild);
-  }
-  if (x.value.length > 255) {
-    if (x.parentElement.childNodes.length < 2){
-      const textnode = document.createTextNode("La password deve essere lunga al massimo 255 caratteri");
+      const textnode = document.createTextNode("Le <span lang=\"en\">password</span> non coincidono");
       node.appendChild(textnode);
       x.parentElement.append(node);
     }
@@ -198,40 +301,14 @@ function validateSecondPassword(){
   return true;
 }
 
-function validateName(id){
-  let x = document.getElementById(id);
-  const node = document.createElement("p");
-  node.classList.add("error-label");
-  node.setAttribute("role", "alert");
-  if (!re_name.test(x.value)) {
-    if (x.parentElement.childNodes.length < 2) {
-      const textnode = document.createTextNode("Il campo può contenere solo lettere e spazi e deve essere lungo almeno 1 carattere");
-      node.appendChild(textnode);
-      x.parentElement.append(node);
-    }
-    return false;
-  } else if (x.parentElement.childNodes.length > 1) {
-    x.parentElement.removeChild(x.parentElement.lastChild);
-  }
-  if (x.value.length > 255) {
-    if (x.parentElement.childNodes.length < 2){
-      const textnode = document.createTextNode("Il nome deve essere lungo al massimo 255 caratteri");
-      node.appendChild(textnode);
-      x.parentElement.append(node);
-    }
-    return false;
-  } else if (x.parentElement.childNodes.length > 1){
-    x.parentElement.removeChild(x.parentElement.lastChild);
-  }
-  return true;
-}
-
+/*
 function validateDate(id, id2){
   let x = document.getElementById(id);
   const node = document.createElement("p");
   node.classList.add("error-label");
   node.setAttribute("role", "alert");
-  if (!re_date.test(x.value)) {
+  node.setAttribute("aria-live", "assertive");
+  if (!checkDate(x.value)) {
     if (x.parentElement.childNodes.length < 2) {
       const textnode = document.createTextNode("La data deve essere nel formato gg/mm/aaaa");
       node.appendChild(textnode);
@@ -241,27 +318,15 @@ function validateDate(id, id2){
   } else if (x.parentElement.childNodes.length > 1) {
     x.parentElement.removeChild(x.parentElement.lastChild);
   }
-  if (id2 != null){
-    let x2 = document.getElementById(id2);
-    if (x2.value > x.value) {
-      if (x.parentElement.childNodes.length < 2) {
-        const textnode = document.createTextNode("La data di morte deve essere precedente a quella di nascita");
-        node.appendChild(textnode);
-        x.parentElement.append(node);
-      }
-      return false;
-    } else if (x.parentElement.childNodes.length > 1) {
-      x.parentElement.removeChild(x.parentElement.lastChild);
-    }
-  }
   return true;
 }
 
-function validatePATH(id){
+function validateImgPath(id){
   let x = document.getElementById(id);
   const node = document.createElement("p");
   node.classList.add("error-label");
   node.setAttribute("role", "alert");
+  node.setAttribute("aria-live", "assertive");
   if (x.value == "") {
     if (x.parentElement.childNodes.length < 2) {
       const textnode = document.createTextNode("Inserisci un percorso valido");
@@ -272,9 +337,9 @@ function validatePATH(id){
   } else if (x.parentElement.childNodes.length > 1) {
     x.parentElement.removeChild(x.parentElement.lastChild);
   }
-    if (!checkImgPath(x.value)) {
+  if (!checkImgPath(x.value)) {
     if (x.parentElement.childNodes.length < 2) {
-      const textnode = document.createTextNode("L'immagine deve essere in formato jpg, jpeg o png");
+      const textnode = document.createTextNode("L'immagine deve essere in formato jpg, jpeg, png o webp");
       node.appendChild(textnode);
       x.parentElement.append(node);
     }
@@ -282,9 +347,9 @@ function validatePATH(id){
    } else if (x.parentElement.childNodes.length > 1) {
     x.parentElement.removeChild(x.parentElement.lastChild);
   }
-  if (x.value.length > 255) {
+  if (x.value.length > 256) {
     if (x.parentElement.childNodes.length < 2){
-      const textnode = document.createTextNode("Il PATH deve essere lungo al massimo 255 caratteri");
+      const textnode = document.createTextNode("Il PATH deve essere lungo al massimo 256 caratteri");
       node.appendChild(textnode);
       x.parentElement.append(node);
     }
@@ -294,6 +359,7 @@ function validatePATH(id){
   }
   return true;
 }
+*/
 
 
 
@@ -309,8 +375,7 @@ function validateRegister(){
   } 
   else if (!validateSurname()){
     return false;
-  }
-  if (!validateEmail()){
+  } else if (!validateEmail()){
     return false;
   } else if (!validateUsername()) {
     return false;
