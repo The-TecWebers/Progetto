@@ -53,12 +53,24 @@ function caricamento_registrazione() {
   node.appendChild(textnode);
   x.parentElement.insertBefore(node, x);
 
+
   var x = document.getElementById("username");
-  node = document.createElement("p");
+  var node = document.createElement("p");
   node.classList.add("info-label");
-  textnode = document.createTextNode("Esso può contenere solo lettere, numeri, trattini e <span lang=\"en\">underscore</span>, non può contenere spazi e deve essere lungo al massimo 40 caratteri");
+  
+  var span = document.createElement("span");
+  span.lang = "en";
+  var textnodeSpan = document.createTextNode("underscore");
+  span.appendChild(textnodeSpan);
+  
+  var textnode = document.createTextNode("Esso può contenere solo lettere, numeri, trattini e ");
+  
   node.appendChild(textnode);
+  node.appendChild(span);
+  node.appendChild(document.createTextNode(", non può contenere spazi e deve essere lungo al massimo 40 caratteri"));
+  
   x.parentElement.insertBefore(node, x);
+
 
   var x = document.getElementById("password");
   node = document.createElement("p");
