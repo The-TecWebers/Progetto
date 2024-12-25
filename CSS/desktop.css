@@ -23,8 +23,11 @@ GENERALE
     --visitedLink_bgFuchsia: #ffffff;
 
     /* Colori per la Labels o messaggi di errore */
-    --bgLabel: #f0f8ff
-    --borderLabel: #1e90ff
+    --borderError: #ff4d4d;
+    --bgError: #ffe6e6;
+    --txtError: #d10000;
+    --bgLabel: #f0f8ff;
+    --borderLabel: #1e90ff;
 
     /* Altri colori */
     --hover: #000000;
@@ -527,13 +530,13 @@ MESSAGGI DI ERRORE - VALIDAZIONE PHP
     list-style-type: none;
     margin: 1.25em 0;
     padding: 0.625em;
-    border: 0.125em solid #ff4d4d;
-    background-color: #ffe6e6;
+    border: 0.125em solid var(--borderError);
+    background-color: var(--bgError);
     border-radius: 0.5em;
 }
 
 .errorMessages li {
-    color: #d10000;
+    color: var(--txtError);
     margin-bottom: 0.5em;
     font-weight: bold;
 }
@@ -544,7 +547,7 @@ MESSAGGI DI ERRORE - VALIDAZIONE PHP
 
 .errorMessages li::before {
     content: "⚠ ";
-    color: #d10000;
+    color: var(--txtError);
     font-size: 1.125em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     margin-right: 0.277em;
@@ -561,20 +564,20 @@ MESSAGGI DI ISTRUZIONI E DI ERRORE - VALIDAZIONE JAVASCRIPT
 .info-label {
   background-color: var(--bgLabel);
   color: var(--text_bgWhite);
-  border-left: 4px solid var(--borderLabel);
-  padding: 8px 12px;
-  margin-bottom: 8px;
-  border-radius: 4px;
-  font-size: 14px;
-  font-family: Arial, sans-serif;
+  border-left: 0.286em solid var(--borderLabel);
+  padding: 0.571em 0.857em;
+  margin-bottom: 0.571em;
+  border-radius: 0.286em;
+  font-size: 0.875em;
+  /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
   transition: opacity 0.3s ease, transform 0.3s ease;
   opacity: 1;
 }
 
 .info-label.hidden {
-  opacity: 0; /* Nasconde il messaggio gradualmente */
-  transform: translateY(-10px); /* Leggero movimento verso l'alto per enfatizzare la sparizione */
-  pointer-events: none; /* Evita interazioni quando è nascosto */
+  opacity: 0;
+  transform: translateY(-0.714em);
+  pointer-events: none;
 }
 
 
