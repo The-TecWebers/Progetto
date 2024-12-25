@@ -467,41 +467,6 @@ legend {
 
 
 /*
-=====================================
-MESSAGGI DI ERRORE - VALIDAZIONE PHP
-=====================================
-*/
-
-.errorMessages {
-    list-style-type: none;
-    margin: 1.25em 0;
-    padding: 0.625em;
-    border: 0.125em solid #ff4d4d;
-    background-color: #ffe6e6;
-    border-radius: 0.5em;
-}
-
-.errorMessages li {
-    color: #d10000;
-    margin-bottom: 0.5em;
-    font-weight: bold;
-}
-
-.errorMessages li:last-child {
-    margin-bottom: 0;
-}
-
-.errorMessages li::before {
-    content: "⚠ ";
-    color: #d10000;
-    font-size: 1.125em;
-    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-    margin-right: 0.277em;
-}
-
-
-
-/*
 =======
 FOOTER
 =======
@@ -546,6 +511,49 @@ footer {
 footer .contacts {
     font-weight: 600;
 }
+
+
+
+/*
+=====================================
+MESSAGGI DI ERRORE - VALIDAZIONE PHP
+=====================================
+*/
+
+.errorMessages {
+    list-style-type: none;
+    margin: 1.25em 0;
+    padding: 0.625em;
+    border: 0.125em solid #ff4d4d;
+    background-color: #ffe6e6;
+    border-radius: 0.5em;
+}
+
+.errorMessages li {
+    color: #d10000;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.errorMessages li:last-child {
+    margin-bottom: 0;
+}
+
+.errorMessages li::before {
+    content: "⚠ ";
+    color: #d10000;
+    font-size: 1.125em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    margin-right: 0.277em;
+}
+
+
+
+/*
+============================================================
+MESSAGGI DI ISTRUZIONI E DI ERRORE - VALIDAZIONE JAVASCRIPT
+============================================================
+*/
 
 
 
