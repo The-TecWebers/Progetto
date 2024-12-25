@@ -25,48 +25,47 @@ MESSAGGI DI ISTRUZIONI PER I FORM
 ==================================
 */
 
+document.addEventListener('DOMContentLoaded', function () {
+  if (document.getElementById('registrationForm')) {
+    caricamento_registrazione();
+  }
+});
+
 function caricamento_registrazione() {
-    var x = document.getElementById("nome");
-    const node = document.createElement("p");
-    node.classList.add("info-label");
-    const textnode = document.createTextNode("Inserisci il tuo nome! Esso può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri");
-    node.appendChild(textnode);
-    x.parentElement.insertBefore(node, x);
+  var x = document.getElementById("nome");
+  var node = document.createElement("p");
+  node.classList.add("info-label");
+  var textnode = document.createTextNode("Esso può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri");
+  node.appendChild(textnode);
+  x.parentElement.insertBefore(node, x);
 
-    var x = document.getElementById("cognome");
-    node = document.createElement("p");
-    node.classList.add("info-label");
-    textnode = document.createTextNode("Inserisci il tuo cognome! Esso può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri");
-    node.appendChild(textnode);
-    x.parentElement.insertBefore(node, x);
+  var x = document.getElementById("cognome");
+  node = document.createElement("p");
+  node.classList.add("info-label");
+  textnode = document.createTextNode("Esso può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri");
+  node.appendChild(textnode);
+  x.parentElement.insertBefore(node, x);
 
-    var x = document.getElementById("email");
-    node = document.createElement("p");
-    node.classList.add("info-label");
-    textnode = document.createTextNode("Inserisci la tua <span lang=\"en\">email</span>! Essa può essere lunga al massimo 256 caratteri");
-    node.appendChild(textnode);
-    x.parentElement.insertBefore(node, x);
+  var x = document.getElementById("email");
+  node = document.createElement("p");
+  node.classList.add("info-label");
+  textnode = document.createTextNode("Essa può essere lunga al massimo 256 caratteri");
+  node.appendChild(textnode);
+  x.parentElement.insertBefore(node, x);
 
-    var x = document.getElementById("username");
-    node = document.createElement("p");
-    node.classList.add("info-label");
-    textnode = document.createTextNode("Inserisci uno <span lang=\"en\">username</span>! Esso può contenere solo lettere, numeri, trattini e <span lang=\"en\">underscore</span>, non può contenere spazi e deve essere lungo al massimo 40 caratteri");
-    node.appendChild(textnode);
-    x.parentElement.insertBefore(node, x);
+  var x = document.getElementById("username");
+  node = document.createElement("p");
+  node.classList.add("info-label");
+  textnode = document.createTextNode("Esso può contenere solo lettere, numeri, trattini e <span lang=\"en\">underscore</span>, non può contenere spazi e deve essere lungo al massimo 40 caratteri");
+  node.appendChild(textnode);
+  x.parentElement.insertBefore(node, x);
 
-    var x = document.getElementById("password");
-    node = document.createElement("p");
-    node.classList.add("info-label");
-    textnode = document.createTextNode("Inserisci una <span lang=\"en\">password</span>! Essa deve essere lunga almeno 8 caratteri e massimo 256, deve contenere almeno un carattere maiuscolo, un carattere minuscolo, un numero e un carattere speciale");
-    node.appendChild(textnode);
-    x.parentElement.insertBefore(node, x);
-
-    var x = document.getElementById("password_confirmation");
-    node = document.createElement("p");
-    node.classList.add("info-label");
-    textnode = document.createTextNode("Reinserisci la <span lang=\"en\">password</span>!");
-    node.appendChild(textnode);
-    x.parentElement.insertBefore(node, x);
+  var x = document.getElementById("password");
+  node = document.createElement("p");
+  node.classList.add("info-label");
+  textnode = document.createTextNode("Essa deve essere lunga almeno 8 caratteri e massimo 256, deve contenere almeno un carattere maiuscolo, un carattere minuscolo, un numero e un carattere speciale");
+  node.appendChild(textnode);
+  x.parentElement.insertBefore(node, x);
 }
 
 
