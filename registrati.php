@@ -19,7 +19,7 @@ try {
     $err = isset($_SESSION['error-reg']) ? $_SESSION['error-reg'] : null;
 
     if (isset($err)) {
-        $template = str_replace("", $err, $template);
+        $template = str_replace("<!-- errorMessages -->", $err, $template);
         $template = str_replace("placeholder=\"Nome\"", "value=\"" . $_SESSION['nome*'] . "\"", $template);
         $template = str_replace("placeholder=\"Cognome\"", "value=\"" . $_SESSION['cognome*'] . "\"", $template);
         $template = str_replace("placeholder=\"E-mail\"", "value=\"" . $_SESSION['email*'] . "\"", $template);
