@@ -11,9 +11,10 @@ window.onscroll = function() {
   const scrollThresholdInPx = scrollThresholdInEm * bodyFontSize;
 
   if (window.scrollY > scrollThresholdInPx) {
-    scrollUp.style.display = 'block';
+    scrollUp.classList.add('visible');
   } else {
-    scrollUp.style.display = 'none';
+    scrollUp.classList.remove('visible');
+    scrollUp.removeAttribute("class");
   }
 };
 

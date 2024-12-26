@@ -143,13 +143,18 @@ header #nav-check {
     background-color: var(--text_bgGreen);
     color: var(--link_bgWhite);
     font-size: 1.2em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     bottom: 1.5em;
     right: 0.6em;
     border-radius: 30%;
-    padding: .5em;
+    padding: 0.5em;
     cursor: pointer;
     text-decoration: none;
     display: none;
+}
+
+#goUp.visible {
+  display: block;
 }
 
 
