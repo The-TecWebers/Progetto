@@ -34,6 +34,14 @@ document.addEventListener('DOMContentLoaded', function () {
   if (document.getElementById('registrationForm')) {
     caricamento_registrazione();
 
+    // Per i messaggi di istruzioni accessibili agli screen reader
+    document.getElementById("nome").setAttribute("aria-describedby", "info-nome");
+    document.getElementById("cognome").setAttribute("aria-describedby", "info-cognome");
+    document.getElementById("email").setAttribute("aria-describedby", "info-email");
+    document.getElementById("username").setAttribute("aria-describedby", "info-username");
+    document.getElementById("password").setAttribute("aria-describedby", "info-password");
+
+    // Per la validazione dei campi lato client
     document.getElementById("nome").onblur = function() {return validateName();};
     document.getElementById("cognome").onblur = function() {return validateSurname();};
     document.getElementById("email").onblur = function() {return validateEmail();};
@@ -47,32 +55,37 @@ document.addEventListener('DOMContentLoaded', function () {
 function caricamento_registrazione() {
   var x = document.getElementById("nome");
   var node = document.createElement("p");
+  node.id = "info-" + x.id;
   node.classList.add("info-label");
   node.innerHTML = "Esso può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
   x.parentElement.insertBefore(node, x);
 
   var x = document.getElementById("cognome");
   node = document.createElement("p");
+  node.id = "info-" + x.id;
   node.classList.add("info-label");
   node.innerHTML = "Esso può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
   x.parentElement.insertBefore(node, x);
 
   var x = document.getElementById("email");
   node = document.createElement("p");
+  node.id = "info-" + x.id;
   node.classList.add("info-label");
-  node.innerHTML = "Essa può essere lunga al massimo 256 caratteri";
+  node.innerHTML = "Essa deve essere un indirizzo <span lang=\"en\">email</span> valido e può essere lunga al massimo 256 caratteri";
   x.parentElement.insertBefore(node, x);
 
   var x = document.getElementById("username");
   node = document.createElement("p");
+  node.id = "info-" + x.id;
   node.classList.add("info-label");
   node.innerHTML = 
     "Esso può contenere solo lettere, numeri, trattini e " +
-    "<span lang=\"en\">underscore</span>, non può contenere spazi e deve essere lungo al massimo 40 caratteri";
+    "<span lang=\"en\">underscore</span>, non può contenere spazi e può essere lungo al massimo 40 caratteri";
   x.parentElement.insertBefore(node, x);
 
   var x = document.getElementById("password");
   node = document.createElement("p");
+  node.id = "info-" + x.id;
   node.classList.add("info-label");
   node.innerHTML = 
     "Essa deve essere lunga almeno 8 caratteri e massimo 256, deve contenere almeno un carattere maiuscolo, " +
