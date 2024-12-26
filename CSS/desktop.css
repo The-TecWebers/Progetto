@@ -570,15 +570,27 @@ MESSAGGI DI ISTRUZIONI E DI ERRORE - VALIDAZIONE JAVASCRIPT
   border-radius: 0.286em;
   font-size: 0.875em;
   /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  opacity: 1;
 }
 
-.info-label.hidden {
-  opacity: 0;
-  transform: translateY(-0.714em);
-  pointer-events: none;
+.error-label {
+  color: var(--txtError);
+  font-size: 0.9em;
+  /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+  margin-top: 0.347em;
+  margin-left: 0.347em;
+  font-weight: bold;
+  background-color: var(--bgError);
+  padding: 0.347em;
+  border-radius: 0.277em;
+  display: inline-block;
 }
+
+.error-label::before {
+  content: "⚠️ ";
+  font-size: 1rem;
+  /* rem e non em, quindi rispetto alla radice, non rispetto a .error-label, che ha cambiato font-size */
+}
+
 
 
 
