@@ -36,13 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("password").onblur = function() {return validatePassword();};
     document.getElementById("password_confirmation").onblur = function() {return validatePasswordConfirmation();};
     document.getElementById("registrationForm").onsubmit = function() {return validateRegister();};
-  } 
-  else if (document.getElementById('loginForm')) {
-    // Non ci sono messaggi di istruzioni da caricare per il login
-
-    document.getElementById("username").onblur = function() {return validateUsername();};
-    document.getElementById("password").onblur = function() {return validatePassword();};
-    document.getElementById("loginForm").onsubmit = function() {return validateLogin();};
   }
 });
 
@@ -455,16 +448,6 @@ function validateRegister(){
     return false;
   } 
   else if (!validatePasswordConfirmation()) {
-    return false;
-  }
-  return true;
-}
-
-function validateLogin(){
-  if (!validateUsername()){
-    return false;
-  } 
-  else if (!validatePassword()){
     return false;
   }
   return true;
