@@ -353,6 +353,7 @@ figcaption {
 }
 
 
+
 /*
 =====
 FORM
@@ -582,7 +583,6 @@ MESSAGGI DI ISTRUZIONI E DI ERRORE - VALIDAZIONE JAVASCRIPT
   background-color: var(--bgError);
   padding: 0.347em;
   border-radius: 0.277em;
-  display: inline-block;
 }
 
 .error-label::before {
