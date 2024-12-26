@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("username").onblur = function() {return validateUsername();};
     document.getElementById("password").onblur = function() {return validatePassword();};
     document.getElementById("password_confirmation").onblur = function() {return validatePasswordConfirmation();};
+    document.getElementById("suggerimento_password").onblur = function() {return validateSuggerimentoPassword();};
     document.getElementById("registrationForm").onsubmit = function() {return validateRegister();};
   }
 });
@@ -373,6 +374,37 @@ function validatePasswordConfirmation() {
   return true;
 }
 
+function validateSuggerimentoPassword() {
+  var x = document.getElementById("suggerimento_password");
+
+  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
+    x.parentElement.removeChild(x.nextElementSibling);
+  }
+
+  const node = document.createElement("p");
+  node.classList.add("error-label");
+  node.setAttribute("role", "alert");
+  node.setAttribute("aria-live", "assertive");
+
+  if (x.value == "") {
+    node.innerHTML = "Devi inserire un suggerimento per la <span lang=\"en\">password</span>!";
+    insertAfter(node, x);
+    x.focus();
+
+    return false;
+  }
+
+  if (x.value.length > 256) {
+    node.innerHTML = "Il suggerimento per la <span lang=\"en\">password</span> deve essere lungo al massimo 256 caratteri";
+    insertAfter(node, x);
+    x.focus();
+
+    return false;
+  }
+
+  return true;
+}
+
 /*
 function validateDate(id, id2){
   var x = document.getElementById(id);
@@ -468,5 +500,9 @@ function validateRegister(){
   else if (!validatePasswordConfirmation()) {
     return false;
   }
+  else if (!validateSuggerimentoPassword()) {
+    return false;
+  }
+
   return true;
 }
