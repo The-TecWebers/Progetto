@@ -1,6 +1,6 @@
 <?php
 $titolo = "Area privata - EdilScavi";
-$descrizione = "EdilScavi Srl Brescia...........";
+$descrizione = "Area privata di Edil Scavi, qui puoi visualizzare e/o modificare i tuoi dati personali e di accesso.";
 $keywords = "area privata, account, Edil Scavi, dati personali, dati di accesso";
 
 require_once(__DIR__ . DIRECTORY_SEPARATOR . 'PHP' . DIRECTORY_SEPARATOR . 'backend' . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . 'AuthController.php');

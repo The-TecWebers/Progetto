@@ -1,6 +1,6 @@
 <?php
 $titolo = "Storia - EdilScavi";
-$descrizione= "Storia e lavori di Edil Scavi Srl: dagli inizi nel 1981 per movimento terra ai servizi gas metano";
+$descrizione= "Storia di Edil Scavi Srl: dagli inizi nel 1981 ad oggi, dal movimento terra ai servizi gas metano";
 $keywords = "EdilScavi, Cotti Cottini, appalti, terra, gas metano, Rogno, Edolo";
 
 include __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "template" . DIRECTORY_SEPARATOR . "header.php";
