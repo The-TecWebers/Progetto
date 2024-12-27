@@ -141,6 +141,34 @@ header #nav-check {
 
 
 /*
+==========
+TORNA SU
+==========
+*/
+
+#goUp{
+    position: fixed;
+    background-color: var(--text_bgGreen);
+    color: var(--link_bgWhite);
+    font-size: 1.2em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    bottom: 1.5em;
+    right: 0.6em;
+    border-radius: 30%;
+    padding: 0.5em;
+    cursor: pointer;
+    text-decoration: none;
+    display: none;
+}
+
+#goUp.visible {
+  display: block;
+}
+
+
+
+
+/*
 =======================
 AIUTI ALLA NAVIGAZIONE
 =======================
@@ -259,37 +287,32 @@ BREADCRUMB
 ===========
 */
 
-.breadcrumb {
-    display: flex;
-    padding-left: 3.125em;
-    padding-top: 1.5625em;
-    align-items: center;
-}
+.breadcrumb
+{
+    color: var(--visitedLink_bgGreen);
 
-.breadcrumb a,
-.breadcrumb span {
-    padding: 0 0.2em;
-    font-size: 1.5625em;
+}
+.breadcrumb ul li a {
+    text-decoration:underline;
+    display: block;
+    font-size: 1em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    font-weight: 600;
+    border-radius: 0em;
+    padding: 0 0;
+    color: var(--link_bgGreen);
+    text-transform:none; 
+}
+.breadcrumb ul li a:hover, ul li a:active {
+    background-color:transparent;
+    color: var(--link_bgGreen);
 }
 
-.breadcrumb a {
-    color: var(--link_bgWhite);
+.breadcrumb ul li+li:before {
+    padding: .5em;
+    content: "/\00a0";
 }
 
-.breadcrumb a:visited {
-    color: var(--visitedLink_bgWhite);
-}
-
-.breadcrumb span {
-    color: var(--text_bgWhite);
-}
-
-.breadcrumb img {
-    width: 1.5625em;
-    height: 1.5625em;
-    margin: 0 0.3125em;
-}
 
 
 
@@ -999,6 +1022,7 @@ AREA PRIVATA
 
 .container-error h1 {
     font-size: 1em;
+    text-transform:none;
 }
 
 #cta-error {
