@@ -4,11 +4,7 @@ GENERALE
 =========
 */
 
-
 :root {
-    --hover: #000000;
-    --border: #000000;
-
     /* Colori per lo sfondo bianco */
     --text_bgWhite: #000000;
     --bg_bgWhite: #fdfffd;
@@ -26,6 +22,16 @@ GENERALE
     --link_bgFuchsia: #000000;
     --visitedLink_bgFuchsia: #ffffff;
 
+    /* Colori per la Labels o messaggi di errore */
+    --borderError: #ff4d4d;
+    --bgError: #ffe6e6;
+    --txtError: #d10000;
+    --bgLabel: #f0f8ff;
+    --borderLabel: #1e90ff;
+
+    /* Altri colori */
+    --hover: #000000;
+    --border: #000000;
 }
 
 * {
@@ -370,6 +376,7 @@ figcaption {
 }
 
 
+
 /*
 =====
 FORM
@@ -533,6 +540,78 @@ footer {
 
 footer .contacts {
     font-weight: 600;
+}
+
+
+
+/*
+=====================================
+MESSAGGI DI ERRORE - VALIDAZIONE PHP
+=====================================
+*/
+
+.errorMessages {
+    list-style-type: none;
+    margin: 1.25em 0;
+    padding: 0.625em;
+    border: 0.125em solid var(--borderError);
+    background-color: var(--bgError);
+    border-radius: 0.5em;
+}
+
+.errorMessages li {
+    color: var(--txtError);
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.errorMessages li:last-child {
+    margin-bottom: 0;
+}
+
+.errorMessages li::before {
+    content: "⚠ ";
+    color: var(--txtError);
+    font-size: 1.125em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    margin-right: 0.277em;
+}
+
+
+
+/*
+============================================================
+MESSAGGI DI ISTRUZIONI E DI ERRORE - VALIDAZIONE JAVASCRIPT
+============================================================
+*/
+
+.info-label {
+  background-color: var(--bgLabel);
+  color: var(--text_bgWhite);
+  border-left: 0.286em solid var(--borderLabel);
+  padding: 0.571em 0.857em;
+  margin-bottom: 0.571em;
+  border-radius: 0.286em;
+  font-size: 0.875em;
+  /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+}
+
+.error-label {
+  color: var(--txtError);
+  font-size: 0.9em;
+  /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+  margin-top: 0.347em;
+  margin-left: 0.347em;
+  font-weight: bold;
+  background-color: var(--bgError);
+  padding: 0.347em;
+  border-radius: 0.277em;
+}
+
+.error-label::before {
+  content: "⚠️ ";
+  font-size: 1rem;
+  /* rem e non em, quindi rispetto alla radice, non rispetto a .error-label, che ha cambiato font-size */
 }
 
 
