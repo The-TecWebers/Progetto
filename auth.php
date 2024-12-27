@@ -1,32 +1,49 @@
 <?php
-require_once(__DIR__ . '/PHP/backend/controllers/UserController.php');
-require_once(__DIR__.'/PHP/backend/controllers/AuthController.php');
+
+require_once(__DIR__ . DIRECTORY_SEPARATOR . 'PHP' . DIRECTORY_SEPARATOR . 'backend' . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . 'UserController.php');
+require_once(__DIR__ . DIRECTORY_SEPARATOR . 'PHP' . DIRECTORY_SEPARATOR . 'backend' . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . 'AuthController.php');
+
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action = $_GET['action'] ?? null;
     
     if ($action === 'register') {
-        if (UserController::create()) {
-            header('Location: accedi.php');
-        } 
+        $_SESSION['nome*'] = $_POST['nome'] ?? null;
+        $_SESSION['cognome*'] = $_POST['cognome'] ?? null;
+        $_SESSION['email*'] = $_POST['email'] ?? null;
+        $_SESSION['username*'] = $_POST['username'] ?? null;
+        $_SESSION['password*'] = $_POST['password'] ?? null;
+        $_SESSION['password_confirmation*'] = $_POST['password_confirmation'] ?? null;
+        $_SESSION['suggerimento_password*'] = $_POST['suggerimento_password'] ?? null;
+
+        $result = UserController::create();
+
+        if ($result === true) {
+            $_SESSION['error-reg'] = null;
+            header('Location: area_privata.php');
+        }
+        else {
+            $_SESSION['error-reg'] = $result;
+
+            $arrayString = "Array: " . print_r($_SESSION, true);
+            error_log($arrayString, 3, 'mio_log.log');
+
+            header("Location: registrati.php");
+        }
     }
     elseif ($action == "login") {
-        $sanitized = InputController::SanitizeInput($_POST);
+        $_SESSION['username*'] = $_POST['username'] ?? null;
+        $_SESSION['password*'] = $_POST['password'] ?? null;
 
-        $username = $sanitized['username'];
-        $password = $sanitized['password'];
-
-        $user = UserController::getUserByUsername($username);
-        
-        if ($user != null) {
-            $userPassword = $user->getPassword();
-            
-            if (password_verify($password, $userPassword)) {
-                AuthController::login($user);
-                var_dump($_SESSION);
-            }
+        $result = UserController::login();
+        if ($result === true) {
+            $_SESSION['error-login'] = null;
+            header('Location: area_privata.php');
+        }
+        else{
+            $_SESSION['error-login'] = $result;
+            header("Location: accedi.php");
         }
     }
 }
-

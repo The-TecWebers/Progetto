@@ -1,6 +1,7 @@
 <?php
 
-include(__DIR__.'/../controllers/InputController.php');
+include(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . 'InputController.php');
+
 class User
 {
     private $username;
@@ -40,14 +41,13 @@ class User
     {
         return $this->cognome;
     }
-    public function getsuggerimento_password()
+    public function getSuggerimentoPassword()
     {
         return $this->suggerimento_password;
     }
+    
     public function save()
     {
         DBController::runQuery("INSERT INTO utente (username, email, password, suggerimento_password, nome, cognome) VALUES (?,?,?,?,?,?);", $this->username, $this->email, $this->password, $this->suggerimento_password, $this->nome, $this->cognome);
     }
 }
-
-?>

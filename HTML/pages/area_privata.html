@@ -1,33 +1,35 @@
 <main id="content">
     <h1>Area privata</h1>
-    <p class="form-description">Modifica i tuoi dati personali e di accesso</p>
+    <p class="form-description">Modifica i tuoi dati personali oppure cambia la password</p>
     <form id="user-form" action="...php" method="post">
         <!-- errors -->
         <div class="double-column">
-            <fieldset class="surrounding-box">
-                <legend >Dati personali</legend>
+            <fieldset id="dati_personali_accesso" class="surrounding-box">
+                <legend >Dati personali e di accesso</legend>
                 <label class="form-label" for="nome">Nome:</label>
-                <input class="form-input" type="text" name="nome" id="nome" value="Nome">
+                <input class="form-input" type="text" name="nome" id="nome" value="[Nome]">
                 <label class="form-label" for="cognome">Cognome:</label>
-                <input class="form-input" type="text" name="cognome" id="cognome" value="Cognome">
+                <input class="form-input" type="text" name="cognome" id="cognome" value="[Cognome]">
                 <label class="form-label" for="email"><span lang="en">Email:</span></label>
-                <input class="form-input" type="email" name="email" id="email" value="Email">
-            </fieldset>  
-            <fieldset class="surrounding-box">
-                <legend>Dati di accesso</legend>
+                <input class="form-input" type="email" name="email" id="email" value="[Email]">
                 <label class="form-label" for="username">Username:</label>
-                <input class="form-input" type="text" name="username" id="username" value="Username">
+                <input class="form-input" type="text" name="username" id="username" value="[Username]">
+            </fieldset>  
+            <fieldset id="cambio_password" class="surrounding-box">
+                <legend>Cambio password</legend>
                 <label class="form-label" for="old_password">Vecchia Password</label>
                 <input class="form-input" type="password" name="old_password" id="old_password">
                 <label class="form-label" for="new_password">Nuova Password:</label>
                 <input class="form-input" type="password" name="new_password" id="new_password">
-                <label class="form-label" for="repeated_password">Ripeti Password:</label>
+                <label class="form-label" for="repeated_password">Ripeti la nuova Password:</label>
                 <input class="form-input" type="password" name="repeated_password" id="repeated_password">
+                <label class="form-label" for="new_password_hint">Suggerimento per la nuova password:</label>
+                <input class="form-input" type="text" name="new_password_hint" id="new_password_hint">
             </fieldset>
         </div>
 
         <div class="form-buttons">
-            <button id="confirmbutton" type="submit" aria-label="Conferma le modifiche">Conferma</button>  
+            <button id="confirmbutton" type="submit" aria-label="Conferma le modifiche">Conferma modifiche</button>  
         </div>
         
     </form>
