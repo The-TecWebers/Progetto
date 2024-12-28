@@ -79,12 +79,12 @@ class InputController
         }
 
         // Controllo univocità dello username
-        if (UserController::getUserByUsername($username)) { // Il fatto che getUserByUsername ritorni un risulato viene considerato un "true"
+        if (UserController::isUsernameDuplicate($username) === true) {
             $errorMessages .= "<li>Esiste già un utente registrato con questo <span lang=\"en\">username</span></li>";
         }
 
         // Controllo univocità della email
-        if (UserController::getUserByEmail($email)) { // Il fatto che getUserByEmail ritorni un risulato viene considerato un "true"
+        if (UserController::isEmailDuplicate($email) === true) {
             $errorMessages .= "<li>Esiste già un utente registrato con questa <span lang=\"en\">email</span></li>";
         }
 

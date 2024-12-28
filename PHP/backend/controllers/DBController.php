@@ -47,7 +47,7 @@ class DBController
 
     $result = $q->get_result();
 
-    if ($result == false || ($result->num_rows) <= 0) {
+    if ($result === false || ($result->num_rows) <= 0) {
       return false;
     }
     $result_data = $result->fetch_assoc();
