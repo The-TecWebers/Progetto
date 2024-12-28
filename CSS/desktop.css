@@ -373,6 +373,14 @@ figcaption {
     margin-bottom: 0.5em;
 }
 
+.reversed > :first-child {
+    order: 2;
+}
+  
+.reversed > :nth-child(2) {
+    order: 1;
+}
+
 
 
 /*
@@ -858,14 +866,6 @@ HOME PAGE
     border: var(--border) 0.125em solid;
 }
 
-.home-section.reversed > p {
-    order: 2; 
-}
-
-.home-section.reversed > figure {
-    order: 1; 
-}
-
 
 /*
 =======================
@@ -905,8 +905,8 @@ STORIA - LAVORI SVOLTI
 
 .figure-paragraph-container p {
     flex: 1;
-    margin-right: 0.625em;
-    margin-left: 0.625em;
+    margin: 0 0.625em;
+    margin-bottom: 0.625em;
 }
 
 
