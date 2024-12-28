@@ -903,8 +903,11 @@ STORIA - LAVORI SVOLTI
     margin-top: 0;
 }
 
-.figure-paragraph-container p {
+.figure-paragraph-container > :first-child {
     flex: 1;
+}
+
+.figure-paragraph-container p {
     margin: 0 0.625em;
     margin-bottom: 0.625em;
 }
