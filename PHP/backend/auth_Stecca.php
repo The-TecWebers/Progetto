@@ -1,6 +1,6 @@
 <?php
 
-require_once('php' . DIRECTORY_SEPARATOR . 'backend' . DIRECTORY_SEPARATOR . 'user_manager.php');
+require_once 'php' . DIRECTORY_SEPARATOR . 'backend' . DIRECTORY_SEPARATOR . 'user_manager.php';
 
 function is_logged(){
     return isset($_SESSION["username"]);

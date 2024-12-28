@@ -1,8 +1,8 @@
 <?php
 
-require_once('AbstractController.php');
-require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'User.php');
-require_once('DBController.php');
+require_once 'AbstractController.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'User.php';
+require_once 'DBController.php';
 
 class UserController extends AbstractController
 {

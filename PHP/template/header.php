@@ -65,4 +65,4 @@ switch ($current_page) {
 }
 
 
-echo($header);
+echo $header;
