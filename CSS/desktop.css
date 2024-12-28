@@ -474,14 +474,6 @@ button {
     box-shadow: 0 0.125em 0.3125em rgba(0, 0, 0, 0.2);
 }
 
-#dati_personali_accesso {
-    width: 50%;
-}
-
-#cambio_password {
-    width: 50%;
-}
-
 .form-description {
     text-align: center;
     font-size: 1.5em;
@@ -1076,6 +1068,14 @@ ACCEDI
 AREA PRIVATA
 =============
 */
+
+#dati_personali {
+    width: 50%;
+}
+
+#cambio_password {
+    width: 50%;
+}
 
 #confirmbutton {
     margin-top: 0.2em;

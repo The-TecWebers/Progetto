@@ -237,6 +237,28 @@ STORIA - LAVORI SVOLTI
 
 
 
+/* 
+=============
+AREA PRIVATA
+=============
+*/
+
+.double-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#dati_personali {
+    width: 100%;
+}
+
+#cambio_password {
+    width: 100%;
+}
+
+
+
 /*
 =======
 404
