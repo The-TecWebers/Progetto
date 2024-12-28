@@ -165,7 +165,6 @@ STORIA - LAVORI SVOLTI
 
 .figure-paragraph-container > figure, .figure-paragraph-container > p {
     flex: 1 1 100%;
-    padding: 0.5em;
 }
 
 .figure-paragraph-container figure{
@@ -189,12 +188,16 @@ MEZZI
 =======
 */
 
+.mezzi-container img {
+    max-width: 20em;
+}
+
 figure.escavatori {
     max-width: none;
 }
 
 figure.escavatori img {
-    max-width: 25em; 
+    max-width: 20em; 
 }
 
 figure.escavatori figcaption {
