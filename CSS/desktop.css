@@ -330,7 +330,7 @@ MAIN
 
 main {
     flex: 1;
-    padding-bottom: 1.25em;
+    padding: 1.25em 0;
     max-width: 90%;
     margin: auto;
 }
@@ -338,7 +338,6 @@ main {
 main h1{
     text-transform: uppercase;
     text-align: center;
-    margin-top: 0.5em;
     margin-bottom: 0.5em;
 }
 
@@ -347,8 +346,7 @@ main h2{
     background-color: var(--bg_bgGreen);
     color: var(--text_bgGreen);
     border-radius: 1em;
-    margin-top: 0.6em;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.66em;
 }
 
 main a {
@@ -357,12 +355,13 @@ main a {
 }
 
 section{
+    padding-bottom: 0.75em;
     border-bottom: var(--border) 0.125em solid;
+    margin-bottom: 1.25em;
 }
 
 #introductionParagraph {
     text-align: center;
-    margin-top: 0.5em;
     margin-bottom: 1.5em;
 }
 
@@ -371,8 +370,7 @@ figcaption {
     font-style: italic;
     font-size: 1.125em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    margin: 0.5em auto;
 }
 
 
@@ -389,12 +387,6 @@ form {
     margin: auto;
     width: 50%;
     margin-bottom: 1em;
-}
-
-.change-form {
-    text-align: center;
-    margin-top: 0.9375em;
-    margin-bottom: 0.9375em;
 }
 
 .form-input {
@@ -479,7 +471,12 @@ button {
     font-size: 1.5em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     font-weight: bold;
-    margin-top: 0.75em;
+    margin-bottom: 0.5em;
+}
+
+.change-form {
+    text-align: center;
+    margin-bottom: 0.5em;
 }
 
 .double-column {
@@ -705,7 +702,6 @@ a.cta-container:active {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 1em;
 }
 
 div.container-cta-link  a {
@@ -825,8 +821,8 @@ HOME PAGE
 .home-section {
     display: flex;
     flex-wrap: nowrap;
-    margin: 1em;
-    padding: 0;
+    margin-bottom: 1em;
+    padding: 0 1em;
     align-items: center;
 }
 
@@ -898,6 +894,10 @@ STORIA - LAVORI SVOLTI
     border: var(--border) 0.125em solid;
 }
 
+.figure-paragraph-container figcaption {
+    margin-top: 0;
+}
+
 .figure-paragraph-container p {
     flex: 1;
     margin-right: 0.625em;
@@ -921,14 +921,6 @@ MEZZI
     justify-content: center;
     list-style: none;
     padding: 0;
-}
-
-.mezzi-container li {
-    text-align: center;
-}
-
-.mezzi-container figure {
-    margin: 0;
 }
 
 .mezzi-container img {
