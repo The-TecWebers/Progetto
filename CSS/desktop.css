@@ -370,7 +370,7 @@ figcaption {
     font-style: italic;
     font-size: 1.125em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-    margin: 0.5em auto;
+    margin-bottom: 0.5em;
 }
 
 
@@ -821,8 +821,9 @@ HOME PAGE
 .home-section {
     display: flex;
     flex-wrap: nowrap;
-    margin-bottom: 1em;
     padding: 0 1em;
+    padding-bottom: 0.75em;
+    margin-bottom: 1.25em;
     align-items: center;
 }
 
@@ -871,6 +872,10 @@ HOME PAGE
 STORIA - LAVORI SVOLTI
 =======================
 */
+
+.figure-paragraph-container {
+    padding: 0 1em;
+}
 
 .figure-paragraph-container, .img-list-container {
     display: flex;
@@ -923,6 +928,10 @@ MEZZI
     padding: 0;
 }
 
+.mezzi-container figcaption {
+    margin: 0.5em auto;
+}
+
 .mezzi-container img {
     border: var(--border) 0.125em solid;
     width: 25em;
@@ -943,6 +952,10 @@ figure.escavatori img {
     max-width: 80%;
     height: auto;
     border-radius: 0.625em;
+}
+
+figure.escavatori figcaption {
+    margin: 0.5em auto;
 }
 
 figure.escavatori figcaption span {
