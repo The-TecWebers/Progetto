@@ -917,7 +917,7 @@ MEZZI
     flex-wrap: wrap;
     gap: 4em;
     max-width: 90em;
-    margin: 5em auto;
+    margin: 3em auto;
     justify-content: center;
     list-style: none;
     padding: 0;
@@ -941,7 +941,7 @@ MEZZI
 }
 
 figure.escavatori {
-    margin: 5em auto;
+    margin: 3em auto;
     text-align: center;
     max-width: 90%;
 }
@@ -951,10 +951,6 @@ figure.escavatori img {
     max-width: 80%;
     height: auto;
     border-radius: 0.625em;
-}
-
-figure.escavatori figcaption {
-    text-align: center;
 }
 
 figure.escavatori figcaption span {
