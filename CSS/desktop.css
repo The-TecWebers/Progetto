@@ -491,8 +491,6 @@ button {
     margin-top: 1em;
     display: flex;
     gap: 1em;
-    /*flex-wrap: wrap;*/
-    /*justify-content: space-between;*/
     flex-grow: 1;
 }
 
