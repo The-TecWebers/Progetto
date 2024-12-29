@@ -32,6 +32,14 @@ GENERALE
     /* Altri colori */
     --hover: #000000;
     --border: #000000;
+
+    /* Altezze dell'header senza breadcrumb */
+    --headerDesktopHeight: 4.625em;
+    --headerHandheldHeight: 3.875em;
+
+    /* Altezze del breadcrumb */
+    --breadcrumbDesktopHeight: 1.5em;
+    --breadcrumbHandheldHeight: 2.226em;
 }
 
 * {
@@ -65,7 +73,11 @@ HEADER
 header {
     background-color: var(--bg_bgGreen);
     padding: 0.75em 0;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .row {
@@ -297,7 +309,7 @@ BREADCRUMB
 .breadcrumb
 {
     color: var(--visitedLink_bgGreen);
-    padding-left: 0.75em;
+    padding-left: 1.2em;
 }
 
 .breadcrumb ul li a {
@@ -318,7 +330,8 @@ BREADCRUMB
 }
 
 .breadcrumb ul li+li:before {
-    padding: 0.5em;
+    padding-right: 0.5em;
+    padding-left: 0.8em;
     content: "/\00a0";
 }
 
@@ -333,9 +346,14 @@ MAIN
 
 main {
     flex: 1;
-    padding: 1.25em 0;
+    padding-top: calc(1.25em + var(--headerDesktopHeight) + var(--breadcrumbDesktopHeight));
+    padding-bottom: 1.25em;
     max-width: 90%;
     margin: auto;
+}
+
+main.no-breadcrumb {
+    padding-top: calc(1.25em + var(--headerDesktopHeight));
 }
 
 main h1{
