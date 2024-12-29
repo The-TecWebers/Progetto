@@ -258,12 +258,12 @@ LAVORI SVOLTI
 
 /*
 =======
-404
+404-500
 =======
 */
 
-.container-404  img {
-    max-width: 70%;
+.container-error  img {
+    width: 70%;
 }
 
 

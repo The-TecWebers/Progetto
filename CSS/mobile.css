@@ -234,3 +234,15 @@ SU DI NOI
     grid-template-columns: auto;
     gap: 1em;
 }
+
+
+
+/*
+=======
+404-500
+=======
+*/
+
+.container-error  img {
+    width: 100%;
+}

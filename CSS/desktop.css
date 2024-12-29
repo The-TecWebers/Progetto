@@ -1101,7 +1101,7 @@ AREA PRIVATA
 }
 
 .container-error img {
-    max-width: 50%;
+    width: 50%;
 }
 
 .container-error h1 {
