@@ -487,6 +487,12 @@ button {
     margin-bottom: 0.5em;
 }
 
+legend {
+    font-size: 1.5em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    font-weight: bold;
+}
+
 .double-column {
     margin-top: 1em;
     display: flex;
@@ -494,10 +500,8 @@ button {
     flex-grow: 1;
 }
 
-legend {
-    font-size: 1.5em;
-    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-    font-weight: bold;
+.double-column > :first-child, .double-column > :last-child {
+    width: 50%;
 }
 
 
@@ -1070,14 +1074,6 @@ ACCEDI
 AREA PRIVATA
 =============
 */
-
-#dati_personali {
-    width: 50%;
-}
-
-#cambio_password {
-    width: 50%;
-}
 
 #confirmbutton {
     margin-top: 0.2em;

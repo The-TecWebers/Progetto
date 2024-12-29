@@ -5,7 +5,7 @@
     <form id="registrationForm" name="registrationForm" onsubmit="" action="auth.php?action=register" method="post">
         <!-- errorMessages -->
         <div class="double-column">
-            <fieldset class="surrounding-box">
+            <fieldset id="dati_personali" class="surrounding-box">
                 <legend>Dati personali</legend>
                 <label class="form-label" for="nome">Inserisci il tuo nome</label>
                 <input class="form-input" type="text" id="nome" name="nome" placeholder="Nome">
@@ -14,7 +14,7 @@
                 <label class="form-label" for="email">Inserisci la tua <span lang="en">email</span></label>
                 <input class="form-input" type="email" id="email" name="email" placeholder="E-mail">
             </fieldset>
-            <fieldset class="surrounding-box">
+            <fieldset id="dati_di_accesso" class="surrounding-box">
                 <legend>Dati di accesso</legend>
                 <label class="form-label" for="username">Inserisci uno username</label>
                 <input class="form-input" type="text" id="username" name="username" placeholder="Username">

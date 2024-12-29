@@ -149,6 +149,10 @@ FORM
     align-items: center;
 }
 
+.double-column > :first-child, .double-column > :last-child {
+    width: 100%;
+}
+
 
 
 /*
@@ -235,22 +239,6 @@ STORIA - LAVORI SVOLTI
 .figure-paragraph-container img{
     max-width: 100%;
     height: auto;
-}
-
-
-
-/* 
-=============
-AREA PRIVATA
-=============
-*/
-
-#dati_personali {
-    width: 100%;
-}
-
-#cambio_password {
-    width: 100%;
 }
 
 
