@@ -61,21 +61,21 @@ function caricamento_registrazione() {
   node.innerHTML = "Esso può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
   x.parentElement.insertBefore(node, x);
 
-  var x = document.getElementById("cognome");
+  x = document.getElementById("cognome");
   node = document.createElement("p");
   node.id = "info-" + x.id;
   node.classList.add("info-label");
   node.innerHTML = "Esso può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
   x.parentElement.insertBefore(node, x);
 
-  var x = document.getElementById("email");
+  x = document.getElementById("email");
   node = document.createElement("p");
   node.id = "info-" + x.id;
   node.classList.add("info-label");
   node.innerHTML = "Essa deve essere un indirizzo <span lang=\"en\">email</span> valido e può essere lunga al massimo 256 caratteri";
   x.parentElement.insertBefore(node, x);
 
-  var x = document.getElementById("username");
+  x = document.getElementById("username");
   node = document.createElement("p");
   node.id = "info-" + x.id;
   node.classList.add("info-label");
@@ -84,7 +84,7 @@ function caricamento_registrazione() {
     "<span lang=\"en\">underscore</span>, non può contenere spazi e può essere lungo al massimo 40 caratteri";
   x.parentElement.insertBefore(node, x);
 
-  var x = document.getElementById("password");
+  x = document.getElementById("password");
   node = document.createElement("p");
   node.id = "info-" + x.id;
   node.classList.add("info-label");
@@ -115,7 +115,7 @@ function checkSurname(surname) {
 }
 
 function checkEmail(email) {
-  var regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  var regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return regex.test(email);
 }
 
@@ -481,28 +481,16 @@ VALIDAZIONE FORM
 ==================
 */
 
-function validateRegister(){
-  if (!validateName()){
-    return false;
-  } 
-  else if (!validateSurname()){
-    return false;
-  } 
-  else if (!validateEmail()){
-    return false;
-  } 
-  else if (!validateUsername()) {
-    return false;
-  } 
-  else if (!validatePassword()) {
-    return false;
-  } 
-  else if (!validatePasswordConfirmation()) {
+function validateRegister() {
+  if (!validateName() ||
+      !validateSurname() ||
+      !validateEmail() ||
+      !validateUsername() ||
+      !validatePassword() ||
+      !validatePasswordConfirmation() ||
+      !validateSuggerimentoPassword()) {
     return false;
   }
-  else if (!validateSuggerimentoPassword()) {
-    return false;
-  }
-
   return true;
 }
+
