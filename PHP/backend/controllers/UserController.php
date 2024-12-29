@@ -34,6 +34,17 @@ class UserController extends AbstractController
 
     public static function read()
     {
+        if(isset($_SESSION['nome']) && isset($_SESSION['cognome']) && isset($_SESSION['email']) && isset($_SESSION['username'])){
+            $userData = [
+                'nome' => $_SESSION['nome'],
+                'cognome' => $_SESSION['cognome'],
+                'email' => $_SESSION['email'],
+                'username' => $_SESSION['username']
+            ];
+            return $userData;
+        }
+
+        return false;
     }
 
     public static function update()
