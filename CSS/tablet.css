@@ -244,6 +244,19 @@ STORIA - LAVORI SVOLTI
 
 
 /*
+==============
+LAVORI SVOLTI
+==============
+*/
+
+.img-list-container img{
+    max-width: 30%;
+    height: auto;
+}
+
+
+
+/*
 =======
 404
 =======

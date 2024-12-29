@@ -163,17 +163,13 @@ STORIA - LAVORI SVOLTI
     flex-direction: column;
 }
 
-.figure-paragraph-container > figure, .figure-paragraph-container > p {
+.figure-paragraph-container > :first-child, .figure-paragraph-container > :last-child {
     flex: 1 1 100%;
 }
 
 .figure-paragraph-container figure{
     max-width: 100%;
-}
-
-.figure-paragraph-container img{
-    max-width: 100%;
-    height: auto;
+    margin: 0;
 }
 
 
@@ -199,6 +195,22 @@ figure.escavatori img {
 figure.escavatori figcaption {
     display: flex; 
     flex-direction: column; 
+}
+
+
+
+/*
+==============
+LAVORI SVOLTI
+==============
+*/
+
+.img-list-container {
+    flex-direction: column;
+}
+
+.img-list-container img {
+    max-width: 100%;
 }
 
 
