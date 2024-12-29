@@ -1080,6 +1080,10 @@ ACCEDI
 =======
 */
 
+#loginDescription {
+    margin-top: 0.5em;
+}
+
 #loginButton {
     margin-top: 0.5em;
 }

@@ -44,24 +44,24 @@ switch ($current_page) {
         break;
     case "lavori_svolti.php":
         $header = str_replace('<li><a href="lavori_svolti.php">Lavori svolti</a></li>', '<li class="current-link">Lavori svolti</li>', $header);
-        $header = str_replace($placeholder, $prefix . 'Lavori svolti' . $suffix, $header); 
+        $header = str_replace($placeholder, $prefix . 'Lavori svolti' . $suffix, $header);
         break;
     case "lista_preventivi.php":
         $header = str_replace('<li><a href="lista_preventivi.php">Preventivi</a></li>', '<li class="current-link">Preventivi</li>', $header);
-        $header = str_replace($placeholder, $prefix . 'Preventivi' . $suffix, $header); 
+        $header = str_replace($placeholder, $prefix . 'Preventivi' . $suffix, $header);
         break;
     case "su_di_noi.php":
         $header = str_replace('<li><a href="su_di_noi.php">Su di noi</a></li>', '<li class="current-link">Su di noi</li>', $header);
-        $header = str_replace($placeholder, $prefix . 'Su di noi' . $suffix, $header); 
+        $header = str_replace($placeholder, $prefix . 'Su di noi' . $suffix, $header);
         break;
     case "registrati.php":
-        $header = str_replace($placeholder, $prefix . 'Registrati' . $suffix, $header); 
+        $header = str_replace($placeholder, $prefix . 'Registrati' . $suffix, $header);
         break;
     case "accedi.php":
-        $header = str_replace($placeholder, $prefix . 'Accedi' . $suffix, $header); 
+        $header = str_replace($placeholder, $prefix . 'Accedi' . $suffix, $header);
         break;
     case "area_privata.php":
-        $header = str_replace($placeholder, $prefix . 'Area privata' . $suffix, $header); 
+        $header = str_replace($placeholder, $prefix . 'Area privata' . $suffix, $header);
         break;
 
     default:
