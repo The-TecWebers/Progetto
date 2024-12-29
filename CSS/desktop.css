@@ -64,7 +64,7 @@ HEADER
 
 header {
     background-color: var(--bg_bgGreen);
-    padding: 0.75em;
+    padding: 0.75em 0;
     position: relative;
 }
 
@@ -205,6 +205,7 @@ PULSANTI ACCOUNT
 
 .sign-buttons {
     margin: auto;
+    padding: 0 0.25em;
 }
 
 .sign-buttons a {
@@ -296,8 +297,9 @@ BREADCRUMB
 .breadcrumb
 {
     color: var(--visitedLink_bgGreen);
-
+    padding-left: 0.75em;
 }
+
 .breadcrumb ul li a {
     text-decoration:underline;
     display: block;
@@ -309,6 +311,7 @@ BREADCRUMB
     color: var(--link_bgGreen);
     text-transform:none; 
 }
+
 .breadcrumb ul li a:hover, ul li a:active {
     background-color:transparent;
     color: var(--link_bgGreen);
