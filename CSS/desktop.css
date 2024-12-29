@@ -376,8 +376,8 @@ figcaption {
 .reversed > :first-child {
     order: 2;
 }
-  
-.reversed > :nth-child(2) {
+
+.reversed > :last-child {
     order: 1;
 }
 
@@ -905,7 +905,7 @@ STORIA - LAVORI SVOLTI
     margin-top: 0;
 }
 
-.figure-paragraph-container > :first-child {
+.figure-paragraph-container > :last-child {
     flex: 1;
 }
 
