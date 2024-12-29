@@ -318,7 +318,7 @@ BREADCRUMB
 }
 
 .breadcrumb ul li+li:before {
-    padding: .5em;
+    padding: 0.5em;
     content: "/\00a0";
 }
 
