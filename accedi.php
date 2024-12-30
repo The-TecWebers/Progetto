@@ -19,7 +19,6 @@ try {
 
     $err = isset($_SESSION['error-login']) ? $_SESSION['error-login'] : null;
     $msg = isset($_SESSION['intended-messages']) ? $_SESSION['intended-messages'] : null;
-    $msg = "<p class='centered'>".$msg."</p>";
 
     if (isset($err)){
         $template = str_replace("<!-- errorMessages -->", $err, $template);
@@ -28,6 +27,7 @@ try {
     }
     if(isset($msg))
     {
+        $msg = "<p class='info-label centered'>".$msg."</p>";
         $template = str_replace("<!--intendedRedirectMessages-->", $msg, $template);
     }
     session_reset();
