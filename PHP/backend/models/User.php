@@ -42,6 +42,6 @@ class User
     
     public function save()
     {
-        DBController::runQuery("INSERT INTO utente (username, email, password, nome, cognome) VALUES (?,?,?,?,?,?);", $this->username, $this->email, $this->password, $this->nome, $this->cognome);
+        DBController::runQuery("INSERT INTO utente (username, email, password, nome, cognome) VALUES (?,?,?,?,?);", $this->username, $this->email, $this->password, $this->nome, $this->cognome);
     }
 }
