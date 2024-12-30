@@ -12,12 +12,19 @@ try {
         /*if (AuthController::isAdmin())
              header("Location: dashboard.php");
          else */
-             header("Location: area_privata.php");
+        header("Location: area_privata.php");
     }
     $template = (file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'HTML' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . 'registrati.html'));
 
     $err = isset($_SESSION['error-reg']) ? $_SESSION['error-reg'] : null;
+    if (isset($_GET['intended'])) {
+        if ($_GET['intended'] == "lista_preventivi") {
+            $template = str_replace("auth.php?action=register", "auth.php?action=register&intended=lista_preventivi", $template);
 
+        } elseif ($_GET['intended'] == "crea_preventivo") {
+            $template = str_replace("auth.php?action=register", "auth.php?action=register&intended=crea_preventivo", $template);
+        }
+    }
     if (isset($err)) {
         $template = str_replace("<!-- errorMessages -->", $err, $template);
         $template = str_replace("placeholder=\"Nome\"", "value=\"" . $_SESSION['nome*'] . "\"", $template);

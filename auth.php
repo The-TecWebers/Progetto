@@ -20,7 +20,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ($result === true) {
             $_SESSION['error-reg'] = null;
-            header('Location: area_privata.php');
+            if(!isset($_GET['intended']))
+            {
+                header('Location: area_privata.php');
+            }
+            else
+            {
+                $route = $_GET['intended'];
+                header('Location:'.$route.'.php');
+            }
         }
         else {
             $_SESSION['error-reg'] = $result;

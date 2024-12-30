@@ -28,11 +28,14 @@ try {
     {
         if($_GET['intended']=="lista_preventivi")
         {
+            $template = str_replace("registrati.php", "registrati.php?intended=lista_preventivi", $template);
             $template = str_replace("auth.php?action=login", "auth.php?action=login&intended=lista_preventivi", $template);
+
         }
         elseif($_GET['intended']=="crea_preventivo")
         {
-            $template = str_replace("auth.php?action=login", "auth.php?action=login&intended=crea_preventivo", $template);
+            $template = str_replace("registrati.php", "registrati.php?intended=crea_preventivo", $template);
+            $template = str_replace("auth.php?action=login", "auth.php?action=login&intended=lista_preventivi", $template);
         }
     }
     else
