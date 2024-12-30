@@ -609,7 +609,7 @@ MESSAGGI DI ERRORE - VALIDAZIONE PHP
     color: var(--txtError);
     font-size: 1.125em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-    margin-right: 0.277em;
+    margin: 0 0.277em;
 }
 
 
