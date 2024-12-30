@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             else
             {
                 $route = $_SESSION['intendedRoute'];
-                $_SESSION['intendedRoute']=null;
+                unset($_SESSION['intendedRoute']);
                 header('Location:'.$route);
             }
         }

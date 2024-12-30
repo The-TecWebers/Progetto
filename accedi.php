@@ -18,15 +18,26 @@ try {
     $template = (file_get_contents('HTML' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . 'accedi.html'));
 
     $err = isset($_SESSION['error-login']) ? $_SESSION['error-login'] : null;
+    $msg = isset($_SESSION['intended-messages']) ? $_SESSION['intended-messages'] : null;
+    $msg = "<p class='centered'>".$msg."</p>";
 
     if (isset($err)){
         $template = str_replace("<!-- errorMessages -->", $err, $template);
         $template = str_replace("placeholder=\"Username\"", "value=\"" . $_SESSION['username*'] . "\"", $template);
         $template = str_replace("placeholder=\"Password\"", "value=\"" . $_SESSION['password*'] . "\"", $template);
     }
-
+    if(isset($msg))
+    {
+        $template = str_replace("<!--intendedRedirectMessages-->", $msg, $template);
+    }
+    session_reset();
+    unset($_SESSION['intended-messages']);
+    if(!isset($_SESSION['intendedEdited']))
+    {
+        unset($_SESSION['intendedRoute']);
+    }
+    unset($_SESSION['intendedEdited']);
     session_write_close();
-    session_abort();
 } catch (Exception $e) {
     AuthController::serverError();
 }
