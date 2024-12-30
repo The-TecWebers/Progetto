@@ -18,25 +18,33 @@ try {
     $template = (file_get_contents('HTML' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . 'accedi.html'));
 
     $err = isset($_SESSION['error-login']) ? $_SESSION['error-login'] : null;
-    $msg = isset($_SESSION['intended-messages']) ? $_SESSION['intended-messages'] : null;
-
     if (isset($err)){
         $template = str_replace("<!-- errorMessages -->", $err, $template);
         $template = str_replace("placeholder=\"Username\"", "value=\"" . $_SESSION['username*'] . "\"", $template);
         $template = str_replace("placeholder=\"Password\"", "value=\"" . $_SESSION['password*'] . "\"", $template);
     }
+    session_reset();
+    if(isset($_GET['intended']))
+    {
+        if($_GET['intended']=="lista_preventivi")
+        {
+            $template = str_replace("auth.php?action=login", "auth.php?action=login&intended=lista_preventivi", $template);
+        }
+        elseif($_GET['intended']=="crea_preventivo")
+        {
+            $template = str_replace("auth.php?action=login", "auth.php?action=login&intended=crea_preventivo", $template);
+        }
+    }
+    else
+    {
+        unset($_SESSION['intended-messages']);
+    }
+    $msg = isset($_SESSION['intended-messages']) ? $_SESSION['intended-messages'] : null;
     if(isset($msg))
     {
         $msg = "<p class='info-label centered'>".$msg."</p>";
         $template = str_replace("<!--intendedRedirectMessages-->", $msg, $template);
     }
-    session_reset();
-    unset($_SESSION['intended-messages']);
-    if(!isset($_SESSION['intendedEdited']))
-    {
-        unset($_SESSION['intendedRoute']);
-    }
-    unset($_SESSION['intendedEdited']);
     session_write_close();
 } catch (Exception $e) {
     AuthController::serverError();
