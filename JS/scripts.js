@@ -72,7 +72,7 @@ function caricamento_registrazione() {
   node = document.createElement("p");
   node.id = "info-" + x.id;
   node.classList.add("info-label");
-  node.innerHTML = "Essa deve essere un indirizzo <span lang=\"en\">email</span> valido e può essere lunga al massimo 256 caratteri";
+  node.innerHTML = "Essa deve essere un indirizzo <span lang=\"en\">email</span> valido";
   x.parentElement.insertBefore(node, x);
 
   x = document.getElementById("username");

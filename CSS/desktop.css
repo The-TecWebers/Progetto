@@ -503,6 +503,10 @@ button {
     margin-bottom: 0.5em;
 }
 
+.insideBoxDescription {
+    margin-top: 0.5em;
+}
+
 .change-form {
     text-align: center;
     margin-bottom: 0.5em;
@@ -1086,10 +1090,6 @@ SU DI NOI
 ACCEDI
 =======
 */
-
-#loginDescription {
-    margin-top: 0.5em;
-}
 
 #loginButton {
     margin-top: 0.5em;
