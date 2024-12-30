@@ -17,6 +17,6 @@ if (AuthController::isLogged()) {
 }
 else
 {
-    $_SESSION['intended-messages'] = "Esegui il login per creare un preventivo.";
+    $_SESSION['intended-messages'] = "Accedi per creare un preventivo.";
     header(header: 'Location:accedi.php?intended=crea_preventivo');
 }
