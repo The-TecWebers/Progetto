@@ -635,18 +635,18 @@ MESSAGGI DI ISTRUZIONI E DI ERRORE - VALIDAZIONE JAVASCRIPT
   color: var(--txtError);
   font-size: 0.9em;
   /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-  margin-top: 0.347em;
-  margin-left: 0.347em;
+  margin: 0.347em;
   font-weight: bold;
   background-color: var(--bgError);
-  padding: 0.347em;
+  padding: 0.447em;
   border-radius: 0.277em;
 }
 
 .error-label::before {
-  content: "⚠️ ";
+  content: "⚠️";
   font-size: 1rem;
   /* rem e non em, quindi rispetto alla radice, non rispetto a .error-label, che ha cambiato font-size */
+  margin-right: 0.2em;
 }
 
 
