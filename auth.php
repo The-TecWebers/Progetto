@@ -39,7 +39,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = UserController::login();
         if ($result === true) {
             $_SESSION['error-login'] = null;
-            header('Location: area_privata.php');
+            if(!isset($_SESSION['intendedRoute']))
+            {
+                header('Location: area_privata.php');
+            }
+            else
+            {
+                $route = $_SESSION['intendedRoute'];
+                $_SESSION['intendedRoute']=null;
+                header('Location:'.$route);
+            }
         }
         else{
             $_SESSION['error-login'] = $result;
