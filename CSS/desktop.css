@@ -314,7 +314,7 @@ BREADCRUMB
 
 .breadcrumb ul li a {
     text-decoration:underline;
-    display: block;
+    display: inline-block;
     font-size: 1em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     font-weight: 600;
