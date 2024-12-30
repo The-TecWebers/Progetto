@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'Roboto Slab';
+    src: url('../Fonts/RobotoSlab-Regular.ttf') format('truetype');
+}
+
+*{
+    font-family: 'Roboto Slab', serif;
+}
+
 .link-intestazione, .row, #GoUp, a, iframe, #form-preventivi{
     display: none;
 }
