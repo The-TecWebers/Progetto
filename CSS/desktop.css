@@ -40,6 +40,8 @@ GENERALE
     /* Altezze del breadcrumb */
     --breadcrumbDesktopHeight: 1.5em;
     --breadcrumbHandheldHeight: 2.226em;
+
+
 }
 
 * {
@@ -167,13 +169,16 @@ TORNA SU
 #goUp{
     position: fixed;
     background-color: var(--text_bgGreen);
+    text-align: center;
     color: var(--link_bgWhite);
-    font-size: 1.2em;
+    font-size: 2em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     bottom: 1.5em;
     right: 0.6em;
-    border-radius: 30%;
-    padding: 0.5em;
+    border-radius: 50%;
+    padding-top: 0.1em;
+    width: 1.6em;
+    height: 1.6em;
     cursor: pointer;
     text-decoration: none;
     display: none;
@@ -822,12 +827,19 @@ MARGINI
 }
 
 
+/*
+==========
+INTESTAZIONE
+==========
+*/
 
 
-
-
-
-
+.link-intestazione{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-weight: bold;    
+}
 
 
 
@@ -1137,3 +1149,4 @@ AREA PRIVATA
 #cta-error {
     margin-bottom: 1em;
 }
+

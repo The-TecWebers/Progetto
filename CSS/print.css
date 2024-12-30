@@ -1,3 +1,44 @@
- footer, nav, .btn, #goUp, .sign-buttons {
+.link-intestazione, .row, #GoUp, a, iframe, #form-preventivi{
     display: none;
+}
+
+h1::before {
+    content: url('../Images/Edil_Scavi_logo_colore-nuovo.png');
+    display: block;    
+
+}
+ .footer-grid-container a {
+    list-style-type: none;
+    display: block;
+    text-decoration: none;
+}
+
+li, .breadcrumb a{
+    display: inline;
+}
+
+.breadcrumb ul li+li:before {
+    padding-right: 0.5em;
+    padding-left: 0.8em;
+    content: "/\00a0";
+}
+.mezzi-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.figure-paragraph-container img {
+    width: 30%;
+}
+
+.figure-paragraph-container a{
+    display: inline;
+}
+
+.figure-paragraph-container a::after{
+    content: " (" attr(href) ") ";
+}
+
+#storia-lavori, #mezzi-escavatori, #mezzi-operativi{
+    page-break-before: always; 
+    break-before: page; 
 }
