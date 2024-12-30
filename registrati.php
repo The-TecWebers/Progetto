@@ -26,7 +26,6 @@ try {
         $template = str_replace("placeholder=\"Username\"", "value=\"" . $_SESSION['username*'] . "\"", $template);
         $template = str_replace("placeholder=\"Password\"", "value=\"" . $_SESSION['password*'] . "\"", $template);
         $template = str_replace("placeholder=\"Conferma password\"", "value=\"" . $_SESSION['password_confirmation*'] . "\"", $template);
-        $template = str_replace("placeholder=\"Suggerimento\"", "value=\"" . $_SESSION['suggerimento_password*'] . "\"", $template);
     }
 
     session_write_close();

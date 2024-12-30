@@ -15,7 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['username*'] = $_POST['username'] ?? null;
         $_SESSION['password*'] = $_POST['password'] ?? null;
         $_SESSION['password_confirmation*'] = $_POST['password_confirmation'] ?? null;
-        $_SESSION['suggerimento_password*'] = $_POST['suggerimento_password'] ?? null;
 
         $result = UserController::create();
 

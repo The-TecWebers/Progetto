@@ -13,8 +13,7 @@ class InputController
             empty($array["email"]) ||
             empty($array["username"]) ||
             empty($array["password"]) ||
-            empty($array["password_confirmation"]) ||
-            empty($array["suggerimento_password"])) {
+            empty($array["password_confirmation"])) {
 
             return "<ul class=\"errorMessages\"><li>Per favore, compila tutti i campi</li></ul>";
         }
