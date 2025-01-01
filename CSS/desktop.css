@@ -652,9 +652,9 @@ MESSAGGI DI ISTRUZIONI E DI ERRORE - VALIDAZIONE JAVASCRIPT
 
 
 /*
-==========
-CONTAINERS
-==========
+===============
+GENERIC STYLES
+===============
 */
 
 .container {
@@ -697,6 +697,10 @@ CONTAINERS
 
 .hidden {
     display: none;
+}
+
+.width50 {
+    width: 50%;
 }
 
 

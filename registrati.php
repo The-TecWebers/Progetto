@@ -21,13 +21,13 @@ try {
         if ($_GET['intended'] == "lista_preventivi") {
             $template = str_replace("auth.php?action=register", "auth.php?action=register&intended=lista_preventivi", $template);
             $template = str_replace("accedi.php", "accedi.php?intended=lista_preventivi", $template);
-            $msg = "<p class='info-label centered'>Registrati per accedere ai preventivi.</p>";
+            $msg = "<p class='info-label centered width50 m-auto'>Registrati per vedere i tuoi preventivi.</p>";
             $template = str_replace("<!--intendedRedirectMessages-->", $msg, $template);
 
         } elseif ($_GET['intended'] == "crea_preventivo") {
             $template = str_replace("auth.php?action=register", "auth.php?action=register&intended=crea_preventivo", $template);
             $template = str_replace("accedi.php", "accedi.php?intended=crea_preventivo", $template);
-            $msg = "<p class='info-label centered'>Registrati per accedere ai preventivi.</p>";
+            $msg = "<p class='info-label centered width50 m-auto'>Registrati per creare un preventivo.</p>";
             $template = str_replace("<!--intendedRedirectMessages-->", $msg, $template);
         }
     }
