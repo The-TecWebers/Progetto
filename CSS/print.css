@@ -167,9 +167,6 @@ HOME | PRINT
     flex: 1 1 50%;
 }
 
-.home-section > figure {
-    text-align: center;
-}
 
 .home-section > iframe {
     width: 70%;
