@@ -7,6 +7,7 @@
     font-family: 'Roboto Slab', serif;
 }
 
+
 .link-intestazione, .row, #GoUp, a, iframe, #form-preventivi{
     display: none;
 }
@@ -34,9 +35,18 @@ li, .breadcrumb a{
 .mezzi-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 .figure-paragraph-container img {
-    width: 30%;
+    width: 40%;
+}
+
+.home-section img, .img-list-container img, .figure-paragraph-container img {
+    display: block; 
+    margin: 0 auto 20px; 
+}
+h2{
+    text-align: center;
 }
 
 .figure-paragraph-container a{
