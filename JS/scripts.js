@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("username").onblur = function() {return validateUsername();};
     document.getElementById("password").onblur = function() {return validatePassword();};
     document.getElementById("password_confirmation").onblur = function() {return validatePasswordConfirmation();};
-    document.getElementById("suggerimento_password").onblur = function() {return validateSuggerimentoPassword();};
     document.getElementById("registrationForm").onsubmit = function() {return validateRegister();};
   }
 });
@@ -58,21 +57,21 @@ function caricamento_registrazione() {
   var node = document.createElement("p");
   node.id = "info-" + x.id;
   node.classList.add("info-label");
-  node.innerHTML = "Esso può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
+  node.innerHTML = "Esso può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
   x.parentElement.insertBefore(node, x);
 
   x = document.getElementById("cognome");
   node = document.createElement("p");
   node.id = "info-" + x.id;
   node.classList.add("info-label");
-  node.innerHTML = "Esso può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
+  node.innerHTML = "Esso può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
   x.parentElement.insertBefore(node, x);
 
   x = document.getElementById("email");
   node = document.createElement("p");
   node.id = "info-" + x.id;
   node.classList.add("info-label");
-  node.innerHTML = "Essa deve essere un indirizzo <span lang=\"en\">email</span> valido e può essere lunga al massimo 256 caratteri";
+  node.innerHTML = "Essa deve essere un indirizzo <span lang=\"en\">email</span> valido";
   x.parentElement.insertBefore(node, x);
 
   x = document.getElementById("username");
@@ -80,7 +79,7 @@ function caricamento_registrazione() {
   node.id = "info-" + x.id;
   node.classList.add("info-label");
   node.innerHTML = 
-    "Esso può contenere solo lettere, numeri, trattini e " +
+    "Esso può contenere solo lettere, numeri, apostrofi, trattini e " +
     "<span lang=\"en\">underscore</span>, non può contenere spazi e può essere lungo al massimo 40 caratteri";
   x.parentElement.insertBefore(node, x);
 
@@ -105,12 +104,12 @@ CONTROLLI SUI CAMPI DEI FORM
 var accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
 
 function checkName(name) {
-  var regex = new RegExp('^[a-zA-Z' + accentedCharacters + '\\-\\s]{2,40}$'); 
+  var regex = new RegExp('^[a-zA-Z' + accentedCharacters + '\'\\-\\s]{2,40}$'); 
   return regex.test(name);
 }
 
 function checkSurname(surname) {
-  var regex = new RegExp('^[a-zA-Z' + accentedCharacters + '\\-\\s]{2,40}$'); 
+  var regex = new RegExp('^[a-zA-Z' + accentedCharacters + '\'\\-\\s]{2,40}$'); 
   return regex.test(surname);
 }
 
@@ -120,7 +119,7 @@ function checkEmail(email) {
 }
 
 function checkUsername(username) {
-  var regex = new RegExp('^[\\w' + accentedCharacters + '\\-]{1,40}$'); 
+  var regex = new RegExp('^[\\w' + accentedCharacters + '\'\\-]{1,40}$'); 
   return regex.test(username);
 }
 
@@ -170,8 +169,7 @@ function validateName(){
   node.setAttribute("aria-live", "assertive");
 
   if (x.value == "") {
-    const textnode = document.createTextNode("Devi inserire il tuo nome!");
-    node.appendChild(textnode);
+    node.innerHTML = "Devi inserire il tuo nome!";
     insertAfter(node, x);
     x.focus();
     
@@ -183,8 +181,7 @@ function validateName(){
   }
   
   if (!checkName(x.value)) {
-    const textnode = document.createTextNode("Il nome può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri");
-    node.appendChild(textnode);
+    node.innerHTML = "Il nome può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
     insertAfter(node, x);
     x.focus();
     
@@ -219,7 +216,7 @@ function validateSurname(){
   }
 
   if (!checkSurname(x.value)) {
-    node.innerHTML = "Il cognome può contenere solo lettere, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
+    node.innerHTML = "Il cognome può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
     insertAfter(node, x);
     x.focus();
     
@@ -297,7 +294,7 @@ function validateUsername() {
   }
 
   if (!checkUsername(x.value)) {
-    node.innerHTML = "Lo <span lang=\"en\">Username</span> può contenere solo lettere, numeri, trattini e <span lang=\"en\">underscore</span>, non può contenere spazi e deve essere lungo al massimo 40 caratteri";
+    node.innerHTML = "Lo <span lang=\"en\">Username</span> può contenere solo lettere, numeri, apostrofi, trattini e <span lang=\"en\">underscore</span>, non può contenere spazi e deve essere lungo al massimo 40 caratteri";
     insertAfter(node, x);
     x.focus();
 
@@ -365,37 +362,6 @@ function validatePasswordConfirmation() {
 
   if (x.value != x2.value) {
     node.innerHTML = "Le <span lang=\"en\">password</span> non coincidono";
-    insertAfter(node, x);
-    x.focus();
-
-    return false;
-  }
-
-  return true;
-}
-
-function validateSuggerimentoPassword() {
-  var x = document.getElementById("suggerimento_password");
-
-  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
-    x.parentElement.removeChild(x.nextElementSibling);
-  }
-
-  const node = document.createElement("p");
-  node.classList.add("error-label");
-  node.setAttribute("role", "alert");
-  node.setAttribute("aria-live", "assertive");
-
-  if (x.value == "") {
-    node.innerHTML = "Devi inserire un suggerimento per la <span lang=\"en\">password</span>!";
-    insertAfter(node, x);
-    x.focus();
-
-    return false;
-  }
-
-  if (x.value.length > 256) {
-    node.innerHTML = "Il suggerimento per la <span lang=\"en\">password</span> deve essere lungo al massimo 256 caratteri";
     insertAfter(node, x);
     x.focus();
 
@@ -487,8 +453,7 @@ function validateRegister() {
       !validateEmail() ||
       !validateUsername() ||
       !validatePassword() ||
-      !validatePasswordConfirmation() ||
-      !validateSuggerimentoPassword()) {
+      !validatePasswordConfirmation()) {
     return false;
   }
   return true;

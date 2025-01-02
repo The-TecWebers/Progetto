@@ -56,12 +56,24 @@ switch ($current_page) {
         break;
     case "registrati.php":
         $header = str_replace($placeholder, $prefix . 'Registrati' . $suffix, $header);
+        if(isset($_GET['intended']) && $_GET['intended']=='lista_preventivi')
+        {
+            $header = str_replace('<li><a href="lista_preventivi.php">Preventivi</a></li>', '<li class="current-link">Preventivi</li>', $header);
+        }
         break;
     case "accedi.php":
         $header = str_replace($placeholder, $prefix . 'Accedi' . $suffix, $header);
+        if(isset($_GET['intended']) && $_GET['intended']=='lista_preventivi')
+        {
+            $header = str_replace('<li><a href="lista_preventivi.php">Preventivi</a></li>', '<li class="current-link">Preventivi</li>', $header);
+        }
         break;
     case "area_privata.php":
         $header = str_replace($placeholder, $prefix . 'Area privata' . $suffix, $header);
+        break;
+    case "crea_preventivo.php":
+        $header = str_replace($placeholder, $prefix . '<a href="lista_preventivi.php">Lista preventivi</a></li>'
+                  . '<li>Crea preventivo' . $suffix, $header);
         break;
 
     default:

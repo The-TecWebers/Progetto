@@ -15,13 +15,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['username*'] = $_POST['username'] ?? null;
         $_SESSION['password*'] = $_POST['password'] ?? null;
         $_SESSION['password_confirmation*'] = $_POST['password_confirmation'] ?? null;
-        $_SESSION['suggerimento_password*'] = $_POST['suggerimento_password'] ?? null;
 
         $result = UserController::create();
 
         if ($result === true) {
             $_SESSION['error-reg'] = null;
-            header('Location: area_privata.php');
+            if(!isset($_GET['intended']))
+            {
+                header('Location: area_privata.php');
+            }
+            else
+            {
+                $route = $_GET['intended'];
+                header('Location:'.$route.'.php');
+            }
         }
         else {
             $_SESSION['error-reg'] = $result;
@@ -39,7 +46,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = UserController::login();
         if ($result === true) {
             $_SESSION['error-login'] = null;
-            header('Location: area_privata.php');
+            if(!isset($_GET['intended']))
+            {
+                header('Location: area_privata.php');
+            }
+            else
+            {
+                $route = $_GET['intended'];
+                header('Location:'.$route.'.php');
+            }
         }
         else{
             $_SESSION['error-login'] = $result;

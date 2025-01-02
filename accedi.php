@@ -16,17 +16,32 @@ try {
             header("Location: area_privata.php");
     }
     $template = (file_get_contents('HTML' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . 'accedi.html'));
-
     $err = isset($_SESSION['error-login']) ? $_SESSION['error-login'] : null;
-
     if (isset($err)){
         $template = str_replace("<!-- errorMessages -->", $err, $template);
         $template = str_replace("placeholder=\"Username\"", "value=\"" . $_SESSION['username*'] . "\"", $template);
         $template = str_replace("placeholder=\"Password\"", "value=\"" . $_SESSION['password*'] . "\"", $template);
     }
+    if(isset($_GET['intended']))
+    {
+        if($_GET['intended']=="lista_preventivi")
+        {
+            $template = str_replace("registrati.php", "registrati.php?intended=lista_preventivi", $template);
+            $template = str_replace("auth.php?action=login", "auth.php?action=login&intended=lista_preventivi", $template);
+            $msg = "<p class='info-label centered'>Accedi per vedere i tuoi preventivi.</p>";
+            $template = str_replace("<!--intendedRedirectMessages-->", $msg, $template);
 
+        }
+        elseif($_GET['intended']=="crea_preventivo")
+        {
+            $template = str_replace("registrati.php", "registrati.php?intended=crea_preventivo", $template);
+            $template = str_replace("auth.php?action=login", "auth.php?action=login&intended=lista_preventivi", $template);
+            $msg = "<p class='info-label centered'>Accedi per creare un preventivo.</p>";
+            $template = str_replace("<!--intendedRedirectMessages-->", $msg, $template);
+        }
+    }
+    session_reset();
     session_write_close();
-    session_abort();
 } catch (Exception $e) {
     AuthController::serverError();
 }

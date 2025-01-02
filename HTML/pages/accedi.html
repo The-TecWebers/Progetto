@@ -1,17 +1,17 @@
 <main id="content">
     <h1>Accedi</h1>
     <form id="loginForm" name="loginForm" onsubmit="" action="auth.php?action=login" method="post" autocomplete="on">
+        <!--intendedRedirectMessages-->
         <div class="surrounding-box">
-            <p id="loginDescription" class="form-description">Accedi a <strong>Edil Scavi</strong>!</p>
+            <p class="form-description insideBoxDescription">Accedi a <strong>Edil Scavi</strong>!</p>
             <p class="change-form">Non hai un account? <a href="registrati.php">Registrati qui</a></p>
             <!-- errorMessages -->
             <label class="form-label" for="username">Inserisci lo <span lang="en">username</span></label>
             <input class="form-input" type="text" id="username" name="username" placeholder="Username">
             <label class="form-label" for="password">Inserisci la <span lang="en">password</span></label>
             <input class="form-input" type="password" id="password" name="password" placeholder="Password">
-            <a href="#" title="Vedi suggerimento per la password">Password dimenticata?</a>
             <div class="form-buttons">
-                <button id="loginButton" type="submit" aria-label="Accedi a Edil Scavi">Accedi</button>
+                <button type="submit" aria-label="Accedi a Edil Scavi">Accedi</button>
             </div>
         </div>
     </form>

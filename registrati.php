@@ -12,12 +12,25 @@ try {
         /*if (AuthController::isAdmin())
              header("Location: dashboard.php");
          else */
-             header("Location: area_privata.php");
+        header("Location: area_privata.php");
     }
     $template = (file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'HTML' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . 'registrati.html'));
 
     $err = isset($_SESSION['error-reg']) ? $_SESSION['error-reg'] : null;
+    if (isset($_GET['intended'])) {
+        if ($_GET['intended'] == "lista_preventivi") {
+            $template = str_replace("auth.php?action=register", "auth.php?action=register&intended=lista_preventivi", $template);
+            $template = str_replace("accedi.php", "accedi.php?intended=lista_preventivi", $template);
+            $msg = "<p class='info-label centered width50 m-auto'>Registrati per vedere i tuoi preventivi.</p>";
+            $template = str_replace("<!--intendedRedirectMessages-->", $msg, $template);
 
+        } elseif ($_GET['intended'] == "crea_preventivo") {
+            $template = str_replace("auth.php?action=register", "auth.php?action=register&intended=crea_preventivo", $template);
+            $template = str_replace("accedi.php", "accedi.php?intended=crea_preventivo", $template);
+            $msg = "<p class='info-label centered width50 m-auto'>Registrati per creare un preventivo.</p>";
+            $template = str_replace("<!--intendedRedirectMessages-->", $msg, $template);
+        }
+    }
     if (isset($err)) {
         $template = str_replace("<!-- errorMessages -->", $err, $template);
         $template = str_replace("placeholder=\"Nome\"", "value=\"" . $_SESSION['nome*'] . "\"", $template);
@@ -26,7 +39,6 @@ try {
         $template = str_replace("placeholder=\"Username\"", "value=\"" . $_SESSION['username*'] . "\"", $template);
         $template = str_replace("placeholder=\"Password\"", "value=\"" . $_SESSION['password*'] . "\"", $template);
         $template = str_replace("placeholder=\"Conferma password\"", "value=\"" . $_SESSION['password_confirmation*'] . "\"", $template);
-        $template = str_replace("placeholder=\"Suggerimento\"", "value=\"" . $_SESSION['suggerimento_password*'] . "\"", $template);
     }
 
     session_write_close();

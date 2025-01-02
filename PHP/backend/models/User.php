@@ -9,7 +9,6 @@ class User
     private $email;
     private $nome;
     private $cognome;
-    private $suggerimento_password;
 
     function __construct(array $array)
     {
@@ -18,7 +17,6 @@ class User
         $this->password = $array['password'];
         $this->nome = $array['nome'];
         $this->cognome = $array['cognome'];
-        $this->suggerimento_password = $array['suggerimento_password'];
     }
 
     public function getEmail()
@@ -41,13 +39,9 @@ class User
     {
         return $this->cognome;
     }
-    public function getSuggerimentoPassword()
-    {
-        return $this->suggerimento_password;
-    }
     
     public function save()
     {
-        DBController::runQuery("INSERT INTO utente (username, email, password, suggerimento_password, nome, cognome) VALUES (?,?,?,?,?,?);", $this->username, $this->email, $this->password, $this->suggerimento_password, $this->nome, $this->cognome);
+        DBController::runQuery("INSERT INTO utente (username, email, password, nome, cognome) VALUES (?,?,?,?,?);", $this->username, $this->email, $this->password, $this->nome, $this->cognome);
     }
 }
