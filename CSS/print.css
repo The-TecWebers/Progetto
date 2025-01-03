@@ -10,20 +10,19 @@ GENERALE
 }
 
 
-*{
+* {
     font-family: 'Roboto Slab', serif;
 }
 
-main{
+main {
     text-align: center;
-
 }
 
-p{
+p {
     text-align: justify;
 }
 
-.link-intestazione, .row, #GoUp, a, #form-preventivi{
+.link-intestazione, .row, #GoUp, a, #form-preventivi {
     display: none;
 }
 
@@ -33,14 +32,127 @@ h1::before {
 
 }
 
-img{
+img {
     border-radius: 0.625em;
 }
 
-#storia-lavori, #mezzi-escavatori, #mezzi-operativi{
+#storia-lavori, #mezzi-escavatori, #mezzi-operativi {
     page-break-before: always; 
     break-before: page; 
 }
+
+
+
+/*
+==================
+BREADCRUMB | PRINT
+==================
+*/
+
+li, .breadcrumb a {
+    display: inline;
+}
+
+.breadcrumb ul li+li:before {
+    padding-right: 0.5em;
+    padding-left: 0.8em;
+    content: "/\00a0";
+}
+
+
+
+/*
+============
+FORM | PRINT
+============
+*/
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 50%;
+    margin-bottom: 1em;
+}
+
+.form-input {
+    border: 0.125em solid;
+    border-radius: 1em;
+    width: 80%;
+    padding: 0.75em 1.25em;
+    margin: 0.5em 0;
+    font-size: 1em;
+    /* Rimane lo stesso font-size */
+}
+
+.form-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 0.9375em;
+    margin-bottom: 0.3125em;
+}
+
+.form-buttons button{
+    width: 100%;
+    font-weight: bold;
+}
+
+.btn-link,
+button {
+    text-decoration: none;
+    padding: 0.5em 1em 0.5em 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+    border-radius: 1em;
+    font-size: 1.25em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+
+}
+
+.surrounding-box {
+    padding-left: 1.25em;
+    padding-right: 1.25em;
+    padding-bottom: 1.25em;
+    border-radius: 1em;
+    border: 0.0625em solid;
+    box-shadow: 0 0.125em 0.3125em rgba(0, 0, 0, 0.2);
+}
+
+.form-description {
+    text-align: center;
+    font-size: 1.5em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+.insideBoxDescription {
+    margin-top: 0.5em;
+}
+
+.change-form {
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+legend {
+    font-size: 1.5em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    font-weight: bold;
+}
+
+.double-column {
+    margin-top: 1em;
+    display: flex;
+    gap: 1em;
+    flex-grow: 1;
+}
+
+.double-column > :first-child, .double-column > :last-child {
+    width: 50%;
+}
+
 
 
 /*
@@ -49,7 +161,7 @@ FOOTER | PRINT
 ==============
 */
 
- .footer-grid-container a {
+.footer-grid-container a {
     list-style-type: none;
     display: block;
     text-decoration: none;
@@ -73,32 +185,68 @@ footer .contacts {
 
 
 
-/*
-==================
-BREADCRUMB | PRINT
-==================
-*/
 
-li, .breadcrumb a{
-    display: inline;
-}
 
-.breadcrumb ul li+li:before {
-    padding-right: 0.5em;
-    padding-left: 0.8em;
-    content: "/\00a0";
-}
+
+
+
+
+
+
 
 /*
-=============
-MEZZI | PRINT
-=============
+============================
+           PAGINE
+============================
 */
 
-.mezzi-container {
+
+
+
+
+
+/*
+============
+HOME | PRINT
+============
+*/
+
+.home-section {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
+    padding: 0 1em;
+    padding-bottom: 0.75em;
+    margin-bottom: 1.25em;
+    align-items: center;
+}
+
+.home-section > figure,
+.home-section > p {
+    padding: 0em 0.5em;
+    flex: 1 1 50%;
+}
+
+
+.home-section > iframe {
+    width: 70%;
+    height: 25em; 
+    padding: auto;
+}
+
+.home-section img {
+    max-width: none;
+    height: auto;
+    object-fit: fill;
+    object-position: center;
+    
+}
+
+.reversed > :first-child {
+    order: 2;
+}
+
+.reversed > :last-child {
+    order: 1;
 }
 
 
@@ -159,50 +307,20 @@ STORIA / LAVORI SVOLTI | PRINT
 }
 
 
+
 /*
-============
-HOME | PRINT
-============
+=============
+MEZZI | PRINT
+=============
 */
 
-
-.home-section {
+.mezzi-container {
     display: flex;
-    flex-wrap: nowrap;
-    padding: 0 1em;
-    padding-bottom: 0.75em;
-    margin-bottom: 1.25em;
-    align-items: center;
-}
-
-.home-section > figure,
-.home-section > p {
-    padding: 0em 0.5em;
-    flex: 1 1 50%;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 
-.home-section > iframe {
-    width: 70%;
-    height: 25em; 
-    padding: auto;
-}
-
-.home-section img {
-    max-width: none;
-    height: auto;
-    object-fit: fill;
-    object-position: center;
-    
-}
-
-.reversed > :first-child {
-    order: 2;
-}
-
-.reversed > :last-child {
-    order: 1;
-}
 
 /*
 =================
@@ -236,79 +354,4 @@ SU DI NOI | PRINT
 
 .items-center{
     justify-items: center;
-}
-
-/*
-============
-FORM | PRINT
-============
-*/
-
-form {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    width: 50%;
-    margin-bottom: 1em;
-}
-
-.form-input {
-    border: 0.125em solid;
-    border-radius: 1em;
-    width: 80%;
-    padding: 0.75em 1.25em;
-    margin: 0.5em 0;
-    font-size: 1em;
-    /* Rimane lo stesso font-size */
-}
-
-.form-buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 0.9375em;
-    margin-bottom: 0.3125em;
-}
-
-.form-buttons button{
-    width: 100%;
-    font-weight: bold;
-}
-
-.btn-link,
-button {
-    text-decoration: none;
-    padding: 0.5em 1em 0.5em 1em;
-    margin-left: 1em;
-    margin-right: 1em;
-    border-radius: 1em;
-    font-size: 1.25em;
-    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-
-}
-
-.surrounding-box {
-    padding-left: 1.25em;
-    padding-right: 1.25em;
-    padding-bottom: 1.25em;
-    border-radius: 1em;
-    border: 0.0625em solid;
-    box-shadow: 0 0.125em 0.3125em rgba(0, 0, 0, 0.2);
-}
-
-legend {
-    font-size: 1.5em;
-    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-    font-weight: bold;
-}
-
-.double-column {
-    margin-top: 1em;
-    display: flex;
-    gap: 1em;
-    flex-grow: 1;
-}
-
-.double-column > :first-child, .double-column > :last-child {
-    width: 50%;
 }
