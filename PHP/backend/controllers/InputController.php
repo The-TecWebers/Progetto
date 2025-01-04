@@ -286,7 +286,7 @@ class InputController
             $userPassword = $user->getPassword();
 
             if(!password_verify($old_pass, $userPassword)) {
-                $errorMessages .= "<li>La vecchia <span lang=\"en\">password</span> non è corretta</li>";
+                $errorMessages .= "<li>La <span lang=\"en\">password</span> attuale non è corretta</li>";
             }
 
             if (self::isPassword($new_pass) !== true) {

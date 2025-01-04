@@ -51,22 +51,40 @@ try {
     $err = isset($_SESSION['error-priv-area']) ? $_SESSION['error-priv-area'] : null;
     if (isset($err)) {
         $template = str_replace("<!-- errorMessages -->", $err, $template);
-        $template = str_replace("[Nome]", $_SESSION['nome*'], $template);
-        $template = str_replace("[Cognome]", $_SESSION['cognome*'], $template);
-        $template = str_replace("[Email]", $_SESSION['email*'], $template);
-        $template = str_replace("[Username]", $_SESSION['username*'], $template);
-        $template = str_replace("id=\"old_password\"", "id=\"old_password\" value=\"" . $_SESSION['old_password*'] . "\"", $template);
-        $template = str_replace("id=\"new_password\"", "id=\"new_password\" value=\"" . $_SESSION['new_password*'] . "\"", $template);
-        $template = str_replace("id=\"repeated_password\"", "id=\"repeated_password\" value=\"" . $_SESSION['repeated_password*'] . "\"", $template);
+
+        $fields = array(
+            'nome' => 'Nome',
+            'cognome' => 'Cognome',
+            'email' => 'Email',
+            'username' => 'Username',
+            'old_password' => 'Password attuale',
+            'new_password' => 'Nuova Password',
+            'repeated_password' => 'Ripeti Password'
+        );
+        
+        foreach ($fields as $field => $label) {
+            $sessionKey = $field . '*';
+            if (isset($_SESSION[$sessionKey]) && $_SESSION[$sessionKey] !== "") {
+                $template = str_replace("placeholder=\"{$label}\"", "value=\"" . $_SESSION[$sessionKey] . "\"", $template);
+            }
+        }
     }
     else{
         $userData = UserController::read();
 
         if($userData !== false){
-            $template = str_replace("[Nome]", $userData['nome'], $template);
-            $template = str_replace("[Cognome]", $userData['cognome'], $template);
-            $template = str_replace("[Email]", $userData['email'], $template);
-            $template = str_replace("[Username]", $userData['username'], $template);
+            $fields = array(
+                'nome' => 'Nome',
+                'cognome' => 'Cognome',
+                'email' => 'Email',
+                'username' => 'Username'
+            );
+
+            foreach ($fields as $field => $label) {
+                if (isset($userData[$field]) && $userData[$field] !== "") {
+                    $template = str_replace("placeholder=\"{$label}\"", "value=\"" . $userData[$field] . "\"", $template);
+                }
+            }
         }
     }
 

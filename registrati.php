@@ -37,12 +37,12 @@ try {
         $template = str_replace("<!-- errorMessages -->", $err, $template);
         
         $fields = array(
-            'nome' => 'Nome',
-            'cognome' => 'Cognome',
-            'email' => 'E-mail',
-            'username' => 'Username',
-            'password' => 'Password',
-            'password_confirmation' => 'Conferma password'
+            'nome' => 'Es.: Mario',
+            'cognome' => 'Es.: Rossi',
+            'email' => 'Es: mario.rossi@example.com',
+            'username' => 'Es.: MRossi33',
+            'password' => 'Es.: MRossi33__$',
+            'password_confirmation' => 'Es.: 44Gatti__$'
         );
         
         foreach ($fields as $field => $label) {
