@@ -4,7 +4,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "back
 
 session_start();
 $titolo = "Crea preventivo - EdilScavi";
-$descrizione= "Crea un preventivo per i lavori di scavo ed edilizia con EdilScavi Srl.";
+$descrizione= "Crea un preventivo per i lavori di scavo ed edilizia con EdilScavi Srl!";
 $keywords = "preventivo, scavi, edilizia, scavi brescia, lavori edilizi";
 
 if (AuthController::isLogged()) {
