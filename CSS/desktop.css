@@ -272,6 +272,19 @@ PULSANTI ACCOUNT
     box-shadow: 0 0.142em 0.285em rgba(0, 0, 0, 0.3);
 }
 
+.sign-buttons div.current-link {
+    display: inline-block;
+    text-decoration: none;
+    background-color: var(--bg_bgFuchsia);
+    color: var(--link_bgFuchsia);
+    border: none;
+    border-radius: 0.357em;
+    padding: 0.714em 1.428em;
+    font-size: 0.875em;
+    font-weight: bold;
+    text-align: center;
+}
+
 
 
 /*
