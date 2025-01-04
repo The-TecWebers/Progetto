@@ -171,7 +171,6 @@ function validateName(){
   if (x.value == "") {
     node.innerHTML = "Devi inserire il tuo nome!";
     insertAfter(node, x);
-    x.focus();
     
     return false;
   }
@@ -183,7 +182,6 @@ function validateName(){
   if (!checkName(x.value)) {
     node.innerHTML = "Il nome può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
     insertAfter(node, x);
-    x.focus();
     
     return false;
   }
@@ -206,7 +204,6 @@ function validateSurname(){
   if (x.value == "") {
     node.innerHTML = "Devi inserire il tuo cognome!";
     insertAfter(node, x);
-    x.focus();
     
     return false;
   }
@@ -218,7 +215,6 @@ function validateSurname(){
   if (!checkSurname(x.value)) {
     node.innerHTML = "Il cognome può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
     insertAfter(node, x);
-    x.focus();
     
     return false;
   }
@@ -241,7 +237,6 @@ function validateEmail() {
   if (x.value == "") {
     node.innerHTML = "Devi inserire un'<span lang=\"en\">email</span>!";
     insertAfter(node, x);
-    x.focus();
 
     return false;
   }
@@ -249,7 +244,6 @@ function validateEmail() {
   if (x.value.length > 256) {
     node.innerHTML = "L'<span lang=\"en\">email</span> deve essere lunga al massimo 256 caratteri";
     insertAfter(node, x);
-    x.focus();
 
     return false;
   }
@@ -261,7 +255,6 @@ function validateEmail() {
   if (!checkEmail(x.value)) {
     node.innerHTML = "<span lang=\"en\">Email</span> non valida";
     insertAfter(node, x);
-    x.focus();
 
     return false;
   }
@@ -284,7 +277,6 @@ function validateUsername() {
   if (x.value == "") {
     node.innerHTML = "Devi inserire uno <span lang=\"en\">username</span>!";
     insertAfter(node, x);
-    x.focus();
 
     return false;
   }
@@ -296,7 +288,6 @@ function validateUsername() {
   if (!checkUsername(x.value)) {
     node.innerHTML = "Lo <span lang=\"en\">Username</span> può contenere solo lettere, numeri, apostrofi, trattini e <span lang=\"en\">underscore</span>, non può contenere spazi e deve essere lungo al massimo 40 caratteri";
     insertAfter(node, x);
-    x.focus();
 
     return false;
   }
@@ -319,7 +310,6 @@ function validatePassword() {
   if (x.value == "") {
     node.innerHTML = "Devi inserire una <span lang=\"en\">password</span>!";
     insertAfter(node, x);
-    x.focus();
 
     return false;
   }
@@ -327,7 +317,6 @@ function validatePassword() {
   if (x.value.length > 256) {
     node.innerHTML = "La <span lang=\"en\">password</span> deve essere lunga al massimo 256 caratteri";
     insertAfter(node, x);
-    x.focus();
 
     return false;
   }
@@ -339,7 +328,6 @@ function validatePassword() {
   if (!checkPassword(x.value)) {
     node.innerHTML = "La <span lang=\"en\">password</span> deve contenere almeno 8 caratteri, di cui almeno una lettera maiuscola, una minuscola, un numero e un carattere speciale";
     insertAfter(node, x);
-    x.focus();
 
     return false;
   }
@@ -363,7 +351,6 @@ function validatePasswordConfirmation() {
   if (x.value != x2.value) {
     node.innerHTML = "Le <span lang=\"en\">password</span> non coincidono";
     insertAfter(node, x);
-    x.focus();
 
     return false;
   }
@@ -387,7 +374,6 @@ function validateDate(id, id2){
   if (!checkDate(x.value)) {
     node.innerHTML = "La data deve essere nel formato gg/mm/aaaa";
     insertAfter(node, x);
-    x.focus();
     
     return false;
   }
@@ -410,7 +396,6 @@ function validateImgPath(id){
   if (x.value == "") {
     node.innerHTML = "Inserisci un percorso valido";
     insertAfter(node, x);
-    x.focus();
     
     return false;
   }
@@ -418,7 +403,6 @@ function validateImgPath(id){
   if (x.value.length > 256) {
     node.innerHTML = "Il percorso dell'immagine deve essere lungo al massimo 256 caratteri";
     insertAfter(node, x);
-    x.focus();
     
     return false;
   }
@@ -430,7 +414,6 @@ function validateImgPath(id){
   if (!checkImgPath(x.value)) {
     node.innerHTML = "L'immagine deve essere in formato jpg, jpeg, png o webp";
     insertAfter(node, x);
-    x.focus();
     
     return false; 
    }

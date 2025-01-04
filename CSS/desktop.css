@@ -649,7 +649,7 @@ MESSAGGI DI ISTRUZIONI E DI ERRORE - VALIDAZIONE JAVASCRIPT
   color: var(--text_bgWhite);
   border-left: 0.286em solid var(--borderLabel);
   padding: 0.571em 0.857em;
-  margin-bottom: 0.571em;
+  margin-top: 0.286em;
   border-radius: 0.286em;
   font-size: 0.875em;
   /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
@@ -858,6 +858,10 @@ MARGINI
 
 .m-2{
     margin: 2em;
+}
+
+.mb-0-6 {
+    margin-bottom: 0.6em;
 }
 
 

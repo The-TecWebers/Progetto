@@ -28,7 +28,7 @@ try {
         {
             $template = str_replace("registrati.php", "registrati.php?intended=lista_preventivi", $template);
             $template = str_replace("auth.php?action=login", "auth.php?action=login&intended=lista_preventivi", $template);
-            $msg = "<p class='info-label centered'>Accedi per vedere i tuoi preventivi.</p>";
+            $msg = "<p class='info-label centered mb-0-6'>Accedi per vedere i tuoi preventivi.</p>";
             $template = str_replace("<!--intendedRedirectMessages-->", $msg, $template);
 
         }
@@ -36,7 +36,7 @@ try {
         {
             $template = str_replace("registrati.php", "registrati.php?intended=crea_preventivo", $template);
             $template = str_replace("auth.php?action=login", "auth.php?action=login&intended=lista_preventivi", $template);
-            $msg = "<p class='info-label centered'>Accedi per creare un preventivo.</p>";
+            $msg = "<p class='info-label centered mb-0-6'>Accedi per creare un preventivo.</p>";
             $template = str_replace("<!--intendedRedirectMessages-->", $msg, $template);
         }
     }
