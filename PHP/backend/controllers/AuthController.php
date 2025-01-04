@@ -48,7 +48,7 @@ class AuthController
         if(isset($_SESSION['email']))
         {
             $result = DBController::runQuery("SELECT * FROM utente WHERE email = ?", $_SESSION['email']);
-            if($result!=false)
+            if($result !== false)
             {
                 return $result['id'];
             }
