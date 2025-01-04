@@ -6,6 +6,7 @@ $keywords = "registrati, account, dati personali, registrazione, Edil Scavi";
 require_once __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "backend" . DIRECTORY_SEPARATOR . "controllers" . DIRECTORY_SEPARATOR . "AuthController.php";
 
 session_start();
+session_destroy();
 
 try {
     if (AuthController::isLogged()) {
@@ -16,7 +17,6 @@ try {
     }
     $template = (file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'HTML' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . 'registrati.html'));
 
-    $err = isset($_SESSION['error-reg']) ? $_SESSION['error-reg'] : null;
     if (isset($_GET['intended'])) {
         if ($_GET['intended'] == "lista_preventivi") {
             $template = str_replace("auth.php?action=register", "auth.php?action=register&intended=lista_preventivi", $template);
@@ -31,14 +31,28 @@ try {
             $template = str_replace("<!--intendedRedirectMessages-->", $msg, $template);
         }
     }
+
+    $err = isset($_SESSION['error-reg']) ? $_SESSION['error-reg'] : null;
     if (isset($err)) {
         $template = str_replace("<!-- errorMessages -->", $err, $template);
-        $template = str_replace("placeholder=\"Nome\"", "value=\"" . $_SESSION['nome*'] . "\"", $template);
-        $template = str_replace("placeholder=\"Cognome\"", "value=\"" . $_SESSION['cognome*'] . "\"", $template);
-        $template = str_replace("placeholder=\"E-mail\"", "value=\"" . $_SESSION['email*'] . "\"", $template);
-        $template = str_replace("placeholder=\"Username\"", "value=\"" . $_SESSION['username*'] . "\"", $template);
-        $template = str_replace("placeholder=\"Password\"", "value=\"" . $_SESSION['password*'] . "\"", $template);
-        $template = str_replace("placeholder=\"Conferma password\"", "value=\"" . $_SESSION['password_confirmation*'] . "\"", $template);
+        
+        $fields = array(
+            'nome' => 'Nome',
+            'cognome' => 'Cognome',
+            'email' => 'E-mail',
+            'username' => 'Username',
+            'password' => 'Password',
+            'password_confirmation' => 'Conferma password'
+        );
+        
+        foreach ($fields as $field => $label) {
+            $sessionKey = $field . '*';
+            if (isset($_SESSION[$sessionKey]) && $_SESSION[$sessionKey] !== "") {
+                $template = str_replace("placeholder=\"{$label}\"", "value=\"" . $_SESSION[$sessionKey] . "\"", $template);
+            } else {
+                $template = preg_replace('/name="' . $field . '" value=".*"/', 'placeholder="' . $label . '"', $template);
+            }
+        }
     }
 
     session_write_close();

@@ -42,6 +42,19 @@ class User
     
     public function save()
     {
-        DBController::runQuery("INSERT INTO utente (username, email, password, nome, cognome) VALUES (?,?,?,?,?);", $this->username, $this->email, $this->password, $this->nome, $this->cognome);
+        DBController::runQuery("INSERT INTO utente (username, email, password, nome, cognome) VALUES (?,?,?,?,?);", $this->username,
+            $this->email, $this->password, $this->nome, $this->cognome);
+    }
+
+    public function update($id, array $array)
+    {
+        $this->username = $array['username'] ?? $this->username;
+        $this->password = $array['password'] ?? $this->password;
+        $this->email = $array['email'] ?? $this->email;
+        $this->nome = $array['nome'] ?? $this->nome;
+        $this->cognome = $array['cognome'] ?? $this->cognome;
+
+        DBController::runQuery("UPDATE utente SET username = ?, password = ?, email = ?, nome = ?, cognome = ? WHERE id = ?;",
+            $this->username, $this->password, $this->email, $this->nome, $this->cognome, $id);
     }
 }

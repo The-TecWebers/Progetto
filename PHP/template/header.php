@@ -6,14 +6,12 @@ $header = file_get_contents($path);
 session_start();
 
 if (isset($_SESSION['nome'])) {
-    $header = str_replace(
-        '<div class="sign-buttons">
-            <a id="btn-register" href="registrati.php">Registrati</a>
-            <a id="btn-login" href="accedi.php">Accedi</a>
-         </div>',
+    $header = preg_replace(
+        '/<div class="sign-buttons">\s*.*\s*<\/div>/s',
         '<div class="sign-buttons">
             <a id="btn-private_area" href="area_privata.php" title="Vai all\'area privata">' . htmlspecialchars($_SESSION['nome']) . '</a>
             <a id="btn-logout" href="logout.php">Esci</a>
+        </div>
         </div>',
         $header
     );

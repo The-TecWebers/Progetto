@@ -32,10 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         else {
             $_SESSION['error-reg'] = $result;
-
-            $arrayString = "Array: " . print_r($_SESSION, true);
-            error_log($arrayString, 3, 'mio_log.log');
-
             header("Location: registrati.php");
         }
     }
@@ -60,5 +56,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['error-login'] = $result;
             header("Location: accedi.php");
         }
+    }
+    elseif ($action == "private_area") {
+        $_SESSION['nome*'] = $_POST['nome'] ?? null;
+        $_SESSION['cognome*'] = $_POST['cognome'] ?? null;
+        $_SESSION['email*'] = $_POST['email'] ?? null;
+        $_SESSION['username*'] = $_POST['username'] ?? null;
+        $_SESSION['old_password*'] = $_POST['old_password'] ?? null;
+        $_SESSION['new_password*'] = $_POST['new_password'] ?? null;
+        $_SESSION['repeated_password*'] = $_POST['repeated_password'] ?? null;
+
+        $result = UserController::update();
+
+        if ($result === true) {
+            $_SESSION['error-priv-area'] = null;
+        }
+        else {
+            $_SESSION['error-priv-area'] = $result;
+        }
+
+        header('Location: area_privata.php');
     }
 }

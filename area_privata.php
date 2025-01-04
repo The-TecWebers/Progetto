@@ -45,23 +45,36 @@ try {
         }
     }
     */
+
+    $template = file_get_contents('HTML' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . 'area_privata.html');
+
+    $err = isset($_SESSION['error-priv-area']) ? $_SESSION['error-priv-area'] : null;
+    if (isset($err)) {
+        $template = str_replace("<!-- errorMessages -->", $err, $template);
+        $template = str_replace("[Nome]", $_SESSION['nome*'], $template);
+        $template = str_replace("[Cognome]", $_SESSION['cognome*'], $template);
+        $template = str_replace("[Email]", $_SESSION['email*'], $template);
+        $template = str_replace("[Username]", $_SESSION['username*'], $template);
+        $template = str_replace("id=\"old_password\"", "id=\"old_password\" value=\"" . $_SESSION['old_password*'] . "\"", $template);
+        $template = str_replace("id=\"new_password\"", "id=\"new_password\" value=\"" . $_SESSION['new_password*'] . "\"", $template);
+        $template = str_replace("id=\"repeated_password\"", "id=\"repeated_password\" value=\"" . $_SESSION['repeated_password*'] . "\"", $template);
+    }
+    else{
+        $userData = UserController::read();
+
+        if($userData !== false){
+            $template = str_replace("[Nome]", $userData['nome'], $template);
+            $template = str_replace("[Cognome]", $userData['cognome'], $template);
+            $template = str_replace("[Email]", $userData['email'], $template);
+            $template = str_replace("[Username]", $userData['username'], $template);
+        }
+    }
+
+    session_write_close();
+    session_abort();
 } catch (Exception $e) {
     AuthController::serverError();
 }
-
-$template = file_get_contents('HTML' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . 'area_privata.html');
-
-$userData = UserController::read();
-
-if($userData !== false){
-    $template = str_replace("[Nome]", $userData['nome'], $template);
-    $template = str_replace("[Cognome]", $userData['cognome'], $template);
-    $template = str_replace("[Email]", $userData['email'], $template);
-    $template = str_replace("[Username]", $userData['username'], $template);
-}
-
-session_write_close();
-session_abort();
 
 
 include "PHP" . DIRECTORY_SEPARATOR . "template" . DIRECTORY_SEPARATOR . "header.php";
