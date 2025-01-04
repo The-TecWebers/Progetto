@@ -42,4 +42,14 @@ class AuthController
         echo file_get_contents($relativePath);
         die();
     }
+
+    public static function getAuthId()
+    {
+        if(isset($_SESSION['email']))
+        {
+            $result = DBController::runQuery("SELECT * FROM utente WHERE email = ?", $_SESSION['email']);
+            return $result['id'];
+        }
+        return null;
+    }
 }

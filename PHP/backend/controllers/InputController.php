@@ -40,6 +40,17 @@ class InputController
         return $sanitized;
     }
 
+    public static function sanitizePreventivo($array): array
+    {
+        $sanitized = [];
+
+        foreach ($array as $key => $value) {
+            $sanitized[$key] = htmlentities(strip_tags(trim($value)));
+        }
+
+        return $sanitized;
+    }
+
     public static function validateRegistration($array): bool|string
     {
         // Validazioni dei campi
