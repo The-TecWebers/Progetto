@@ -42,7 +42,7 @@ try {
             'email' => 'Es: mario.rossi@example.com',
             'username' => 'Es.: MRossi33',
             'password' => 'Es.: MRossi33__$',
-            'password_confirmation' => 'Es.: 44Gatti__$'
+            'password_confirmation' => 'Conferma password'
         );
         
         foreach ($fields as $field => $label) {
@@ -55,8 +55,8 @@ try {
         }
     }
 
+    session_reset();
     session_write_close();
-    session_abort();
 } catch (Exception $e) {
     AuthController::serverError();
 }

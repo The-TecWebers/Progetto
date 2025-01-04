@@ -53,13 +53,13 @@ try {
         $template = str_replace("<!-- errorMessages -->", $err, $template);
 
         $fields = array(
-            'nome' => 'Nome',
-            'cognome' => 'Cognome',
-            'email' => 'Email',
-            'username' => 'Username',
+            'nome' => 'Es: Mario',
+            'cognome' => 'Es.: Rossi',
+            'email' => 'Es: mario.rossi@example.com',
+            'username' => 'Es.: MRossi33',
             'old_password' => 'Password attuale',
-            'new_password' => 'Nuova Password',
-            'repeated_password' => 'Ripeti Password'
+            'new_password' => 'Es.: 44Gatti__$',
+            'repeated_password' => 'Conferma Password'
         );
         
         foreach ($fields as $field => $label) {
@@ -74,10 +74,10 @@ try {
 
         if($userData !== false){
             $fields = array(
-                'nome' => 'Nome',
-                'cognome' => 'Cognome',
-                'email' => 'Email',
-                'username' => 'Username'
+                'nome' => 'Es: Mario',
+                'cognome' => 'Es.: Rossi',
+                'email' => 'Es: mario.rossi@example.com',
+                'username' => 'Es.: MRossi33'
             );
 
             foreach ($fields as $field => $label) {
@@ -88,8 +88,8 @@ try {
         }
     }
 
+    session_reset();
     session_write_close();
-    session_abort();
 } catch (Exception $e) {
     AuthController::serverError();
 }
