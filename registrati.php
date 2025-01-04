@@ -1,7 +1,7 @@
 <?php
 $titolo = "Registrati - EdilScavi";
 $descrizione = "Registrati ad EdilScavi! Accedi ai nostri servizi e richiedi un preventivo!";
-$keywords = "registrati, account, dati personali, dati di accesso, registrazione, Edil Scavi";
+$keywords = "registrati, account, dati personali, registrazione, Edil Scavi";
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "backend" . DIRECTORY_SEPARATOR . "controllers" . DIRECTORY_SEPARATOR . "AuthController.php";
 
