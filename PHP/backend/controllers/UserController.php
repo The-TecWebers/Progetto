@@ -84,6 +84,21 @@ class UserController extends AbstractController
 
     public static function delete()
     {
+    $username = $_SESSION['username'];
+
+    $user = self::getUserByUsername($username);
+    if (!$user) {
+        return false;
+    }
+
+    $userId = self::getUserId($user);
+    if (!$userId) {
+        return false;
+    }
+
+    $result = DBController::runQuery("DELETE FROM utente WHERE id = ?", $userId);
+
+    return true;
     }
 
     public static function login()

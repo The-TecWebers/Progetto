@@ -77,4 +77,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         header('Location: area_privata.php');
     }
+    elseif ($action == "delete_user") {
+        $result = UserController::delete();
+
+        if ($result === true) {
+            AuthController::logout();
+        }
+        else {
+            header('Location: area_privata.php');
+        }
+    }
 }
