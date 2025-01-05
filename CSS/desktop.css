@@ -313,7 +313,7 @@ DELETE ACCOUNT
     color: var(--text_bgWhite);
 }
 
-#deletebutton {
+#delete-button {
     background-color: var(--txtError); 
     color: var(--bg_bgWhite); 
     border: 0.125em solid var(--borderError); 
@@ -323,11 +323,11 @@ DELETE ACCOUNT
     border-radius: 0.3125em;
 }
 
-#deletebutton:hover {
+#delete-button:hover {
     transform: scale(1.05); 
 }
 
-#deletebutton:focus {
+#delete-button:focus {
     outline-offset: 0.125em;
 }
 
@@ -1174,7 +1174,7 @@ AREA PRIVATA
 =============
 */
 
-#confirmbutton {
+#confirm-button {
     margin-top: 0.2em;
 }
 
