@@ -285,6 +285,51 @@ PULSANTI ACCOUNT
     text-align: center;
 }
 
+/* 
+==============
+DELETE ACCOUNT
+==============
+*/
+
+.danger-zone {
+    border: 0.125em solid var(--borderError); 
+    background-color: var(--bgError);
+    color: var(--txtError); 
+    padding: 1.25em;
+    border-radius: 0.5em;
+    margin: 1.25em 0;
+    text-align: center;
+}
+
+.danger-zone h3 {
+    color: var(--txtError); 
+    font-size: 1.5em;
+    margin-bottom: 0.625em;
+}
+
+.danger-zone p {
+    margin-bottom: 1.25em;
+    font-size: 1em;
+    color: var(--text_bgWhite);
+}
+
+#deletebutton {
+    background-color: var(--txtError); 
+    color: var(--bg_bgWhite); 
+    border: 0.125em solid var(--borderError); 
+    padding: 0.625em 1.25em;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 0.3125em;
+}
+
+#deletebutton:hover {
+    transform: scale(1.05); 
+}
+
+#deletebutton:focus {
+    outline-offset: 0.125em;
+}
 
 
 /*
