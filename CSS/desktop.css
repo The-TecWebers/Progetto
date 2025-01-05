@@ -291,23 +291,23 @@ DELETE ACCOUNT
 ==============
 */
 
-.danger-zone {
+#danger-zone {
     border: 0.125em solid var(--borderError); 
     background-color: var(--bgError);
     color: var(--txtError); 
     padding: 1.25em;
     border-radius: 0.5em;
-    margin: 1.25em 0;
+    margin: 1.25em auto;
     text-align: center;
 }
 
-.danger-zone h3 {
+#danger-zone h3 {
     color: var(--txtError); 
     font-size: 1.5em;
     margin-bottom: 0.625em;
 }
 
-.danger-zone p {
+#danger-zone p {
     margin-bottom: 1.25em;
     font-size: 1em;
     color: var(--text_bgWhite);

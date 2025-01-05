@@ -28,20 +28,17 @@
 
         <div class="form-buttons">
             <button id="confirmbutton" type="submit" aria-label="Conferma le modifiche">Conferma modifiche</button>
-        </div>
+        </div>        
+        
+    </form>
 
-        <div class="danger-zone">
-            <h3>Zona di Pericolo</h3>
-            <p>
-                Questa azione cancellerà definitivamente il tuo account. 
-                Questa operazione è irreversibile.
-            </p>
-            <button id="deletebutton" type="submit" formaction="auth.php?action=delete_user" formmethod="post" aria-label="Cancella Utente">
-                Cancella Utente
-            </button>
-        </div>
-        
-        
+    <form id="danger-zone" action="auth.php?action=delete_user" method="post">
+        <h3>Zona di Pericolo</h3>
+        <p>
+            Questa azione cancellerà definitivamente il tuo account. 
+            Questa operazione è irreversibile.
+        </p>
+        <button id="deletebutton" type="submit" aria-label="Cancella Utente">Cancella Utente</button>
     </form>
 </main>
 
