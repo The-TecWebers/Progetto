@@ -4,12 +4,6 @@ require_once 'UserController.php';
 
 class InputController
 {
-    /*
-    ==================
-    CHECK FORM FIELDS
-    ==================
-    */
-
     private static function isName($name): bool|string
     {
         $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
@@ -323,6 +317,17 @@ class InputController
             $sanitized['old_password'] = strip_tags($array['old_password']);
             $sanitized['new_password'] = strip_tags($array['new_password']);
             $sanitized['repeated_password'] = strip_tags($array['repeated_password']);
+        }
+
+        return $sanitized;
+    }
+
+    public static function sanitizePreventivo($array): array
+    {
+        $sanitized = [];
+
+        foreach ($array as $key => $value) {
+            $sanitized[$key] = htmlentities(strip_tags(trim($value)));
         }
 
         return $sanitized;

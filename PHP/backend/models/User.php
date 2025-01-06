@@ -4,6 +4,7 @@ include(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'controller
 
 class User
 {
+    private $id;
     private $username;
     private $password;
     private $email;
@@ -17,6 +18,10 @@ class User
         $this->password = $array['password'];
         $this->nome = $array['nome'];
         $this->cognome = $array['cognome'];
+        if($array['id']!==null)
+        {
+            $this->id=$array['id'];
+        }
     }
 
     public function getEmail()
@@ -38,6 +43,11 @@ class User
     public function getSurname()
     {
         return $this->cognome;
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
     
     public function save()

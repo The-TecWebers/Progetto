@@ -129,7 +129,8 @@ header nav ul li a {
     text-transform: uppercase;
 }
 
-nav#menu ul li a:not(.navigationHelp), nav#menu ul li.current-link {
+nav#menu ul li a:not(.navigationHelp),
+nav#menu ul li.current-link {
     border: var(--border) 0.125em solid;
 }
 
@@ -172,7 +173,7 @@ TORNA SU
 ==========
 */
 
-#goUp{
+#goUp {
     position: fixed;
     background-color: var(--text_bgGreen);
     text-align: center;
@@ -190,7 +191,7 @@ TORNA SU
 }
 
 #goUp.visible {
-  display: block;
+    display: block;
 }
 
 
@@ -217,15 +218,16 @@ AIUTI ALLA NAVIGAZIONE
     list-style-type: none;
 }
 
-.link-intestazione{
+.link-intestazione {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    font-weight: bold; 
+    font-weight: bold;
     position: absolute;
     text-indent: -999em;
 }
-.link-intestazione:focus{
+
+.link-intestazione:focus {
     position: static;
     text-indent: 0;
 }
@@ -258,6 +260,7 @@ PULSANTI ACCOUNT
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
+
 .sign-buttons a:visited {
     color: var(--visitedLink_bgFuchsia);
 }
@@ -388,14 +391,13 @@ BREADCRUMB
 ===========
 */
 
-.breadcrumb
-{
+.breadcrumb {
     color: var(--visitedLink_bgGreen);
     padding-left: 1.764em;
 }
 
 .breadcrumb ul li a {
-    text-decoration:underline;
+    text-decoration: underline;
     display: inline-block;
     font-size: 1em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
@@ -403,11 +405,12 @@ BREADCRUMB
     border-radius: 0em;
     padding: 0 0;
     color: var(--link_bgGreen);
-    text-transform:none; 
+    text-transform: none;
 }
 
-.breadcrumb ul li a:hover, ul li a:active {
-    background-color:transparent;
+.breadcrumb ul li a:hover,
+ul li a:active {
+    background-color: transparent;
     color: var(--link_bgGreen);
 }
 
@@ -438,13 +441,13 @@ main.no-breadcrumb {
     padding-top: calc(1.25em + var(--headerDesktopHeight));
 }
 
-main h1{
+main h1 {
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 0.5em;
 }
 
-main h2{
+main h2 {
     text-align: center;
     background-color: var(--bg_bgGreen);
     color: var(--text_bgGreen);
@@ -457,7 +460,7 @@ main a {
     text-decoration: underline;
 }
 
-section{
+section {
     padding-bottom: 0.75em;
     border-bottom: var(--border) 0.125em solid;
     margin-bottom: 1.25em;
@@ -476,11 +479,11 @@ figcaption {
     margin-bottom: 0.5em;
 }
 
-.reversed > :first-child {
+.reversed> :first-child {
     order: 2;
 }
 
-.reversed > :last-child {
+.reversed> :last-child {
     order: 1;
 }
 
@@ -491,6 +494,20 @@ figcaption {
 FORM
 =====
 */
+
+input[type="file"]::file-selector-button {
+    background-color: var(--bg_bgGreen);
+    text-decoration: none;
+    color: var(--bg_bgWhite);
+    padding: 0.5em 1em 0.5em 1em;
+    border: 0 solid;
+    margin-left: 0em;
+    margin-right: 1em;
+    border-radius: 1em;
+    font-size: 1.25em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
 
 form {
     display: flex;
@@ -530,7 +547,7 @@ textarea.form-input {
     margin-bottom: 0.3125em;
 }
 
-.form-buttons button{
+.form-buttons button {
     width: 100%;
     color: var(--visitedLink_bgGreen);
     font-weight: bold;
@@ -607,7 +624,8 @@ legend {
     flex-grow: 1;
 }
 
-.double-column > :first-child, .double-column > :last-child {
+.double-column> :first-child,
+.double-column> :last-child {
     width: 50%;
 }
 
@@ -703,32 +721,32 @@ MESSAGGI DI ISTRUZIONI E DI ERRORE - VALIDAZIONE JAVASCRIPT
 */
 
 .info-label {
-  background-color: var(--bgLabel);
-  color: var(--text_bgWhite);
-  border-left: 0.286em solid var(--borderLabel);
-  padding: 0.571em 0.857em;
-  margin-top: 0.286em;
-  border-radius: 0.286em;
-  font-size: 0.875em;
-  /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    background-color: var(--bgLabel);
+    color: var(--text_bgWhite);
+    border-left: 0.286em solid var(--borderLabel);
+    padding: 0.571em 0.857em;
+    margin-top: 0.286em;
+    border-radius: 0.286em;
+    font-size: 0.875em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
 }
 
 .error-label {
-  color: var(--txtError);
-  font-size: 0.9em;
-  /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-  margin: 0.347em;
-  font-weight: bold;
-  background-color: var(--bgError);
-  padding: 0.447em;
-  border-radius: 0.277em;
+    color: var(--txtError);
+    font-size: 0.9em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    margin: 0.347em;
+    font-weight: bold;
+    background-color: var(--bgError);
+    padding: 0.447em;
+    border-radius: 0.277em;
 }
 
 .error-label::before {
-  content: "⚠️";
-  font-size: 1rem;
-  /* rem e non em, quindi rispetto alla radice, non rispetto a .error-label, che ha cambiato font-size */
-  margin-right: 0.2em;
+    content: "⚠️";
+    font-size: 1rem;
+    /* rem e non em, quindi rispetto alla radice, non rispetto a .error-label, che ha cambiato font-size */
+    margin-right: 0.2em;
 }
 
 
@@ -832,29 +850,30 @@ a.cta-container:active {
     justify-content: center;
 }
 
-div.container-cta-link  a {
+div.container-cta-link a {
     background-color: var(--bg_bgGreen);
     color: var(--link_bgGreen);
     border: 0 solid;
     border-radius: 1em;
     padding: 0.5em 1em;
-    font-size: 1.25em; /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    font-size: 1.25em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
     text-decoration: none;
 }
 
-div.container-cta-link  a:visited {
+div.container-cta-link a:visited {
     background-color: var(--bg_bgGreen);
     color: var(--visitedLink_bgGreen);
 }
 
-div.container-cta-link  a:hover {
+div.container-cta-link a:hover {
     transform: scale(1.05);
     box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.2);
 }
- 
+
 a.container-cta-link:active {
     transform: scale(0.95);
 }
@@ -914,7 +933,7 @@ MARGINI
     margin: auto;
 }
 
-.m-2{
+.m-2 {
     margin: 2em;
 }
 
@@ -952,17 +971,17 @@ HOME PAGE
     align-items: center;
 }
 
-.home-section > figure,
-.home-section > p {
+.home-section>figure,
+.home-section>p {
     padding: 0em 0.5em;
     flex: 1 1 50%;
 }
 
-.home-section > figure {
+.home-section>figure {
     text-align: center;
 }
 
-.home-section > iframe {
+.home-section>iframe {
     width: 70%;
     height: 25em;
     border: var(--border) 0.125em solid;
@@ -994,7 +1013,8 @@ STORIA - LAVORI SVOLTI
     padding: 0 1em;
 }
 
-.figure-paragraph-container, .img-list-container {
+.figure-paragraph-container,
+.img-list-container {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
@@ -1019,7 +1039,7 @@ STORIA - LAVORI SVOLTI
     margin-top: 0;
 }
 
-.figure-paragraph-container > :last-child {
+.figure-paragraph-container> :last-child {
     flex: 1;
 }
 
@@ -1057,7 +1077,7 @@ MEZZI
     height: auto;
     object-fit: fill;
     object-position: center;
-    border-radius: 0.625em; 
+    border-radius: 0.625em;
 }
 
 figure.escavatori {
@@ -1101,7 +1121,7 @@ dt {
     margin: 1em;
 }
 
-.img-list-container img{
+.img-list-container img {
     max-width: 23%;
     max-height: 25em;
     object-fit: fill;
@@ -1138,13 +1158,13 @@ SU DI NOI
     border-radius: 1em;
 }
 
-.card > img{
+.card>img {
     width: 95%;
     margin: 0.5em;
     border-radius: 1em;
 }
 
-.card > p{
+.card>p {
     width: 95%;
     margin: 0.5em;
 }
@@ -1154,15 +1174,19 @@ SU DI NOI
 }
 
 
-.grid{
+.grid {
     display: grid;
 }
 
-.cols-2{
+.cols-2 {
     grid-template-columns: auto auto;
 }
 
-.items-center{
+.cols-3 {
+    grid-template-columns: 33% 33% 33%;
+}
+
+.items-center {
     justify-items: center;
 }
 
@@ -1209,10 +1233,33 @@ AREA PRIVATA
 
 .container-error h1 {
     font-size: 1em;
-    text-transform:none;
+    text-transform: none;
 }
 
 #cta-error {
     margin-bottom: 1em;
 }
 
+/* 
+=============
+TABELLE
+=============
+*/
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 0.5em;
+}
+
+td:nth-child(even),
+th:nth-child(even) {
+    background-color: rgb(15, 133, 85, 0.2)
+    ;
+}
