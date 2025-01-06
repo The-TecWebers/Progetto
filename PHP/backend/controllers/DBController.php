@@ -11,7 +11,7 @@ class DBController
   private static $conn;
 
 
-  public static function connect($host = "localhost", $username = "root", $password = "", $DbName = "EdilScavi")
+  public static function connect($host = "localhost", $username = "root", $password = "root", $DbName = "EdilScavi")
   {
     self::$host = $host;
     self::$username = $username;
