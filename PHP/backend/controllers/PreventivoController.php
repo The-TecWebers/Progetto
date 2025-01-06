@@ -26,7 +26,8 @@ class PreventivoController extends AbstractController
 
     static public function getTabellaPreventivi()
     {
-        $preventivi = DBController::runQuery("SELECT * FROM richiesta_preventivo WHERE utente = ?", AuthController::getAuthId());
+        $utente = AuthController::getAuthUser();
+        $preventivi = DBController::runQuery("SELECT * FROM richiesta_preventivo WHERE utente = ?", $utente->getId());
         $table = "<table>
         <tr>
         <th>Descrizione</th>

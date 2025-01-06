@@ -43,14 +43,14 @@ class AuthController
         die();
     }
 
-    public static function getAuthId()
+    public static function getAuthUser()
     {
         if(isset($_SESSION['email']))
         {
-            $result = DBController::runQuery("SELECT id FROM utente WHERE email = ?", $_SESSION['email']);
+            $result = DBController::runQuery("SELECT * FROM utente WHERE email = ?", $_SESSION['email']);
             if($result !== false)
             {
-                return (int)$result;
+                return new User($result);
             }
         }
         return null;
