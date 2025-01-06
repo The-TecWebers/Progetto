@@ -162,6 +162,23 @@ SU DI NOI
     gap: 1em;
 }
 
+.grid.cols-3
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.grid.cols-3>.figure-paragraph-container
+{
+    margin-bottom: 5em;
+    text-align: center;
+}
+
+.grid.cols-3>.figure-paragraph-container p
+{
+    margin: 0;
+}
+
 .about-us-container{
     display: grid;
     grid-template-columns: auto;

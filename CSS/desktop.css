@@ -1124,6 +1124,10 @@ SU DI NOI
     grid-template-columns: auto auto;
 }
 
+.cols-3 {
+    grid-template-columns: 33% 33% 33%;
+}
+
 .items-center {
     justify-items: center;
 }

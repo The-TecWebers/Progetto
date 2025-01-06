@@ -28,21 +28,31 @@ class PreventivoController extends AbstractController
     {
         $utente = AuthController::getAuthUser();
         $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo WHERE utente = ?", $utente->getId());
-        var_dump($preventivi);
-        $table = "<table>
-        <tr>
-        <th>Descrizione</th>
-        <th>Data</th>
-        <th>Foto</th>
-        <th>Luogo</th>
-        <th>Operazioni</th>
-        </tr>";
-        foreach($preventivi as $preventivo)
-        {
-            $table = $table."<tr><td>".$preventivo['descrizione']."</td>"."<td>".$preventivo['data']."</td>"."<td>".$preventivo['foto']."</td>"."<td>".$preventivo['luogo']."</td><td></td></tr>";
+        $dl = "<div class='grid cols-3'>";
+    
+        foreach ($preventivi as $preventivo) {
+            $dl .= "<div class='figure-paragraph-container'>
+                <figure>
+                    <img src='".$preventivo['foto']."' alt='Foto del preventivo'>
+                    <figcaption>Foto del preventivo</figcaption>
+                </figure>
+                <div>
+                    <dl>
+                        <dt>Data</dt>
+                        <dd>".$preventivo['data']."</dd>
+                        <dt>Descrizione</dt>
+                        <dd>
+                            <p>".$preventivo['descrizione']."</p>
+                        </dd>
+                        <dt>Luogo</dt>
+                        <dd>
+                            <p>".$preventivo['luogo']."</p>
+                        </dd>
+                    </dl>
+                </div>
+            </div>";
         }
-
-        $table = $table."</table>";
-        return $table;
+        return $dl."</div>";
     }
+    
 }
