@@ -23,4 +23,23 @@ class PreventivoController extends AbstractController
     {
 
     }
+
+    static public function getTabellaPreventivi()
+    {
+        $preventivi = DBController::runQuery("SELECT * FROM richiesta_preventivo WHERE utente = ?", AuthController::getAuthId());
+        $table = "<table>
+        <tr>
+        <th>Descrizione</th>
+        <th>Data</th>
+        <th>Foto</th>
+        <th>Luogo</th>
+        <th>Operazioni</th>
+        </tr>";
+        foreach($preventivi as $preventivo)
+        {
+            $table = $table."<tr><td>".$preventivo['descrizione']."</td>"."<td>".$preventivo['data']."</td>"."<td>".$preventivo['foto']."</td>"."<td>".$preventivo['luogo']."</td><td></td></tr>";
+        }
+        $table = $table."</table>";
+        return $table;
+    }
 }

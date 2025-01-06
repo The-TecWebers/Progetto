@@ -449,7 +449,7 @@ input[type="file"]::file-selector-button {
     font-size: 1.25em;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
-  }
+}
 
 form {
     display: flex;
@@ -1176,4 +1176,28 @@ AREA PRIVATA
 
 #cta-error {
     margin-bottom: 1em;
+}
+
+/* 
+=============
+TABELLE
+=============
+*/
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 0.5em;
+}
+
+td:nth-child(even),
+th:nth-child(even) {
+    background-color: rgb(15, 133, 85, 0.2)
+    ;
 }

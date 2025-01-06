@@ -15,5 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_POST['foto'] = $target_file;
         $_POST['utente'] = AuthController::getAuthId();
         $result = PreventivoController::create();
+        if($result==true)
+        {
+            header("Location: lista_preventivi.php");
+        }
     }
 }
