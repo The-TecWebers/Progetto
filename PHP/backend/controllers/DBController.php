@@ -11,7 +11,7 @@ class DBController
   private static $conn;
 
 
-  public static function connect($host = "localhost", $username = "root", $password = "root", $DbName = "EdilScavi")
+  public static function connect($host = "localhost", $username = "root", $password = "", $DbName = "EdilScavi")
   {
     self::$host = $host;
     self::$username = $username;
@@ -52,12 +52,41 @@ class DBController
     }
     if ($result->num_rows === 1) {
       $result_data = $result->fetch_assoc();
-  } else {
+    } else {
       $result_data = $result->fetch_all(MYSQLI_ASSOC);
-  }
+    }
     $q->close();
     $conn->close();
 
     return $result_data;
   }
+
+  public static function getPreventivi($query, ...$parameters)
+  {
+    $conn = self::connect();
+    $q = $conn->prepare($query);
+
+    if ($q === false) {
+      die('MySQL prepare error: ' . $conn->error);
+    }
+
+    if (count($parameters) > 0) {
+      $q->bind_param(str_repeat("s", count($parameters)), ...$parameters);
+    }
+
+    if (!$q->execute()) {
+      die('Execute error: ' . $q->error);
+    }
+
+    $result = $q->get_result();
+
+    if ($result === false || ($result->num_rows) <= 0) {
+      return false;
+    }
+    $result_data = $result->fetch_all(MYSQLI_ASSOC);
+    $q->close();
+    $conn->close();
+
+    return $result_data;
+  } 
 }
