@@ -1,35 +1,44 @@
 <main id="content">
     <h1>Area privata</h1>
     <p class="form-description">Modifica i tuoi dati personali oppure cambia la password!</p>
-    <form id="user-form" action="...php" method="post">
-        <!-- errors -->
+    <form id="privateAreaForm" action="auth.php?action=private_area" method="post">
+        <!-- errorMessages -->
         <div class="double-column">
             <fieldset id="dati_personali" class="surrounding-box">
                 <legend >Dati personali</legend>
                 <label class="form-label" for="nome">Nome</label>
-                <input class="form-input" type="text" name="nome" id="nome" value="[Nome]">
+                <input class="form-input" type="text" id="nome" name="nome" placeholder="Es: Mario">
                 <label class="form-label" for="cognome">Cognome</label>
-                <input class="form-input" type="text" name="cognome" id="cognome" value="[Cognome]">
+                <input class="form-input" type="text" id="cognome" name="cognome" placeholder="Es.: Rossi">
                 <label class="form-label" for="email"><span lang="en">Email</span></label>
-                <input class="form-input" type="email" name="email" id="email" value="[Email]">
+                <input class="form-input" type="email" id="email" name="email" placeholder="Es: mario.rossi@example.com">
                 <label class="form-label" for="username">Username</label>
-                <input class="form-input" type="text" name="username" id="username" value="[Username]">
+                <input class="form-input" type="text" id="username" name="username" placeholder="Es.: MRossi33">
             </fieldset>
             <fieldset id="cambio_password" class="surrounding-box">
                 <legend>Cambio password</legend>
-                <label class="form-label" for="old_password">Vecchia Password</label>
-                <input class="form-input" type="password" name="old_password" id="old_password">
+                <label class="form-label" for="old_password">Password attuale</label>
+                <input class="form-input" type="password" id="old_password" name="old_password" placeholder="Password attuale">
                 <label class="form-label" for="new_password">Nuova Password</label>
-                <input class="form-input" type="password" name="new_password" id="new_password">
+                <input class="form-input" type="password" id="new_password" name="new_password" placeholder="Es.: 44Gatti__$">
                 <label class="form-label" for="repeated_password">Ripeti la nuova Password</label>
-                <input class="form-input" type="password" name="repeated_password" id="repeated_password">
+                <input class="form-input" type="password" id="repeated_password" name="repeated_password" placeholder="Conferma Password">
             </fieldset>
         </div>
 
         <div class="form-buttons">
-            <button id="confirmbutton" type="submit" aria-label="Conferma le modifiche">Conferma modifiche</button>  
-        </div>
+            <button id="confirm-button" type="submit" aria-label="Conferma le modifiche">Conferma modifiche</button>
+        </div>        
         
+    </form>
+
+    <form id="danger-zone" action="auth.php?action=delete_user" method="post">
+        <h3>Zona di Pericolo</h3>
+        <p>
+            Questa azione cancellerà definitivamente il tuo account. 
+            Questa operazione è irreversibile.
+        </p>
+        <button id="delete-button" type="submit" aria-label="Cancella Utente">Cancella Utente</button>
     </form>
 </main>
 

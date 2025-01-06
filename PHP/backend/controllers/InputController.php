@@ -4,97 +4,11 @@ require_once 'UserController.php';
 
 class InputController
 {
-    public static function registrationFieldsNotEmpty($array): bool|string
-    {
-        // Controlla che tutti i campi siano presenti
-        if (empty($array) ||
-            empty($array["nome"]) ||
-            empty($array["cognome"]) ||
-            empty($array["email"]) ||
-            empty($array["username"]) ||
-            empty($array["password"]) ||
-            empty($array["password_confirmation"])) {
-
-            return "<ul class=\"errorMessages\"><li>Per favore, compila tutti i campi</li></ul>";
-        }
-
-        return true;
-    }
-
-    public static function sanitizeRegistration($array): array
-    {
-        $sanitized = [];
-
-        $sanitized['password'] = strip_tags($array['password']);
-
-        $sanitized['password_confirmation'] = strip_tags($array['password_confirmation']);
-
-        foreach ($array as $key => $value) {
-            if ($key != 'password' && $key != 'password_confirmation') {
-                $sanitized[$key] = htmlentities(strip_tags(trim($value)));
-            }
-        }
-
-        $sanitized['email'] = filter_var($sanitized['email'], FILTER_SANITIZE_EMAIL);
-
-        return $sanitized;
-    }
-
-    public static function validateRegistration($array): bool|string
-    {
-        // Validazioni dei campi
-        // ...
-        // Bisogna pensare proprio al sistema alla validazione, cioè a come vogliamo che i risultati siano restituiti all'utente!
-        // Il ritornare una stringa è una soluzione per lo sviluppatore, non per l'utente finale
-        // La Gaggi ha creato un tag <ul> mostrando i messaggi di errore in <li>. Questo è un esempio di come si può fare.
-        // ...
-        $errorMessages = "<ul class=\"errorMessages\">";
-
-        $name = $array['nome'];
-        $surname = $array['cognome'];
-        $email = $array['email'];
-        $username = $array['username'];
-        $pass1 = $array['password'];
-        $pass2 = $array['password_confirmation'];
-
-        if(self::isName($name) !== true){
-            $errorMessages .= self::isName($name);
-        }
-        if(self::isSurname($surname) !== true){
-            $errorMessages .= self::isSurname($surname);
-        }
-        if (self::isMail($email) !== true) {
-            $errorMessages .= self::isMail($email);
-        }
-        if (self::isUsername($username) !== true) {
-            $errorMessages .= self::isUsername($username);
-        }
-        if (self::isPassword($pass1) !== true) {
-            $errorMessages .= self::isPassword($pass1);
-        }
-
-        if ($pass1 != $pass2) {
-            $errorMessages .= "<li>Le <span lang=\"en\">password</span> non sono uguali</li>";
-        }
-
-        // Controllo univocità dello username
-        if (UserController::isUsernameDuplicate($username) === true) {
-            $errorMessages .= "<li>Esiste già un utente registrato con questo <span lang=\"en\">username</span></li>";
-        }
-
-        // Controllo univocità della email
-        if (UserController::isEmailDuplicate($email) === true) {
-            $errorMessages .= "<li>Esiste già un utente registrato con questa <span lang=\"en\">email</span></li>";
-        }
-
-        $errorMessages .= "</ul>";
-
-        if ($errorMessages != "<ul class=\"errorMessages\"></ul>") {
-            return $errorMessages;
-        }
-
-        return true;
-    }
+    /*
+    ==================
+    CHECK FORM FIELDS
+    ==================
+    */
 
     private static function isName($name): bool|string
     {
@@ -155,11 +69,105 @@ class InputController
         return null;
     }
 
+
+
+    /*
+    ============
+    CHECK FORMS
+    ============
+    */
+
+    public static function registrationFieldsNotEmpty($array): bool|string
+    {
+        // Controlla che tutti i campi siano presenti
+        if (empty($array) ||
+            empty($array["nome"]) ||
+            empty($array["cognome"]) ||
+            empty($array["email"]) ||
+            empty($array["username"]) ||
+            empty($array["password"]) ||
+            empty($array["password_confirmation"])) {
+
+            return "<ul class=\"errorMessages\"><li>Per favore, compila tutti i campi</li></ul>";
+        }
+
+        return true;
+    }
+
+    public static function validateRegistration($array): bool|string
+    {
+        $errorMessages = "<ul class=\"errorMessages\">";
+
+        $name = $array['nome'];
+        $surname = $array['cognome'];
+        $email = $array['email'];
+        $username = $array['username'];
+        $pass1 = $array['password'];
+        $pass2 = $array['password_confirmation'];
+
+        if(self::isName($name) !== true){
+            $errorMessages .= self::isName($name);
+        }
+        if(self::isSurname($surname) !== true){
+            $errorMessages .= self::isSurname($surname);
+        }
+        if (self::isMail($email) !== true) {
+            $errorMessages .= self::isMail($email);
+        }
+        if (self::isUsername($username) !== true) {
+            $errorMessages .= self::isUsername($username);
+        }
+        if (self::isPassword($pass1) !== true) {
+            $errorMessages .= self::isPassword($pass1);
+        }
+
+        if ($pass1 != $pass2) {
+            $errorMessages .= "<li>Le <span lang=\"en\">password</span> non sono uguali</li>";
+        }
+
+        // Controllo univocità dello username
+        if (UserController::isUsernameDuplicate($username) === true) {
+            $errorMessages .= "<li>Esiste già un utente registrato con questo <span lang=\"en\">username</span></li>";
+        }
+
+        // Controllo univocità della email
+        if (UserController::isEmailDuplicate($email) === true) {
+            $errorMessages .= "<li>Esiste già un utente registrato con questa <span lang=\"en\">email</span></li>";
+        }
+
+        $errorMessages .= "</ul>";
+
+        if ($errorMessages != "<ul class=\"errorMessages\"></ul>") {
+            return $errorMessages;
+        }
+
+        return true;
+    }
+
+    public static function sanitizeRegistration($array): array
+    {
+        $sanitized = [];
+
+        $sanitized['password'] = strip_tags($array['password']);
+
+        $sanitized['password_confirmation'] = strip_tags($array['password_confirmation']);
+
+        foreach ($array as $key => $value) {
+            if ($key != 'password' && $key != 'password_confirmation') {
+                $sanitized[$key] = htmlentities(strip_tags(trim($value)));
+            }
+        }
+
+        $sanitized['email'] = filter_var($sanitized['email'], FILTER_SANITIZE_EMAIL);
+
+        return $sanitized;
+    }
+
     public static function loginFieldsNotEmpty($array): bool|string
     {
         if (empty($array) ||
-            !isset($array["username"]) ||
-            !isset($array["password"])) {
+            empty($array["username"]) ||
+            empty($array["password"])) {
             return "<ul class=\"errorMessages\"><li>Per favore, compila tutti i campi</li></ul>";
         }
 
@@ -172,6 +180,150 @@ class InputController
 
         $sanitized['username'] = htmlentities(strip_tags(trim($array['username'])));
         $sanitized['password'] = strip_tags($array['password']);
+
+        return $sanitized;
+    }
+
+    public static function checkLogin($array): User|string
+    {
+        $username = $array['username'];
+        $password = $array['password'];
+
+        $user = UserController::getUserByUsername($username);
+
+        if ($user == null) {
+            return "<ul class=\"errorMessages\"><li>Credenziali non valide</li></ul>";
+        }
+        
+        $userPassword = $user->getPassword();
+
+        if(!password_verify($password, $userPassword))
+        {
+            return "<ul class=\"errorMessages\"><li>Credenziali non valide</li></ul>";
+        }
+
+        return $user;
+    }
+
+    public static function privateAreaFieldsNotEmpty($array): bool|string
+    {
+        $personal_data_error = false;
+        $change_password_error = false;
+
+        // Check Dati personali
+        if(empty($array) ||
+        empty($array["nome"]) ||
+        empty($array["cognome"]) ||
+        empty($array["email"]) ||
+        empty($array["username"])) {
+            $personal_data_error = true;
+        }
+
+        // Check cambio password
+        if ((empty($array['old_password']) || empty($array['new_password']) || empty($array['repeated_password'])) &&
+            (!empty($array['old_password']) || !empty($array['new_password']) || !empty($array['repeated_password']))) {
+            $change_password_error = true;
+        }
+
+        // Restituzione congiunta
+        if($personal_data_error === true && $change_password_error === true) {
+            return "<ul class=\"errorMessages\"><li>Per favore, compila tutti i campi, se desideri anche cambiare la password</li></ul>";
+        }
+        if($personal_data_error === true) {
+            return "<ul class=\"errorMessages\"><li>Per favore, compila tutti i dati personali</li></ul>";
+        }
+        if($change_password_error === true) {
+            return "<ul class=\"errorMessages\"><li>Per favore, compila tutti i dati per il cambio password, se desideri cambiarla</li></ul>";
+        }
+
+        return true;
+    }
+
+    public static function validatePrivateArea($array): bool|string
+    {
+        $errorMessages = "<ul class=\"errorMessages\">";
+
+        $name = $array['nome'];
+        $surname = $array['cognome'];
+        $email = $array['email'];
+        $username = $array['username'];
+        $old_pass = $array['old_password'] ?? null;
+        $new_pass = $array['new_password'] ?? null;
+        $conf_pass = $array['repeated_password'] ?? null;
+
+        // Validazione dati personali
+        if(self::isName($name) !== true){
+            $errorMessages .= self::isName($name);
+        }
+        if(self::isSurname($surname) !== true){
+            $errorMessages .= self::isSurname($surname);
+        }
+        if (self::isMail($email) !== true) {
+            $errorMessages .= self::isMail($email);
+        }
+        if (self::isUsername($username) !== true) {
+            $errorMessages .= self::isUsername($username);
+        }
+
+        // Se lo username è cambiato, controllo univocità dello username
+        if($username != $_SESSION['username']) {
+            if (UserController::isUsernameDuplicate($username) === true) {
+                $errorMessages .= "<li>Esiste già un utente registrato con questo <span lang=\"en\">username</span></li>";
+            }
+        }
+
+        // Se la email è cambiata, controllo univocità della email
+        if($email != $_SESSION['email']) {
+            if (UserController::isEmailDuplicate($email) === true) {
+                $errorMessages .= "<li>Esiste già un utente registrato con questa <span lang=\"en\">email</span></li>";
+            }
+        }
+
+        // Validazione cambio password
+        if(!empty($old_pass) && !empty($new_pass) && !empty($conf_pass)) {
+            $username = $_SESSION['username'];
+            $user = UserController::getUserByUsername($username);
+            $userPassword = $user->getPassword();
+
+            if(!password_verify($old_pass, $userPassword)) {
+                $errorMessages .= "<li>La <span lang=\"en\">password</span> attuale non è corretta</li>";
+            }
+
+            if (self::isPassword($new_pass) !== true) {
+                $errorMessages .= self::isPassword($new_pass);
+            }
+
+            if ($new_pass != $conf_pass) {
+                $errorMessages .= "<li>La <span lang=\"en\">password</span> ripetuta non è uguale alla nuova <span lang=\"en\">password</span></li>";
+            }
+        }
+
+        $errorMessages .= "</ul>";
+
+        if ($errorMessages != "<ul class=\"errorMessages\"></ul>") {
+            return $errorMessages;
+        }
+
+        return true;
+    }
+
+    public static function sanitizePrivateArea($array): array
+    {
+        $sanitized = [];
+
+        foreach ($array as $key => $value) {
+            if ($key != 'old_password' && $key != 'new_password' && $key != 'repeated_password') {
+                $sanitized[$key] = htmlentities(strip_tags(trim($value)));
+            }
+        }
+
+        $sanitized['email'] = filter_var($sanitized['email'], FILTER_SANITIZE_EMAIL);
+
+        if(!empty($array['old_password']) && !empty($array['new_password']) && !empty($array['repeated_password'])) {
+            $sanitized['old_password'] = strip_tags($array['old_password']);
+            $sanitized['new_password'] = strip_tags($array['new_password']);
+            $sanitized['repeated_password'] = strip_tags($array['repeated_password']);
+        }
 
         return $sanitized;
     }

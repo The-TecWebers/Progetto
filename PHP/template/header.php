@@ -6,14 +6,12 @@ $header = file_get_contents($path);
 session_start();
 
 if (isset($_SESSION['nome'])) {
-    $header = str_replace(
-        '<div class="sign-buttons">
-            <a id="btn-register" href="registrati.php">Registrati</a>
-            <a id="btn-login" href="accedi.php">Accedi</a>
-         </div>',
+    $header = preg_replace(
+        '/<div class="sign-buttons">\s*.*\s*<\/div>/s',
         '<div class="sign-buttons">
             <a id="btn-private_area" href="area_privata.php" title="Vai all\'area privata">' . htmlspecialchars($_SESSION['nome']) . '</a>
             <a id="btn-logout" href="logout.php">Esci</a>
+        </div>
         </div>',
         $header
     );
@@ -59,6 +57,8 @@ switch ($current_page) {
         if(isset($_GET['intended']) && $_GET['intended']=='lista_preventivi')
         {
             $header = str_replace('<li><a href="lista_preventivi.php">Preventivi</a></li>', '<li class="current-link">Preventivi</li>', $header);
+        }else{
+            $header = str_replace('<a id="btn-register" href="registrati.php">Registrati</a>', '<div id="btn-register" class="current-link">Registrati</div>', $header);
         }
         break;
     case "accedi.php":
@@ -66,9 +66,12 @@ switch ($current_page) {
         if(isset($_GET['intended']) && $_GET['intended']=='lista_preventivi')
         {
             $header = str_replace('<li><a href="lista_preventivi.php">Preventivi</a></li>', '<li class="current-link">Preventivi</li>', $header);
+        }else{
+            $header = str_replace('<a id="btn-login" href="accedi.php">Accedi</a>', '<div id="btn-login" class="current-link">Accedi</div>', $header);
         }
         break;
     case "area_privata.php":
+        $header = str_replace('<a id="btn-private_area" href="area_privata.php" title="Vai all\'area privata">' . htmlspecialchars($_SESSION['nome']) . '</a>', '<div id="btn-private_area" class="current-link">' . htmlspecialchars($_SESSION['nome']) . '</div>', $header);
         $header = str_replace($placeholder, $prefix . 'Area privata' . $suffix, $header);
         break;
     case "crea_preventivo.php":

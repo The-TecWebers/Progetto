@@ -16,12 +16,7 @@ try {
             header("Location: area_privata.php");
     }
     $template = (file_get_contents('HTML' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . 'accedi.html'));
-    $err = isset($_SESSION['error-login']) ? $_SESSION['error-login'] : null;
-    if (isset($err)){
-        $template = str_replace("<!-- errorMessages -->", $err, $template);
-        $template = str_replace("placeholder=\"Username\"", "value=\"" . $_SESSION['username*'] . "\"", $template);
-        $template = str_replace("placeholder=\"Password\"", "value=\"" . $_SESSION['password*'] . "\"", $template);
-    }
+    
     if(isset($_GET['intended']))
     {
         if($_GET['intended']=="lista_preventivi")
@@ -40,6 +35,26 @@ try {
             $template = str_replace("<!--intendedRedirectMessages-->", $msg, $template);
         }
     }
+
+    $err = isset($_SESSION['error-login']) ? $_SESSION['error-login'] : null;
+    if (isset($err)){
+        $template = str_replace("<!-- errorMessages -->", $err, $template);
+        
+        $fields = array(
+            'username' => 'Username',
+            'password' => 'Password'
+        );
+        
+        foreach ($fields as $field => $label) {
+            $sessionKey = $field . '*';
+            if (isset($_SESSION[$sessionKey]) && $_SESSION[$sessionKey] !== "") {
+                $template = str_replace("placeholder=\"{$label}\"", "value=\"" . $_SESSION[$sessionKey] . "\"", $template);
+            } else {
+                $template = preg_replace('/name="' . $field . '" value=".*"/', 'placeholder="' . $label . '"', $template);
+            }
+        }
+    }
+
     session_reset();
     session_write_close();
 } catch (Exception $e) {

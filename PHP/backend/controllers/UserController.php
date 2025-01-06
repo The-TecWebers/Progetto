@@ -10,14 +10,16 @@ class UserController extends AbstractController
     {
         $input = $_POST;
 
-        if(InputController::registrationFieldsNotEmpty($input) !== true)
+        $resultNotEmpty = InputController::registrationFieldsNotEmpty($input);
+        if($resultNotEmpty !== true)
         {
-            return InputController::registrationFieldsNotEmpty($input);
+            return $resultNotEmpty;
         }
 
-        if(InputController::validateRegistration($input) !== true)
+        $resultValidation = InputController::validateRegistration($input);
+        if($resultValidation !== true)
         {
-            return InputController::validateRegistration($input);
+            return $resultValidation;
         }
 
         $input = InputController::sanitizeRegistration($input);
@@ -49,38 +51,75 @@ class UserController extends AbstractController
 
     public static function update()
     {
+        $input = $_POST;
+
+        $resultNotEmpty = InputController::privateAreaFieldsNotEmpty($input);
+        if($resultNotEmpty !== true)
+        {
+            return $resultNotEmpty;
+        }
+
+        $resultValidation = InputController::validatePrivateArea($input);
+        if($resultValidation !== true)
+        {
+            return $resultValidation;
+        }
+
+        $input = InputController::sanitizePrivateArea($input);
+
+        if (!empty($input['new_password'])) {
+            $input['password'] = InputController::hashPassword($input['new_password']);
+        }
+        unset($input['old_password'], $input['new_password'], $input['repeated_password']);
+
+        $user = self::getUserByUsername($_SESSION['username']);
+        $userId = self::getUserId($user);
+
+        $user->update($userId, $input);
+
+        AuthController::login($user);
+
+        return true;
     }
 
     public static function delete()
     {
+    $username = $_SESSION['username'];
+
+    $user = self::getUserByUsername($username);
+    if (!$user) {
+        return false;
+    }
+
+    $userId = self::getUserId($user);
+    if (!$userId) {
+        return false;
+    }
+
+    $result = DBController::runQuery("DELETE FROM utente WHERE id = ?", $userId);
+
+    return true;
     }
 
     public static function login()
     {
-        if(InputController::loginFieldsNotEmpty($_POST) !== true)
+        $input = $_POST;
+
+        $resultNotEmpty = InputController::loginFieldsNotEmpty($input);
+        if($resultNotEmpty !== true)
         {
-            return InputController::loginFieldsNotEmpty($_POST);
+            return $resultNotEmpty;
         }
 
-        $sanitized = InputController::sanitizeLogin($_POST);
+        $sanitized = InputController::sanitizeLogin($input);
 
-        $username = $sanitized['username'];
-        $password = $sanitized['password'];
-
-        $user = self::getUserByUsername($username);
-
-        if ($user == null) {
-            return "<ul class=\"errorMessages\"><li>Credenziali non valide</li></ul>";
-        }
-        
-        $userPassword = $user->getPassword();
-
-        if(!password_verify($password, $userPassword))
+        $resultValidation = InputController::checkLogin($sanitized);
+        if(!$resultValidation instanceof User)
         {
-            return "<ul class=\"errorMessages\"><li>Credenziali non valide</li></ul>";
+            return $resultValidation;
         }
 
-        AuthController::login($user);
+        AuthController::login($resultValidation);
 
         return true;
     }
@@ -114,8 +153,7 @@ class UserController extends AbstractController
 
         if(count($result)>0)
         {
-            $user = new User($result);
-            return $user;
+            return new User($result);
         }
     }
 
@@ -130,8 +168,24 @@ class UserController extends AbstractController
 
         if(count($result)>0)
         {
-            $user = new User($result);
-            return $user;
+            return new User($result);
+        }
+    }
+
+    public static function getUserId(User $user)
+    {
+        $username = $user->getUsername();
+
+        $result = DBController::runQuery("SELECT id FROM utente WHERE username = ?", $username);
+
+        if($result === false)
+        {
+            return false;
+        }
+        
+        if(count($result)>0)
+        {
+            return $result['id'];
         }
     }
 

@@ -272,6 +272,64 @@ PULSANTI ACCOUNT
     box-shadow: 0 0.142em 0.285em rgba(0, 0, 0, 0.3);
 }
 
+.sign-buttons div.current-link {
+    display: inline-block;
+    text-decoration: none;
+    background-color: var(--bg_bgFuchsia);
+    color: var(--link_bgFuchsia);
+    border: none;
+    border-radius: 0.357em;
+    padding: 0.714em 1.428em;
+    font-size: 0.875em;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* 
+==============
+DELETE ACCOUNT
+==============
+*/
+
+#danger-zone {
+    border: 0.125em solid var(--borderError); 
+    background-color: var(--bgError);
+    color: var(--txtError); 
+    padding: 1.25em;
+    border-radius: 0.5em;
+    margin: 1.25em auto;
+    text-align: center;
+}
+
+#danger-zone h3 {
+    color: var(--txtError); 
+    font-size: 1.5em;
+    margin-bottom: 0.625em;
+}
+
+#danger-zone p {
+    margin-bottom: 1.25em;
+    font-size: 1em;
+    color: var(--text_bgWhite);
+}
+
+#delete-button {
+    background-color: var(--txtError); 
+    color: var(--bg_bgWhite); 
+    border: 0.125em solid var(--borderError); 
+    padding: 0.625em 1.25em;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 0.3125em;
+}
+
+#delete-button:hover {
+    transform: scale(1.05); 
+}
+
+#delete-button:focus {
+    outline-offset: 0.125em;
+}
 
 
 /*
@@ -1116,7 +1174,7 @@ AREA PRIVATA
 =============
 */
 
-#confirmbutton {
+#confirm-button {
     margin-top: 0.2em;
 }
 

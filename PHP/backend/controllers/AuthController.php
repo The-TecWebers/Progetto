@@ -6,10 +6,10 @@ class AuthController
 {
     public static function login(User $user)
     {
-        $_SESSION ['username'] = $user->getUsername();
-        $_SESSION ['email'] = $user->getEmail();
-        $_SESSION ['nome'] = $user->getName();
-        $_SESSION ['cognome'] = $user->getSurname();
+        $_SESSION['username'] = $user->getUsername();
+        $_SESSION['email'] = $user->getEmail();
+        $_SESSION['nome'] = $user->getName();
+        $_SESSION['cognome'] = $user->getSurname();
     }
 
     public static function logout()
