@@ -4,6 +4,12 @@ require_once 'UserController.php';
 
 class InputController
 {
+    /*
+    ==================
+    CHECK FORM FIELDS
+    ==================
+    */
+
     private static function isName($name): bool|string
     {
         $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
