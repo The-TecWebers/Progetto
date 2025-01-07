@@ -61,12 +61,17 @@ class PreventivoController extends AbstractController
     }
 
     public static function getTabellaPreventivi() {
-        $utente = AuthController::getAuthUser();
-        $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo WHERE utente = ?", $utente->getId());
+        $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo");
 
         if(!$preventivi) {
             return "<p>Non ci sono preventivi da mostrare</p>";
         }
+
+        foreach ($preventivi as &$preventivo) { // Usa "&" per passare per riferimento
+            $username = DBController::runQuery("SELECT username FROM utente WHERE id = ?", $preventivo['utente']);
+            $preventivo['username'] = $username['username']; // Questo aggiorna direttamente l'array $preventivi
+        }
+        unset($preventivo); // Importante per evitare effetti collaterali
 
         $table = "<p id='desc-tabella'>Lista dei tuoi preventivi. Nelle righe sono elencati i preventivi,
         per ogni preventivo sono visualizzati l'id, la data, la descrizione, il luogo, il link alla foto ed il link
@@ -77,6 +82,7 @@ class PreventivoController extends AbstractController
             <thead>
                 <tr>
                     <th scope='col'>Id</th>
+                    <th scope='col'>Richiedente</th>
                     <th scope='col'>Data</th>
                     <th scope='col' abbr='desc'>Descrizione</th>
                     <th scope='col'>Luogo</th>
@@ -89,6 +95,7 @@ class PreventivoController extends AbstractController
         foreach ($preventivi as $preventivo) {
             $table .= "<tr>
                 <th scope='row'>".$preventivo['id']."</th>
+                <td data-title='Richiedente'>".$preventivo['username']."</td>
                 <td data-title='Data'><time datetime='".$preventivo['data']."'>".$preventivo['data']."</time></td>
                 <td data-title='Descrizione'>".$preventivo['descrizione']."</td>
                 <td data-title='Luogo'>".$preventivo['luogo']."</td>

@@ -958,6 +958,7 @@ td {
 
 th,
 td {
+    text-align: center;
     padding: 0.5em;
 }
 
@@ -965,6 +966,10 @@ th {
     text-align: center;
     background-color: var(--bg_bgGreen);
     color: var(--text_bgGreen);
+}
+
+td[data-title = "Descrizione"] {
+    text-align: left;
 }
 
 caption {

@@ -17,7 +17,9 @@ if (AuthController::isLogged()) {
     }
     else
     {
+        $creaPreventivo = '<a href="crea_preventivo.php">Crea preventivo</a>';
         $lista = PreventivoController::getListaPreventivi();
+        $template = str_replace("<!--CreaPreventivi-->", $creaPreventivo, $template);
         $template = str_replace("<!--VistaPreventivi-->", $lista, $template);
     }
     session_reset();
