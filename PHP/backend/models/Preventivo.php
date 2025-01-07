@@ -2,20 +2,21 @@
 
 class Preventivo
 {
-    private $descrizione;
-    private $data;
-    private $foto;
-    private $luogo;
-
+    private $titolo;
     private $utente;
+    private $data;
+    private $luogo;
+    private $foto;
+    private $descrizione;
 
     function __construct(array $array)
     {
-        $this->descrizione = $array['descrizione'];
-        $this->data = date("Y-m-d");
-        $this->foto = $array['foto'];
-        $this->luogo = $array['luogo'];
+        $this->titolo = $array['titolo'];
         $this->utente = $array['utente'];
+        $this->data = date("Y-m-d");
+        $this->luogo = $array['luogo'];
+        $this->foto = $array['foto'];
+        $this->descrizione = $array['descrizione'];
     }
 
     public function getDescrizione()
@@ -45,6 +46,7 @@ class Preventivo
 
     public function save()
     {
-        DBController::runQuery("INSERT INTO richiesta_preventivo (descrizione, data, foto, luogo, utente) VALUES (?,?,?,?,?);", $this->descrizione, $this->data, $this->foto, $this->luogo, $this->utente);
+        DBController::runQuery("INSERT INTO richiesta_preventivo (titolo, utente, data, luogo, foto, descrizione)
+        VALUES (?,?,?,?,?,?);", $this->titolo, $this->utente, $this->data, $this->luogo, $this->foto, $this->descrizione);
     }
 }

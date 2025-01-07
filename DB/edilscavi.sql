@@ -14,10 +14,11 @@ CREATE TABLE utente (
 -- Form richiesta preventivo
 CREATE TABLE richiesta_preventivo (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    titolo VARCHAR(255) UNIQUE NOT NULL,
+    utente INT NOT NULL,
+    data DATE NOT NULL,
+    luogo VARCHAR(255) NOT NULL,
+    foto VARCHAR(255) NOT NULL,
 	descrizione VARCHAR(255) NOT NULL,
-	data DATE NOT NULL,
-	foto VARCHAR(255) NOT NULL,
-	luogo VARCHAR(255) NOT NULL,
-	utente INT NOT NULL,
 	FOREIGN KEY (utente) REFERENCES utente(id) ON DELETE CASCADE
 );
