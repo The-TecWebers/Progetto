@@ -18,7 +18,6 @@ CREATE TABLE richiesta_preventivo (
 	data DATE NOT NULL,
 	foto VARCHAR(255) NOT NULL,
 	luogo VARCHAR(255) NOT NULL,
-	tipo_lavoro VARCHAR(255) NOT NULL,
 	utente INT NOT NULL,
 	FOREIGN KEY (utente) REFERENCES utente(id) ON DELETE CASCADE
 );
