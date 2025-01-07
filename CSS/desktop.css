@@ -916,9 +916,9 @@ a.cta:active {
 
 
 /*
-==========
+========
 MARGINI
-==========
+========
 */
 
 .mt-auto {
@@ -944,15 +944,15 @@ MARGINI
 
 
 /* 
-=============
+========
 TABELLE
-=============
+========
 */
 
 table,
 th,
 td {
-    border: 1px solid black;
+    border: 0.0625em solid black;
     border-collapse: collapse;
 }
 

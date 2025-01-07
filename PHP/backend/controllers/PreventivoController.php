@@ -89,11 +89,11 @@ class PreventivoController extends AbstractController
         foreach ($preventivi as $preventivo) {
             $table .= "<tr>
                 <th scope='row'>".$preventivo['id']."</th>
-                <td><time datetime='".$preventivo['data']."'>".$preventivo['data']."</time></td>
-                <td>".$preventivo['descrizione']."</td>
-                <td>".$preventivo['luogo']."</td>
-                <td><a href='".$preventivo['foto']."' target='_blank'>Foto del preventivo</a></td>
-                <td><a href='singolo_preventivo.php?id=".$preventivo['id']."'>Dettagli</a></td>
+                <td data-title='Data'><time datetime='".$preventivo['data']."'>".$preventivo['data']."</time></td>
+                <td data-title='Descrizione'>".$preventivo['descrizione']."</td>
+                <td data-title='Luogo'>".$preventivo['luogo']."</td>
+                <td data-title='Foto'><a href='".$preventivo['foto']."' target='_blank'>Foto del preventivo</a></td>
+                <td data-title='Dettagli'><a href='singolo_preventivo.php?id=".$preventivo['id']."'>Dettagli</a></td>
             </tr>";
         }
         return $table."</tbody></table>";
