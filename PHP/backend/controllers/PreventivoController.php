@@ -28,8 +28,13 @@ class PreventivoController extends AbstractController
     {
         $utente = AuthController::getAuthUser();
         $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo WHERE utente = ?", $utente->getId());
+
+        if(!$preventivi) {
+            return "<p>Non ci sono preventivi da mostrare</p>";
+        }
+
         $dl = "<div class='grid cols-3'>";
-    
+
         foreach ($preventivi as $preventivo) {
             $dl .= "<div class='figure-paragraph-container'>
                 <figure>
