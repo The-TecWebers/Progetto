@@ -8,11 +8,21 @@ $titolo = "Lista preventivi - EdilScavi";
 $descrizione = "Lista dei tuoi preventivi per i lavori di scavi e edilizia con EdilScavi";
 $keywords = "preventivi, scavi, edilizia, scavi brescia, lavori edilizi";
 if (AuthController::isLogged()) {
-    session_write_close();
-    session_abort();
     $template = file_get_contents(filename: __DIR__ . DIRECTORY_SEPARATOR . "HTML" . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "lista_preventivi.html");
-    $tabella = PreventivoController::getTabellaPreventivi();
-    $template = str_replace("<!--TabellaPreventivi-->",$tabella,$template);
+
+    if(AuthController::isAdmin())
+    {
+        $tabella = PreventivoController::getTabellaPreventivi();
+        $template = str_replace("<!--VistaPreventivi-->",$tabella,$template);
+    }
+    else
+    {
+        $lista = PreventivoController::getListaPreventivi();
+        $template = str_replace("<!--VistaPreventivi-->", $lista, $template);
+    }
+    session_reset();
+    session_write_close();
+    
     include __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "template" . DIRECTORY_SEPARATOR . "header.php";
     echo $template;
     include __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "template" . DIRECTORY_SEPARATOR . "footer.php";

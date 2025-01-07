@@ -961,10 +961,25 @@ td {
     padding: 0.5em;
 }
 
-td:nth-child(even),
-th:nth-child(even) {
-    background-color: rgb(15, 133, 85, 0.2)
-    ;
+th {
+    text-align: center;
+    background-color: var(--bg_bgGreen);
+    color: var(--text_bgGreen);
+}
+
+caption {
+    font-weight: bold;
+    font-size: 1.5em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    margin-bottom: 0.5em;
+}
+
+td:nth-child(odd) {
+    background-color: rgb(15, 133, 85, 0.2);
+}
+
+#desc-tabella {
+    text-indent: -999em;
 }
 
 
