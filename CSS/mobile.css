@@ -53,21 +53,21 @@ tr, th, td{
 }
 
 /* Tolgo i bordi che non siano quelli delle celle */
-table, body, tr{
+table, tbody, tr{
     border: none;
 }
 
-/* Aggiungo il bordo alla prima cella così tutti i bordi orizzontali hanno lo stesso spessore */
+/* Aggiungo il bordo sopra alla prima cella di ogni riga così tutti i bordi orizzontali hanno lo stesso spessore */
 tr:first-child{
     border-top: 0.0625em solid #000
 }
 
-/* Aggiungo il bordo all'ultima cella così tutti i bordi orizzontali hanno lo stesso spessore */
+/* Aggiungo il bordo sotto all'ultima cella di ogni riga così tutti i bordi orizzontali hanno lo stesso spessore */
 tr:last-child{
     border-bottom: 0.0625em solid #000
 }
 
-/* Aggiungo il bordo a tr così tutti i bordi verticali hanno lo stesso spessore */
+/* Aggiungo il bordo a sinistra e destra di ogni riga così tutti i bordi verticali hanno lo stesso spessore */
 tr{
     border-left: 0.0625em solid #000;
     border-right: 0.0625em solid #000;
