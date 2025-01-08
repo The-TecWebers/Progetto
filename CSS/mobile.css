@@ -84,6 +84,21 @@ td:empty{
 
 
 
+/*
+==========
+CONTAINER
+==========
+*/
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1em;
+}
+
+
+
 
 
 
@@ -263,20 +278,13 @@ SU DI NOI
     width: 100%;
 }
 
+
+
 /*
-==========
-CONTAINER
-==========
+=================
+LISTA PREVENTIVI
+=================
 */
-
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 1em;
-}
-
-
 
 .preventivi-container {
     justify-content: center;

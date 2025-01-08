@@ -1290,12 +1290,12 @@ AREA PRIVATA
 }
 
 
-/* 
-=============
-LISTA PREVENTIVI
-=============
-*/
 
+/* 
+=================
+LISTA PREVENTIVI
+=================
+*/
 
 .preventivi-container {
     justify-content: center;
