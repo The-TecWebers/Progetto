@@ -14,13 +14,45 @@ class PreventivoController
     {
 
     }
-    static public function update()
+    static public function update($id)
     {
-
+        $input = InputController::sanitizePreventivo($_POST);
+        $target = self::getPreventivoById($id);
+        $target->update($input);
+        return true;
     }
     static public function delete($id)
     {
         DBController::runQuery("DELETE FROM richiesta_preventivo WHERE id = ?", $id);
+    }
+
+    public static function getPreventivoById($id)
+    {
+        $result = DBController::runQuery("SELECT * FROM richiesta_preventivo WHERE id = ?", $id);
+
+        if($result === false)
+        {
+            return false;
+        }
+
+        if(count($result)>0)
+        {
+            return new Preventivo($result);
+        }
+    }
+
+    public static function authorizeFunction($preventivoId, $userId): bool
+    {
+        $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo WHERE utente = ? AND id = ?", $userId, $preventivoId);
+
+        if(!$preventivi) {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
     }
 
     public static function getListaPreventivi()
@@ -56,12 +88,13 @@ class PreventivoController
                         </dd>
                     </dl>
                     <div class='container'>
-                        <form method='POST' action='preventivi.php?action=edit'>
-                            <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'>
+                        <form method='GET' action='preventivi.php'>
+                            <input type='hidden' name='action' value='edit'/>
+                            <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'/>
                             <button type='submit'><img class='no-border' src='Images/icons/edit_white.svg' height=30></button>
                         </form>
                         <form method='POST' action='preventivi.php?action=delete'>
-                            <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'>
+                            <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'/>
                             <button type='submit'><img class='no-border' src='Images/icons/delete_white.svg' height=30></button>
                         </form>
                     </div>
@@ -116,20 +149,6 @@ class PreventivoController
             </tr>";
         }
         return $table."</tbody></table>";
-    }
-
-    public static function authorizeFunction($preventivoId, $userId): bool
-    {
-        $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo WHERE utente = ? AND id = ?", $userId, $preventivoId);
-
-        if(!$preventivi) {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-
     }
     
 }
