@@ -64,12 +64,12 @@ class PreventivoController
             return "<p>Non ci sono preventivi da mostrare</p>";
         }
 
-        $dl = "<div class='container'>";
+        $dl = "<div class='preventivi-container'>";
 
         foreach ($preventivi as $preventivo) {
-            $dl .= "<dl>
+            $dl .= "<dl class='preventivo'>
             <dt>".$preventivo['titolo']."</dt>
-            <dd class='figure-paragraph-container'>
+            <dd class=''>
                 <figure>
                     <img src='".$preventivo['foto']."' alt='Foto del preventivo'>
                     <figcaption>Foto del preventivo</figcaption>
@@ -91,11 +91,13 @@ class PreventivoController
                         <form method='GET' action='preventivi.php'>
                             <input type='hidden' name='action' value='edit'/>
                             <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'/>
-                            <button type='submit'><img class='no-border' src='Images/icons/edit_white.svg' height=30></button>
+                            <button type='submit'><img class='' src='Images/icons/edit_white.svg' height=30></button>
                         </form>
+                    </div>
+                    <div class='container'>
                         <form method='POST' action='preventivi.php?action=delete'>
                             <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'/>
-                            <button type='submit'><img class='no-border' src='Images/icons/delete_white.svg' height=30></button>
+                            <button type='submit'><img class='' src='Images/icons/delete_white.svg' height=30></button>
                         </form>
                     </div>
                 </div>

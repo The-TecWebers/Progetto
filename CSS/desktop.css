@@ -295,9 +295,9 @@ DELETE ACCOUNT
 */
 
 #danger-zone {
-    border: 0.125em solid var(--borderError); 
+    border: 0.125em solid var(--borderError);
     background-color: var(--bgError);
-    color: var(--txtError); 
+    color: var(--txtError);
     padding: 1.25em;
     border-radius: 0.5em;
     margin: 1.25em auto;
@@ -305,7 +305,7 @@ DELETE ACCOUNT
 }
 
 #danger-zone h3 {
-    color: var(--txtError); 
+    color: var(--txtError);
     font-size: 1.5em;
     margin-bottom: 0.625em;
 }
@@ -317,9 +317,9 @@ DELETE ACCOUNT
 }
 
 #delete-button {
-    background-color: var(--txtError); 
-    color: var(--bg_bgWhite); 
-    border: 0.125em solid var(--borderError); 
+    background-color: var(--txtError);
+    color: var(--bg_bgWhite);
+    border: 0.125em solid var(--borderError);
     padding: 0.625em 1.25em;
     font-size: 1em;
     cursor: pointer;
@@ -327,7 +327,7 @@ DELETE ACCOUNT
 }
 
 #delete-button:hover {
-    transform: scale(1.05); 
+    transform: scale(1.05);
 }
 
 #delete-button:focus {
@@ -968,7 +968,7 @@ th {
     color: var(--text_bgGreen);
 }
 
-td[data-title = "Descrizione"] {
+td[data-title="Descrizione"] {
     text-align: left;
 }
 
@@ -1224,6 +1224,10 @@ SU DI NOI
     display: grid;
 }
 
+.cols-1 {
+    grid-template-columns: 100%;
+}
+
 .cols-2 {
     grid-template-columns: auto auto;
 }
@@ -1235,7 +1239,6 @@ SU DI NOI
 .items-center {
     justify-items: center;
 }
-
 
 
 /* 
@@ -1284,4 +1287,37 @@ AREA PRIVATA
 
 #cta-error {
     margin-bottom: 1em;
+}
+
+
+/* 
+=============
+LISTA PREVENTIVI
+=============
+*/
+
+
+.preventivi-container {
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 40% 40%;
+    gap: 0.5em;
+}
+
+.preventivo figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Make the image responsive */
+.preventivo figure img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
 }
