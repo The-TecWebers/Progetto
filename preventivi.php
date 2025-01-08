@@ -23,4 +23,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header("Location: lista_preventivi.php");
         }
     }
+    else if($action == 'delete')
+    {
+        $user = AuthController::getAuthUser();
+        $id = $user->getId();
+        $sanitized = InputController::sanitizeAll($_POST);
+        if(PreventivoController::authorizeFunction($sanitized['id_preventivo'], $id))
+        {
+            PreventivoController::delete($sanitized['id_preventivo']);
+        }
+        else
+        {
+            header("Location: 500.php");
+        }
+        $_SESSION['Messages'] = "<p class='info-label centered mb-0-6'>Preventivo cancellato correttamente!</p>";
+        header("Location: lista_preventivi.php");
+    }
 }

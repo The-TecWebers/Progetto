@@ -262,3 +262,16 @@ SU DI NOI
 .container-error  img {
     width: 100%;
 }
+
+/*
+==========
+CONTAINER
+==========
+*/
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1em;
+}

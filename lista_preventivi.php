@@ -22,9 +22,14 @@ if (AuthController::isLogged()) {
         $template = str_replace("<!--CreaPreventivi-->", $creaPreventivo, $template);
         $template = str_replace("<!--VistaPreventivi-->", $lista, $template);
     }
-    session_reset();
+    if(isset($_SESSION['Messages']))
+    {
+        $template = str_replace("<!--Messages-->", $_SESSION['Messages'], $template);
+        $_SESSION['Messages']=null;
+
+    }
     session_write_close();
-    
+
     include __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "template" . DIRECTORY_SEPARATOR . "header.php";
     echo $template;
     include __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "template" . DIRECTORY_SEPARATOR . "footer.php";

@@ -1,8 +1,7 @@
 <?php
-require_once 'AbstractController.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Preventivo.php';
 require_once 'DBController.php';
-class PreventivoController extends AbstractController
+class PreventivoController
 {
     static public function create()
     {
@@ -19,9 +18,9 @@ class PreventivoController extends AbstractController
     {
 
     }
-    static public function delete()
+    static public function delete($id)
     {
-
+        DBController::runQuery("DELETE FROM richiesta_preventivo WHERE id = ?", $id);
     }
 
     public static function getListaPreventivi()
@@ -33,7 +32,7 @@ class PreventivoController extends AbstractController
             return "<p>Non ci sono preventivi da mostrare</p>";
         }
 
-        $dl = "<div class='grid cols-3'>";
+        $dl = "<div class='container'>";
 
         foreach ($preventivi as $preventivo) {
             $dl .= "<dl>
@@ -56,6 +55,16 @@ class PreventivoController extends AbstractController
                             <p>".$preventivo['descrizione']."</p>
                         </dd>
                     </dl>
+                    <div class='container'>
+                        <form method='POST' action='preventivi.php?action=edit'>
+                            <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'>
+                            <button type='submit'><img class='no-border' src='Images/icons/edit_white.svg' height=30></button>
+                        </form>
+                        <form method='POST' action='preventivi.php?action=delete'>
+                            <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'>
+                            <button type='submit'><img class='no-border' src='Images/icons/delete_white.svg' height=30></button>
+                        </form>
+                    </div>
                 </div>
             </dd>
             </dl>";
@@ -107,6 +116,20 @@ class PreventivoController extends AbstractController
             </tr>";
         }
         return $table."</tbody></table>";
+    }
+
+    public static function authorizeFunction($preventivoId, $userId): bool
+    {
+        $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo WHERE utente = ? AND id = ?", $userId, $preventivoId);
+
+        if(!$preventivi) {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
     }
     
 }

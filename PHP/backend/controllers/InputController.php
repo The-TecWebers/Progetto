@@ -338,4 +338,15 @@ class InputController
 
         return $sanitized;
     }
+
+    public static function sanitizeAll($array): array
+    {
+        $sanitized = [];
+
+        foreach ($array as $key => $value) {
+            $sanitized[$key] = htmlentities(strip_tags(trim($value)));
+        }
+
+        return $sanitized;
+    }
 }
