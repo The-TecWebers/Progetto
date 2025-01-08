@@ -47,9 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $result = PreventivoController::update($_POST['id_preventivo']);
             if ($result == true) {
                 header("Location: lista_preventivi.php");
-            }
-            else
-            {
+            } else {
                 header("Location: 500.php");
             }
         } else {

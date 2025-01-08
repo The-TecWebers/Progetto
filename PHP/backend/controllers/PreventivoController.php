@@ -18,7 +18,11 @@ class PreventivoController
     {
         $input = InputController::sanitizePreventivo($_POST);
         $target = self::getPreventivoById($id);
-        $target->update($input);
+        if($input['foto']=="uploads/")
+        {
+            $input['foto'] = $target->getFoto();
+        }
+        $target->update(array: $input);
         return true;
     }
     static public function delete($id)
@@ -91,13 +95,11 @@ class PreventivoController
                         <form method='GET' action='preventivi.php'>
                             <input type='hidden' name='action' value='edit'/>
                             <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'/>
-                            <button type='submit'><img class='' src='Images/icons/edit_white.svg' height=30></button>
+                            <button type='submit'><img alt='Modifica preventivo' src='Images/icons/edit_white.svg' height=30 width=30></button>
                         </form>
-                    </div>
-                    <div class='container'>
                         <form method='POST' action='preventivi.php?action=delete'>
                             <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'/>
-                            <button type='submit'><img class='' src='Images/icons/delete_white.svg' height=30></button>
+                            <button type='submit'><img alt='Modifica preventivo' src='Images/icons/delete_white.svg' height=30 width=30></button>
                         </form>
                     </div>
                 </div>
