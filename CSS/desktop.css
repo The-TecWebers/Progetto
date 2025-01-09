@@ -1156,6 +1156,14 @@ dt {
     border: var(--border) 0.125em solid;
 }
 
+.figure-paragraph-container dl {
+    margin-left: 1em;
+}
+
+.figure-paragraph-container dl p {
+    margin-left: 0;
+}
+
 
 
 /*
