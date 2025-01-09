@@ -75,8 +75,12 @@ switch ($current_page) {
         $header = str_replace($placeholder, $prefix . 'Area privata' . $suffix, $header);
         break;
     case "crea_preventivo.php":
-        $header = str_replace($placeholder, $prefix . '<a href="lista_preventivi.php">Lista preventivi</a></li>'
+        $header = str_replace($placeholder, $prefix . '<a href="lista_preventivi.php">Preventivi</a></li>'
                   . '<li>Crea preventivo' . $suffix, $header);
+        break;
+    case "singolo_preventivo.php":
+        $header = str_replace($placeholder, $prefix . '<a href="lista_preventivi.php">Preventivi</a></li>'
+                  . '<li>Preventivo Utente' . $suffix, $header);
         break;
 
     default:
