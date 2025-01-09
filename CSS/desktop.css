@@ -1164,6 +1164,10 @@ dt {
     margin-left: 0;
 }
 
+dt + dd {
+    margin-bottom: 0.5em;
+}
+
 
 
 /*
