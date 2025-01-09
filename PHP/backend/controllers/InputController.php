@@ -19,7 +19,7 @@ class InputController
         }
         return true;
     }
-    
+
     private static function isSurname($surname): bool|string
     {
         $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
@@ -29,7 +29,7 @@ class InputController
         }
         return true;
     }
-    
+
     private static function isMail($mail): bool|string
     {
         if (strlen($mail) > 256) {
@@ -40,7 +40,7 @@ class InputController
         }
         return true;
     }
-    
+
     private static function isUsername($username): bool|string
     {
         $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
@@ -50,7 +50,7 @@ class InputController
         }
         return true;
     }
-    
+
     private static function isPassword($pass): bool|string
     {
         $password_pattern = '/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\s])[\S]{8,256}$/';
@@ -62,8 +62,7 @@ class InputController
 
     public static function hashPassword($password): string|null
     {
-        if($password!=null)
-        {
+        if ($password != null) {
             return password_hash($password, PASSWORD_BCRYPT);
         }
         return null;
@@ -80,13 +79,15 @@ class InputController
     public static function registrationFieldsNotEmpty($array): bool|string
     {
         // Controlla che tutti i campi siano presenti
-        if (empty($array) ||
+        if (
+            empty($array) ||
             empty($array["nome"]) ||
             empty($array["cognome"]) ||
             empty($array["email"]) ||
             empty($array["username"]) ||
             empty($array["password"]) ||
-            empty($array["password_confirmation"])) {
+            empty($array["password_confirmation"])
+        ) {
 
             return "<ul class=\"errorMessages\"><li>Per favore, compila tutti i campi</li></ul>";
         }
@@ -105,10 +106,10 @@ class InputController
         $pass1 = $array['password'];
         $pass2 = $array['password_confirmation'];
 
-        if(self::isName($name) !== true){
+        if (self::isName($name) !== true) {
             $errorMessages .= self::isName($name);
         }
-        if(self::isSurname($surname) !== true){
+        if (self::isSurname($surname) !== true) {
             $errorMessages .= self::isSurname($surname);
         }
         if (self::isMail($email) !== true) {
@@ -165,9 +166,11 @@ class InputController
 
     public static function loginFieldsNotEmpty($array): bool|string
     {
-        if (empty($array) ||
+        if (
+            empty($array) ||
             empty($array["username"]) ||
-            empty($array["password"])) {
+            empty($array["password"])
+        ) {
             return "<ul class=\"errorMessages\"><li>Per favore, compila tutti i campi</li></ul>";
         }
 
@@ -194,11 +197,10 @@ class InputController
         if ($user == null) {
             return "<ul class=\"errorMessages\"><li>Credenziali non valide</li></ul>";
         }
-        
+
         $userPassword = $user->getPassword();
 
-        if(!password_verify($password, $userPassword))
-        {
+        if (!password_verify($password, $userPassword)) {
             return "<ul class=\"errorMessages\"><li>Credenziali non valide</li></ul>";
         }
 
@@ -211,28 +213,32 @@ class InputController
         $change_password_error = false;
 
         // Check Dati personali
-        if(empty($array) ||
-        empty($array["nome"]) ||
-        empty($array["cognome"]) ||
-        empty($array["email"]) ||
-        empty($array["username"])) {
+        if (
+            empty($array) ||
+            empty($array["nome"]) ||
+            empty($array["cognome"]) ||
+            empty($array["email"]) ||
+            empty($array["username"])
+        ) {
             $personal_data_error = true;
         }
 
         // Check cambio password
-        if ((empty($array['old_password']) || empty($array['new_password']) || empty($array['repeated_password'])) &&
-            (!empty($array['old_password']) || !empty($array['new_password']) || !empty($array['repeated_password']))) {
+        if (
+            (empty($array['old_password']) || empty($array['new_password']) || empty($array['repeated_password'])) &&
+            (!empty($array['old_password']) || !empty($array['new_password']) || !empty($array['repeated_password']))
+        ) {
             $change_password_error = true;
         }
 
         // Restituzione congiunta
-        if($personal_data_error === true && $change_password_error === true) {
+        if ($personal_data_error === true && $change_password_error === true) {
             return "<ul class=\"errorMessages\"><li>Per favore, compila tutti i campi, se desideri anche cambiare la password</li></ul>";
         }
-        if($personal_data_error === true) {
+        if ($personal_data_error === true) {
             return "<ul class=\"errorMessages\"><li>Per favore, compila tutti i dati personali</li></ul>";
         }
-        if($change_password_error === true) {
+        if ($change_password_error === true) {
             return "<ul class=\"errorMessages\"><li>Per favore, compila tutti i dati per il cambio password, se desideri cambiarla</li></ul>";
         }
 
@@ -252,10 +258,10 @@ class InputController
         $conf_pass = $array['repeated_password'] ?? null;
 
         // Validazione dati personali
-        if(self::isName($name) !== true){
+        if (self::isName($name) !== true) {
             $errorMessages .= self::isName($name);
         }
-        if(self::isSurname($surname) !== true){
+        if (self::isSurname($surname) !== true) {
             $errorMessages .= self::isSurname($surname);
         }
         if (self::isMail($email) !== true) {
@@ -266,26 +272,26 @@ class InputController
         }
 
         // Se lo username è cambiato, controllo univocità dello username
-        if($username != $_SESSION['username']) {
+        if ($username != $_SESSION['username']) {
             if (UserController::isUsernameDuplicate($username) === true) {
                 $errorMessages .= "<li>Esiste già un utente registrato con questo <span lang=\"en\">username</span></li>";
             }
         }
 
         // Se la email è cambiata, controllo univocità della email
-        if($email != $_SESSION['email']) {
+        if ($email != $_SESSION['email']) {
             if (UserController::isEmailDuplicate($email) === true) {
                 $errorMessages .= "<li>Esiste già un utente registrato con questa <span lang=\"en\">email</span></li>";
             }
         }
 
         // Validazione cambio password
-        if(!empty($old_pass) && !empty($new_pass) && !empty($conf_pass)) {
+        if (!empty($old_pass) && !empty($new_pass) && !empty($conf_pass)) {
             $username = $_SESSION['username'];
             $user = UserController::getUserByUsername($username);
             $userPassword = $user->getPassword();
 
-            if(!password_verify($old_pass, $userPassword)) {
+            if (!password_verify($old_pass, $userPassword)) {
                 $errorMessages .= "<li>La <span lang=\"en\">password</span> attuale non è corretta</li>";
             }
 
@@ -319,7 +325,7 @@ class InputController
 
         $sanitized['email'] = filter_var($sanitized['email'], FILTER_SANITIZE_EMAIL);
 
-        if(!empty($array['old_password']) && !empty($array['new_password']) && !empty($array['repeated_password'])) {
+        if (!empty($array['old_password']) && !empty($array['new_password']) && !empty($array['repeated_password'])) {
             $sanitized['old_password'] = strip_tags($array['old_password']);
             $sanitized['new_password'] = strip_tags($array['new_password']);
             $sanitized['repeated_password'] = strip_tags($array['repeated_password']);
@@ -348,5 +354,59 @@ class InputController
         }
 
         return $sanitized;
+    }
+
+    public static function cropImage($file, $maxDimension)
+    {
+        $fileTmpPath = $_FILES["foto"]["tmp_name"];
+        $fileName = $_FILES["foto"]["name"];
+        $fileSize = $_FILES["foto"]["size"];
+        $fileType = $_FILES["foto"]["type"];
+
+        $imageInfo = getimagesize($fileTmpPath);
+        if ($fileSize > $maxDimension) {
+            $image = null;
+
+            switch ($imageInfo['mime']) {
+                case 'image/jpeg':
+                    $image = imagecreatefromjpeg(($fileTmpPath));
+                    break;
+                case 'image/png':
+                    $image = imagecreatefrompng($fileTmpPath);
+                    break;
+                case 'image/gif':
+                    $image = imagecreatefromgif($fileTmpPath);
+                    break;
+                default:
+                    header(header: "Location: 500.php");
+            }
+
+            $originalWidth = imagesx($image);
+            $originalHeight = imagesy($image);
+            $newWidth = $originalWidth;
+            $newHeight = $originalHeight;
+
+            if ($fileSize > $maxDimension) {
+                $aspectRatio = $originalWidth / $originalHeight;
+    
+                $newWidth = 1024;
+                $newHeight = $newWidth / $aspectRatio;
+            }
+
+            $resizedImage = imagecreatetruecolor($newWidth, $newHeight);
+            imagecopyresampled($resizedImage, $image, 0, 0, 0, 0, $newWidth, $newHeight, $originalWidth, $originalHeight);
+            $target_dir = 'uploads' . DIRECTORY_SEPARATOR;
+            $target_file = $target_dir . basename($_FILES["foto"]["name"]);
+            imagejpeg($resizedImage, $target_file, 85);
+            imagedestroy($image);
+            imagedestroy($resizedImage);
+
+        }
+        else
+        {
+            $target_dir = 'uploads' . DIRECTORY_SEPARATOR;
+            $target_file = $target_dir . basename($_FILES["foto"]["name"]);
+        }
+        return $target_file;
     }
 }
