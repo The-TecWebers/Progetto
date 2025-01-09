@@ -517,6 +517,10 @@ form {
     margin-bottom: 1em;
 }
 
+.form-short{
+    width: 30%;
+}
+
 .form-input {
     border: 0.125em solid var(--border);
     background-color: var(--bg_bgWhite);
