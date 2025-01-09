@@ -159,8 +159,12 @@ FORM
 =====
 */
 
-form, .form-short {
+form {
     width: 70%;
+}
+
+.form-short {
+    width: 45%;
 }
 
 .double-column {
