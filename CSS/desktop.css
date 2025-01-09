@@ -969,6 +969,26 @@ th:nth-child(even) {
 
 
 
+/* 
+================
+DEFINITION LIST
+================
+*/
+
+dt {
+    font-weight: bold;
+}
+
+dl {
+    margin-left: 1em;
+}
+
+dt + dd {
+    margin-bottom: 0.5em;
+}
+
+
+
 
 
 
@@ -1135,10 +1155,6 @@ LAVORI SVOLTI
 ==============
 */
 
-dt {
-    font-weight: bold;
-}
-
 .img-list-container {
     display: flex;
     flex-wrap: wrap;
@@ -1156,16 +1172,8 @@ dt {
     border: var(--border) 0.125em solid;
 }
 
-.figure-paragraph-container dl {
-    margin-left: 1em;
-}
-
 .figure-paragraph-container dl p {
     margin-left: 0;
-}
-
-dt + dd {
-    margin-bottom: 0.5em;
 }
 
 
