@@ -19,8 +19,8 @@ if (isset($_SESSION['nome'])) {
 
 
 $header = str_replace('<title></title>', '<title>' . $titolo . '</title>', $header);
-$header = str_replace('<meta name="description" content=""/>', '<meta name="description" content="' . $descrizione . '"/>', $header);
-$header = str_replace('<meta name="keywords" content=""/>', '<meta name="keywords" content="' . $keywords . '" />', $header);
+$header = str_replace('<meta name="description" content="">', '<meta name="description" content="' . $descrizione . '"/>', $header);
+$header = str_replace('<meta name="keywords" content="">', '<meta name="keywords" content="' . $keywords . '" />', $header);
 
 $current_page = basename($_SERVER['PHP_SELF']);
 
