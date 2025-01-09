@@ -159,7 +159,7 @@ FORM
 =====
 */
 
-form {
+form, .form-short {
     width: 70%;
 }
 
