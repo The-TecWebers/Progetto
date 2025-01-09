@@ -433,7 +433,7 @@ main {
     flex: 1;
     padding-top: calc(1.25em + var(--headerDesktopHeight) + var(--breadcrumbDesktopHeight));
     padding-bottom: 1.25em;
-    max-width: 90%;
+    width: 90%;
     margin: auto;
 }
 
