@@ -1062,6 +1062,7 @@ HOME PAGE
 }
 
 
+
 /*
 =======================
 STORIA - LAVORI SVOLTI
@@ -1179,6 +1180,7 @@ LAVORI SVOLTI
 
 .figure-paragraph-container dl p {
     margin-left: 0;
+    margin-bottom: 0.3em;
 }
 
 
