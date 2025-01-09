@@ -598,7 +598,6 @@ button {
     text-align: center;
     font-size: 1.5em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-    font-weight: bold;
     margin-bottom: 0.5em;
 }
 
