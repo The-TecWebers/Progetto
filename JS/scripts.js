@@ -66,7 +66,51 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("repeated_password").onblur = function() {return validatePasswordConfirmation(document.getElementById("repeated_password"));};
     document.getElementById("privateAreaForm").onsubmit = function() {return validatePrivateArea();};
   }
+
+  if(document.getElementById('preventiviForm'))
+  {
+    caricamento_preventivi();
+
+    document.getElementById('titolo').onblur = ()=>{return validateTitolo(document.getElementById('titolo'));};
+    document.getElementById('luogo').onblur = ()=>{return validateLuogo(document.getElementById('luogo'));};
+    document.getElementById('foto').onblur = ()=>{return validateFoto(document.getElementById('foto'));};
+    document.getElementById('descrizione').onblur = ()=>{return validateDescrizione(document.getElementById('descrizione'));};
+
+  }
 });
+
+function caricamento_preventivi()
+{
+  var x = document.getElementById("titolo");
+  var node = document.createElement("p");
+  node.id = "info-" + x.id;
+  node.classList.add("info-label");
+  node.innerHTML = "Un titolo per il preventivo lungo da 2 a 40 caratteri";
+  x.parentElement.insertBefore(node, x);
+
+  x = document.getElementById("luogo");
+  node = document.createElement("p");
+  node.id = "info-" + x.id;
+  node.classList.add("info-label");
+  node.innerHTML = "Il luogo dove verrà svolto il lavoro, deve essere lungo massimo 40 caratteri";
+  x.parentElement.insertBefore(node, x);
+
+  x = document.getElementById("foto");
+  node = document.createElement("p");
+  node.id = "info-" + x.id;
+  node.classList.add("info-label");
+  node.innerHTML = "Una foto descrittiva con dimensione massima 5MB";
+  x.parentElement.insertBefore(node, x);
+
+  x = document.getElementById("descrizione");
+  node = document.createElement("p");
+  node.id = "info-" + x.id;
+  node.classList.add("info-label");
+  node.innerHTML = 
+    "Una breve descrizione lunga masssimo 255 caratteri";
+  x.parentElement.insertBefore(node, x);
+
+}
 
 function caricamento_registrazione() {
   var x = document.getElementById("nome");
@@ -96,7 +140,7 @@ function caricamento_registrazione() {
   node.classList.add("info-label");
   node.innerHTML = 
     "Esso può contenere solo lettere, numeri, apostrofi, trattini e " +
-    "<span lang=\"en\">underscore</span>, non può contenere spazi e può essere lungo al massimo 40 caratteri";
+    "<span lang=\"en\">underscore</span>, non può contenere spazi e può essere lungo da 2 a 40 caratteri";
   x.parentElement.insertBefore(node, x);
 
   x = document.getElementById("password");
@@ -181,6 +225,87 @@ VALIDAZIONE DEI CAMPI DEI FORM
 
 function insertAfter(newNode, referenceNode) {
   referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
+
+function validateTitolo(x)
+{
+  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
+    x.parentElement.removeChild(x.nextElementSibling);
+  }
+
+  const node = document.createElement("p");
+  node.classList.add("error-label");
+  node.setAttribute("role", "alert");
+  node.setAttribute("aria-live", "assertive");
+
+  if (x.value == "") {
+    node.innerHTML = "Devi inserire un titolo!";
+    insertAfter(node, x);
+
+    if ( !(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) ) {
+      var previous_node = document.createElement("p");
+      previous_node.id = "info-" + x.id;
+      previous_node.classList.add("info-label");
+      previous_node.innerHTML = "Il luogo dove verrà svolto il lavoro, deve essere lungo massimo 40 caratteri";
+      x.parentElement.insertBefore(previous_node, x);
+    }
+    
+    return false;
+  }
+
+  if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
+    x.parentElement.removeChild(x.previousElementSibling);
+  }
+  
+  if (!checkName(x.value)) {
+    node.innerHTML = "Il titolo può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
+    insertAfter(node, x);
+    
+    return false;
+  }
+
+  return true;
+}
+
+function validateLuogo(x)
+{
+  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
+    x.parentElement.removeChild(x.nextElementSibling);
+  }
+
+  const node = document.createElement("p");
+  node.classList.add("error-label");
+  node.setAttribute("role", "alert");
+  node.setAttribute("aria-live", "assertive");
+
+  if (x.value == "") {
+    node.innerHTML = "Devi inserire un luogo!";
+    insertAfter(node, x);
+
+    if ( !(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) ) {
+      var previous_node = document.createElement("p");
+      previous_node.id = "info-" + x.id;
+      previous_node.classList.add("info-label");
+      previous_node.innerHTML = "Un titolo per il preventivo lungo da 2 a 40 caratteri";
+      x.parentElement.insertBefore(previous_node, x);
+    }
+    
+    return false;
+  }
+
+  if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
+    x.parentElement.removeChild(x.previousElementSibling);
+  }
+  
+  if (!checkName(x.value)) {
+    node.innerHTML = "Il luogo può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
+    insertAfter(node, x);
+    
+    return false;
+  }
+
+  return true;
 }
 
 function validateName(x){
