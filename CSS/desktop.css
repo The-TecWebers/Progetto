@@ -1297,10 +1297,27 @@ LISTA PREVENTIVI
 */
 
 .preventivi-container {
+
     justify-content: center;
     display: grid;
-    grid-template-columns: 40% 40%;
+    grid-template-columns: 100%;
     gap: 0.5em;
+}
+.preventivi-container dt{
+    padding: 1em;
+}
+
+.preventivo{
+    box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.2);
+    border-radius: 5%;
+}
+.preventivo dt{
+    padding: 0;
+    
+}
+
+.preventivo dl{
+    padding: 0em 2em;
 }
 
 .preventivo figure {
@@ -1314,9 +1331,26 @@ LISTA PREVENTIVI
 
 /* Make the image responsive */
 .preventivo figure img {
-    width: 100%;
+    margin-top: 1em;
+    width: 85%;
     height: auto;
     max-width: 100%;
-    border-radius: 8px;
+    border-radius: 5%;
     object-fit: cover;
 }
+
+#crea-preventivo-btn{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background-color: var(--bg_bgGreen);
+    color: var(--link_bgGreen);
+    border: 0 solid;
+    border-radius: 1em;
+    padding: 0.5em 1em;
+    font-size: 1.25em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+    /* src="Images/mezzi/bobcat.webp" */

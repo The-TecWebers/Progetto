@@ -71,22 +71,22 @@ class PreventivoController
         $dl = "<div class='preventivi-container'>";
 
         foreach ($preventivi as $preventivo) {
-            $dl .= "<dl class='preventivo'>
+            $dl .= "<dl>
             <dt>".$preventivo['titolo']."</dt>
-            <dd class=''>
+            <dd class='preventivo'>
                 <figure>
                     <img src='".$preventivo['foto']."' alt='Foto del preventivo'>
                     <figcaption>Foto del preventivo</figcaption>
                 </figure>
                 <div>
                     <dl>
-                        <dt>Data</dt>
+                        <dt>Data:</dt>
                         <dd><time datetime='".$preventivo['data']."'>".$preventivo['data']."</time></dd>
-                        <dt>Luogo</dt>
+                        <dt>Luogo:</dt>
                         <dd>
                             <p>".$preventivo['luogo']."</p>
                         </dd>
-                        <dt>Descrizione</dt>
+                        <dt>Descrizione:</dt>
                         <dd>
                             <p>".$preventivo['descrizione']."</p>
                         </dd>
