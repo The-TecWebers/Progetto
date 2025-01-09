@@ -288,6 +288,8 @@ PULSANTI ACCOUNT
     text-align: center;
 }
 
+
+
 /* 
 ==============
 DELETE ACCOUNT
@@ -333,6 +335,7 @@ DELETE ACCOUNT
 #delete-button:focus {
     outline-offset: 0.125em;
 }
+
 
 
 /*
@@ -422,7 +425,6 @@ ul li a:active {
 
 
 
-
 /*
 ======
 MAIN
@@ -485,6 +487,11 @@ figcaption {
 
 .reversed> :last-child {
     order: 1;
+}
+
+img {
+    border-radius: 0.625em;
+    border: var(--border) 0.125em solid;
 }
 
 
@@ -970,9 +977,9 @@ th:nth-child(even) {
 
 
 /* 
-================
-DEFINITION LIST
-================
+======
+LISTE
+======
 */
 
 dt {
@@ -984,6 +991,14 @@ dl {
 }
 
 dt + dd {
+    margin-bottom: 0.5em;
+}
+
+dd ul {
+    margin-left: 1em;
+}
+
+dd ul li {
     margin-bottom: 0.5em;
 }
 
@@ -1044,8 +1059,6 @@ HOME PAGE
     height: auto;
     object-fit: fill;
     object-position: center;
-    border-radius: 0.625em;
-    border: var(--border) 0.125em solid;
 }
 
 
@@ -1077,8 +1090,6 @@ STORIA - LAVORI SVOLTI
     max-height: 25em;
     object-fit: fill;
     object-position: center;
-    border-radius: 0.625em;
-    border: var(--border) 0.125em solid;
 }
 
 .figure-paragraph-container figcaption {
@@ -1118,12 +1129,10 @@ MEZZI
 }
 
 .mezzi-container img {
-    border: var(--border) 0.125em solid;
     width: 25em;
     height: auto;
     object-fit: fill;
     object-position: center;
-    border-radius: 0.625em;
 }
 
 figure.escavatori {
@@ -1133,10 +1142,8 @@ figure.escavatori {
 }
 
 figure.escavatori img {
-    border: var(--border) 0.125em solid;
     max-width: 80%;
     height: auto;
-    border-radius: 0.625em;
 }
 
 figure.escavatori figcaption {
@@ -1168,8 +1175,6 @@ LAVORI SVOLTI
     max-height: 25em;
     object-fit: fill;
     object-position: center;
-    border-radius: 0.625em;
-    border: var(--border) 0.125em solid;
 }
 
 .figure-paragraph-container dl p {
@@ -1206,13 +1211,13 @@ SU DI NOI
 
 .card>img {
     width: 95%;
-    margin: 0.5em;
+    margin: 0.5em auto;
     border-radius: 1em;
 }
 
 .card>p {
     width: 95%;
-    margin: 0.5em;
+    margin: 0.5em auto;
 }
 
 .card:hover {
