@@ -18,7 +18,7 @@ class PreventivoController
     {
         $input = InputController::sanitizePreventivo($_POST);
         $target = self::getPreventivoById($id);
-        if($input['foto'] == "uploads/" || $input['foto'] == "uploads\\")
+        if($input['foto'] == "uploads".DIRECTORY_SEPARATOR)
         {
             $input['foto'] = $target->getFoto();
         }
