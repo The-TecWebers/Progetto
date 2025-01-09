@@ -29,6 +29,11 @@ class Preventivo
         return $this->descrizione;
     }
 
+    public function getTitolo()
+    {
+        return $this->titolo;
+    }
+
     public function getId()
     {
         return $this->id;

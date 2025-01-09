@@ -339,7 +339,7 @@ class InputController
         $sanitized = [];
 
         foreach ($array as $key => $value) {
-            $sanitized[$key] = htmlentities(strip_tags(trim($value)));
+            $sanitized[$key] = htmlspecialchars(strip_tags(trim($value)));
         }
 
         return $sanitized;

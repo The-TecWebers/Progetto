@@ -433,7 +433,7 @@ main {
     flex: 1;
     padding-top: calc(1.25em + var(--headerDesktopHeight) + var(--breadcrumbDesktopHeight));
     padding-bottom: 1.25em;
-    max-width: 90%;
+    width: 90%;
     margin: auto;
 }
 
@@ -515,6 +515,10 @@ form {
     margin: auto;
     width: 50%;
     margin-bottom: 1em;
+}
+
+.form-short{
+    width: 30%;
 }
 
 .form-input {
@@ -1339,6 +1343,15 @@ LISTA PREVENTIVI
     object-fit: cover;
 }
 
+.preventivo-edit-foto
+{
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
 #crea-preventivo-btn{
     display: block;
     text-align: center;
@@ -1353,4 +1366,3 @@ LISTA PREVENTIVI
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
-
