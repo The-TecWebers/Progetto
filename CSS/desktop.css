@@ -1325,3 +1325,12 @@ LISTA PREVENTIVI
     border-radius: 8px;
     object-fit: cover;
 }
+
+.preventivo-edit-foto
+{
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
