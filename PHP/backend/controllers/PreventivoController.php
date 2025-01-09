@@ -65,28 +65,28 @@ class PreventivoController
         $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo WHERE utente = ?", $utente->getId());
 
         if(!$preventivi) {
-            return "<p>Non ci sono preventivi da mostrare</p>";
+            return "<p class=''>Non ci sono preventivi da mostrare</p>";
         }
 
         $dl = "<div class='preventivi-container'>";
 
         foreach ($preventivi as $preventivo) {
-            $dl .= "<dl class='preventivo'>
+            $dl .= "<dl>
             <dt>".$preventivo['titolo']."</dt>
-            <dd class=''>
+            <dd class='preventivo'>
                 <figure>
                     <img src='".$preventivo['foto']."' alt='Foto del preventivo'>
                     <figcaption>Foto del preventivo</figcaption>
                 </figure>
                 <div>
                     <dl>
-                        <dt>Data</dt>
+                        <dt>Data:</dt>
                         <dd><time datetime='".$preventivo['data']."'>".$preventivo['data']."</time></dd>
-                        <dt>Luogo</dt>
+                        <dt>Luogo:</dt>
                         <dd>
                             <p>".$preventivo['luogo']."</p>
                         </dd>
-                        <dt>Descrizione</dt>
+                        <dt>Descrizione:</dt>
                         <dd>
                             <p>".$preventivo['descrizione']."</p>
                         </dd>
@@ -113,7 +113,7 @@ class PreventivoController
         $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo");
 
         if(!$preventivi) {
-            return "<p>Non ci sono preventivi da mostrare</p>";
+            return "<p class=''>Non ci sono preventivi da mostrare</p>";
         }
 
         foreach ($preventivi as &$preventivo) { // Usa "&" per passare per riferimento
@@ -154,5 +154,65 @@ class PreventivoController
         }
         return $table."</tbody></table>";
     }
+    public static function getSingoloPreventivo(){
+
+    $urlId = isset($_GET['id']) ? (int)$_GET['id'] : null;
+
+    $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo");
+
+    if (!$preventivi) {
+        return "<p class=''>Non ci sono preventivi da mostrare</p>";
+    }
+
+    $dl = "<div class='preventivi-container'>";
+    $found = false; 
+
+    foreach ($preventivi as &$preventivo) {
+        if ((int)$preventivo['id'] === $urlId) {
+            $found = true; 
+            $dl .= "<dl>
+                    <dt>".$preventivo['titolo']."</dt>
+                    <dd class='preventivo'>
+                        <figure>
+                            <img src='".$preventivo['foto']."' alt='Foto del preventivo'>
+                            <figcaption>Foto del preventivo</figcaption>
+                        </figure>
+                        <div>
+                            <dl>
+                                <dt>Data:</dt>
+                                <dd><time datetime='".$preventivo['data']."'>".$preventivo['data']."</time></dd>
+                                <dt>Luogo:</dt>
+                                <dd><p>".$preventivo['luogo']."</p></dd>
+                                <dt>Descrizione:</dt>
+                                <dd><p>".$preventivo['descrizione']."</p></dd>
+                            </dl>
+                            <div class='container'>
+                                <form method='GET' action='preventivi.php'>
+                                    <input type='hidden' name='action' value='edit'/>
+                                    <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'/>
+                                    <button type='submit'>
+                                        <img alt='Modifica preventivo' src='Images/icons/edit_white.svg' height=30 width=30>
+                                    </button>
+                                </form>
+                                <form method='POST' action='preventivi.php?action=delete'>
+                                    <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'/>
+                                    <button type='submit'>
+                                        <img alt='Modifica preventivo' src='Images/icons/delete_white.svg' height=30 width=30>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </dd>
+                    </dl>";
+        }
+    }
+    if (!$found) {
+        $dl .= "<p>Preventivo non trovato.</p>";
+    }
+
+    return $dl . "</div>";
+}
+
     
+
 }
