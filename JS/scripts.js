@@ -108,7 +108,7 @@ function caricamento_preventivi() {
   node = document.createElement("p");
   node.id = "info-" + x.id;
   node.classList.add("info-label");
-  node.innerHTML = "Una foto descrittiva obbligatoria con dimensione massima 5MB";
+  node.innerHTML = "Una foto descrittiva obbligatoria con dimensione massima 5 <abbr title='Megabyte' lang='en'>MB</abbr>";
   x.parentElement.insertBefore(node, x);
 
   x = document.getElementById("descrizione");
@@ -263,7 +263,7 @@ function validateFoto(x) {
 
   const file = x.files[0];
   console.log(file);
-  const maxSize = 5 * 1024 * 1024;  //5MB
+  const maxSize = 5 * 1024 * 1024;  //5 MB
 
   if (file == undefined) {
     node.innerHTML = "Devi inserire una foto!";
@@ -273,7 +273,7 @@ function validateFoto(x) {
       var previous_node = document.createElement("p");
       previous_node.id = "info-" + x.id;
       previous_node.classList.add("info-label");
-      previous_node.innerHTML = "Una foto descrittiva obbligatoria con dimensione massima 5MB";
+      previous_node.innerHTML = "Una foto descrittiva obbligatoria con dimensione massima 5 <abbr title='Megabyte' lang='en'>MB</abbr>";
       x.parentElement.insertBefore(previous_node, x);
     }
 
@@ -285,7 +285,7 @@ function validateFoto(x) {
   }
 
   if (file.size > maxSize) {
-    node.innerHTML = "La foto deve avere dimensione massima 5MB!";
+    node.innerHTML = "La foto deve avere dimensione massima 5 <abbr title='Megabyte' lang='en'>MB</abbr>!";
     insertAfter(node, x);
 
     return false;
@@ -305,7 +305,7 @@ function validateEditFoto(x) {
 
   const file = x.files[0];
   console.log(file);
-  const maxSize = 5 * 1024 * 1024;  //5MB
+  const maxSize = 5 * 1024 * 1024;  //5 MB
 
   if (file == undefined) {
     return true;
@@ -316,7 +316,7 @@ function validateEditFoto(x) {
   }
 
   if (file.size > maxSize) {
-    node.innerHTML = "La foto deve avere dimensione massima 5MB!";
+    node.innerHTML = "La foto deve avere dimensione massima 5 <abbr title='Megabyte' lang='en'>MB</abbr>!";
     insertAfter(node, x);
 
     return false;
@@ -793,7 +793,6 @@ function validateRegister() {
     !validatePasswordConfirmation(document.getElementById("password_confirmation"))) {
     return false;
   }
-  return true;
 }
 
 function validatePrivateArea() {
@@ -805,7 +804,6 @@ function validatePrivateArea() {
     !validatePasswordConfirmation(document.getElementById("repeated_password"))) {
     return false;
   }
-  return true;
 }
 
 function validatePreventiviForm() {
