@@ -65,7 +65,7 @@ class PreventivoController
         $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo WHERE utente = ?", $utente->getId());
 
         if(!$preventivi) {
-            return "<p  class="">Non ci sono preventivi da mostrare</p>";
+            return "<p class=''>Non ci sono preventivi da mostrare</p>";
         }
 
         $dl = "<div class='preventivi-container'>";
@@ -113,7 +113,7 @@ class PreventivoController
         $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo");
 
         if(!$preventivi) {
-            return "<p class="">Non ci sono preventivi da mostrare</p>";
+            return "<p class=''>Non ci sono preventivi da mostrare</p>";
         }
 
         foreach ($preventivi as &$preventivo) { // Usa "&" per passare per riferimento
@@ -161,7 +161,7 @@ class PreventivoController
     $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo");
 
     if (!$preventivi) {
-        return "<p class="">Non ci sono preventivi da mostrare</p>";
+        return "<p class=''>Non ci sono preventivi da mostrare</p>";
     }
 
     $dl = "<div class='preventivi-container'>";
