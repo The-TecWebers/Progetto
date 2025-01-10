@@ -415,7 +415,7 @@ function validateDescrizione(x) {
   node.setAttribute("aria-live", "assertive");
 
   if (x.value == "") {
-    node.innerHTML = "Devi inserire un luogo!";
+    node.innerHTML = "Devi inserire una descrizione!";
     insertAfter(node, x);
 
     if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
@@ -434,7 +434,7 @@ function validateDescrizione(x) {
   }
 
   if (!checkDescrizione(x.value)) {
-    node.innerHTML = "La descrizione può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 255 caratteri";
+    node.innerHTML = "La descrizione può contenere solo lettere, apostrofi, trattini e spazi e deve essere lunga da 2 a 255 caratteri";
     insertAfter(node, x);
     return false;
   }
