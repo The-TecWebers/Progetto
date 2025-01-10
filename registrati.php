@@ -6,7 +6,6 @@ $keywords = "registrati, account, dati personali, registrazione, Edil Scavi";
 require_once __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "backend" . DIRECTORY_SEPARATOR . "controllers" . DIRECTORY_SEPARATOR . "AuthController.php";
 
 session_start();
-session_destroy();
 
 try {
     if (AuthController::isLogged()) {
@@ -41,7 +40,7 @@ try {
             'cognome' => 'Es.: Rossi',
             'email' => 'Es: mario.rossi@example.com',
             'username' => 'Es.: MRossi33',
-            'password' => 'Es.: MRossi33__$',
+            'password' => 'Es.: 44Gatti__$',
             'password_confirmation' => 'Conferma password'
         );
         
