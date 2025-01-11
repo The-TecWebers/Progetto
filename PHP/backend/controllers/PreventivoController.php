@@ -118,8 +118,9 @@ class PreventivoController
         }
 
         foreach ($preventivi as &$preventivo) { // Usa "&" per passare per riferimento
-            $username = DBController::runQuery("SELECT username FROM utente WHERE id = ?", $preventivo['utente']);
+            $username = DBController::runQuery("SELECT username, email FROM utente WHERE id = ?", $preventivo['utente']);
             $preventivo['username'] = $username['username']; // Questo aggiorna direttamente l'array $preventivi
+            $preventivo['email'] = $username['email'];
         }
         unset($preventivo); // Importante per evitare effetti collaterali
 
@@ -137,11 +138,11 @@ class PreventivoController
             <input class='form-input' type='text' id='filter-utente' placeholder='Filtra per utente' onkeyup='filterTable()'>
         </div>
         <div class='filter'>
-            <label class='form-label' for='start-date'>Data inizio</label>
+            <label class='form-label' for='start-date'>Filtra dalla data</label>
             <input class='form-input' type='date' id='start-date' placeholder='Data inizio' onchange='filterTable()'>
         </div>
         <div class='filter'>
-            <label class='form-label' for='end-date'>Data fine</label>
+            <label class='form-label' for='end-date'>Alla data</label>
             <input class='form-input' type='date' id='end-date' placeholder='Data fine' onchange='filterTable()'>
         </div>
     </div>";
@@ -153,6 +154,7 @@ class PreventivoController
                 <tr>
                     <th scope='col'>Titolo</th>
                     <th scope='col'>Richiedente</th>
+                    <th scope='col'><span lang='en'>Email</span></th>
                     <th scope='col'>Data</th>
                     <th scope='col'>Luogo</th>
                     <th scope='col'>Foto</th>
@@ -166,6 +168,7 @@ class PreventivoController
             $table .= "<tr>
                 <th scope='row'>" . $preventivo['titolo'] . "</th>
                 <td data-title='Richiedente'>" . $preventivo['username'] . "</td>
+                <td data-title='Email'>" . $preventivo['email'] . "</td>
                 <td data-title='Data'><time datetime='" . $preventivo['data'] . "'>" . $preventivo['data'] . "</time></td>
                 <td data-title='Luogo'>" . $preventivo['luogo'] . "</td>
                 <td data-title='Foto'><a href='" . $preventivo['foto'] . "' target='_blank'>Foto del preventivo</a></td>
