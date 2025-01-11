@@ -744,3 +744,43 @@ function validateEditPreventiviForm() {
 
 
 
+
+
+function filterTable() {
+  // Get the filter values
+  var titoloFilter = document.getElementById('filter-titolo').value.toLowerCase();
+  var utenteFilter = document.getElementById('filter-utente').value.toLowerCase();
+  var startDate = document.getElementById('start-date').value;
+  var endDate = document.getElementById('end-date').value;
+  var table = document.querySelector('table');
+  var rows = table.getElementsByTagName('tr');
+
+  for (var i = 1; i < rows.length; i++) {
+      var cells = rows[i].getElementsByTagName('td');
+      var titoloCell = rows[i].getElementsByTagName('th')[0].textContent.toLowerCase();
+      var utenteCell = cells[0].textContent.toLowerCase();
+      var dateCell = cells[2].textContent.trim();
+
+      var dateValid = true;
+
+      if (startDate && dateCell < startDate) {
+          dateValid = false;
+      }
+      if (endDate && dateCell > endDate) {
+          dateValid = false;
+      }
+
+      if (
+          titoloCell.indexOf(titoloFilter) > -1 &&
+          utenteCell.indexOf(utenteFilter) > -1 &&
+          dateValid
+      ) {
+          rows[i].style.display = '';
+      } else {
+          rows[i].style.display = 'none';
+      }
+  }
+}
+
+
+

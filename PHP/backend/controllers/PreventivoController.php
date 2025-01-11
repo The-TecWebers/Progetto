@@ -20,8 +20,7 @@ class PreventivoController
     {
         $input = InputController::sanitizePreventivo($_POST);
         $target = self::getPreventivoById($id);
-        if($input['foto'] == "uploads".DIRECTORY_SEPARATOR)
-        {
+        if ($input['foto'] == "uploads" . DIRECTORY_SEPARATOR) {
             $input['foto'] = $target->getFoto();
         }
         $target->update(array: $input);
@@ -36,13 +35,11 @@ class PreventivoController
     {
         $result = DBController::runQuery("SELECT * FROM richiesta_preventivo WHERE id = ?", $id);
 
-        if($result === false)
-        {
+        if ($result === false) {
             return false;
         }
 
-        if(count($result)>0)
-        {
+        if (count($result) > 0) {
             return new Preventivo($result);
         }
     }
@@ -51,11 +48,9 @@ class PreventivoController
     {
         $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo WHERE utente = ? AND id = ?", $userId, $preventivoId);
 
-        if(!$preventivi) {
+        if (!$preventivi) {
             return false;
-        }
-        else
-        {
+        } else {
             return true;
         }
 
@@ -66,7 +61,7 @@ class PreventivoController
         $utente = AuthController::getAuthUser();
         $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo WHERE utente = ?", $utente->getId());
 
-        if(!$preventivi) {
+        if (!$preventivi) {
             return "<p class=''>Non ci sono preventivi da mostrare</p>";
         }
 
@@ -118,7 +113,7 @@ class PreventivoController
     public static function getTabellaPreventivi() {
         $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo");
 
-        if(!$preventivi) {
+        if (!$preventivi) {
             return "<p class=''>Non ci sono preventivi da mostrare</p>";
         }
 
@@ -130,8 +125,28 @@ class PreventivoController
 
         $table = "<p id='desc-tabella'>Lista dei tuoi preventivi. Nelle righe sono elencati i preventivi,
         per ogni preventivo sono visualizzati l'id, la data, la descrizione, il luogo, il link alla foto ed il link
-        per vederlo singolarmente.</p>
-        
+        per vederlo singolarmente.</p>";
+
+        $table .= "<div class='filter-container'>
+        <div class='filter'>
+            <label class='form-label' for='filter-titolo'>Titolo</label>
+            <input class='form-input' type='text' id='filter-titolo' placeholder='Filtra per titolo' onkeyup='filterTable()'>
+        </div>
+        <div class='filter'>
+            <label class='form-label' for='filter-utente'>Utente</label>
+            <input class='form-input' type='text' id='filter-utente' placeholder='Filtra per utente' onkeyup='filterTable()'>
+        </div>
+        <div class='filter'>
+            <label class='form-label' for='start-date'>Data inizio</label>
+            <input class='form-input' type='date' id='start-date' placeholder='Data inizio' onchange='filterTable()'>
+        </div>
+        <div class='filter'>
+            <label class='form-label' for='end-date'>Data fine</label>
+            <input class='form-input' type='date' id='end-date' placeholder='Data fine' onchange='filterTable()'>
+        </div>
+    </div>";
+
+        $table .= "
         <table aria-describedby='desc-tabella'>
             <caption>I tuoi preventivi</caption>
             <thead>
@@ -149,26 +164,27 @@ class PreventivoController
 
         foreach ($preventivi as $preventivo) {
             $table .= "<tr>
-                <th scope='row'>".$preventivo['titolo']."</th>
-                <td data-title='Richiedente'>".$preventivo['username']."</td>
-                <td data-title='Data'><time datetime='".$preventivo['data']."'>".$preventivo['data']."</time></td>
-                <td data-title='Luogo'>".$preventivo['luogo']."</td>
-                <td data-title='Foto'><a href='".$preventivo['foto']."' target='_blank'>Foto del preventivo</a></td>
-                <td data-title='Descrizione'>".$preventivo['descrizione']."</td>
-                <td data-title='Vista singola'><a href='singolo_preventivo.php?id=".$preventivo['id']."'>Dettagli</a></td>
+                <th scope='row'>" . $preventivo['titolo'] . "</th>
+                <td data-title='Richiedente'>" . $preventivo['username'] . "</td>
+                <td data-title='Data'><time datetime='" . $preventivo['data'] . "'>" . $preventivo['data'] . "</time></td>
+                <td data-title='Luogo'>" . $preventivo['luogo'] . "</td>
+                <td data-title='Foto'><a href='" . $preventivo['foto'] . "' target='_blank'>Foto del preventivo</a></td>
+                <td data-title='Descrizione'>" . $preventivo['descrizione'] . "</td>
+                <td data-title='Vista singola'><a href='singolo_preventivo.php?id=" . $preventivo['id'] . "'>Dettagli</a></td>
             </tr>";
         }
-        return $table."</tbody></table>";
+        return $table . "</tbody></table>";
     }
-    public static function getSingoloPreventivo(){
+    public static function getSingoloPreventivo()
+    {
 
-    $urlId = isset($_GET['id']) ? (int)$_GET['id'] : null;
+        $urlId = isset($_GET['id']) ? (int) $_GET['id'] : null;
 
-    $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo");
+        $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo");
 
-    if (!$preventivi) {
-        return "<p class=''>Non ci sono preventivi da mostrare</p>";
-    }
+        if (!$preventivi) {
+            return "<p class=''>Non ci sono preventivi da mostrare</p>";
+        }
 
     $div = "<div class='grid cols-1'>";
     $found = false; 
@@ -216,6 +232,5 @@ class PreventivoController
     return $div . "</div>";
 }
 
-    
 
 }
