@@ -747,26 +747,28 @@ function validateEditPreventiviForm() {
 
 
 function filterTable() {
-  // Get the filter values
   var titoloFilter = document.getElementById('filter-titolo').value.toLowerCase();
   var utenteFilter = document.getElementById('filter-utente').value.toLowerCase();
   var startDate = document.getElementById('start-date').value;
   var endDate = document.getElementById('end-date').value;
   var table = document.querySelector('table');
   var rows = table.getElementsByTagName('tr');
+  var startDateObj = startDate ? new Date(startDate) : null;
+  var endDateObj = endDate ? new Date(endDate) : null;
 
   for (var i = 1; i < rows.length; i++) {
       var cells = rows[i].getElementsByTagName('td');
       var titoloCell = rows[i].getElementsByTagName('th')[0].textContent.toLowerCase();
       var utenteCell = cells[0].textContent.toLowerCase();
-      var dateCell = cells[2].textContent.trim();
+      var dateCellText = cells[1].textContent.trim();
 
+      var dateCellObj = new Date(dateCellText);
       var dateValid = true;
 
-      if (startDate && dateCell < startDate) {
+      if (startDateObj && dateCellObj < startDateObj) {
           dateValid = false;
       }
-      if (endDate && dateCell > endDate) {
+      if (endDateObj && dateCellObj > endDateObj) {
           dateValid = false;
       }
 
@@ -781,6 +783,7 @@ function filterTable() {
       }
   }
 }
+
 
 
 
