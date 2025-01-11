@@ -291,3 +291,23 @@ LAVORI SVOLTI
 }
 
 
+
+/*
+===========
+PREVENTIVI
+===========
+*/
+
+.filter-container {
+    width: 75%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+}
+
+
