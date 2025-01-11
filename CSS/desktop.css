@@ -1185,108 +1185,6 @@ dt {
 
 
 
-/*
-==========
-SU DI NOI
-==========
-*/
-
-.card {
-    box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.2);
-    transition: 0.3s ease all;
-    width: 60%;
-    text-align: center;
-    border-radius: 1em;
-}
-
-.card>img {
-    width: 95%;
-    margin: 0.5em;
-    border-radius: 1em;
-}
-
-.card>p {
-    width: 95%;
-    margin: 0.5em;
-}
-
-.card:hover {
-    box-shadow: 0em 0.125em 0.5em 0em var(--link_bgWhite);
-}
-
-
-.grid {
-    display: grid;
-}
-
-.cols-1 {
-    grid-template-columns: 100%;
-}
-
-.cols-2 {
-    grid-template-columns: auto auto;
-}
-
-.cols-3 {
-    grid-template-columns: 33% 33% 33%;
-}
-
-.items-center {
-    justify-items: center;
-}
-
-
-
-/* 
-=============
-AREA PRIVATA
-=============
-*/
-
-#confirm-button {
-    margin-top: 0.2em;
-}
-
-
-
-/*
-=======
-404-500
-=======
-*/
-
-.container-error {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-wrap: wrap;
-    max-width: 100%;
-    margin: auto;
-    justify-content: center;
-    text-align: center;
-    font-size: 2em;
-    font-weight: bold;
-}
-
-.container-error span {
-    margin: 0.5em auto;
-}
-
-.container-error img {
-    width: 50%;
-}
-
-.container-error h1 {
-    font-size: 1em;
-    text-transform: none;
-}
-
-#cta-error {
-    margin-bottom: 1em;
-}
-
-
-
 /* 
 =================
 PREVENTIVI
@@ -1400,5 +1298,107 @@ PREVENTIVI
 .push-right {
     margin-left: 55%;
     margin-right: 14%;
+}
+
+
+
+/*
+==========
+SU DI NOI
+==========
+*/
+
+.card {
+    box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.2);
+    transition: 0.3s ease all;
+    width: 60%;
+    text-align: center;
+    border-radius: 1em;
+}
+
+.card>img {
+    width: 95%;
+    margin: 0.5em;
+    border-radius: 1em;
+}
+
+.card>p {
+    width: 95%;
+    margin: 0.5em;
+}
+
+.card:hover {
+    box-shadow: 0em 0.125em 0.5em 0em var(--link_bgWhite);
+}
+
+
+.grid {
+    display: grid;
+}
+
+.cols-1 {
+    grid-template-columns: 100%;
+}
+
+.cols-2 {
+    grid-template-columns: auto auto;
+}
+
+.cols-3 {
+    grid-template-columns: 33% 33% 33%;
+}
+
+.items-center {
+    justify-items: center;
+}
+
+
+
+/* 
+=============
+AREA PRIVATA
+=============
+*/
+
+#confirm-button {
+    margin-top: 0.2em;
+}
+
+
+
+/*
+=======
+404-500
+=======
+*/
+
+.container-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.container-error span {
+    margin: 0.5em auto;
+}
+
+.container-error img {
+    width: 50%;
+}
+
+.container-error h1 {
+    font-size: 1em;
+    text-transform: none;
+}
+
+#cta-error {
+    margin-bottom: 1em;
 }
 

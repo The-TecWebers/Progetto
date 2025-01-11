@@ -327,18 +327,6 @@ LAVORI SVOLTI
 
 
 /*
-=======
-404-500
-=======
-*/
-
-.container-error  img {
-    width: 70%;
-}
-
-
-
-/*
 ===========
 PREVENTIVI
 ===========
@@ -360,6 +348,18 @@ PREVENTIVI
     width: 40%;
     margin: auto;
     margin-bottom: 0.5em;
+}
+
+
+
+/*
+=======
+404-500
+=======
+*/
+
+.container-error  img {
+    width: 70%;
 }
 
 
