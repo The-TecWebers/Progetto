@@ -70,7 +70,7 @@ class PreventivoController
             return "<p class=''>Non ci sono preventivi da mostrare</p>";
         }
 
-        $div = "<div class'grid'>";
+        $div = "<div class'grid cols-1'>";
         
         foreach ($preventivi as $preventivo) {
             $div .= "
@@ -170,7 +170,7 @@ class PreventivoController
         return "<p class=''>Non ci sono preventivi da mostrare</p>";
     }
 
-    $div = "<div class='grid'>";
+    $div = "<div class='grid cols-1'>";
     $found = false; 
 
     foreach ($preventivi as &$preventivo) {
@@ -199,19 +199,12 @@ class PreventivoController
             </dl>
         </div>
              <div class='form-preventivo'>
-                  <form method='GET' action='preventivi.php'>
-                      <input type='hidden' name='action' value='edit'/>
-                      <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'/>
-                      <button type='submit'>
-                          <img alt='Modifica preventivo' src='Images/icons/edit_white.svg' height=30 width=30>
-                      </button>
-                  </form>
                   <form method='POST' action='preventivi.php?action=delete'>
                       <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'/>
                       <button type='submit'>
                           <img alt='Modifica preventivo' src='Images/icons/delete_white.svg' height=30 width=30>
                       </button>
-                  </form>
+                   </form>
               </div>
     </div>";
         }
