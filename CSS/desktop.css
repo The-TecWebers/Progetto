@@ -952,6 +952,10 @@ TABELLE
 ========
 */
 
+table {
+    margin: auto;
+}
+
 table,
 th,
 td {
