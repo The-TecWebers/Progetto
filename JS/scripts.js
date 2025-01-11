@@ -223,22 +223,6 @@ function checkDescrizione(descrizione) {
   return regex.test(descrizione);
 }
 
-/*
-function checkDate(date) {
-  var regex = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
-  return regex.test(date);
-}
-
-function checkImgPath(imgPath) {
-  var regex = /(?:\.([^.]+))?$/;
-  var ext = regex.exec(imgPath)[1];
-  if (ext == "jpg" || ext == "jpeg" || ext == "png" || ext == "webp") {
-    return true;
-  }
-  return false;
-}
-*/
-
 
 
 /*
@@ -711,70 +695,6 @@ function validateNewPassword(x) {
 
   return true;
 }
-
-/*
-function validateDate(id, id2){
-  var x = document.getElementById(id);
-
-  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")){
-    x.parentElement.removeChild(x.nextElementSibling);
-  }
-
-  const node = document.createElement("p");
-  node.classList.add("error-label");
-  node.setAttribute("role", "alert");
-  node.setAttribute("aria-live", "assertive");
-
-  if (!checkDate(x.value)) {
-    node.innerHTML = "La data deve essere nel formato gg/mm/aaaa";
-    insertAfter(node, x);
-    
-    return false;
-  }
-
-  return true;
-}
-
-function validateImgPath(id){
-  var x = document.getElementById(id);
-
-  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")){
-    x.parentElement.removeChild(x.nextElementSibling);
-  }
-
-  const node = document.createElement("p");
-  node.classList.add("error-label");
-  node.setAttribute("role", "alert");
-  node.setAttribute("aria-live", "assertive");
-
-  if (x.value == "") {
-    node.innerHTML = "Inserisci un percorso valido";
-    insertAfter(node, x);
-    
-    return false;
-  }
-
-  if (x.value.length > 256) {
-    node.innerHTML = "Il percorso dell'immagine deve essere lungo al massimo 256 caratteri";
-    insertAfter(node, x);
-    
-    return false;
-  }
-
-  if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
-    x.parentElement.removeChild(x.previousElementSibling);
-  }
-
-  if (!checkImgPath(x.value)) {
-    node.innerHTML = "L'immagine deve essere in formato jpg, jpeg, png o webp";
-    insertAfter(node, x);
-    
-    return false; 
-   }
-
-  return true;
-}
-*/
 
 
 
