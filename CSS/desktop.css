@@ -953,7 +953,7 @@ TABELLE
 */
 
 table {
-    margin: auto;
+    margin: 1.2em auto;
 }
 
 table,
@@ -1236,6 +1236,7 @@ SU DI NOI
 }
 
 
+
 /* 
 =============
 AREA PRIVATA
@@ -1288,9 +1289,10 @@ AREA PRIVATA
 
 /* 
 =================
-LISTA PREVENTIVI
+PREVENTIVI
 =================
 */
+
 .preventivo{
     display: flex;
     flex-direction: row;
@@ -1338,7 +1340,6 @@ LISTA PREVENTIVI
     display: flex;
     flex-direction: column;
 }
-
 
 .content-preventivo dt {
     margin-top: 0.625em;
@@ -1394,5 +1395,10 @@ LISTA PREVENTIVI
 .filter {
     display: flex;
     flex-direction: column;
+}
+
+.push-right {
+    margin-left: 55%;
+    margin-right: 14%;
 }
 

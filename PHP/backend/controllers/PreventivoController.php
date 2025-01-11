@@ -128,14 +128,14 @@ class PreventivoController
         per ogni preventivo sono visualizzati l'id, la data, la descrizione, il luogo, il link alla foto ed il link
         per vederlo singolarmente.</p>";
 
-        $table .= "<div class='filter-container'>
+        $table .= "<div id='table-filter' class='filter-container'>
         <div class='filter'>
             <label class='form-label' for='filter-titolo'>Titolo</label>
             <input class='form-input' type='text' id='filter-titolo' placeholder='Filtra per titolo' onkeyup='filterTable()'>
         </div>
         <div class='filter'>
-            <label class='form-label' for='filter-utente'>Utente</label>
-            <input class='form-input' type='text' id='filter-utente' placeholder='Filtra per utente' onkeyup='filterTable()'>
+            <label class='form-label' for='filter-richiedente'>Richiedente</label>
+            <input class='form-input' type='text' id='filter-richiedente' placeholder='Filtra per richiedente' onkeyup='filterTable()'>
         </div>
         <div class='filter'>
             <label class='form-label' for='start-date'>Filtra dalla data</label>

@@ -356,4 +356,10 @@ PREVENTIVI
     flex-direction: column;
 }
 
+.push-right {
+    width: 40%;
+    margin: auto;
+    margin-bottom: 0.5em;
+}
+
 

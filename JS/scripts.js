@@ -746,9 +746,15 @@ function validateEditPreventiviForm() {
 
 
 
+/*
+==========================
+FILTRI TABELLA PREVENTIVI
+==========================
+*/
+
 function filterTable() {
   var titoloFilter = document.getElementById('filter-titolo').value.toLowerCase();
-  var utenteFilter = document.getElementById('filter-utente').value.toLowerCase();
+  var richiedenteFilter = document.getElementById('filter-richiedente').value.toLowerCase();
   var startDate = document.getElementById('start-date').value;
   var endDate = document.getElementById('end-date').value;
   var table = document.querySelector('table');
@@ -756,11 +762,28 @@ function filterTable() {
   var startDateObj = startDate ? new Date(startDate) : null;
   var endDateObj = endDate ? new Date(endDate) : null;
 
+  var filterDiv = document.getElementById('table-filter');
+  if (endDateObj != null && startDateObj != null && endDateObj < startDateObj) {
+      var errorMessage = document.createElement('p');
+      errorMessage.id = 'error-date-range';
+      errorMessage.classList.add('error-label');
+      errorMessage.classList.add('push-right');
+      errorMessage.textContent = 'La data di inizio deve essere minore o uguale a quella di fine.';
+      insertAfter(errorMessage, filterDiv);
+      return;
+  }
+  else {
+    var existingErrorMessage = document.getElementById('error-date-range');
+    if (existingErrorMessage) {
+      existingErrorMessage.remove();
+    }
+  }
+
   for (var i = 1; i < rows.length; i++) {
       var cells = rows[i].getElementsByTagName('td');
       var titoloCell = rows[i].getElementsByTagName('th')[0].textContent.toLowerCase();
-      var utenteCell = cells[0].textContent.toLowerCase();
-      var dateCellText = cells[1].textContent.trim();
+      var richiedenteCell = cells[0].textContent.toLowerCase();
+      var dateCellText = cells[2].textContent.trim();
 
       var dateCellObj = new Date(dateCellText);
       var dateValid = true;
@@ -774,7 +797,7 @@ function filterTable() {
 
       if (
           titoloCell.indexOf(titoloFilter) > -1 &&
-          utenteCell.indexOf(utenteFilter) > -1 &&
+          richiedenteCell.indexOf(richiedenteFilter) > -1 &&
           dateValid
       ) {
           rows[i].style.display = '';
