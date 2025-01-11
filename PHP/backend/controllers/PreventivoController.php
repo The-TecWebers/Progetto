@@ -1,4 +1,6 @@
 <?php
+
+
 require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Preventivo.php';
 require_once 'DBController.php';
 class PreventivoController
@@ -59,7 +61,7 @@ class PreventivoController
 
     }
 
-    public static function getListaPreventivi()
+        public static function getListaPreventivi()
     {
         $utente = AuthController::getAuthUser();
         $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo WHERE utente = ?", $utente->getId());
@@ -68,47 +70,51 @@ class PreventivoController
             return "<p class=''>Non ci sono preventivi da mostrare</p>";
         }
 
-        $dl = "<div class='preventivi-container'>";
-
+        $div = "<div class'grid'>";
+        
         foreach ($preventivi as $preventivo) {
-            $dl .= "<dl>
-            <dt>".$preventivo['titolo']."</dt>
-            <dd class='preventivo'>
-                <figure>
-                    <img src='".$preventivo['foto']."' alt='Foto del preventivo'>
-                    <figcaption>Foto del preventivo</figcaption>
-                </figure>
-                <div>
-                    <dl>
-                        <dt>Data:</dt>
-                        <dd><time datetime='".$preventivo['data']."'>".$preventivo['data']."</time></dd>
-                        <dt>Luogo:</dt>
-                        <dd>
-                            <p>".$preventivo['luogo']."</p>
-                        </dd>
-                        <dt>Descrizione:</dt>
-                        <dd>
-                            <p>".$preventivo['descrizione']."</p>
-                        </dd>
-                    </dl>
-                    <div class='container'>
-                        <form method='GET' action='preventivi.php'>
-                            <input type='hidden' name='action' value='edit'/>
-                            <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'/>
-                            <button type='submit'><img alt='Modifica preventivo' src='Images/icons/edit_white.svg' height=30 width=30></button>
-                        </form>
-                        <form method='POST' action='preventivi.php?action=delete'>
-                            <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'/>
-                            <button type='submit'><img alt='Modifica preventivo' src='Images/icons/delete_white.svg' height=30 width=30></button>
-                        </form>
-                    </div>
-                </div>
-            </dd>
-            </dl>";
-        }
-        return $dl."</div>";
-    }
+            $div .= "
+            <div class='preventivo'>
+                
+        <div class='img-preventivo'>
+            <img src='".$preventivo['foto']."' alt='Foto del preventivo'>
+        </div>
+        <div class='content-preventivo'>
+            <div class='header-preventivo'>
+                <p>Preventivo - ".$preventivo['titolo']."</p>
+            </div>
 
+            <dl>
+                <dt>Data:</dt>
+                <dd><time datetime='".$preventivo['data']."'/time>".$preventivo['data']."</dd>
+
+                <dt>Luogo:</dt>
+                <dd>".$preventivo['luogo']."</dd>
+
+                <dt>Descrizione:</dt>
+                <dd>".$preventivo['descrizione']."</dd>
+            </dl>
+        </div>
+             <div class='form-preventivo'>
+                  <form method='GET' action='preventivi.php'>
+                      <input type='hidden' name='action' value='edit'/>
+                      <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'/>
+                      <button type='submit'>
+                          <img alt='Modifica preventivo' src='Images/icons/edit_white.svg' height=30 width=30>
+                      </button>
+                  </form>
+                  <form method='POST' action='preventivi.php?action=delete'>
+                      <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'/>
+                      <button type='submit'>
+                          <img alt='Modifica preventivo' src='Images/icons/delete_white.svg' height=30 width=30>
+                      </button>
+                  </form>
+              </div>
+    </div>";
+    }
+        $div .= "</div>";
+        return $div;
+    }
     public static function getTabellaPreventivi() {
         $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo");
 
@@ -164,53 +170,57 @@ class PreventivoController
         return "<p class=''>Non ci sono preventivi da mostrare</p>";
     }
 
-    $dl = "<div class='preventivi-container'>";
+    $div = "<div class='grid'>";
     $found = false; 
 
     foreach ($preventivi as &$preventivo) {
         if ((int)$preventivo['id'] === $urlId) {
             $found = true; 
-            $dl .= "<dl>
-                    <dt>".$preventivo['titolo']."</dt>
-                    <dd class='preventivo'>
-                        <figure>
-                            <img src='".$preventivo['foto']."' alt='Foto del preventivo'>
-                            <figcaption>Foto del preventivo</figcaption>
-                        </figure>
-                        <div>
-                            <dl>
-                                <dt>Data:</dt>
-                                <dd><time datetime='".$preventivo['data']."'>".$preventivo['data']."</time></dd>
-                                <dt>Luogo:</dt>
-                                <dd><p>".$preventivo['luogo']."</p></dd>
-                                <dt>Descrizione:</dt>
-                                <dd><p>".$preventivo['descrizione']."</p></dd>
-                            </dl>
-                            <div class='container'>
-                                <form method='GET' action='preventivi.php'>
-                                    <input type='hidden' name='action' value='edit'/>
-                                    <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'/>
-                                    <button type='submit'>
-                                        <img alt='Modifica preventivo' src='Images/icons/edit_white.svg' height=30 width=30>
-                                    </button>
-                                </form>
-                                <form method='POST' action='preventivi.php?action=delete'>
-                                    <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'/>
-                                    <button type='submit'>
-                                        <img alt='Modifica preventivo' src='Images/icons/delete_white.svg' height=30 width=30>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </dd>
-                    </dl>";
+            $div .= "
+            <div class='preventivo'>
+                
+        <div class='img-preventivo'>
+            <img src='".$preventivo['foto']."' alt='Foto del preventivo'>
+        </div>
+        <div class='content-preventivo'>
+            <div class='header-preventivo'>
+                <p>Preventivo - ".$preventivo['titolo']."</p>
+            </div>
+
+            <dl>
+                <dt>Data:</dt>
+                <dd><time datetime='".$preventivo['data']."'/time>".$preventivo['data']."</dd>
+
+                <dt>Luogo:</dt>
+                <dd>".$preventivo['luogo']."</dd>
+
+                <dt>Descrizione:</dt>
+                <dd>".$preventivo['descrizione']."</dd>
+            </dl>
+        </div>
+             <div class='form-preventivo'>
+                  <form method='GET' action='preventivi.php'>
+                      <input type='hidden' name='action' value='edit'/>
+                      <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'/>
+                      <button type='submit'>
+                          <img alt='Modifica preventivo' src='Images/icons/edit_white.svg' height=30 width=30>
+                      </button>
+                  </form>
+                  <form method='POST' action='preventivi.php?action=delete'>
+                      <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'/>
+                      <button type='submit'>
+                          <img alt='Modifica preventivo' src='Images/icons/delete_white.svg' height=30 width=30>
+                      </button>
+                  </form>
+              </div>
+    </div>";
         }
     }
     if (!$found) {
-        $dl .= "<p>Preventivo non trovato.</p>";
+        $div .= "<p>Preventivo non trovato.</p>";
     }
 
-    return $dl . "</div>";
+    return $div . "</div>";
 }
 
     

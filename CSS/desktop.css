@@ -1180,42 +1180,6 @@ dt {
 }
 
 
-
-/*
-===========
-PREVENTIVI
-===========
-*/
-
-#listaPreventivi>h2 {
-    padding: 0% 10%;
-}
-
-.preventivi-container {
-    justify-content: center;
-    display: grid;
-    grid-template-columns: auto;
-    gap: 0.5em;
-}
-.preventivo figure {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-/* Make the image responsive */
-.preventivo figure img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    border-radius: 8px;
-    object-fit: cover;
-}
-
-
-
 /*
 ==========
 SU DI NOI
@@ -1322,48 +1286,77 @@ AREA PRIVATA
 LISTA PREVENTIVI
 =================
 */
-
-.preventivi-container {
-
-    justify-content: center;
+.grid{
     display: grid;
     grid-template-columns: 100%;
-    gap: 0.5em;
-}
-.preventivi-container dt{
-    padding: 1em;
-}
 
+}
 .preventivo{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 50em;
+    margin: 1.25em auto;
+    background: #fff;
+    border-radius: 8px;
     box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.2);
-    border-radius: 5%;
-}
-.preventivo dt{
-    padding: 0;
-    
+    align-items: center;
+    height: auto;
 }
 
-.preventivo dl{
-    padding: 0em 2em;
+.form-preventivo{
+    background-color: var(--bg_bgWhite);
+    width: 100%;
+    display: flex;
+    padding-top: 1em;
+    flex-direction: row;
+    justify-content: center;
+    border-radius:8px ;
 }
 
-.preventivo figure {
-    margin: 0;
+.img-preventivo {
+    margin-left: 1em;
+    margin-right: 1em;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-preventivo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.content-preventivo {
+    box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.1);
+    border-left: dashed rgba(0, 0, 0, 0.1);
+    flex: 2;
+    padding: 1.25em;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
 }
 
-/* Make the image responsive */
-.preventivo figure img {
-    margin-top: 1em;
-    width: 85%;
-    height: auto;
-    max-width: 100%;
-    border-radius: 5%;
-    object-fit: cover;
+
+.content-preventivo dt {
+    margin-top: 0.625em;
+}
+
+.content-preventivo dd {
+    margin: 0 0 0.625em 1.25em;
+}
+
+.header-preventivo {
+    background-color: var(--bg_bgGreen);
+    color: #fff;
+    padding: 1.25em;
+    text-align: center;
+}
+
+.header-preventivo p {
+    font-size: 1.5em;
 }
 
 .preventivo-edit-foto
