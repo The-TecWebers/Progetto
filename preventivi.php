@@ -60,4 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (PreventivoController::authorizeFunction($_GET['id_preventivo'], (AuthController::getAuthUser())->getId())) {
         header("Location: modifica_preventivo.php?id=" . $_GET['id_preventivo']);
     }
+    else {
+        header("Location: 500.php");
+    }
 }
