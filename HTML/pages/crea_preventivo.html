@@ -1,17 +1,19 @@
 <main id="content">
     <h1>Crea un preventivo</h1>
     <div id="form-preventivi">
-        <form method="POST" action="preventivi.php?action=create" enctype="multipart/form-data">
+        <form class="form-short" method="POST" action="preventivi.php?action=create" enctype="multipart/form-data" id="preventiviForm">
             <div class="surrounding-box">
                 <p class="form-description insideBoxDescription">Inserisci qui i tuoi dati per richiedere un preventivo</p>
                 <!-- errorMessages -->
+                <label class="form-label" for="titolo">Titolo</label>
+                <input class="form-input" type="text" id="titolo" name="titolo" placeholder="Es.: Sistemazione marciapiede Via Trieste">
                 <label class="form-label" for="luogo">Luogo</label>
-                <input class="form-input" type="text" id="luogo" name="luogo" placeholder="Luogo">
+                <input class="form-input" type="text" id="luogo" name="luogo" placeholder="Es.: Via Trieste, Brescia (BS)">
                 <label class="form-label" for="foto">Foto</label>
-                <input class="form-input" type="file" id="foto" name="foto" accept="image/png, image/jpeg">
+                <input class="form-input" type="file" id="foto" name="foto" accept="image/*">
                 <label class="form-label" for="descrizione">Descrizione breve</label>
                 <textarea class="form-input" id="descrizione" name="descrizione"
-                    placeholder="Descrizione breve"></textarea>
+                    placeholder="Es.: Segnalo un marciapiede in cattivo stato lungo Via Trieste. Presenta dei crepacci e alcuni punti sono pericolosi. E' necessaria una riasfaltatura completa."></textarea>
                 <div class="form-buttons">
                     <button type="submit" aria-label="Crea un preventivo">Invia</button>
                 </div>

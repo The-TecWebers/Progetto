@@ -1,5 +1,6 @@
 <main id="content">
     <h1>Area privata</h1>
+    <a class="link-intestazione"  href="#index-danger-zone">Vai alla prossima intestazione</a>
     <p class="form-description">Modifica i tuoi dati personali oppure cambia la password!</p>
     <form id="privateAreaForm" action="auth.php?action=private_area" method="post">
         <!-- errorMessages -->
@@ -33,7 +34,7 @@
     </form>
 
     <form id="danger-zone" action="auth.php?action=delete_user" method="post">
-        <h3>Zona di Pericolo</h3>
+        <h2 id="index-danger-zone">Zona di Pericolo</h2>
         <p>
             Questa azione cancellerà definitivamente il tuo account. 
             Questa operazione è irreversibile.

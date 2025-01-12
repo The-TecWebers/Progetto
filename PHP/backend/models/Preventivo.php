@@ -2,25 +2,41 @@
 
 class Preventivo
 {
-    private $descrizione;
-    private $data;
-    private $foto;
-    private $luogo;
-
+    private $id;
+    private $titolo;
     private $utente;
+    private $data;
+    private $luogo;
+    private $foto;
+    private $descrizione;
 
     function __construct(array $array)
     {
-        $this->descrizione = $array['descrizione'];
-        $this->data = date("Y-m-d");
-        $this->foto = $array['foto'];
-        $this->luogo = $array['luogo'];
+        $this->titolo = $array['titolo'];
         $this->utente = $array['utente'];
+        $this->data = date("Y-m-d");
+        $this->luogo = $array['luogo'];
+        $this->foto = $array['foto'];
+        $this->descrizione = $array['descrizione'];
+        if($array['id']!==null)
+        {
+            $this->id=$array['id'];
+        }
     }
 
     public function getDescrizione()
     {
         return $this->descrizione;
+    }
+
+    public function getTitolo()
+    {
+        return $this->titolo;
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 
     public function getData()
@@ -45,6 +61,18 @@ class Preventivo
 
     public function save()
     {
-        DBController::runQuery("INSERT INTO richiesta_preventivo (descrizione, data, foto, luogo, utente) VALUES (?,?,?,?,?);", $this->descrizione, $this->data, $this->foto, $this->luogo, $this->utente);
+        DBController::runQuery("INSERT INTO richiesta_preventivo (titolo, utente, data, luogo, foto, descrizione)
+        VALUES (?,?,?,?,?,?);", $this->titolo, $this->utente, $this->data, $this->luogo, $this->foto, $this->descrizione);
+    }
+
+    public function update(array $array)
+    {
+        $this->titolo = $array['titolo'] ?? $this->titolo;
+        $this->data = date("Y-m-d");
+        $this->luogo = $array['luogo'] ?? $this->luogo;
+        $this->foto = $array['foto'] ?? $this->foto;
+        $this->descrizione = $array['descrizione'] ?? $this->descrizione;
+        DBController::runQuery("UPDATE richiesta_preventivo SET titolo = ?, data = ?, luogo = ?, foto = ?, descrizione = ? WHERE id = ?;",
+        $this->titolo, $this->data, $this->luogo, $this->foto, $this->descrizione, $this->id);
     }
 }

@@ -15,7 +15,6 @@ class AuthController
     public static function logout()
     {
         session_destroy();
-        session_abort();
         header("Location: index.php");
         exit();
     }
@@ -24,16 +23,13 @@ class AuthController
         return isset($_SESSION["username"]);
     }
     
-    /*
     public static function isAdmin(){
-        if (!is_logged())
+        if (!self::isLogged()){
             return false;
-        $result = user_manager::get_admin($_SESSION["username"]);
-        if ($result == false || count($result) == 0)
-            return false;
-        return true;
+        }
+        $user = UserController::getUserByUsername($_SESSION['username']);
+        return $user->getIsAdmin();
     }
-    */
 
     public static function serverError()
     {

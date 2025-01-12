@@ -19,8 +19,8 @@ if (isset($_SESSION['nome'])) {
 
 
 $header = str_replace('<title></title>', '<title>' . $titolo . '</title>', $header);
-$header = str_replace('<meta name="description" content="">', '<meta name="description" content="' . $descrizione . '"/>', $header);
-$header = str_replace('<meta name="keywords" content="">', '<meta name="keywords" content="' . $keywords . '" />', $header);
+$header = str_replace('<meta name="description" content="">', '<meta name="description" content="' . $descrizione . '">', $header);
+$header = str_replace('<meta name="keywords" content="">', '<meta name="keywords" content="' . $keywords . '" >', $header);
 
 $current_page = basename($_SERVER['PHP_SELF']);
 
@@ -75,8 +75,12 @@ switch ($current_page) {
         $header = str_replace($placeholder, $prefix . 'Area privata' . $suffix, $header);
         break;
     case "crea_preventivo.php":
-        $header = str_replace($placeholder, $prefix . '<a href="lista_preventivi.php">Lista preventivi</a></li>'
+        $header = str_replace($placeholder, $prefix . '<a href="lista_preventivi.php">Preventivi</a></li>'
                   . '<li>Crea preventivo' . $suffix, $header);
+        break;
+    case "singolo_preventivo.php":
+        $header = str_replace($placeholder, $prefix . '<a href="lista_preventivi.php">Preventivi</a></li>'
+                  . '<li>Preventivo Utente' . $suffix, $header);
         break;
 
     default:

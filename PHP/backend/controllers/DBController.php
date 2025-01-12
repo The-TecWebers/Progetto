@@ -88,5 +88,5 @@ class DBController
     $conn->close();
 
     return $result_data;
-  } 
+  }
 }
