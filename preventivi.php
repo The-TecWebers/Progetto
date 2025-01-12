@@ -12,7 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($action == 'create') {
         $_POST = InputController::sanitizePreventivo($_POST);
 
-        $target_dir = 'uploads' . DIRECTORY_SEPARATOR;
+        $target_dir = 'uploads' . DIRECTORY_SEPARATOR . $_POST['titolo'] . DIRECTORY_SEPARATOR;
+
+        if (!file_exists($target_dir)) {
+            mkdir($target_dir,  0777, true);
+        }
+
         $target_file = $target_dir . basename($_FILES["foto"]["name"]);
         move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
         $_POST['foto'] = $target_file;
