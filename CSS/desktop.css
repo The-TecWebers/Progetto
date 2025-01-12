@@ -288,6 +288,8 @@ PULSANTI ACCOUNT
     text-align: center;
 }
 
+
+
 /* 
 ==============
 DELETE ACCOUNT
@@ -333,6 +335,7 @@ DELETE ACCOUNT
 #delete-button:focus {
     outline-offset: 0.125em;
 }
+
 
 
 /*
@@ -422,7 +425,6 @@ ul li a:active {
 
 
 
-
 /*
 ======
 MAIN
@@ -476,7 +478,7 @@ figcaption {
     font-style: italic;
     font-size: 1.125em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-    margin-bottom: 0.5em;
+    margin: 0.5em;
 }
 
 .reversed> :first-child {
@@ -485,6 +487,11 @@ figcaption {
 
 .reversed> :last-child {
     order: 1;
+}
+
+img {
+    border-radius: 0.625em;
+    border: var(--border) 0.125em solid;
 }
 
 
@@ -992,6 +999,34 @@ td:nth-child(odd) {
 
 
 
+/* 
+======
+LISTE
+======
+*/
+
+dt {
+    font-weight: bold;
+}
+
+dl {
+    margin-left: 1em;
+}
+
+dt + dd {
+    margin-bottom: 0.5em;
+}
+
+dd ul {
+    margin-left: 1em;
+}
+
+dd ul li {
+    margin-bottom: 0.5em;
+}
+
+
+
 
 
 
@@ -1047,9 +1082,8 @@ HOME PAGE
     height: auto;
     object-fit: fill;
     object-position: center;
-    border-radius: 0.625em;
-    border: var(--border) 0.125em solid;
 }
+
 
 
 /*
@@ -1070,22 +1104,20 @@ STORIA - LAVORI SVOLTI
 }
 
 .figure-paragraph-container figure {
+    display: flex;
+    flex-direction: column;
     max-width: 35%;
     height: auto;
+    align-items: center;
     margin: 0 0.625em;
 }
 
 .figure-paragraph-container img {
-    width: 100%;
+    max-width: 100%;
     max-height: 25em;
     object-fit: fill;
     object-position: center;
-    border-radius: 0.625em;
-    border: var(--border) 0.125em solid;
-}
-
-.figure-paragraph-container figcaption {
-    margin-top: 0;
+    margin: auto
 }
 
 .figure-paragraph-container> :last-child {
@@ -1116,17 +1148,11 @@ MEZZI
     padding: 0;
 }
 
-.mezzi-container figcaption {
-    margin: 0.5em auto;
-}
-
 .mezzi-container img {
-    border: var(--border) 0.125em solid;
     width: 25em;
     height: auto;
     object-fit: fill;
     object-position: center;
-    border-radius: 0.625em;
 }
 
 figure.escavatori {
@@ -1136,10 +1162,8 @@ figure.escavatori {
 }
 
 figure.escavatori img {
-    border: var(--border) 0.125em solid;
     max-width: 80%;
     height: auto;
-    border-radius: 0.625em;
 }
 
 figure.escavatori figcaption {
@@ -1158,14 +1182,11 @@ LAVORI SVOLTI
 ==============
 */
 
-dt {
-    font-weight: bold;
-}
-
 .img-list-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: stretch;
     gap: 1em;
     margin: 1em;
 }
@@ -1175,8 +1196,11 @@ dt {
     max-height: 25em;
     object-fit: fill;
     object-position: center;
-    border-radius: 0.625em;
-    border: var(--border) 0.125em solid;
+}
+
+.figure-paragraph-container dl p {
+    margin-left: 0;
+    margin-bottom: 0.3em;
 }
 
 
@@ -1232,13 +1256,13 @@ SU DI NOI
 
 .card>img {
     width: 95%;
-    margin: 0.5em;
+    margin: 0.5em auto;
     border-radius: 1em;
 }
 
 .card>p {
     width: 95%;
-    margin: 0.5em;
+    margin: 0.5em auto;
 }
 
 .card:hover {
