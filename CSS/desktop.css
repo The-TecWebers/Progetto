@@ -494,6 +494,10 @@ img {
     border: var(--border) 0.125em solid;
 }
 
+button img {
+    border: 0;
+}
+
 
 
 /*
@@ -1268,7 +1272,7 @@ PREVENTIVI
 }
 
 .content-preventivo dd {
-    margin: 0 0 0.625em 1.25em;
+    margin-bottom: 1.25em;
 }
 
 .header-preventivo {
