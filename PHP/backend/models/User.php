@@ -1,6 +1,6 @@
 <?php
 
-include(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . 'InputController.php');
+require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . 'InputController.php';
 
 class User
 {
@@ -66,5 +66,11 @@ class User
 
         DBController::runQuery("UPDATE utente SET username = ?, password = ?, email = ?, nome = ?, cognome = ? WHERE id = ?;",
             $this->username, $this->password, $this->email, $this->nome, $this->cognome, $id);
+    }
+
+    public function getIsAdmin()
+    {
+        $result = DBController::runQuery("SELECT * FROM utente WHERE email = ? AND is_admin = 1", $this->email);
+        return $result !== false;
     }
 }

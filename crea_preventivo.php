@@ -8,7 +8,12 @@ $keywords = "preventivo, scavi, edilizia, scavi brescia, lavori edilizi";
 
 session_start();
 
-if (AuthController::isLogged()) {
+if(AuthController::isAdmin()) {
+    session_reset();
+    session_write_close();
+    header(header: 'Location:lista_preventivi.php');
+}
+elseif (AuthController::isLogged()) {
     session_reset();
     session_write_close();
     include __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "template" . DIRECTORY_SEPARATOR . "header.php";

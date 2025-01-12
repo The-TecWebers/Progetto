@@ -295,9 +295,9 @@ DELETE ACCOUNT
 */
 
 #danger-zone {
-    border: 0.125em solid var(--borderError); 
+    border: 0.125em solid var(--borderError);
     background-color: var(--bgError);
-    color: var(--txtError); 
+    color: var(--txtError);
     padding: 1.25em;
     border-radius: 0.5em;
     margin: 1.25em auto;
@@ -305,7 +305,7 @@ DELETE ACCOUNT
 }
 
 #danger-zone h3 {
-    color: var(--txtError); 
+    color: var(--txtError);
     font-size: 1.5em;
     margin-bottom: 0.625em;
 }
@@ -317,9 +317,9 @@ DELETE ACCOUNT
 }
 
 #delete-button {
-    background-color: var(--txtError); 
-    color: var(--bg_bgWhite); 
-    border: 0.125em solid var(--borderError); 
+    background-color: var(--txtError);
+    color: var(--bg_bgWhite);
+    border: 0.125em solid var(--borderError);
     padding: 0.625em 1.25em;
     font-size: 1em;
     cursor: pointer;
@@ -327,7 +327,7 @@ DELETE ACCOUNT
 }
 
 #delete-button:hover {
-    transform: scale(1.05); 
+    transform: scale(1.05);
 }
 
 #delete-button:focus {
@@ -433,7 +433,7 @@ main {
     flex: 1;
     padding-top: calc(1.25em + var(--headerDesktopHeight) + var(--breadcrumbDesktopHeight));
     padding-bottom: 1.25em;
-    max-width: 90%;
+    width: 90%;
     margin: auto;
 }
 
@@ -517,6 +517,10 @@ form {
     margin-bottom: 1em;
 }
 
+.form-short{
+    width: 30%;
+}
+
 .form-input {
     border: 0.125em solid var(--border);
     background-color: var(--bg_bgWhite);
@@ -598,7 +602,6 @@ button {
     text-align: center;
     font-size: 1.5em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-    font-weight: bold;
     margin-bottom: 0.5em;
 }
 
@@ -916,9 +919,9 @@ a.cta:active {
 
 
 /*
-==========
+========
 MARGINI
-==========
+========
 */
 
 .mt-auto {
@@ -944,27 +947,47 @@ MARGINI
 
 
 /* 
-=============
+========
 TABELLE
-=============
+========
 */
 
 table,
 th,
 td {
-    border: 1px solid black;
+    border: 0.0625em solid black;
     border-collapse: collapse;
 }
 
 th,
 td {
+    text-align: center;
     padding: 0.5em;
 }
 
-td:nth-child(even),
-th:nth-child(even) {
-    background-color: rgb(15, 133, 85, 0.2)
-    ;
+th {
+    text-align: center;
+    background-color: var(--bg_bgGreen);
+    color: var(--text_bgGreen);
+}
+
+td[data-title="Descrizione"] {
+    text-align: left;
+}
+
+caption {
+    font-weight: bold;
+    font-size: 1.5em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    margin-bottom: 0.5em;
+}
+
+td:nth-child(odd) {
+    background-color: rgb(15, 133, 85, 0.2);
+}
+
+#desc-tabella {
+    text-indent: -999em;
 }
 
 
@@ -1168,6 +1191,29 @@ PREVENTIVI
     padding: 0% 10%;
 }
 
+.preventivi-container {
+    justify-content: center;
+    display: grid;
+    grid-template-columns: auto;
+    gap: 0.5em;
+}
+.preventivo figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+/* Make the image responsive */
+.preventivo figure img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
 
 
 /*
@@ -1204,6 +1250,10 @@ SU DI NOI
     display: grid;
 }
 
+.cols-1 {
+    grid-template-columns: 100%;
+}
+
 .cols-2 {
     grid-template-columns: auto auto;
 }
@@ -1215,7 +1265,6 @@ SU DI NOI
 .items-center {
     justify-items: center;
 }
-
 
 
 /* 
@@ -1266,3 +1315,77 @@ AREA PRIVATA
     margin-bottom: 1em;
 }
 
+
+
+/* 
+=================
+LISTA PREVENTIVI
+=================
+*/
+
+.preventivi-container {
+
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 0.5em;
+}
+.preventivi-container dt{
+    padding: 1em;
+}
+
+.preventivo{
+    box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.2);
+    border-radius: 5%;
+}
+.preventivo dt{
+    padding: 0;
+    
+}
+
+.preventivo dl{
+    padding: 0em 2em;
+}
+
+.preventivo figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Make the image responsive */
+.preventivo figure img {
+    margin-top: 1em;
+    width: 85%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 5%;
+    object-fit: cover;
+}
+
+.preventivo-edit-foto
+{
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+#crea-preventivo-btn{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background-color: var(--bg_bgGreen);
+    color: var(--link_bgGreen);
+    border: 0 solid;
+    border-radius: 1em;
+    padding: 0.5em 1em;
+    font-size: 1.25em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
