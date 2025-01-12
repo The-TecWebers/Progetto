@@ -181,6 +181,15 @@ class PreventivoController
         }
         return $table . "</tbody></table>";
     }
+
+    public static function isTitleDuplicated($title)
+    {
+        $result=DBController::runQuery("SELECT * FROM richiesta_preventivo WHERE titolo = ?", $title);
+        if ($result && count($result) > 0) {
+            return true;
+        }
+        return false;
+    }
     public static function getSingoloPreventivo()
     {
 

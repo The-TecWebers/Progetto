@@ -10,24 +10,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action = $_GET['action'] ?? null;
 
     if ($action == 'create') {
+
         $_POST = InputController::sanitizePreventivo($_POST);
+        if (!PreventivoController::isTitleDuplicated($_POST['titolo'])) {
+            $target_dir = 'uploads' . DIRECTORY_SEPARATOR . $_POST['titolo'] . DIRECTORY_SEPARATOR;
 
-        $target_dir = 'uploads' . DIRECTORY_SEPARATOR . $_POST['titolo'] . DIRECTORY_SEPARATOR;
+            if (!file_exists($target_dir)) {
+                mkdir($target_dir, 0777, true);
+            }
 
-        if (!file_exists($target_dir)) {
-            mkdir($target_dir,  0777, true);
+            $target_file = $target_dir . basename($_FILES["foto"]["name"]);
+            move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
+            $_POST['foto'] = $target_file;
+
+            $utente = AuthController::getAuthUser();
+            $_POST['utente'] = $utente->getId();
+            $result = PreventivoController::create();
+
+            if ($result == true) {
+                header("Location: lista_preventivi.php");
+            }
         }
-
-        $target_file = $target_dir . basename($_FILES["foto"]["name"]);
-        move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
-        $_POST['foto'] = $target_file;
-
-        $utente = AuthController::getAuthUser();
-        $_POST['utente'] = $utente->getId();
-        $result = PreventivoController::create();
-
-        if ($result == true) {
-            header("Location: lista_preventivi.php");
+        else
+        {
+            $errorMessages = "<ul class=\"errorMessages\"><li>Esiste già un preventivo registrato con questo titolo</li></ul>";
+            $_SESSION['error-preventivi'] = $errorMessages;
+            header('Location: crea_preventivo.php');
         }
     } elseif ($action == 'delete') {
         $user = AuthController::getAuthUser();
@@ -64,8 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $_GET = InputController::sanitizeAll($_GET);
     if (PreventivoController::authorizeFunction($_GET['id_preventivo'], (AuthController::getAuthUser())->getId())) {
         header("Location: modifica_preventivo.php?id=" . $_GET['id_preventivo']);
-    }
-    else {
+    } else {
         header("Location: 500.php");
     }
 }
