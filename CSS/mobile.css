@@ -38,52 +38,6 @@ FOOTER
 
 
 
-/* 
-========
-TABELLE
-========
-*/
-
-thead{
-    display: none;
-}
-
-tr, th, td{
-    display: block;
-}
-
-/* Tolgo i bordi che non siano quelli delle celle */
-table, tbody, tr{
-    border: none;
-}
-
-/* Aggiungo il bordo sopra alla prima cella di ogni riga così tutti i bordi orizzontali hanno lo stesso spessore */
-tr:first-child{
-    border-top: 0.0625em solid #000
-}
-
-/* Aggiungo il bordo sotto all'ultima cella di ogni riga così tutti i bordi orizzontali hanno lo stesso spessore */
-tr:last-child{
-    border-bottom: 0.0625em solid #000
-}
-
-/* Aggiungo il bordo a sinistra e destra di ogni riga così tutti i bordi verticali hanno lo stesso spessore */
-tr{
-    border-left: 0.0625em solid #000;
-    border-right: 0.0625em solid #000;
-}
-
-td[data-title]:before{
-    content: attr(data-title) ": "
-}
-
-/* Faccio sparire le celle vuote */
-td:empty{
-  display: none;
-}
-
-
-
 /*
 ==========
 CONTAINER
@@ -191,10 +145,30 @@ LAVORI SVOLTI
 
 .img-list-container {
     flex-direction: column;
+    align-items: center;
 }
 
 .img-list-container img {
     max-width: 100%;
+    height: auto;
+}
+
+
+
+/*
+===========
+PREVENTIVI
+===========
+*/
+
+.filter-container {
+    width: 100%;
+}
+
+.push-right {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 0.5em;
 }
 
 

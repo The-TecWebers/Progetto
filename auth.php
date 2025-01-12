@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['nome*'] = $_POST['nome'] ?? null;
         $_SESSION['cognome*'] = $_POST['cognome'] ?? null;
         $_SESSION['email*'] = $_POST['email'] ?? null;
+        $_SESSION['telefono*'] = $_POST['telefono'] ?? null;
         $_SESSION['username*'] = $_POST['username'] ?? null;
         $_SESSION['password*'] = $_POST['password'] ?? null;
         $_SESSION['password_confirmation*'] = $_POST['password_confirmation'] ?? null;
@@ -61,6 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['nome*'] = $_POST['nome'] ?? null;
         $_SESSION['cognome*'] = $_POST['cognome'] ?? null;
         $_SESSION['email*'] = $_POST['email'] ?? null;
+        $_SESSION['telefono*'] = $_POST['telefono'] ?? null;
         $_SESSION['username*'] = $_POST['username'] ?? null;
         $_SESSION['old_password*'] = $_POST['old_password'] ?? null;
         $_SESSION['new_password*'] = $_POST['new_password'] ?? null;

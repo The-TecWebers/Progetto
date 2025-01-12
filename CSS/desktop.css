@@ -288,6 +288,8 @@ PULSANTI ACCOUNT
     text-align: center;
 }
 
+
+
 /* 
 ==============
 DELETE ACCOUNT
@@ -333,6 +335,7 @@ DELETE ACCOUNT
 #delete-button:focus {
     outline-offset: 0.125em;
 }
+
 
 
 /*
@@ -422,7 +425,6 @@ ul li a:active {
 
 
 
-
 /*
 ======
 MAIN
@@ -476,7 +478,7 @@ figcaption {
     font-style: italic;
     font-size: 1.125em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-    margin-bottom: 0.5em;
+    margin: 0.5em;
 }
 
 .reversed> :first-child {
@@ -485,6 +487,15 @@ figcaption {
 
 .reversed> :last-child {
     order: 1;
+}
+
+img {
+    border-radius: 0.625em;
+    border: var(--border) 0.125em solid;
+}
+
+button img {
+    border: 0;
 }
 
 
@@ -579,7 +590,7 @@ button {
     border: 0.1em solid var(--link_bgWhite);
 }
 
-.form-buttons button:hover {
+button:hover {
     transform: scale(1.05);
     box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.2);
 }
@@ -952,6 +963,10 @@ TABELLE
 ========
 */
 
+table {
+    margin: 1.2em auto;
+}
+
 table,
 th,
 td {
@@ -988,6 +1003,34 @@ td:nth-child(odd) {
 
 #desc-tabella {
     text-indent: -999em;
+}
+
+
+
+/* 
+======
+LISTE
+======
+*/
+
+dt {
+    font-weight: bold;
+}
+
+dl {
+    margin-left: 1em;
+}
+
+dt + dd {
+    margin-bottom: 0.5em;
+}
+
+dd ul {
+    margin-left: 1em;
+}
+
+dd ul li {
+    margin-bottom: 0.5em;
 }
 
 
@@ -1047,9 +1090,8 @@ HOME PAGE
     height: auto;
     object-fit: fill;
     object-position: center;
-    border-radius: 0.625em;
-    border: var(--border) 0.125em solid;
 }
+
 
 
 /*
@@ -1070,22 +1112,20 @@ STORIA - LAVORI SVOLTI
 }
 
 .figure-paragraph-container figure {
+    display: flex;
+    flex-direction: column;
     max-width: 35%;
     height: auto;
+    align-items: center;
     margin: 0 0.625em;
 }
 
 .figure-paragraph-container img {
-    width: 100%;
+    max-width: 100%;
     max-height: 25em;
     object-fit: fill;
     object-position: center;
-    border-radius: 0.625em;
-    border: var(--border) 0.125em solid;
-}
-
-.figure-paragraph-container figcaption {
-    margin-top: 0;
+    margin: auto
 }
 
 .figure-paragraph-container> :last-child {
@@ -1116,17 +1156,11 @@ MEZZI
     padding: 0;
 }
 
-.mezzi-container figcaption {
-    margin: 0.5em auto;
-}
-
 .mezzi-container img {
-    border: var(--border) 0.125em solid;
     width: 25em;
     height: auto;
     object-fit: fill;
     object-position: center;
-    border-radius: 0.625em;
 }
 
 figure.escavatori {
@@ -1136,10 +1170,8 @@ figure.escavatori {
 }
 
 figure.escavatori img {
-    border: var(--border) 0.125em solid;
     max-width: 80%;
     height: auto;
-    border-radius: 0.625em;
 }
 
 figure.escavatori figcaption {
@@ -1158,14 +1190,11 @@ LAVORI SVOLTI
 ==============
 */
 
-dt {
-    font-weight: bold;
-}
-
 .img-list-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: stretch;
     gap: 1em;
     margin: 1em;
 }
@@ -1175,43 +1204,128 @@ dt {
     max-height: 25em;
     object-fit: fill;
     object-position: center;
-    border-radius: 0.625em;
-    border: var(--border) 0.125em solid;
+}
+
+.figure-paragraph-container dl p {
+    margin-left: 0;
+    margin-bottom: 0.3em;
 }
 
 
 
-/*
-===========
+/* 
+=================
 PREVENTIVI
-===========
+=================
 */
 
-#listaPreventivi>h2 {
-    padding: 0% 10%;
+.preventivo{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 50em;
+    margin: 1.25em auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.2);
+    align-items: center;
+    height: auto;
 }
 
-.preventivi-container {
+.form-preventivo{
+    background-color: var(--bg_bgWhite);
+    width: 100%;
+    display: flex;
+    padding-top: 1em;
+    flex-direction: row;
     justify-content: center;
-    display: grid;
-    grid-template-columns: auto;
-    gap: 0.5em;
+    border-radius:8px ;
 }
-.preventivo figure {
-    margin: 0;
+
+.img-preventivo {
+    margin-left: 1em;
+    margin-right: 1em;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-preventivo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.content-preventivo {
+    box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.1);
+    border-left: dashed rgba(0, 0, 0, 0.1);
+    flex: 2;
+    padding: 1.25em;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
 }
-/* Make the image responsive */
-.preventivo figure img {
+
+.content-preventivo dt {
+    margin-top: 0.625em;
+}
+
+.content-preventivo dd {
+    margin-bottom: 1.25em;
+}
+
+.header-preventivo {
+    background-color: var(--bg_bgGreen);
+    color: #fff;
+    padding: 1.25em;
+    text-align: center;
+}
+
+.header-preventivo p {
+    font-size: 1.5em;
+}
+
+.preventivo-edit-foto
+{
     width: 100%;
     height: auto;
     max-width: 100%;
     border-radius: 8px;
     object-fit: cover;
+}
+
+#crea-preventivo-btn{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background-color: var(--bg_bgGreen);
+    color: var(--link_bgGreen);
+    border: 0 solid;
+    border-radius: 1em;
+    padding: 0.5em 1em;
+    font-size: 1.25em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.filter-container {
+    width: 75%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 1rem;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+}
+
+.push-right {
+    margin-left: 54.5%;
+    margin-right: 13%;
 }
 
 
@@ -1232,13 +1346,13 @@ SU DI NOI
 
 .card>img {
     width: 95%;
-    margin: 0.5em;
+    margin: 0.5em auto;
     border-radius: 1em;
 }
 
 .card>p {
     width: 95%;
-    margin: 0.5em;
+    margin: 0.5em auto;
 }
 
 .card:hover {
@@ -1265,6 +1379,7 @@ SU DI NOI
 .items-center {
     justify-items: center;
 }
+
 
 
 /* 
@@ -1315,77 +1430,3 @@ AREA PRIVATA
     margin-bottom: 1em;
 }
 
-
-
-/* 
-=================
-LISTA PREVENTIVI
-=================
-*/
-
-.preventivi-container {
-
-    justify-content: center;
-    display: grid;
-    grid-template-columns: 100%;
-    gap: 0.5em;
-}
-.preventivi-container dt{
-    padding: 1em;
-}
-
-.preventivo{
-    box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.2);
-    border-radius: 5%;
-}
-.preventivo dt{
-    padding: 0;
-    
-}
-
-.preventivo dl{
-    padding: 0em 2em;
-}
-
-.preventivo figure {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-
-/* Make the image responsive */
-.preventivo figure img {
-    margin-top: 1em;
-    width: 85%;
-    height: auto;
-    max-width: 100%;
-    border-radius: 5%;
-    object-fit: cover;
-}
-
-.preventivo-edit-foto
-{
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    border-radius: 8px;
-    object-fit: cover;
-}
-
-#crea-preventivo-btn{
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    background-color: var(--bg_bgGreen);
-    color: var(--link_bgGreen);
-    border: 0 solid;
-    border-radius: 1em;
-    padding: 0.5em 1em;
-    font-size: 1.25em;
-    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}

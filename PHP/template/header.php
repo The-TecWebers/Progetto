@@ -30,7 +30,7 @@ $suffix = '</li></ul></nav>';
 
 switch ($current_page) {
     case "index.php":
-        $header = str_replace('<li><a href="index.php">Home</a></li>', '<li class="current-link">Home</li>', $header);
+        $header = str_replace('<li><a href="index.php" lang="en">Home</a></li>', '<li class="current-link" lang="en">Home</li>', $header);
         break;
     case "storia.php":
         $header = str_replace('<li><a href="storia.php">Storia</a></li>', '<li class="current-link">Storia</li>', $header);

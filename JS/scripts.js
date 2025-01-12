@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("nome").setAttribute("aria-describedby", "info-nome");
     document.getElementById("cognome").setAttribute("aria-describedby", "info-cognome");
     document.getElementById("email").setAttribute("aria-describedby", "info-email");
+    document.getElementById("telefono").setAttribute("aria-describedby", "info-telefono");
     document.getElementById("username").setAttribute("aria-describedby", "info-username");
     document.getElementById("password").setAttribute("aria-describedby", "info-password");
 
@@ -45,10 +46,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("nome").onblur = function () { return validateName(document.getElementById("nome")); };
     document.getElementById("cognome").onblur = function () { return validateSurname(document.getElementById("cognome")); };
     document.getElementById("email").onblur = function () { return validateEmail(document.getElementById("email")); };
+    document.getElementById("telefono").onblur = function () { return validatePhoneNumber(document.getElementById("telefono")); };
     document.getElementById("username").onblur = function () { return validateUsername(document.getElementById("username")); };
     document.getElementById("password").onblur = function () { return validatePassword(document.getElementById("password")); };
     document.getElementById("password_confirmation").onblur = function () { return validatePasswordConfirmation(document.getElementById("password_confirmation")); };
-    document.getElementById("registrationForm").onsubmit = function () { return validateRegister(document.getElementById("registrationForm")); };
+    document.getElementById("registrationForm").onsubmit = function () { return validateRegister(); };
   }
 
   if (document.getElementById('privateAreaForm')) {
@@ -61,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("nome").onblur = function () { return validateName(document.getElementById("nome")); };
     document.getElementById("cognome").onblur = function () { return validateSurname(document.getElementById("cognome")); };
     document.getElementById("email").onblur = function () { return validateEmail(document.getElementById("email")); };
+    document.getElementById("telefono").onblur = function () { return validatePhoneNumber(document.getElementById("telefono")); };
     document.getElementById("username").onblur = function () { return validateUsername(document.getElementById("username")); };
     document.getElementById("new_password").onblur = function () { return validateNewPassword(document.getElementById("new_password")); };
     document.getElementById("repeated_password").onblur = function () { return validatePasswordConfirmation(document.getElementById("repeated_password")); };
@@ -143,6 +146,13 @@ function caricamento_registrazione() {
   node.innerHTML = "Essa deve essere un indirizzo <span lang=\"en\">email</span> valido";
   x.parentElement.insertBefore(node, x);
 
+  x = document.getElementById("telefono");
+  node = document.createElement("p");
+  node.id = "info-" + x.id;
+  node.classList.add("info-label");
+  node.innerHTML = "Esso deve essere un numero di telefono valido, di 9 o 10 cifre, con spazi o senza spazi, con prefisso o senza prefisso (se lo inserisci, ricordati il \"+\")";
+  x.parentElement.insertBefore(node, x);
+
   x = document.getElementById("username");
   node = document.createElement("p");
   node.id = "info-" + x.id;
@@ -198,6 +208,12 @@ function checkEmail(email) {
   return regex.test(email);
 }
 
+function checkPhoneNumber(phone) {
+  phone = phone.replace(/\s+/g, '');
+  var regex = /^(\+\d{2})?(\d{9,10})$/;
+  return regex.test(phone);
+}
+
 function checkUsername(username) {
   var regex = new RegExp('^[\\w' + accentedCharacters + '\'\\-]{1,40}$');
   return regex.test(username);
@@ -222,22 +238,6 @@ function checkDescrizione(descrizione) {
   var regex = new RegExp('^[a-zA-Z' + accentedCharacters + '\'\\-\\s]{2,255}$');
   return regex.test(descrizione);
 }
-
-/*
-function checkDate(date) {
-  var regex = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
-  return regex.test(date);
-}
-
-function checkImgPath(imgPath) {
-  var regex = /(?:\.([^.]+))?$/;
-  var ext = regex.exec(imgPath)[1];
-  if (ext == "jpg" || ext == "jpeg" || ext == "png" || ext == "webp") {
-    return true;
-  }
-  return false;
-}
-*/
 
 
 
@@ -566,6 +566,54 @@ function validateEmail(x) {
   return true;
 }
 
+function validatePhoneNumber(x) {
+  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
+    x.parentElement.removeChild(x.nextElementSibling);
+  }
+
+  const node = document.createElement("p");
+  node.classList.add("error-label");
+  node.setAttribute("role", "alert");
+  node.setAttribute("aria-live", "assertive");
+
+  if (x.value == "") {
+    node.innerHTML = "Devi inserire un numero di telefono!";
+    insertAfter(node, x);
+
+    if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
+      var previous_node = document.createElement("p");
+      previous_node.id = "info-" + x.id;
+      previous_node.classList.add("info-label");
+      previous_node.innerHTML = "Esso deve essere un numero di telefono valido, di 9 o 10 cifre, con spazi o senza spazi, con prefisso o senza prefisso (se lo inserisci, ricordati il \"+\")";
+      x.parentElement.insertBefore(previous_node, x);
+    }
+
+    return false;
+  }
+
+  if (x.value.length > 256) {
+    node.innerHTML = "Il numero di telefono deve essere lungo al massimo 256 caratteri";
+    insertAfter(node, x);
+
+    return false;
+  }
+
+  if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
+    x.parentElement.removeChild(x.previousElementSibling);
+  }
+
+  if (!checkPhoneNumber(x.value)) {
+    node.innerHTML = "Numero di telefono non valido. Puoi inserire 9 o 10 cifre dopo il prefisso opzionale. Se hai inserito il prefisso, ricordati di anticiparlo con un \"+\"";
+    insertAfter(node, x);
+
+    return false;
+  }
+
+  return true;
+}
+
+  
+
 function validateUsername(x) {
   if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
     x.parentElement.removeChild(x.nextElementSibling);
@@ -712,70 +760,6 @@ function validateNewPassword(x) {
   return true;
 }
 
-/*
-function validateDate(id, id2){
-  var x = document.getElementById(id);
-
-  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")){
-    x.parentElement.removeChild(x.nextElementSibling);
-  }
-
-  const node = document.createElement("p");
-  node.classList.add("error-label");
-  node.setAttribute("role", "alert");
-  node.setAttribute("aria-live", "assertive");
-
-  if (!checkDate(x.value)) {
-    node.innerHTML = "La data deve essere nel formato gg/mm/aaaa";
-    insertAfter(node, x);
-    
-    return false;
-  }
-
-  return true;
-}
-
-function validateImgPath(id){
-  var x = document.getElementById(id);
-
-  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")){
-    x.parentElement.removeChild(x.nextElementSibling);
-  }
-
-  const node = document.createElement("p");
-  node.classList.add("error-label");
-  node.setAttribute("role", "alert");
-  node.setAttribute("aria-live", "assertive");
-
-  if (x.value == "") {
-    node.innerHTML = "Inserisci un percorso valido";
-    insertAfter(node, x);
-    
-    return false;
-  }
-
-  if (x.value.length > 256) {
-    node.innerHTML = "Il percorso dell'immagine deve essere lungo al massimo 256 caratteri";
-    insertAfter(node, x);
-    
-    return false;
-  }
-
-  if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
-    x.parentElement.removeChild(x.previousElementSibling);
-  }
-
-  if (!checkImgPath(x.value)) {
-    node.innerHTML = "L'immagine deve essere in formato jpg, jpeg, png o webp";
-    insertAfter(node, x);
-    
-    return false; 
-   }
-
-  return true;
-}
-*/
-
 
 
 /*
@@ -788,6 +772,7 @@ function validateRegister() {
   if (!validateName(document.getElementById("nome")) ||
     !validateSurname(document.getElementById("cognome")) ||
     !validateEmail(document.getElementById("email")) ||
+    !validatePhoneNumber(document.getElementById("telefono")) ||
     !validateUsername(document.getElementById("username")) ||
     !validatePassword(document.getElementById("password")) ||
     !validatePasswordConfirmation(document.getElementById("password_confirmation"))) {
@@ -799,6 +784,7 @@ function validatePrivateArea() {
   if (!validateName(document.getElementById("nome")) ||
     !validateSurname(document.getElementById("cognome")) ||
     !validateEmail(document.getElementById("email")) ||
+    !validatePhoneNumber(document.getElementById("telefono")) ||
     !validateUsername(document.getElementById("username")) ||
     !validateNewPassword(document.getElementById("new_password")) ||
     !validatePasswordConfirmation(document.getElementById("repeated_password"))) {
@@ -821,6 +807,72 @@ function validateEditPreventiviForm() {
     return false;
   }
 }
+
+
+
+
+
+/*
+==========================
+FILTRI TABELLA PREVENTIVI
+==========================
+*/
+
+function filterTable() {
+  var titoloFilter = document.getElementById('filter-titolo').value.toLowerCase();
+  var richiedenteFilter = document.getElementById('filter-richiedente').value.toLowerCase();
+  var startDate = document.getElementById('start-date').value;
+  var endDate = document.getElementById('end-date').value;
+  var table = document.querySelector('table');
+  var rows = table.getElementsByTagName('tr');
+  var startDateObj = startDate ? new Date(startDate) : null;
+  var endDateObj = endDate ? new Date(endDate) : null;
+
+  var filterDiv = document.getElementById('table-filter');
+  if (endDateObj != null && startDateObj != null && endDateObj < startDateObj) {
+      var errorMessage = document.createElement('p');
+      errorMessage.id = 'error-date-range';
+      errorMessage.classList.add('error-label');
+      errorMessage.classList.add('push-right');
+      errorMessage.textContent = 'La data di inizio deve essere minore o uguale a quella di fine.';
+      insertAfter(errorMessage, filterDiv);
+      return;
+  }
+  else {
+    var existingErrorMessage = document.getElementById('error-date-range');
+    if (existingErrorMessage) {
+      existingErrorMessage.remove();
+    }
+  }
+
+  for (var i = 1; i < rows.length; i++) {
+      var cells = rows[i].getElementsByTagName('td');
+      var titoloCell = rows[i].getElementsByTagName('th')[0].textContent.toLowerCase();
+      var richiedenteCell = cells[0].textContent.toLowerCase();
+      var dateCellText = cells[2].textContent.trim();
+
+      var dateCellObj = new Date(dateCellText);
+      var dateValid = true;
+
+      if (startDateObj && dateCellObj < startDateObj) {
+          dateValid = false;
+      }
+      if (endDateObj && dateCellObj > endDateObj) {
+          dateValid = false;
+      }
+
+      if (
+          titoloCell.indexOf(titoloFilter) > -1 &&
+          richiedenteCell.indexOf(richiedenteFilter) > -1 &&
+          dateValid
+      ) {
+          rows[i].style.display = '';
+      } else {
+          rows[i].style.display = 'none';
+      }
+  }
+}
+
 
 
 

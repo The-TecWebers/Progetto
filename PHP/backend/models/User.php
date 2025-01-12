@@ -8,14 +8,16 @@ class User
     private $username;
     private $password;
     private $email;
+    private $telefono;
     private $nome;
     private $cognome;
 
     function __construct(array $array)
     {
-        $this->email = $array['email'];
         $this->username = $array['username'];
         $this->password = $array['password'];
+        $this->email = $array['email'];
+        $this->telefono = $array['telefono'];
         $this->nome = $array['nome'];
         $this->cognome = $array['cognome'];
         if($array['id']!==null)
@@ -24,10 +26,6 @@ class User
         }
     }
 
-    public function getEmail()
-    {
-        return $this->email;
-    }
     public function getUsername()
     {
         return $this->username;
@@ -36,11 +34,19 @@ class User
     {
         return $this->password;
     }
-    public function getName()
+    public function getEmail()
+    {
+        return $this->email;
+    }
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+    public function getNome()
     {
         return $this->nome;
     }
-    public function getSurname()
+    public function getCognome()
     {
         return $this->cognome;
     }
@@ -52,8 +58,8 @@ class User
     
     public function save()
     {
-        DBController::runQuery("INSERT INTO utente (username, email, password, nome, cognome) VALUES (?,?,?,?,?);", $this->username,
-            $this->email, $this->password, $this->nome, $this->cognome);
+        DBController::runQuery("INSERT INTO utente (username, password, email, telefono, nome, cognome) VALUES (?,?,?,?,?,?);", $this->username,
+        $this->password, $this->email, $this->telefono, $this->nome, $this->cognome);
     }
 
     public function update($id, array $array)
@@ -61,11 +67,12 @@ class User
         $this->username = $array['username'] ?? $this->username;
         $this->password = $array['password'] ?? $this->password;
         $this->email = $array['email'] ?? $this->email;
+        $this->telefono = $array['telefono'] ?? $this->telefono;
         $this->nome = $array['nome'] ?? $this->nome;
         $this->cognome = $array['cognome'] ?? $this->cognome;
 
-        DBController::runQuery("UPDATE utente SET username = ?, password = ?, email = ?, nome = ?, cognome = ? WHERE id = ?;",
-            $this->username, $this->password, $this->email, $this->nome, $this->cognome, $id);
+        DBController::runQuery("UPDATE utente SET username = ?, password = ?, email = ?, telefono = ?, nome = ?, cognome = ? WHERE id = ?;",
+            $this->username, $this->password, $this->email, $this->telefono, $this->nome, $this->cognome, $id);
     }
 
     public function getIsAdmin()
