@@ -39,6 +39,7 @@ try {
             'nome' => 'Es.: Mario',
             'cognome' => 'Es.: Rossi',
             'email' => 'Es: mario.rossi@example.com',
+            'telefono' => 'Es.: +39 333 123 4567',
             'username' => 'Es.: MRossi33',
             'password' => 'Es.: 44Gatti__$',
             'password_confirmation' => 'Conferma password'

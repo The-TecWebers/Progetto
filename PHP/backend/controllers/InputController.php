@@ -41,6 +41,20 @@ class InputController
         return true;
     }
 
+    private static function isPhoneNumber($phoneNumber): bool|string
+    {
+        // Remove any existing spaces
+        $phoneNumber = str_replace(' ', '', $phoneNumber);
+
+        $phoneNumber_pattern = '/^(\+\d{2})?(\d{9,10})$/';
+
+        if (!preg_match($phoneNumber_pattern, $phoneNumber)) {
+            return "<li>Il numero di telefono deve essere valido!</li>";
+        }
+
+        return true;
+    }
+
     private static function isUsername($username): bool|string
     {
         $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
@@ -60,12 +74,37 @@ class InputController
         return true;
     }
 
+
+
+    /*
+    ==================
+    FORMAT FORM FIELDS
+    ==================
+    */
+
     public static function hashPassword($password): string|null
     {
         if ($password != null) {
             return password_hash($password, PASSWORD_BCRYPT);
         }
         return null;
+    }
+
+    public static function formatPhoneNumber($phoneNumber): string
+    {
+        // Remove any existing spaces
+        $phoneNumber = str_replace(' ', '', $phoneNumber);
+
+        // Check if the phone number starts with a '+'
+        if (strpos($phoneNumber, '+') === 0) {
+            // Format the phone number with spaces
+            $phoneNumber = preg_replace('/(\+\d{2})(\d{3})(\d{3})(\d{3,4})/', '$1 $2 $3 $4', $phoneNumber);
+        } else {
+            // Add the '+39 ' prefix and format the phone number with spaces
+            $phoneNumber = preg_replace('/(\d{3})(\d{3})(\d{3,4})/', '+39 $1 $2 $3', $phoneNumber);
+        }
+
+        return $phoneNumber;
     }
 
 
@@ -84,6 +123,7 @@ class InputController
             empty($array["nome"]) ||
             empty($array["cognome"]) ||
             empty($array["email"]) ||
+            empty($array["telefono"]) ||
             empty($array["username"]) ||
             empty($array["password"]) ||
             empty($array["password_confirmation"])
@@ -102,6 +142,7 @@ class InputController
         $name = $array['nome'];
         $surname = $array['cognome'];
         $email = $array['email'];
+        $phoneNumber = $array['telefono'];
         $username = $array['username'];
         $pass1 = $array['password'];
         $pass2 = $array['password_confirmation'];
@@ -115,8 +156,31 @@ class InputController
         if (self::isMail($email) !== true) {
             $errorMessages .= self::isMail($email);
         }
+        else {
+            // Controllo univocità della email
+            if (UserController::isEmailDuplicate($email) === true) {
+                $errorMessages .= "<li>Esiste già un utente registrato con questa <span lang=\"en\">email</span></li>";
+        }
+        }
+        if (self::isPhoneNumber($phoneNumber) !== true) {
+            $errorMessages .= self::isPhoneNumber($phoneNumber);
+        }
+        else {
+            $phoneNumber = InputController::formatPhoneNumber($phoneNumber);
+
+            // Controllo univocità del numero di telefono
+            if (UserController::isPhoneNumberDuplicate($phoneNumber) === true) {
+                $errorMessages .= "<li>Esiste già un utente registrato con questo numero di telefono</li>";
+        }
+        }
         if (self::isUsername($username) !== true) {
             $errorMessages .= self::isUsername($username);
+        }
+        else {
+            // Controllo univocità dello username
+            if (UserController::isUsernameDuplicate($username) === true) {
+                $errorMessages .= "<li>Esiste già un utente registrato con questo <span lang=\"en\">username</span></li>";
+        }
         }
         if (self::isPassword($pass1) !== true) {
             $errorMessages .= self::isPassword($pass1);
@@ -124,16 +188,6 @@ class InputController
 
         if ($pass1 != $pass2) {
             $errorMessages .= "<li>Le <span lang=\"en\">password</span> non sono uguali</li>";
-        }
-
-        // Controllo univocità dello username
-        if (UserController::isUsernameDuplicate($username) === true) {
-            $errorMessages .= "<li>Esiste già un utente registrato con questo <span lang=\"en\">username</span></li>";
-        }
-
-        // Controllo univocità della email
-        if (UserController::isEmailDuplicate($email) === true) {
-            $errorMessages .= "<li>Esiste già un utente registrato con questa <span lang=\"en\">email</span></li>";
         }
 
         $errorMessages .= "</ul>";
@@ -218,6 +272,7 @@ class InputController
             empty($array["nome"]) ||
             empty($array["cognome"]) ||
             empty($array["email"]) ||
+            empty($array["telefono"]) ||
             empty($array["username"])
         ) {
             $personal_data_error = true;
@@ -252,6 +307,7 @@ class InputController
         $name = $array['nome'];
         $surname = $array['cognome'];
         $email = $array['email'];
+        $phoneNumber = $array['telefono'];
         $username = $array['username'];
         $old_pass = $array['old_password'] ?? null;
         $new_pass = $array['new_password'] ?? null;
@@ -267,21 +323,30 @@ class InputController
         if (self::isMail($email) !== true) {
             $errorMessages .= self::isMail($email);
         }
+        else {
+            // Se la email è cambiata, controllo univocità della email
+            if ($email != $_SESSION['email']  &&  UserController::isEmailDuplicate($email) === true) {
+                $errorMessages .= "<li>Esiste già un utente registrato con questa <span lang=\"en\">email</span></li>";
+            }
+        }
+        if (self::isPhoneNumber($phoneNumber) !== true) {
+            $errorMessages .= self::isPhoneNumber($phoneNumber);
+        }
+        else {
+            $phoneNumber = InputController::formatPhoneNumber($phoneNumber);
+
+            // Se il numero di telefono è cambiato, controllo univocità del numero di telefono
+            if ($phoneNumber != $_SESSION['telefono']  &&  UserController::isPhoneNumberDuplicate($phoneNumber) === true) {
+                $errorMessages .= "<li>Esiste già un utente registrato con questo numero di telefono</li>";
+            }
+        }
         if (self::isUsername($username) !== true) {
             $errorMessages .= self::isUsername($username);
         }
-
-        // Se lo username è cambiato, controllo univocità dello username
-        if ($username != $_SESSION['username']) {
-            if (UserController::isUsernameDuplicate($username) === true) {
+        else {
+            // Se lo username è cambiato, controllo univocità dello username
+            if ($username != $_SESSION['username']  &&  UserController::isUsernameDuplicate($username) === true) {
                 $errorMessages .= "<li>Esiste già un utente registrato con questo <span lang=\"en\">username</span></li>";
-            }
-        }
-
-        // Se la email è cambiata, controllo univocità della email
-        if ($email != $_SESSION['email']) {
-            if (UserController::isEmailDuplicate($email) === true) {
-                $errorMessages .= "<li>Esiste già un utente registrato con questa <span lang=\"en\">email</span></li>";
             }
         }
 

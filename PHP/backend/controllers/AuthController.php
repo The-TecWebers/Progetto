@@ -7,9 +7,10 @@ class AuthController
     public static function login(User $user)
     {
         $_SESSION['username'] = $user->getUsername();
+        $_SESSION['nome'] = $user->getNome();
+        $_SESSION['cognome'] = $user->getCognome();
         $_SESSION['email'] = $user->getEmail();
-        $_SESSION['nome'] = $user->getName();
-        $_SESSION['cognome'] = $user->getSurname();
+        $_SESSION['telefono'] = $user->getTelefono();
     }
 
     public static function logout()
