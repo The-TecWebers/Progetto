@@ -25,6 +25,8 @@ class UserController
 
         $input['password'] = InputController::hashPassword($input['password']);
 
+        $input['telefono'] = InputController::formatPhoneNumber($input['telefono']);
+
         $user = new User($input);
         $user->save();
 
@@ -35,11 +37,12 @@ class UserController
 
     public static function read()
     {
-        if(isset($_SESSION['nome']) && isset($_SESSION['cognome']) && isset($_SESSION['email']) && isset($_SESSION['username'])){
+        if(isset($_SESSION['nome']) && isset($_SESSION['cognome']) && isset($_SESSION['email']) && isset($_SESSION['telefono']) && isset($_SESSION['username'])){
             $userData = [
                 'nome' => $_SESSION['nome'],
                 'cognome' => $_SESSION['cognome'],
                 'email' => $_SESSION['email'],
+                'telefono' => $_SESSION['telefono'],
                 'username' => $_SESSION['username']
             ];
             return $userData;
@@ -70,6 +73,8 @@ class UserController
             $input['password'] = InputController::hashPassword($input['new_password']);
         }
         unset($input['old_password'], $input['new_password'], $input['repeated_password']);
+
+        $input['telefono'] = InputController::formatPhoneNumber($input['telefono']);
 
         $user = self::getUserByUsername($_SESSION['username']);
         $userId = self::getUserId($user);
@@ -141,6 +146,15 @@ class UserController
         return false;
     }
 
+    public static function isPhoneNumberDuplicate($phoneNumber): bool
+    {
+        $result=DBController::runQuery("SELECT username FROM utente WHERE telefono = ?", $phoneNumber);
+        if ($result && count($result) > 0) {
+            return true;
+        }
+        return false;
+    }
+
     public static function getUserByEmail($email)
     {
         $result = DBController::runQuery("SELECT * FROM utente WHERE email = ?", $email);
@@ -159,6 +173,21 @@ class UserController
     public static function getUserByUsername($username)
     {
         $result = DBController::runQuery("SELECT * FROM utente WHERE username = ?", $username);
+
+        if($result === false)
+        {
+            return false;
+        }
+
+        if(count($result)>0)
+        {
+            return new User($result);
+        }
+    }
+
+    public static function getUserByPhoneNumber($phoneNumber)
+    {
+        $result = DBController::runQuery("SELECT * FROM utente WHERE telefono = ?", $phoneNumber);
 
         if($result === false)
         {

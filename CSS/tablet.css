@@ -249,12 +249,18 @@ tr{
 }
 
 td[data-title]:before{
-    content: attr(data-title) ": "
+    content: attr(data-title) ": ";
+    font-weight: bold;
 }
 
 /* Faccio sparire le celle vuote */
 td:empty{
   display: none;
+}
+
+/* Centro anche la cella della descrizione come tutte le altre celle */
+td[data-title="Descrizione"] {
+    text-align: center;
 }
 
 

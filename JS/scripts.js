@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("nome").setAttribute("aria-describedby", "info-nome");
     document.getElementById("cognome").setAttribute("aria-describedby", "info-cognome");
     document.getElementById("email").setAttribute("aria-describedby", "info-email");
+    document.getElementById("telefono").setAttribute("aria-describedby", "info-telefono");
     document.getElementById("username").setAttribute("aria-describedby", "info-username");
     document.getElementById("password").setAttribute("aria-describedby", "info-password");
 
@@ -45,10 +46,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("nome").onblur = function () { return validateName(document.getElementById("nome")); };
     document.getElementById("cognome").onblur = function () { return validateSurname(document.getElementById("cognome")); };
     document.getElementById("email").onblur = function () { return validateEmail(document.getElementById("email")); };
+    document.getElementById("telefono").onblur = function () { return validatePhoneNumber(document.getElementById("telefono")); };
     document.getElementById("username").onblur = function () { return validateUsername(document.getElementById("username")); };
     document.getElementById("password").onblur = function () { return validatePassword(document.getElementById("password")); };
     document.getElementById("password_confirmation").onblur = function () { return validatePasswordConfirmation(document.getElementById("password_confirmation")); };
-    document.getElementById("registrationForm").onsubmit = function () { return validateRegister(document.getElementById("registrationForm")); };
+    document.getElementById("registrationForm").onsubmit = function () { return validateRegister(); };
   }
 
   if (document.getElementById('privateAreaForm')) {
@@ -61,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("nome").onblur = function () { return validateName(document.getElementById("nome")); };
     document.getElementById("cognome").onblur = function () { return validateSurname(document.getElementById("cognome")); };
     document.getElementById("email").onblur = function () { return validateEmail(document.getElementById("email")); };
+    document.getElementById("telefono").onblur = function () { return validatePhoneNumber(document.getElementById("telefono")); };
     document.getElementById("username").onblur = function () { return validateUsername(document.getElementById("username")); };
     document.getElementById("new_password").onblur = function () { return validateNewPassword(document.getElementById("new_password")); };
     document.getElementById("repeated_password").onblur = function () { return validatePasswordConfirmation(document.getElementById("repeated_password")); };
@@ -143,6 +146,13 @@ function caricamento_registrazione() {
   node.innerHTML = "Essa deve essere un indirizzo <span lang=\"en\">email</span> valido";
   x.parentElement.insertBefore(node, x);
 
+  x = document.getElementById("telefono");
+  node = document.createElement("p");
+  node.id = "info-" + x.id;
+  node.classList.add("info-label");
+  node.innerHTML = "Esso deve essere un numero di telefono valido, di 9 o 10 cifre, con spazi o senza spazi, con prefisso o senza prefisso (se lo inserisci, ricordati il \"+\")";
+  x.parentElement.insertBefore(node, x);
+
   x = document.getElementById("username");
   node = document.createElement("p");
   node.id = "info-" + x.id;
@@ -196,6 +206,12 @@ function checkSurname(surname) {
 function checkEmail(email) {
   var regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return regex.test(email);
+}
+
+function checkPhoneNumber(phone) {
+  phone = phone.replace(/\s+/g, '');
+  var regex = /^(\+\d{2})?(\d{9,10})$/;
+  return regex.test(phone);
 }
 
 function checkUsername(username) {
@@ -550,6 +566,54 @@ function validateEmail(x) {
   return true;
 }
 
+function validatePhoneNumber(x) {
+  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
+    x.parentElement.removeChild(x.nextElementSibling);
+  }
+
+  const node = document.createElement("p");
+  node.classList.add("error-label");
+  node.setAttribute("role", "alert");
+  node.setAttribute("aria-live", "assertive");
+
+  if (x.value == "") {
+    node.innerHTML = "Devi inserire un numero di telefono!";
+    insertAfter(node, x);
+
+    if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
+      var previous_node = document.createElement("p");
+      previous_node.id = "info-" + x.id;
+      previous_node.classList.add("info-label");
+      previous_node.innerHTML = "Esso deve essere un numero di telefono valido, di 9 o 10 cifre, con spazi o senza spazi, con prefisso o senza prefisso (se lo inserisci, ricordati il \"+\")";
+      x.parentElement.insertBefore(previous_node, x);
+    }
+
+    return false;
+  }
+
+  if (x.value.length > 256) {
+    node.innerHTML = "Il numero di telefono deve essere lungo al massimo 256 caratteri";
+    insertAfter(node, x);
+
+    return false;
+  }
+
+  if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
+    x.parentElement.removeChild(x.previousElementSibling);
+  }
+
+  if (!checkPhoneNumber(x.value)) {
+    node.innerHTML = "Numero di telefono non valido. Puoi inserire 9 o 10 cifre dopo il prefisso opzionale. Se hai inserito il prefisso, ricordati di anticiparlo con un \"+\"";
+    insertAfter(node, x);
+
+    return false;
+  }
+
+  return true;
+}
+
+  
+
 function validateUsername(x) {
   if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
     x.parentElement.removeChild(x.nextElementSibling);
@@ -708,6 +772,7 @@ function validateRegister() {
   if (!validateName(document.getElementById("nome")) ||
     !validateSurname(document.getElementById("cognome")) ||
     !validateEmail(document.getElementById("email")) ||
+    !validatePhoneNumber(document.getElementById("telefono")) ||
     !validateUsername(document.getElementById("username")) ||
     !validatePassword(document.getElementById("password")) ||
     !validatePasswordConfirmation(document.getElementById("password_confirmation"))) {
@@ -719,6 +784,7 @@ function validatePrivateArea() {
   if (!validateName(document.getElementById("nome")) ||
     !validateSurname(document.getElementById("cognome")) ||
     !validateEmail(document.getElementById("email")) ||
+    !validatePhoneNumber(document.getElementById("telefono")) ||
     !validateUsername(document.getElementById("username")) ||
     !validateNewPassword(document.getElementById("new_password")) ||
     !validatePasswordConfirmation(document.getElementById("repeated_password"))) {

@@ -118,9 +118,10 @@ class PreventivoController
         }
 
         foreach ($preventivi as &$preventivo) { // Usa "&" per passare per riferimento
-            $username = DBController::runQuery("SELECT username, email FROM utente WHERE id = ?", $preventivo['utente']);
-            $preventivo['username'] = $username['username']; // Questo aggiorna direttamente l'array $preventivi
-            $preventivo['email'] = $username['email'];
+            $user = DBController::runQuery("SELECT username, email, telefono FROM utente WHERE id = ?", $preventivo['utente']);
+            $preventivo['username'] = $user['username']; // Questo aggiorna direttamente l'array $preventivi
+            $preventivo['email'] = $user['email'];
+            $preventivo['telefono'] = $user['telefono'];
         }
         unset($preventivo); // Importante per evitare effetti collaterali
 
@@ -130,12 +131,12 @@ class PreventivoController
 
         $table .= "<div id='table-filter' class='filter-container'>
         <div class='filter'>
-            <label class='form-label' for='filter-titolo'>Titolo</label>
-            <input class='form-input' type='text' id='filter-titolo' placeholder='Filtra per titolo' onkeyup='filterTable()'>
+            <label class='form-label' for='filter-titolo'>Filtra per titolo</label>
+            <input class='form-input' type='text' id='filter-titolo' placeholder='Titolo' onkeyup='filterTable()'>
         </div>
         <div class='filter'>
-            <label class='form-label' for='filter-richiedente'>Richiedente</label>
-            <input class='form-input' type='text' id='filter-richiedente' placeholder='Filtra per richiedente' onkeyup='filterTable()'>
+            <label class='form-label' for='filter-richiedente'>Filtra per richiedente</label>
+            <input class='form-input' type='text' id='filter-richiedente' placeholder='Richiedente' onkeyup='filterTable()'>
         </div>
         <div class='filter'>
             <label class='form-label' for='start-date'>Filtra dalla data</label>
@@ -155,6 +156,7 @@ class PreventivoController
                     <th scope='col'>Titolo</th>
                     <th scope='col'>Richiedente</th>
                     <th scope='col'><span lang='en'>Email</span></th>
+                    <th scope='col' abbr='tel'>Telefono</th>
                     <th scope='col'>Data</th>
                     <th scope='col'>Luogo</th>
                     <th scope='col'>Foto</th>
@@ -169,6 +171,7 @@ class PreventivoController
                 <th scope='row'>" . $preventivo['titolo'] . "</th>
                 <td data-title='Richiedente'>" . $preventivo['username'] . "</td>
                 <td data-title='Email'>" . $preventivo['email'] . "</td>
+                <td data-title='Telefono'>" . $preventivo['telefono'] . "</td>
                 <td data-title='Data'><time datetime='" . $preventivo['data'] . "'>" . $preventivo['data'] . "</time></td>
                 <td data-title='Luogo'>" . $preventivo['luogo'] . "</td>
                 <td data-title='Foto'><a href='" . $preventivo['foto'] . "' target='_blank'>Foto del preventivo</a></td>
