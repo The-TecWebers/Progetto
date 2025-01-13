@@ -300,25 +300,8 @@ HOME PAGE
 }
 
 .home-section img {
-    max-width: 100%; 
-    height: auto; 
-}
-
-
-
-/*
-=======================
-STORIA - LAVORI SVOLTI
-=======================
-*/
-
-.figure-paragraph-container{
-    flex-wrap: wrap;
-}
-
-.figure-paragraph-container img{
     max-width: 100%;
-    height: auto;
+    height: auto; 
 }
 
 
