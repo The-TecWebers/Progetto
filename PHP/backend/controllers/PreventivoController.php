@@ -176,7 +176,7 @@ class PreventivoController
                 <td data-title='Luogo'>" . $preventivo['luogo'] . "</td>
                 <td data-title='Foto'><a href='" . $preventivo['foto'] . "' target='_blank'>Foto del preventivo</a></td>
                 <td data-title='Descrizione'>" . $preventivo['descrizione'] . "</td>
-                <td data-title='Vista singola'><a href='singolo_preventivo.php?id=" . $preventivo['id'] . "'>Dettagli</a></td>
+                <td data-title='Vista singola'><a href='singolo_preventivo.php?id=" . $preventivo['id'] . "' title='Visualizza il singolo preventivo'>Dettagli</a></td>
             </tr>";
         }
         return $table . "</tbody></table>";
