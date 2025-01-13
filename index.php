@@ -1,7 +1,7 @@
 <?php
 $titolo = "Home - EdilScavi";
-$descrizione = "EdilScavi Srl: professionalità e servizi per scavi e opere edilizie.";
-$keywords = "EdilScavi, scavi, opere edilizie, sottoservizi, servizi professionali";
+$descrizione = "Esperti in movimento terra e urbanizzazione ad Artogne, Valle Camonica";
+$keywords = "EdilScavi, costruzioni, edilizia, Artogne, movimento terra, impianti";
 
 include __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "template" . DIRECTORY_SEPARATOR . "header.php";
 echo file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . "index.html");
