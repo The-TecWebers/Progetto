@@ -1330,6 +1330,29 @@ PREVENTIVI
     margin-right: 13%;
 }
 
+.preventivi-container {
+    justify-content: center;
+    display: grid;
+    grid-template-columns: auto;
+    gap: 0.5em;
+}
+.preventivo figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+/* Make the image responsive */
+.preventivo figure img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
 
 
 /*
@@ -1341,7 +1364,7 @@ SU DI NOI
 .card {
     box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.2);
     transition: 0.3s ease all;
-    width: 60%;
+    width: 80%;
     text-align: center;
     border-radius: 1em;
 }
@@ -1381,6 +1404,34 @@ SU DI NOI
 .items-center {
     justify-items: center;
 }
+
+#certificazioni p {
+    text-align: center;
+    margin-bottom: 5em;
+}
+
+#certificazioni ul {
+    list-style: none; 
+    padding: 0 5em;
+}
+
+#certificazioni ul li {
+    display: flex;
+    align-items: center; 
+    gap: 0.5em; 
+}
+
+#certificazioni ul li::before {
+    content: '';
+    width: 2em;
+    height: 2em;
+    background-image: url('../Images/icons/list_style_pala.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex-shrink: 0; 
+}
+
+
 
 
 
@@ -1432,3 +1483,77 @@ AREA PRIVATA
     margin-bottom: 1em;
 }
 
+
+
+/* 
+=================
+LISTA PREVENTIVI
+=================
+*/
+
+.preventivi-container {
+
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 0.5em;
+}
+.preventivi-container dt{
+    padding: 1em;
+}
+
+.preventivo{
+    box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.2);
+    border-radius: 5%;
+}
+.preventivo dt{
+    padding: 0;
+    
+}
+
+.preventivo dl{
+    padding: 0em 2em;
+}
+
+.preventivo figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Make the image responsive */
+.preventivo figure img {
+    margin-top: 1em;
+    width: 85%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 5%;
+    object-fit: cover;
+}
+
+#crea-preventivo-btn{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background-color: var(--bg_bgGreen);
+    color: var(--link_bgGreen);
+    border: 0 solid;
+    border-radius: 1em;
+    padding: 0.5em 1em;
+    font-size: 1.25em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.preventivo-edit-foto
+{
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}

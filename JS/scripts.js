@@ -239,6 +239,22 @@ function checkDescrizione(descrizione) {
   return regex.test(descrizione);
 }
 
+/*
+function checkDate(date) {
+  var regex = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
+  return regex.test(date);
+}
+
+function checkLuogo(luogo) {
+  var regex = new RegExp('^[a-zA-Z' + accentedCharacters + '\'\\-\\s]{2,40}$');
+  return regex.test(luogo);
+}
+
+function checkDescrizione(descrizione) {
+  var regex = new RegExp('^[a-zA-Z' + accentedCharacters + '\'\\-\\s]{2,255}$');
+  return regex.test(descrizione);
+}
+
 
 
 /*
