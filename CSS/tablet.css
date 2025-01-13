@@ -151,6 +151,10 @@ main.no-breadcrumb {
     padding-top: calc(1.25em + var(--headerHandheldHeight));
 }
 
+#introductionParagraph {
+    width: 60%;
+}
+
 
 
 /*
