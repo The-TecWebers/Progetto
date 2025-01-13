@@ -1358,3 +1358,11 @@ LISTA PREVENTIVI
     transition: background-color 0.3s, transform 0.2s;
 }
 
+.preventivo-edit-foto
+{
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}

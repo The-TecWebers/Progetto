@@ -69,13 +69,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (document.getElementById('preventiviForm')) {
     caricamento_preventivi();
-
     document.getElementById('titolo').onblur = () => { return validateTitolo(document.getElementById('titolo')); };
     document.getElementById('luogo').onblur = () => { return validateLuogo(document.getElementById('luogo')); };
-    //document.getElementById('foto').onblur = ()=>{return validateFoto(document.getElementById('foto'));};
+    document.getElementById('foto').onblur = () => { return validateFoto(document.getElementById('foto')); };
+    document.getElementById('foto').onchange = () => { return validateFoto(document.getElementById('foto')); };
     document.getElementById('descrizione').onblur = () => { return validateDescrizione(document.getElementById('descrizione')); };
     document.getElementById('preventiviForm').onsubmit = () => { return validatePreventiviForm(); }
 
+  }
+
+  if (document.getElementById('EditPreventivoForm')) {
+    caricamento_preventivi();
+    document.getElementById('titolo').onblur = () => { return validateTitolo(document.getElementById('titolo')); };
+    document.getElementById('luogo').onblur = () => { return validateLuogo(document.getElementById('luogo')); };
+    document.getElementById('foto').onblur = () => { return validateEditFoto(document.getElementById('foto')); };
+    document.getElementById('foto').onchange = () => { return validateEditFoto(document.getElementById('foto')); };
+    document.getElementById('descrizione').onblur = () => { return validateDescrizione(document.getElementById('descrizione')); };
+    document.getElementById('EditPreventivoForm').onsubmit = () => { return validateEditPreventiviForm(); }
   }
 });
 
@@ -239,6 +249,79 @@ VALIDAZIONE DEI CAMPI DEI FORM
 
 function insertAfter(newNode, referenceNode) {
   referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
+function validateFoto(x) {
+  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
+    x.parentElement.removeChild(x.nextElementSibling);
+  }
+
+  const node = document.createElement("p");
+  node.classList.add("error-label");
+  node.setAttribute("role", "alert");
+  node.setAttribute("aria-live", "assertive");
+
+  const file = x.files[0];
+  console.log(file);
+  const maxSize = 5 * 1024 * 1024;  //5MB
+
+  if (file == undefined) {
+    node.innerHTML = "Devi inserire una foto!";
+    insertAfter(node, x);
+
+    if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
+      var previous_node = document.createElement("p");
+      previous_node.id = "info-" + x.id;
+      previous_node.classList.add("info-label");
+      previous_node.innerHTML = "Una foto descrittiva obbligatoria con dimensione massima 5MB";
+      x.parentElement.insertBefore(previous_node, x);
+    }
+
+    return false;
+  }
+
+  if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
+    x.parentElement.removeChild(x.previousElementSibling);
+  }
+
+  if (file.size > maxSize) {
+    node.innerHTML = "La foto deve avere dimensione massima 5MB!";
+    insertAfter(node, x);
+
+    return false;
+  }
+  return true;
+}
+
+function validateEditFoto(x) {
+  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
+    x.parentElement.removeChild(x.nextElementSibling);
+  }
+
+  const node = document.createElement("p");
+  node.classList.add("error-label");
+  node.setAttribute("role", "alert");
+  node.setAttribute("aria-live", "assertive");
+
+  const file = x.files[0];
+  console.log(file);
+  const maxSize = 5 * 1024 * 1024;  //5MB
+
+  if (file == undefined) {
+    return true;
+  }
+
+  if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
+    x.parentElement.removeChild(x.previousElementSibling);
+  }
+
+  if (file.size > maxSize) {
+    node.innerHTML = "La foto deve avere dimensione massima 5MB!";
+    insertAfter(node, x);
+
+    return false;
+  }
+  return true;
 }
 
 
@@ -728,9 +811,18 @@ function validatePrivateArea() {
 function validatePreventiviForm() {
   if (!validateTitolo(document.getElementById("titolo")) ||
     !validateLuogo(document.getElementById("luogo")) ||
-    !validateDescrizione(document.getElementById("descrizione"))) {
+    !validateDescrizione(document.getElementById("descrizione")) || !validateFoto(document.getElementById('foto'))) {
     return false;
   }
-  return true;
 }
+
+function validateEditPreventiviForm() {
+  if (!validateTitolo(document.getElementById("titolo")) ||
+    !validateLuogo(document.getElementById("luogo")) ||
+    !validateDescrizione(document.getElementById("descrizione")) || !validateEditFoto(document.getElementById('foto'))) {
+    return false;
+  }
+}
+
+
 
