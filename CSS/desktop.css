@@ -1444,6 +1444,12 @@ AREA PRIVATA
     margin-top: 0.2em;
 }
 
+h2#index-danger-zone{
+    color: var(--txtError);
+    background-color: var(--bgError);
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
 
 
 /*
