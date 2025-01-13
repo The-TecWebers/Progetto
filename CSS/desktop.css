@@ -470,7 +470,9 @@ section {
 
 #introductionParagraph {
     text-align: center;
+    margin: auto;
     margin-bottom: 1.5em;
+    width: 45%;
 }
 
 figcaption {
