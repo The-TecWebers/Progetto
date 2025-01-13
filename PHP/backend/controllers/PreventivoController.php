@@ -28,6 +28,21 @@ class PreventivoController
     }
     static public function delete($id)
     {
+        $preventivo = self::getPreventivoById($id);
+        $fotoPath = $preventivo->getFoto();
+        $directoryPath = dirname($fotoPath);
+        if ($fotoPath && file_exists($fotoPath)) {
+            unlink($fotoPath);
+        }
+
+        if (is_dir($directoryPath)) {
+            if (count(scandir($directoryPath)) == 2) {
+                rmdir($directoryPath);
+            } else {
+                echo "Directory is not empty.";
+            }
+        }
+    
         DBController::runQuery("DELETE FROM richiesta_preventivo WHERE id = ?", $id);
     }
 
