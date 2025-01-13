@@ -1266,6 +1266,17 @@ SU DI NOI
     justify-items: center;
 }
 
+#certificazioni p {
+    text-align: center;
+    margin-bottom: 5em;
+}
+
+#certificazioni ul {
+    list-style-type: disc;
+    padding: 0 5em;
+}
+
+
 
 /* 
 =============
