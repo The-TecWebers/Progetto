@@ -1272,9 +1272,26 @@ SU DI NOI
 }
 
 #certificazioni ul {
-    list-style-type: disc;
+    list-style: none; 
     padding: 0 5em;
 }
+
+#certificazioni ul li {
+    display: flex;
+    align-items: center; 
+    gap: 0.5em; 
+}
+
+#certificazioni ul li::before {
+    content: '';
+    width: 2em;
+    height: 2em;
+    background-image: url('../Images/icons/list_style_pala.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex-shrink: 0; 
+}
+
 
 
 
