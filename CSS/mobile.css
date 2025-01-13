@@ -13,6 +13,18 @@ BREADCRUMB
 
 /*
 =====
+MAIN
+=====
+*/
+
+#introductionParagraph {
+    width: 100%;
+}
+
+
+
+/*
+=====
 FORM
 =====
 */
@@ -106,7 +118,7 @@ STORIA - LAVORI SVOLTI
 }
 
 .figure-paragraph-container figure{
-    max-width: 100%;
+    width: 100%;
     margin: 0;
 }
 

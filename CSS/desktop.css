@@ -470,7 +470,9 @@ section {
 
 #introductionParagraph {
     text-align: center;
+    margin: auto;
     margin-bottom: 1.5em;
+    width: 45%;
 }
 
 figcaption {
@@ -1114,7 +1116,7 @@ STORIA - LAVORI SVOLTI
 .figure-paragraph-container figure {
     display: flex;
     flex-direction: column;
-    max-width: 35%;
+    width: 38.5%;
     height: auto;
     align-items: center;
     margin: 0 0.625em;
