@@ -86,6 +86,7 @@ header {
     left: 0;
     width: 100%;
     z-index: 1000;
+    border-bottom: var(--border) 0.125em solid;
 }
 
 .row {
@@ -659,6 +660,7 @@ footer {
     color: var(--text_bgGreen);
     text-align: center;
     width: 100%;
+    border-top: var(--border) 0.125em solid;
 }
 
 .footer-grid-container {
