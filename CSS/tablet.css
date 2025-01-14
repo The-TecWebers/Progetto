@@ -76,9 +76,15 @@ PULSANTI ACCOUNT
     display: block;
     width: 95%;
     text-align: center;
-    margin: 0.357em auto; /* Ha un valore di em diverso perchè è stato cambiato il font-size */
+    margin: 0.357em auto; 
 }
 
+.sign-buttons div.current-link {
+    display: block;
+    width: 95%;
+    text-align: center;
+    margin: 0.357em auto; 
+}
 
 
 /*
