@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
                 else
                 {
-                    header('Location: 500.php');
+                    header('Location: 404.php');
                 }
             }
         }
@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
                 else
                 {
-                    header('Location: 500.php');
+                    header('Location: 404.php');
                 }
             }
         }
