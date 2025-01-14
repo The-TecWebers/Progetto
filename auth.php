@@ -28,12 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             else
             {
                 $route = $_GET['intended'];
-                if($_GET['intended']=="lista_preventivi")
+                if($route == "lista_preventivi")
                 {
                     header('Location: lista_preventivi.php');
         
                 }
-                elseif($_GET['intended']=="crea_preventivo")
+                elseif($route == "crea_preventivo")
                 {
                     header('Location: crea_preventivo.php');
                 }
@@ -62,7 +62,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             else
             {
                 $route = $_GET['intended'];
-                header('Location:'.$route.'.php');
+                if($route == "lista_preventivi")
+                {
+                    header('Location: lista_preventivi.php');
+        
+                }
+                elseif($route == "crea_preventivo")
+                {
+                    header('Location: crea_preventivo.php');
+                }
+                else
+                {
+                    header('Location: 500.php');
+                }
             }
         }
         else{
