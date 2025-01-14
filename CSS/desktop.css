@@ -397,7 +397,7 @@ BREADCRUMB
 
 .breadcrumb {
     color: var(--visitedLink_bgGreen);
-    padding-left: 1.764em;
+    padding-left: 4.6em;
 }
 
 .breadcrumb ul li a {
@@ -1553,4 +1553,19 @@ LISTA PREVENTIVI
     max-width: 100%;
     border-radius: 8px;
     object-fit: cover;
+}
+
+.message-preventivo{
+    width: 50%;
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--text_bgGreen);
+    background-color: var(--bg_bgGreen);
+    padding: 1rem 2rem;
+    border-radius: 1em;
+    margin-top: 15%;
+    margin-left: auto; 
+    margin-right: auto; 
+    display: block; 
 }
