@@ -1,7 +1,7 @@
 <?php
 $titolo = "Su di noi - EdilScavi";
-$descrizione= "Edil Scavi Srl Brescia: i nostri valori, la nostra squadra, i nostri presidenti";
-$keywords = "Claudio,Oscar,movimento terra,reti gas metano,saldatura,tubazioni,strutture edilizie";  
+$descrizione= "Edil Scavi Srl Brescia: i nostri presidenti, la nostra esperienza, le nostre certificazioni";
+$keywords = "Claudio,Oscar,movimento terra,reti gas metano,saldatura,tubazioni,strutture edilizie";
 
 
 include __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "template" . DIRECTORY_SEPARATOR . "header.php";
