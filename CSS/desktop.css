@@ -821,7 +821,9 @@ GENERIC STYLES
     width: 50%;
 }
 
-
+.borderless{
+    border: 0;
+}
 
 /* 
 ==============================
