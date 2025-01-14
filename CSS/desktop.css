@@ -1564,8 +1564,6 @@ LISTA PREVENTIVI
     background-color: var(--bg_bgGreen);
     padding: 1rem 2rem;
     border-radius: 1em;
-    margin-top: 15%;
-    margin-left: auto; 
-    margin-right: auto; 
+    margin: 12% auto;
     display: block; 
 }

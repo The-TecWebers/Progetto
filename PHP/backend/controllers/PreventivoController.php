@@ -241,7 +241,7 @@ class PreventivoController
         }
     }
     if (!$found) {
-        $div .= "<p class='message-preventivo'>Preventivo non trovato.</p>";
+        $div .= "<p class='message-preventivo'>Preventivo non trovato</p>";
     }
 
     return $div . "</div>";
