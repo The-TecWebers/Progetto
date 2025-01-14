@@ -1082,7 +1082,6 @@ HOME PAGE
     height: 25em;
     border: var(--border) 0.125em solid;
     border-radius: 0.625em;
-    padding: auto;
 }
 
 .home-section:has(> iframe) {
@@ -1412,24 +1411,13 @@ SU DI NOI
 }
 
 #certificazioni ul {
-    list-style: none; 
-    padding: 0 5em;
+    list-style-type: none;
 }
 
 #certificazioni ul li {
-    display: flex;
-    align-items: center; 
-    gap: 0.5em; 
-}
-
-#certificazioni ul li::before {
-    content: '';
-    width: 2em;
-    height: 2em;
-    background-image: url('../Images/icons/list_style_pala.webp');
-    background-size: contain;
-    background-repeat: no-repeat;
-    flex-shrink: 0; 
+    list-style-image: url('../Images/icons/conetto16.svg');
+    margin-left: 1.5em;
+    padding: 0.5em;
 }
 
 
