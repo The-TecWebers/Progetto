@@ -90,6 +90,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('descrizione').onblur = () => { return validateDescrizione(document.getElementById('descrizione')); };
     document.getElementById('EditPreventivoForm').onsubmit = () => { return validateEditPreventiviForm(); }
   }
+
+  if(document.getElementById('table-filter'))
+  {
+    document.getElementById('table-filter').classList.add('visible');
+  }
 });
 
 function caricamento_preventivi() {
@@ -227,6 +232,22 @@ function checkPassword(password) {
 function checkTitolo(titolo) {
   var regex = new RegExp('^[a-zA-Z' + accentedCharacters + '\'\\-\\s]{2,40}$');
   return regex.test(titolo);
+}
+
+function checkLuogo(luogo) {
+  var regex = new RegExp('^[a-zA-Z' + accentedCharacters + '\'\\-\\s]{2,40}$');
+  return regex.test(luogo);
+}
+
+function checkDescrizione(descrizione) {
+  var regex = new RegExp('^[a-zA-Z' + accentedCharacters + '\'\\-\\s]{2,255}$');
+  return regex.test(descrizione);
+}
+
+/*
+function checkDate(date) {
+  var regex = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
+  return regex.test(date);
 }
 
 function checkLuogo(luogo) {

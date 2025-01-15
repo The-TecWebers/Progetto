@@ -31,6 +31,8 @@ HEADER
     width: 100%;
     background-color: var(--bg_bgGreen);
     border-top: 0.0625em solid rgba(255, 255, 255, 0.2);
+    border-bottom: 0.125em solid var(--border);
+    padding-bottom: 0.882em;
     opacity: 0;
     visibility: hidden;
     margin-top: 6.1em;
@@ -74,9 +76,15 @@ PULSANTI ACCOUNT
     display: block;
     width: 95%;
     text-align: center;
-    margin: 0.357em auto; /* Ha un valore di em diverso perchè è stato cambiato il font-size */
+    margin: 0.357em auto; 
 }
 
+.sign-buttons div.current-link {
+    display: block;
+    width: 95%;
+    text-align: center;
+    margin: 0.357em auto; 
+}
 
 
 /*
@@ -149,6 +157,10 @@ main{
 
 main.no-breadcrumb {
     padding-top: calc(1.25em + var(--headerHandheldHeight));
+}
+
+#introductionParagraph {
+    width: 60%;
 }
 
 
@@ -296,25 +308,8 @@ HOME PAGE
 }
 
 .home-section img {
-    max-width: 100%; 
-    height: auto; 
-}
-
-
-
-/*
-=======================
-STORIA - LAVORI SVOLTI
-=======================
-*/
-
-.figure-paragraph-container{
-    flex-wrap: wrap;
-}
-
-.figure-paragraph-container img{
     max-width: 100%;
-    height: auto;
+    height: auto; 
 }
 
 
@@ -328,6 +323,21 @@ LAVORI SVOLTI
 .img-list-container img{
     max-width: 30%;
     height: auto;
+}
+
+
+/* 
+=========
+SU DI NOI
+=========
+*/
+
+.card {
+    width: 95%;
+}
+
+.m-2 {
+    margin: 2em 0;
 }
 
 
