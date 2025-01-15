@@ -77,7 +77,7 @@ class PreventivoController
         $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo WHERE utente = ?", $utente->getId());
 
         if (!$preventivi) {
-            return "<p class=''>Non ci sono preventivi da mostrare</p>";
+            return "<p class='message-preventivo'>Non ci sono preventivi da mostrare</p>";
         }
 
         $div = "<div class'grid cols-1'>";
@@ -129,7 +129,7 @@ class PreventivoController
         $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo");
 
         if (!$preventivi) {
-            return "<p class=''>Non ci sono preventivi da mostrare</p>";
+            return "<p class='message-preventivo'>Non ci sono preventivi da mostrare</p>";
         }
 
         foreach ($preventivi as &$preventivo) { // Usa "&" per passare per riferimento
@@ -191,7 +191,7 @@ class PreventivoController
                 <td data-title='Luogo'>" . $preventivo['luogo'] . "</td>
                 <td data-title='Foto'><a href='" . $preventivo['foto'] . "' target='_blank'>Foto del preventivo</a></td>
                 <td data-title='Descrizione'>" . $preventivo['descrizione'] . "</td>
-                <td data-title='Vista singola'><a href='singolo_preventivo.php?id=" . $preventivo['id'] . "'>Dettagli</a></td>
+                <td data-title='Vista singola'><a href='singolo_preventivo.php?id=" . $preventivo['id'] . "' title='Visualizza il singolo preventivo'>Dettagli</a></td>
             </tr>";
         }
         return $table . "</tbody></table>";
@@ -213,7 +213,7 @@ class PreventivoController
         $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo");
 
         if (!$preventivi) {
-            return "<p class=''>Non ci sono preventivi da mostrare</p>";
+            return "<p class='message-preventivo'>Non ci sono preventivi da mostrare</p>";
         }
 
     $div = "<div class='grid cols-1'>";
@@ -256,7 +256,7 @@ class PreventivoController
         }
     }
     if (!$found) {
-        $div .= "<p>Preventivo non trovato.</p>";
+        $div .= "<p class='message-preventivo'>Preventivo non trovato</p>";
     }
 
     return $div . "</div>";

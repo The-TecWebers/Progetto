@@ -27,7 +27,7 @@ p {
 }
 
 h1::before {
-    content: url('../Images/Edil_Scavi_logo_colore-nuovo.png');
+    content: url('../Images/logo/Edil_Scavi_logo_colore-nuovo.png');
     display: block;    
 
 }
@@ -229,8 +229,7 @@ HOME | PRINT
 
 .home-section > iframe {
     width: 70%;
-    height: 25em; 
-    padding: auto;
+    height: 25em;
 }
 
 .home-section img {
@@ -355,3 +354,4 @@ SU DI NOI | PRINT
 .items-center{
     justify-items: center;
 }
+
