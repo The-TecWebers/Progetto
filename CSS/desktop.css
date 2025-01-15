@@ -1328,6 +1328,10 @@ PREVENTIVI
     flex-direction: column;
 }
 
+.filter-container.visible {
+    visibility: visible;
+}
+
 .push-right {
     margin-left: 54.5%;
     margin-right: 13%;
