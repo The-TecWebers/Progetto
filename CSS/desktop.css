@@ -1003,7 +1003,7 @@ caption {
     margin-bottom: 0.5em;
 }
 
-td:nth-child(odd) {
+td:nth-child(even) {
     background-color: rgb(15, 133, 85, 0.2);
 }
 
