@@ -1,2 +1,2 @@
-ErrorDocument 404 /Progetto/404.php
-ErrorDocument 500 /Progetto/500.php
+ErrorDocument 404 /404.php
+ErrorDocument 500 /500.php
