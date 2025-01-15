@@ -54,18 +54,22 @@ switch ($current_page) {
         $header = str_replace($placeholder, $prefix . $current . 'Su di noi' . $suffix, $header);
         break;
     case "registrati.php":
-        if(isset($_GET['intended']) && $_GET['intended']=='lista_preventivi')
+        if(isset($_GET['intended']))
         {
-            $header = str_replace('<li><a href="lista_preventivi.php">Preventivi</a></li>', '<li class="current-link" aria-current="page">Preventivi</li>', $header);
+            if($_GET['intended']=='lista_preventivi'){
+                $header = str_replace('<li><a href="lista_preventivi.php">Preventivi</a></li>', '<li class="current-link" aria-current="page">Preventivi</li>', $header);
+            }
         }else{
             $header = str_replace('<a id="btn-register" href="registrati.php">Registrati</a>', '<div id="btn-register" class="current-link" aria-current="page">Registrati</div>', $header);
         }
         $header = str_replace($placeholder, $prefix . $current . 'Registrati' . $suffix, $header);
         break;
     case "accedi.php":
-        if(isset($_GET['intended']) && $_GET['intended']=='lista_preventivi')
+        if(isset($_GET['intended']))
         {
-            $header = str_replace('<li><a href="lista_preventivi.php">Preventivi</a></li>', '<li class="current-link" aria-current="page">Preventivi</li>', $header);
+            if($_GET['intended']=='lista_preventivi'){
+                $header = str_replace('<li><a href="lista_preventivi.php">Preventivi</a></li>', '<li class="current-link" aria-current="page">Preventivi</li>', $header);
+            }
         }else{
             $header = str_replace('<a id="btn-login" href="accedi.php">Accedi</a>', '<div id="btn-login" class="current-link" aria-current="page">Accedi</div>', $header);
         }

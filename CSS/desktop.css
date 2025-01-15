@@ -1315,6 +1315,7 @@ PREVENTIVI
 }
 
 .filter-container {
+    visibility: hidden;
     width: 75%;
     margin: auto;
     display: grid;

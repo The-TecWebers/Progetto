@@ -90,6 +90,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('descrizione').onblur = () => { return validateDescrizione(document.getElementById('descrizione')); };
     document.getElementById('EditPreventivoForm').onsubmit = () => { return validateEditPreventiviForm(); }
   }
+
+  if(document.getElementById('table-filter'))
+  {
+    document.getElementById('table-filter').style.visibility = 'visible';
+  }
 });
 
 function caricamento_preventivi() {
