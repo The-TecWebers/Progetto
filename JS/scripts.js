@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if(document.getElementById('table-filter'))
   {
-    document.getElementById('table-filter').style.visibility = 'visible';
+    document.getElementById('table-filter').classList.add('visible');
   }
 });
 
