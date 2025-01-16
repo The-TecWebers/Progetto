@@ -10,6 +10,9 @@ $parameters = [
     'Singor_P', 'privato', 'pippo.privati@gmail.com', '+39 123 456 7892', 'Pippo', 'Privati', 0,
     'Methanos', 'metano', 'metano.metani@gmail.com', '+39 123 456 7893', 'Metano', 'Metani', 0,
     'Publici_Comune', 'publico', 'publico.comune@gmail.com', '+39 123 456 7894', 'Publici', 'Comune', 0,
+    'Claudio_cc', '1953Claudio#', 'claudiocotticottini@gmail.com', '+39 335 773 3919', 'Claudio', 'Cotti Cottini', 1,
+    'Oscar_cc', '1953Oscar@', 'oscarcotticottini@gmail.com', '+39 335 667 3373', 'Oscar', 'Cotti Cottini', 1,
+    'Donato_Tb', '1953Donato$', 'donato.taboni@libero.com', '+39 338 864 6232', 'Donato', 'Taboni', 1,
 ];
 
 // Calcolo dinamico dei segnaposto per la query
