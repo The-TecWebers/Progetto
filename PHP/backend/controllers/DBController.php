@@ -5,7 +5,6 @@ class DBController
   private static $host = "localhost";
   private static $username = "root";
   private static $password = "root";
-
   private static $DbName = "EdilScavi";
 
   private static $conn;
