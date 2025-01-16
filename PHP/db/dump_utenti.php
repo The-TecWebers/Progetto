@@ -7,7 +7,9 @@ DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . 'DBController.php';
 $parameters = [
     'admin', 'admin', 'admin@admin.it', '+39 123 456 7890', 'admin', 'admin', 1,
     'user', 'user', 'user@user.it', '+39 123 456 7891', 'user', 'user', 0,
-    'pippo', 'pippo', 'pippo@pippo.it', '+39 123 456 7892', 'pippo', 'pippo', 0,
+    'Singor_P', 'privato', 'pippo.privati@gmail.com', '+39 123 456 7892', 'Pippo', 'Privati', 0,
+    'Methanos', 'metano', 'metano.metani@gmail.com', '+39 123 456 7893', 'Metano', 'Metani', 0,
+    'Publici_Comune', 'publico', 'publico.comune@gmail.com', '+39 123 456 7894', 'Publici', 'Comune', 0,
 ];
 
 // Calcolo dinamico dei segnaposto per la query
