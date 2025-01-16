@@ -74,6 +74,38 @@ class InputController
         return true;
     }
 
+    private static function isTitolo($titolo): bool|string
+    {
+        $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
+        $titolo_pattern = '/^[a-zA-Z' . $accentedCharacters . '\'\-\s]{2,40}$/';
+        if (!preg_match($titolo_pattern, $titolo)) {
+            return "<li>Il titolo può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri</li>";
+        }
+        return true;
+    }
+
+    private static function isLuogo($luogo): bool|string
+    {
+        $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
+        $luogo_pattern = '/^[a-zA-Z' . $accentedCharacters . '\'\-\s]{2,40}$/';
+        if (!preg_match($luogo_pattern, $luogo)) {
+            return "<li>Il luogo può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri</li>";
+        }
+        return true;
+    }
+
+    private static function isDescrizione($descrizione): bool|string
+    {
+        $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
+        $descrizione_pattern = '/^[a-zA-Z' . $accentedCharacters . '\'\-\s]{2,255}$/';
+        if (!preg_match($descrizione_pattern, $descrizione)) {
+            return "<li>La descrizione può contenere solo lettere, apostrofi, trattini e spazi e deve essere lunga da 2 a 255 caratteri</li>";
+        }
+        return true;
+    }
+
+
+
 
 
     /*
@@ -135,6 +167,74 @@ class InputController
         return true;
     }
 
+    public static function preventivoFieldsNotEmpty($array)
+    {
+        if (
+            empty($array) ||
+            empty($array["titolo"]) ||
+            empty($array["luogo"]) ||
+            empty($array["descrizione"]) ||
+            empty($array["foto"])
+        ) {
+
+            return "<ul class=\"errorMessages\"><li>Per favore, compila tutti i campi</li></ul>";
+        }
+
+        return true;
+    }
+
+    public static function validatePreventivo($array): bool|string
+    {
+        $errorMessages = "<ul class=\"errorMessages\">";
+
+        $titolo = $array['titolo'];
+        $luogo = $array['luogo'];
+        $descrizione = $array['descrizione'];
+        $foto = $array['foto'];
+
+        if (self::isTitolo($titolo) !== true) {
+            $errorMessages .= self::isName($titolo);
+        }
+        if (self::isLuogo($luogo) !== true) {
+            $errorMessages .= self::isLuogo($luogo);
+        }
+        if (self::isDescrizione($descrizione) !== true) {
+            $errorMessages .= self::isDescrizione($descrizione);
+        }
+        if(self::validateFoto($array['foto']))
+        {
+            $errorMessages .= self::validateFoto($array['foto']);
+        }
+
+        $errorMessages .= "</ul>";
+
+        if ($errorMessages != "<ul class=\"errorMessages\"></ul>") {
+            return $errorMessages;
+        }
+
+        return true;
+    }
+
+    public static function validateFoto($foto): bool|string
+    {
+        if (isset($foto) && $foto['error'] == 0) {
+            $maxFileSize = 5 * 1024 * 1024;
+            $fileSize = $_FILES['foto']['size'];
+
+            if ($fileSize > $maxFileSize) {
+                $errorMessage = "<li>Il file non può essere più grande di 5MB.</li>";
+            } else {
+                return true;
+            }
+        } else {
+            $errorMessage = "<li>Per favore caricare una immagine descrittiva.</li>";
+        }
+
+        return $errorMessage;
+
+    }
+
+
     public static function validateRegistration($array): bool|string
     {
         $errorMessages = "<ul class=\"errorMessages\">";
@@ -155,32 +255,29 @@ class InputController
         }
         if (self::isMail($email) !== true) {
             $errorMessages .= self::isMail($email);
-        }
-        else {
+        } else {
             // Controllo univocità della email
             if (UserController::isEmailDuplicate($email) === true) {
                 $errorMessages .= "<li>Esiste già un utente registrato con questa <span lang=\"en\">email</span></li>";
-        }
+            }
         }
         if (self::isPhoneNumber($phoneNumber) !== true) {
             $errorMessages .= self::isPhoneNumber($phoneNumber);
-        }
-        else {
+        } else {
             $phoneNumber = InputController::formatPhoneNumber($phoneNumber);
 
             // Controllo univocità del numero di telefono
             if (UserController::isPhoneNumberDuplicate($phoneNumber) === true) {
                 $errorMessages .= "<li>Esiste già un utente registrato con questo numero di telefono</li>";
-        }
+            }
         }
         if (self::isUsername($username) !== true) {
             $errorMessages .= self::isUsername($username);
-        }
-        else {
+        } else {
             // Controllo univocità dello username
             if (UserController::isUsernameDuplicate($username) === true) {
                 $errorMessages .= "<li>Esiste già un utente registrato con questo <span lang=\"en\">username</span></li>";
-        }
+            }
         }
         if (self::isPassword($pass1) !== true) {
             $errorMessages .= self::isPassword($pass1);
@@ -313,7 +410,6 @@ class InputController
         $new_pass = $array['new_password'] ?? null;
         $conf_pass = $array['repeated_password'] ?? null;
 
-        // Validazione dati personali
         if (self::isName($name) !== true) {
             $errorMessages .= self::isName($name);
         }
@@ -322,52 +418,28 @@ class InputController
         }
         if (self::isMail($email) !== true) {
             $errorMessages .= self::isMail($email);
-        }
-        else {
-            // Se la email è cambiata, controllo univocità della email
-            if ($email != $_SESSION['email']  &&  UserController::isEmailDuplicate($email) === true) {
+        } else {
+            if ($email != $_SESSION['email'] && UserController::isEmailDuplicate($email) === true) {
                 $errorMessages .= "<li>Esiste già un utente registrato con questa <span lang=\"en\">email</span></li>";
             }
         }
         if (self::isPhoneNumber($phoneNumber) !== true) {
             $errorMessages .= self::isPhoneNumber($phoneNumber);
-        }
-        else {
+        } else {
             $phoneNumber = InputController::formatPhoneNumber($phoneNumber);
 
-            // Se il numero di telefono è cambiato, controllo univocità del numero di telefono
-            if ($phoneNumber != $_SESSION['telefono']  &&  UserController::isPhoneNumberDuplicate($phoneNumber) === true) {
+            if ($phoneNumber != $_SESSION['telefono'] && UserController::isPhoneNumberDuplicate($phoneNumber) === true) {
                 $errorMessages .= "<li>Esiste già un utente registrato con questo numero di telefono</li>";
             }
         }
         if (self::isUsername($username) !== true) {
             $errorMessages .= self::isUsername($username);
-        }
-        else {
-            // Se lo username è cambiato, controllo univocità dello username
-            if ($username != $_SESSION['username']  &&  UserController::isUsernameDuplicate($username) === true) {
+        } else {
+            if ($username != $_SESSION['username'] && UserController::isUsernameDuplicate($username) === true) {
                 $errorMessages .= "<li>Esiste già un utente registrato con questo <span lang=\"en\">username</span></li>";
             }
         }
 
-        // Validazione cambio password
-        if (!empty($old_pass) && !empty($new_pass) && !empty($conf_pass)) {
-            $username = $_SESSION['username'];
-            $user = UserController::getUserByUsername($username);
-            $userPassword = $user->getPassword();
-
-            if (!password_verify($old_pass, $userPassword)) {
-                $errorMessages .= "<li>La <span lang=\"en\">password</span> attuale non è corretta</li>";
-            }
-
-            if (self::isPassword($new_pass) !== true) {
-                $errorMessages .= self::isPassword($new_pass);
-            }
-
-            if ($new_pass != $conf_pass) {
-                $errorMessages .= "<li>La <span lang=\"en\">password</span> ripetuta non è uguale alla nuova <span lang=\"en\">password</span></li>";
-            }
-        }
 
         $errorMessages .= "</ul>";
 
@@ -453,7 +525,7 @@ class InputController
 
             if ($fileSize > $maxDimension) {
                 $aspectRatio = $originalWidth / $originalHeight;
-    
+
                 $newWidth = 1024;
                 $newHeight = $newWidth / $aspectRatio;
             }
@@ -466,9 +538,7 @@ class InputController
             imagedestroy($image);
             imagedestroy($resizedImage);
 
-        }
-        else
-        {
+        } else {
             $target_dir = 'uploads' . DIRECTORY_SEPARATOR;
             $target_file = $target_dir . basename($_FILES["foto"]["name"]);
         }
