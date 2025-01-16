@@ -19,18 +19,8 @@ if (AuthController::isLogged()) {
         $template = str_replace("<!--id_preventivo-->", "<input type='hidden' id='id_preventivo' name='id_preventivo' value='" . $id . "'/>", $template);
         $template = str_replace("<!--Image-->", "<img class='preventivo-edit-foto' src='" . $preventivo->getFoto() . "' alt='Foto scelta per il preventivo' >", $template);
         $template = str_replace("placeholder=\"Es.: Estensione fognatura Via Trieste\"", "value='" . $preventivo->getTitolo() . "' placeholder='Titolo'", $template);
-        $template = str_replace("placeholder=\"Es.: Via Trieste, 23, Brescia (BS)\"", "value=\"{$preventivo->getLuogo()}\"", $template);
-        $dom = new DOMDocument();
-        libxml_use_internal_errors(use_errors: true);
-        $dom->loadHTML($template);
-
-        $textareas = $dom->getElementsByTagName('textarea');
-        foreach ($textareas as $textarea) {
-            if ($textarea->getAttribute('id') == 'descrizione') {
-                $textarea->textContent = $preventivo->getDescrizione();
-            }
-        }
-        $template = $dom->saveHTML();
+        $template = str_replace("placeholder=\"Es.: Via Trieste, 23, Brescia (BS)\"", "placeholder=\"Es.: Via Trieste, 23, Brescia (BS)\" value=\"{$preventivo->getLuogo()}\"", $template);
+        $template = str_replace("</textarea>", "{$preventivo->getDescrizione()}</textarea>", $template);
         session_reset();
         session_write_close();
         include __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "template" . DIRECTORY_SEPARATOR . "header.php";
