@@ -88,7 +88,7 @@ function trasferisciImmagini($titolo, $nomeFoto) {
     if (!copy($percorsoFoto, $target_file)) {
         die("Errore: Impossibile trasferire l'immagine '{$percorsoFoto}' in '{$target_file}'.");
     }
-    echo "\nImmagine trasferita correttamente: $target_file\n";
+    echo "Immagine trasferita correttamente: $target_file<br>";
 }
 
 
@@ -97,4 +97,4 @@ for ($i = 0; $i < count($parameters); $i += 6) {
     trasferisciImmagini($parameters[$i], basename($parameters[$i + 4]));
 }
 
-echo "\nPreventivi inseriti correttamente!";
+echo "<br>Preventivi inseriti correttamente!";
