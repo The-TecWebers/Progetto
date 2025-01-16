@@ -5,21 +5,9 @@ DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . 'DBController.php';
 
 // Parametri per la query
 $parameters = [
-    'admin',
-    'admin', // **Attenzione:** password in chiaro!
-    'admin@admin.it',
-    '+39 123 456 7890',
-    'admin',
-    'admin',
-    1,
-
-    'user',
-    'user', // **Attenzione:** password in chiaro!
-    'user@user.it',
-    '+39 123 456 7891',
-    'user',
-    'user',
-    0
+    'admin', 'admin', 'admin@admin.it', '+39 123 456 7890', 'admin', 'admin', 1,
+    'user', 'user', 'user@user.it', '+39 123 456 7891', 'user', 'user', 0,
+    'pippo', 'pippo', 'pippo@pippo.it', '+39 123 456 7892', 'pippo', 'pippo', 0,
 ];
 
 // Calcolo dinamico dei segnaposto per la query
@@ -43,4 +31,4 @@ for ($i = 1; $i < count($parameters); $i += 7) { // Supponendo che ogni password
 // Esecuzione della query con i parametri hashati
 DBController::runQuery($query, ...$hashedParameters);
 
-echo "Dati inseriti correttamente!";
+echo "Utenti inseriti correttamente!";
