@@ -22,7 +22,7 @@ $id_metanometani = findId('Methanos');
 $id_publicocomune = findId('Publici_Comune');
 
 // Parametri per la query saldatura_acquedotto_schiesone
-$parameters = [ 
+$parameters = [
     'Saldatura Acquedotto Schiesone', $id_publicocomune, '2023-03-08', 'Prata Camportaccio', 'uploads/saldatura_acquedotto_schiesone/saldatura_acquedotto.webp', 'Richiesta di intervento per la saldatura dell’acquedotto nel territorio di Prata Camportaccio. Operazione necessaria per completare il sistema di derivazione idroelettrica del torrente Schiesone',
     'Riparazione perdita acquedotto Artogne', $id_publicocomune, '2016-04-27', 'Artogne, Via Fornaci', 'uploads/riparazione_perdita_acquedotto_artogne/acquedotto_Artogne_via_fornaci_2016.webp', 'Richiesta di pronto intervento per la riparazione di una perdita nell’acquedotto in via Fornaci, Artogne. Necessario intervento immediato per evitare disagi ai residenti',
     'Rimozione massi Piazze di Artogne', $id_pippoprivati, '2015-07-19', 'Piazze, Artogne', 'uploads/rimozione_massi_piazze_di_artogne/sasso_cinto_piazze_2015.webp', 'Richiesta di rimozione urgente di massi pericolanti in località Piazze di Artogne.',
@@ -88,7 +88,7 @@ function trasferisciImmagini($titolo, $nomeFoto) {
     if (!copy($percorsoFoto, $target_file)) {
         die("Errore: Impossibile trasferire l'immagine '{$percorsoFoto}' in '{$target_file}'.");
     }
-    echo "Immagine trasferita correttamente: $target_file\n";
+    echo "\nImmagine trasferita correttamente: $target_file\n";
 }
 
 
@@ -97,4 +97,4 @@ for ($i = 0; $i < count($parameters); $i += 6) {
     trasferisciImmagini($parameters[$i], basename($parameters[$i + 4]));
 }
 
-echo "Preventivi inseriti correttamente!";
+echo "\nPreventivi inseriti correttamente!";
