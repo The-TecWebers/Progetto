@@ -177,7 +177,7 @@ class InputController
             empty($array["foto"])
         ) {
 
-            return "<ul class=\"errorMessages\"><li>Per favore, compila tutti i campi</li></ul>";
+            return "<ul class=\"errorMessages\"><li>Per favore, compila tutti i campi. Anche la foto!</li></ul>";
         }
 
         return true;
@@ -201,7 +201,7 @@ class InputController
         if (self::isDescrizione($descrizione) !== true) {
             $errorMessages .= self::isDescrizione($descrizione);
         }
-        if(self::validateFoto($array['foto'])!== true)
+        if(self::validateFoto($array['foto']) !== true)
         {
             $errorMessages .= self::validateFoto($array['foto']);
         }
