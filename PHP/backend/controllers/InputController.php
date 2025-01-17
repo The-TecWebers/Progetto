@@ -201,7 +201,7 @@ class InputController
         if (self::isDescrizione($descrizione) !== true) {
             $errorMessages .= self::isDescrizione($descrizione);
         }
-        if(self::validateFoto($array['foto']))
+        if(self::validateFoto($array['foto'])!== true)
         {
             $errorMessages .= self::validateFoto($array['foto']);
         }

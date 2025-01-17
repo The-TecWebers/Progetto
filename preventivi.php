@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST['foto'] = $_FILES['foto'];
             $errorMessages = InputController::preventivoFieldsNotEmpty($_POST);
             if ($errorMessages === true) {
+                unset($errorMessages);
                 $errorMessages = InputController::validatePreventivo($_POST);
                 if ($errorMessages === true) {
                     $target_dir = 'uploads' . DIRECTORY_SEPARATOR . $_POST['titolo'] . DIRECTORY_SEPARATOR;
@@ -34,9 +35,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         header("Location: lista_preventivi.php");
                     }
                 }
+                else
+                {
+                    $_SESSION['error-preventivi'] = $errorMessages;
+                    header('Location: crea_preventivo.php');
+                }
             }
-            $_SESSION['error-preventivi'] = $errorMessages;
-            header('Location: crea_preventivo.php');
+            else
+            {
+                $_SESSION['error-preventivi'] = $errorMessages;
+                header('Location: crea_preventivo.php');
+            }
+
 
 
         } else {
