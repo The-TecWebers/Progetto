@@ -848,21 +848,22 @@ function filterTable() {
   var endDateObj = endDate ? new Date(endDate) : null;
 
 
+  var existingErrorMessage = document.getElementById('error-date-range');
+  if (existingErrorMessage) {
+    existingErrorMessage.remove();
+  }
+
   var filterDiv = document.getElementById('table-filter');
   if (endDateObj != null && startDateObj != null && endDateObj < startDateObj) {
       var errorMessage = document.createElement('p');
       errorMessage.id = 'error-date-range';
       errorMessage.classList.add('error-label');
       errorMessage.classList.add('push-right');
+      errorMessage.setAttribute("role", "alert");
+      errorMessage.setAttribute("aria-live", "assertive");
       errorMessage.textContent = 'La data di inizio deve essere minore o uguale a quella di fine.';
       insertAfter(errorMessage, filterDiv);
       return;
-  }
-  else {
-    var existingErrorMessage = document.getElementById('error-date-range');
-    if (existingErrorMessage) {
-      existingErrorMessage.remove();
-    }
   }
 
   for (var i = 1; i < rows.length; i++) {
