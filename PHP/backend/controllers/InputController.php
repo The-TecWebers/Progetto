@@ -182,6 +182,20 @@ class InputController
 
         return true;
     }
+    public static function preventivoEditFieldsNotEmpty($array)
+    {
+        if (
+            empty($array) ||
+            empty($array["titolo"]) ||
+            empty($array["luogo"]) ||
+            empty($array["descrizione"])
+        ) {
+
+            return "<ul class=\"errorMessages\"><li>Per favore, compila tutti i campi. Non compilare la foto per mantenere quella attuale.</li></ul>";
+        }
+
+        return true;
+    }
 
     public static function validatePreventivo($array): bool|string
     {
@@ -201,9 +215,9 @@ class InputController
         if (self::isDescrizione($descrizione) !== true) {
             $errorMessages .= self::isDescrizione($descrizione);
         }
-        if(self::validateFoto($array['foto']) !== true)
+        if(self::validateFoto($foto) !== true)
         {
-            $errorMessages .= self::validateFoto($array['foto']);
+            $errorMessages .= self::validateFoto($foto);
         }
 
         $errorMessages .= "</ul>";
@@ -213,6 +227,57 @@ class InputController
         }
 
         return true;
+    }
+
+    public static function validatePreventivoEdit($array): bool|string
+    {
+        $errorMessages = "<ul class=\"errorMessages\">";
+
+        $titolo = $array['titolo'];
+        $luogo = $array['luogo'];
+        $descrizione = $array['descrizione'];
+        $foto = $array['foto'];
+
+        if (self::isTitolo($titolo) !== true) {
+            $errorMessages .= self::isName($titolo);
+        }
+        if (self::isLuogo($luogo) !== true) {
+            $errorMessages .= self::isLuogo($luogo);
+        }
+        if (self::isDescrizione($descrizione) !== true) {
+            $errorMessages .= self::isDescrizione($descrizione);
+        }
+        if(self::validateFoto($foto) !== true)
+        {
+            $errorMessages .= self::validateFotoEdit($foto);
+        }
+
+        $errorMessages .= "</ul>";
+
+        if ($errorMessages != "<ul class=\"errorMessages\"></ul>") {
+            return $errorMessages;
+        }
+
+        return true;
+    }
+
+    public static function validateFotoEdit($foto): bool|string
+    {
+        if (isset($foto) && $foto['error'] == 0) {
+            $maxFileSize = 5 * 1024 * 1024;
+            $fileSize = $_FILES['foto']['size'];
+
+            if ($fileSize > $maxFileSize) {
+                $errorMessage = "<li>Il file non può essere più grande di 5MB.</li>";
+            } else {
+                return true;
+            }
+        } else {
+            $errorMessage = "<li>Per favore caricare una immagine descrittiva.</li>";
+        }
+
+        return $errorMessage;
+
     }
 
     public static function validateFoto($foto): bool|string
@@ -227,7 +292,7 @@ class InputController
                 return true;
             }
         } else {
-            $errorMessage = "<li>Per favore caricare una immagine descrittiva.</li>";
+            return true;
         }
 
         return $errorMessage;
