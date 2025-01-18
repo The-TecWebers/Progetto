@@ -283,7 +283,6 @@ function validateFoto(x) {
   node.setAttribute("aria-live", "assertive");
 
   const file = x.files[0];
-  console.log(file);
   const maxSize = 5 * 1024 * 1024;  //5 MB
 
   if (file == undefined) {
@@ -325,7 +324,6 @@ function validateEditFoto(x) {
   node.setAttribute("aria-live", "assertive");
 
   const file = x.files[0];
-  console.log(file);
   const maxSize = 5 * 1024 * 1024;  //5 MB
 
   if (file == undefined) {
@@ -847,9 +845,7 @@ function filterTable() {
   var table = document.querySelector('table');
   var rows = table.getElementsByTagName('tr');
   var startDateObj = startDate ? new Date(startDate) : null;
-  console.log(startDate);
   var endDateObj = endDate ? new Date(endDate) : null;
-  console.log(endDateObj);
 
 
   var filterDiv = document.getElementById('table-filter');
@@ -876,7 +872,6 @@ function filterTable() {
       var dateCellText = cells[3].textContent.trim();
 
       var dateCellObj = new Date(dateCellText);
-      console.log(dateCellObj);
       var dateValid = true;
 
       if (startDateObj && dateCellObj < startDateObj) {
