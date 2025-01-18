@@ -842,7 +842,7 @@ function filterTable() {
   var richiedenteFilter = document.getElementById('filter-richiedente').value.toLowerCase();
   var startDate = document.getElementById('start-date').value;
   var endDate = document.getElementById('end-date').value;
-  var table = document.querySelector('table');
+  var table = document.getElementById('table-preventivi');
   var rows = table.getElementsByTagName('tr');
   var startDateObj = startDate ? new Date(startDate) : null;
   var endDateObj = endDate ? new Date(endDate) : null;
@@ -887,9 +887,10 @@ function filterTable() {
           richiedenteCell.indexOf(richiedenteFilter) > -1 &&
           dateValid
       ) {
-          rows[i].style.display = '';
+          rows[i].classList.remove('hidden');
+          rows[i].removeAttribute("class");
       } else {
-          rows[i].style.display = 'none';
+          rows[i].classList.add('hidden');
       }
   }
 }

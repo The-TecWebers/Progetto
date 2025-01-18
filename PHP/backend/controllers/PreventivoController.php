@@ -148,11 +148,11 @@ class PreventivoController
         $table .= "<div id='table-filter' class='filter-container'>
         <div class='filter'>
             <label class='form-label' for='filter-titolo'>Filtra per titolo</label>
-            <input class='form-input' type='text' id='filter-titolo' placeholder='Titolo' onkeyup='filterTable()'>
+            <input class='form-input' type='text' id='filter-titolo' placeholder='Es.: Saldatura Acquedotto' onkeyup='filterTable()'>
         </div>
         <div class='filter'>
             <label class='form-label' for='filter-richiedente'>Filtra per richiedente</label>
-            <input class='form-input' type='text' id='filter-richiedente' placeholder='Richiedente' onkeyup='filterTable()'>
+            <input class='form-input' type='text' id='filter-richiedente' placeholder='Es.: Publici_Comune' onkeyup='filterTable()'>
         </div>
         <div class='filter'>
             <label class='form-label' for='start-date'>Filtra dalla data</label>
@@ -165,7 +165,7 @@ class PreventivoController
     </div>";
 
         $table .= "
-        <table aria-describedby='desc-tabella'>
+        <table id='table-preventivi' aria-describedby='desc-tabella'>
             <caption>I tuoi preventivi</caption>
             <thead>
                 <tr>
