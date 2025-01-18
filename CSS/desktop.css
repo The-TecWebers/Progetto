@@ -5,8 +5,12 @@ GENERALE
 */
 
 @font-face {
+    font-display: swap;
     font-family: 'Roboto';
-    src: url('../Fonts/Roboto-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+    src: url('../Fonts/roboto-v47-latin-regular.woff2') format('woff2'),
+        url('../Fonts/Roboto-Regular.ttf') format('truetype');
 }
 
 :root {
@@ -97,7 +101,7 @@ header {
 
 #logo {
     text-indent: -999em;
-    background-image: url('../Images/logo/Edil_Scavi_logo_colore-nuovo.png');
+    background-image: url('../Images/logo/Edil_Scavi_logo_colore-nuovo.webp');
     background-size: contain;
     width: 6.7em;
     height: 1.2em;
@@ -531,7 +535,7 @@ form {
     margin-bottom: 1em;
 }
 
-.form-short{
+.form-short {
     width: 30%;
 }
 
@@ -821,9 +825,11 @@ GENERIC STYLES
     width: 50%;
 }
 
-.borderless{
+.borderless {
     border: 0;
 }
+
+
 
 /* 
 ==============================
@@ -961,6 +967,18 @@ MARGINI
     margin-bottom: 0.6em;
 }
 
+.mb-0-8 {
+    margin-bottom: 0.8em;
+}
+
+.mb-0-9 {
+    margin-bottom: 0.9em;
+}
+
+.mt-1 {
+    margin-top: 1em;
+}
+
 
 
 /* 
@@ -1027,7 +1045,7 @@ dl {
     margin-left: 1em;
 }
 
-dt + dd {
+dt+dd {
     margin-bottom: 0.5em;
 }
 
@@ -1069,25 +1087,14 @@ HOME PAGE
     align-items: center;
 }
 
-.home-section>figure,
-.home-section>p {
+.home-section figure,
+.home-section p {
     padding: 0em 0.5em;
     flex: 1 1 50%;
 }
 
-.home-section>figure {
+.home-section figure {
     text-align: center;
-}
-
-.home-section>iframe {
-    width: 70%;
-    height: 25em;
-    border: var(--border) 0.125em solid;
-    border-radius: 0.625em;
-}
-
-.home-section:has(> iframe) {
-    padding-bottom: 2em;
 }
 
 .home-section img {
@@ -1223,7 +1230,7 @@ PREVENTIVI
 =================
 */
 
-.preventivo{
+.preventivo {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -1236,14 +1243,14 @@ PREVENTIVI
     height: auto;
 }
 
-.form-preventivo{
+.form-preventivo {
     background-color: var(--bg_bgWhite);
     width: 100%;
     display: flex;
     padding-top: 1em;
     flex-direction: row;
     justify-content: center;
-    border-radius:8px ;
+    border-radius: 8px;
 }
 
 .img-preventivo {
@@ -1290,8 +1297,7 @@ PREVENTIVI
     font-size: 1.5em;
 }
 
-.preventivo-edit-foto
-{
+.preventivo-edit-foto {
     width: 100%;
     height: auto;
     max-width: 100%;
@@ -1299,7 +1305,7 @@ PREVENTIVI
     object-fit: cover;
 }
 
-#crea-preventivo-btn{
+#crea-preventivo-btn {
     display: block;
     text-align: center;
     text-decoration: none;
@@ -1343,6 +1349,7 @@ PREVENTIVI
     grid-template-columns: auto;
     gap: 0.5em;
 }
+
 .preventivo figure {
     margin: 0;
     display: flex;
@@ -1351,6 +1358,7 @@ PREVENTIVI
     justify-content: center;
     width: 100%;
 }
+
 /* Make the image responsive */
 .preventivo figure img {
     width: 100%;
@@ -1358,6 +1366,95 @@ PREVENTIVI
     max-width: 100%;
     border-radius: 8px;
     object-fit: cover;
+}
+
+
+
+/* 
+=================
+LISTA PREVENTIVI
+=================
+*/
+
+.preventivi-container {
+
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 0.5em;
+}
+
+.preventivi-container dt {
+    padding: 1em;
+}
+
+.preventivo {
+    box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.2);
+    border-radius: 5%;
+}
+
+.preventivo dt {
+    padding: 0;
+
+}
+
+.preventivo dl {
+    padding: 0em 2em;
+}
+
+.preventivo figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Make the image responsive */
+.preventivo figure img {
+    margin-top: 1em;
+    width: 85%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 5%;
+    object-fit: cover;
+}
+
+#crea-preventivo-btn {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background-color: var(--bg_bgGreen);
+    color: var(--link_bgGreen);
+    border: 0 solid;
+    border-radius: 1em;
+    padding: 0.5em 1em;
+    font-size: 1.25em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.preventivo-edit-foto {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.message-preventivo {
+    width: 50%;
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--text_bgGreen);
+    background-color: var(--bg_bgGreen);
+    padding: 1rem 2rem;
+    border-radius: 1em;
+    margin: 12% auto;
+    display: block;
 }
 
 
@@ -1429,8 +1526,6 @@ SU DI NOI
 
 
 
-
-
 /* 
 =============
 AREA PRIVATA
@@ -1441,12 +1536,13 @@ AREA PRIVATA
     margin-top: 0.2em;
 }
 
-h2#index-danger-zone{
+h2#index-danger-zone {
     color: var(--txtError);
     background-color: var(--bgError);
     font-size: 1.5em;
     margin-bottom: 0.5em;
 }
+
 
 
 /*
@@ -1485,90 +1581,3 @@ h2#index-danger-zone{
     margin-bottom: 1em;
 }
 
-
-
-/* 
-=================
-LISTA PREVENTIVI
-=================
-*/
-
-.preventivi-container {
-
-    justify-content: center;
-    display: grid;
-    grid-template-columns: 100%;
-    gap: 0.5em;
-}
-.preventivi-container dt{
-    padding: 1em;
-}
-
-.preventivo{
-    box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.2);
-    border-radius: 5%;
-}
-.preventivo dt{
-    padding: 0;
-    
-}
-
-.preventivo dl{
-    padding: 0em 2em;
-}
-
-.preventivo figure {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-
-/* Make the image responsive */
-.preventivo figure img {
-    margin-top: 1em;
-    width: 85%;
-    height: auto;
-    max-width: 100%;
-    border-radius: 5%;
-    object-fit: cover;
-}
-
-#crea-preventivo-btn{
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    background-color: var(--bg_bgGreen);
-    color: var(--link_bgGreen);
-    border: 0 solid;
-    border-radius: 1em;
-    padding: 0.5em 1em;
-    font-size: 1.25em;
-    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.preventivo-edit-foto
-{
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    border-radius: 8px;
-    object-fit: cover;
-}
-
-.message-preventivo{
-    width: 50%;
-    text-align: center;
-    font-size: 1.3em;
-    font-weight: bold;
-    color: var(--text_bgGreen);
-    background-color: var(--bg_bgGreen);
-    padding: 1rem 2rem;
-    border-radius: 1em;
-    margin: 12% auto;
-    display: block; 
-}

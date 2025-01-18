@@ -42,7 +42,7 @@ class PreventivoController
                 echo "Directory is not empty.";
             }
         }
-    
+
         DBController::runQuery("DELETE FROM richiesta_preventivo WHERE id = ?", $id);
     }
 
@@ -71,7 +71,7 @@ class PreventivoController
 
     }
 
-        public static function getListaPreventivi()
+    public static function getListaPreventivi()
     {
         $utente = AuthController::getAuthUser();
         $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo WHERE utente = ?", $utente->getId());
@@ -81,51 +81,52 @@ class PreventivoController
         }
 
         $div = "<div class'grid cols-1'>";
-        
+
         foreach ($preventivi as $preventivo) {
             $div .= "
             <div class='preventivo'>
                 
         <div class='img-preventivo'>
-            <img src='".$preventivo['foto']."' alt='Foto del preventivo'>
+            <img src='" . $preventivo['foto'] . "' alt='Foto del preventivo'>
         </div>
         <div class='content-preventivo'>
             <div class='header-preventivo'>
-                <p>Preventivo - ".$preventivo['titolo']."</p>
+                <p>Preventivo - " . $preventivo['titolo'] . "</p>
             </div>
 
             <dl>
                 <dt>Data:</dt>
-                <dd><time datetime='".$preventivo['data']."'/time>".$preventivo['data']."</dd>
+                <dd><time datetime='" . $preventivo['data'] . "'/time>" . $preventivo['data'] . "</dd>
 
                 <dt>Luogo:</dt>
-                <dd>".$preventivo['luogo']."</dd>
+                <dd>" . $preventivo['luogo'] . "</dd>
 
                 <dt>Descrizione:</dt>
-                <dd>".$preventivo['descrizione']."</dd>
+                <dd>" . $preventivo['descrizione'] . "</dd>
             </dl>
         </div>
              <div class='form-preventivo'>
                   <form method='GET' action='preventivi.php'>
                       <input type='hidden' name='action' value='edit'/>
-                      <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'/>
+                      <input type='hidden' id='id_preventivo' name='id_preventivo' value='" . $preventivo['id'] . "'/>
                       <button type='submit'>
                           <img alt='Modifica preventivo' src='Images/icons/edit_white.svg' height=30 width=30>
                       </button>
                   </form>
                   <form method='POST' action='preventivi.php?action=delete'>
-                      <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'/>
+                      <input type='hidden' id='id_preventivo' name='id_preventivo' value='" . $preventivo['id'] . "'/>
                       <button type='submit'>
                           <img alt='Modifica preventivo' src='Images/icons/delete_white.svg' height=30 width=30>
                       </button>
                   </form>
               </div>
     </div>";
-    }
+        }
         $div .= "</div>";
         return $div;
     }
-    public static function getTabellaPreventivi() {
+    public static function getTabellaPreventivi()
+    {
         $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo");
 
         if (!$preventivi) {
@@ -199,7 +200,7 @@ class PreventivoController
 
     public static function isTitleDuplicated($title)
     {
-        $result=DBController::runQuery("SELECT * FROM richiesta_preventivo WHERE titolo = ?", $title);
+        $result = DBController::runQuery("SELECT * FROM richiesta_preventivo WHERE titolo = ?", $title);
         if ($result && count($result) > 0) {
             return true;
         }
@@ -216,51 +217,51 @@ class PreventivoController
             return "<p class='message-preventivo'>Non ci sono preventivi da mostrare</p>";
         }
 
-    $div = "<div class='grid cols-1'>";
-    $found = false; 
+        $div = "<div class='grid cols-1'>";
+        $found = false;
 
-    foreach ($preventivi as &$preventivo) {
-        if ((int)$preventivo['id'] === $urlId) {
-            $found = true; 
-            $div .= "
+        foreach ($preventivi as &$preventivo) {
+            if ((int) $preventivo['id'] === $urlId) {
+                $found = true;
+                $div .= "
             <div class='preventivo'>
                 
         <div class='img-preventivo'>
-            <img src='".$preventivo['foto']."' alt='Foto del preventivo'>
+            <img src='" . $preventivo['foto'] . "' alt='Foto del preventivo'>
         </div>
         <div class='content-preventivo'>
             <div class='header-preventivo'>
-                <p>Preventivo - ".$preventivo['titolo']."</p>
+                <p>Preventivo - " . $preventivo['titolo'] . "</p>
             </div>
 
             <dl>
                 <dt>Data:</dt>
-                <dd><time datetime='".$preventivo['data']."'/time>".$preventivo['data']."</dd>
+                <dd><time datetime='" . $preventivo['data'] . "'/time>" . $preventivo['data'] . "</dd>
 
                 <dt>Luogo:</dt>
-                <dd>".$preventivo['luogo']."</dd>
+                <dd>" . $preventivo['luogo'] . "</dd>
 
                 <dt>Descrizione:</dt>
-                <dd>".$preventivo['descrizione']."</dd>
+                <dd>" . $preventivo['descrizione'] . "</dd>
             </dl>
         </div>
              <div class='form-preventivo'>
                   <form method='POST' action='preventivi.php?action=delete'>
-                      <input type='hidden' id='id_preventivo' name='id_preventivo' value='".$preventivo['id']."'/>
+                      <input type='hidden' id='id_preventivo' name='id_preventivo' value='" . $preventivo['id'] . "'/>
                       <button type='submit'>
                           <img alt='Modifica preventivo' src='Images/icons/delete_white.svg' height=30 width=30>
                       </button>
                    </form>
               </div>
     </div>";
+            }
         }
-    }
-    if (!$found) {
-        $div .= "<p class='message-preventivo'>Preventivo non trovato</p>";
-    }
+        if (!$found) {
+            $div .= "<p class='message-preventivo'>Preventivo non trovato</p>";
+        }
 
-    return $div . "</div>";
-}
+        return $div . "</div>";
+    }
 
 
 }
