@@ -23,6 +23,7 @@ if (AuthController::isAdmin()) {
         $fields = [
             'titolo' => 'Es.: Estensione fognatura Via Trieste',
             'luogo' => 'Es.: Via Trieste, 23, Brescia (BS)',
+            'descrizione' => 'Es.: Stiamo portando a termine la costruzione di una casa ed è necessario includerla nella rete fognaria locale. Si tratta di realizzare un\'estensione della fognatura di Via Trieste perchè copra anche il numero civico 23.',
         ];
 
         foreach ($fields as $field => $label) {
@@ -37,6 +38,11 @@ if (AuthController::isAdmin()) {
         if(isset($_SESSION['descrizione*']))
         {
             $template = str_replace("</textarea>", $_SESSION['descrizione*']."</textarea>", $template );
+        }
+        else
+        {
+            $template = preg_replace('/name="descrizione">.*<\/textarea>/',
+            'name="descrizione" placeholder="' . $fields['descrizione'] . '"></textarea>', $template);
         }
     }
 

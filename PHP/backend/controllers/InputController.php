@@ -191,7 +191,7 @@ class InputController
             empty($array["descrizione"])
         ) {
 
-            return "<ul class=\"errorMessages\"><li>Per favore, compila tutti i campi. Non compilare la foto per mantenere quella attuale.</li></ul>";
+            return "<ul class=\"errorMessages\"><li>Per favore, compila tutti i campi. Puoi non scegliere un'altra foto se desideri mantenere quella attuale.</li></ul>";
         }
 
         return true;
