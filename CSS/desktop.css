@@ -5,8 +5,12 @@ GENERALE
 */
 
 @font-face {
+    font-display: swap;
     font-family: 'Roboto';
-    src: url('../Fonts/Roboto-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+    src: url('../Fonts/roboto-v47-latin-regular.woff2') format('woff2'),
+        url('../Fonts/Roboto-Regular.ttf') format('truetype');
 }
 
 :root {
@@ -97,7 +101,7 @@ header {
 
 #logo {
     text-indent: -999em;
-    background-image: url('../Images/logo/Edil_Scavi_logo_colore-nuovo.png');
+    background-image: url('../Images/logo/Edil_Scavi_logo_colore-nuovo.webp');
     background-size: contain;
     width: 6.7em;
     height: 1.2em;
@@ -531,7 +535,7 @@ form {
     margin-bottom: 1em;
 }
 
-.form-short{
+.form-short {
     width: 30%;
 }
 
@@ -821,7 +825,7 @@ GENERIC STYLES
     width: 50%;
 }
 
-.borderless{
+.borderless {
     border: 0;
 }
 
@@ -1027,7 +1031,7 @@ dl {
     margin-left: 1em;
 }
 
-dt + dd {
+dt+dd {
     margin-bottom: 0.5em;
 }
 
@@ -1223,7 +1227,7 @@ PREVENTIVI
 =================
 */
 
-.preventivo{
+.preventivo {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -1236,14 +1240,14 @@ PREVENTIVI
     height: auto;
 }
 
-.form-preventivo{
+.form-preventivo {
     background-color: var(--bg_bgWhite);
     width: 100%;
     display: flex;
     padding-top: 1em;
     flex-direction: row;
     justify-content: center;
-    border-radius:8px ;
+    border-radius: 8px;
 }
 
 .img-preventivo {
@@ -1290,8 +1294,7 @@ PREVENTIVI
     font-size: 1.5em;
 }
 
-.preventivo-edit-foto
-{
+.preventivo-edit-foto {
     width: 100%;
     height: auto;
     max-width: 100%;
@@ -1299,7 +1302,7 @@ PREVENTIVI
     object-fit: cover;
 }
 
-#crea-preventivo-btn{
+#crea-preventivo-btn {
     display: block;
     text-align: center;
     text-decoration: none;
@@ -1343,6 +1346,7 @@ PREVENTIVI
     grid-template-columns: auto;
     gap: 0.5em;
 }
+
 .preventivo figure {
     margin: 0;
     display: flex;
@@ -1351,6 +1355,7 @@ PREVENTIVI
     justify-content: center;
     width: 100%;
 }
+
 /* Make the image responsive */
 .preventivo figure img {
     width: 100%;
@@ -1441,7 +1446,7 @@ AREA PRIVATA
     margin-top: 0.2em;
 }
 
-h2#index-danger-zone{
+h2#index-danger-zone {
     color: var(--txtError);
     background-color: var(--bgError);
     font-size: 1.5em;
@@ -1500,20 +1505,22 @@ LISTA PREVENTIVI
     grid-template-columns: 100%;
     gap: 0.5em;
 }
-.preventivi-container dt{
+
+.preventivi-container dt {
     padding: 1em;
 }
 
-.preventivo{
+.preventivo {
     box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.2);
     border-radius: 5%;
 }
-.preventivo dt{
+
+.preventivo dt {
     padding: 0;
-    
+
 }
 
-.preventivo dl{
+.preventivo dl {
     padding: 0em 2em;
 }
 
@@ -1536,7 +1543,7 @@ LISTA PREVENTIVI
     object-fit: cover;
 }
 
-#crea-preventivo-btn{
+#crea-preventivo-btn {
     display: block;
     text-align: center;
     text-decoration: none;
@@ -1551,8 +1558,7 @@ LISTA PREVENTIVI
     transition: background-color 0.3s, transform 0.2s;
 }
 
-.preventivo-edit-foto
-{
+.preventivo-edit-foto {
     width: 100%;
     height: auto;
     max-width: 100%;
@@ -1560,7 +1566,7 @@ LISTA PREVENTIVI
     object-fit: cover;
 }
 
-.message-preventivo{
+.message-preventivo {
     width: 50%;
     text-align: center;
     font-size: 1.3em;
@@ -1570,5 +1576,5 @@ LISTA PREVENTIVI
     padding: 1rem 2rem;
     border-radius: 1em;
     margin: 12% auto;
-    display: block; 
+    display: block;
 }
