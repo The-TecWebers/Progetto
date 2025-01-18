@@ -829,6 +829,8 @@ GENERIC STYLES
     border: 0;
 }
 
+
+
 /* 
 ==============================
 CONTAINER CTA = Call To Action
@@ -965,6 +967,18 @@ MARGINI
     margin-bottom: 0.6em;
 }
 
+.mb-0-8 {
+    margin-bottom: 0.8em;
+}
+
+.mb-0-9 {
+    margin-bottom: 0.9em;
+}
+
+.mt-1 {
+    margin-top: 1em;
+}
+
 
 
 /* 
@@ -1073,25 +1087,14 @@ HOME PAGE
     align-items: center;
 }
 
-.home-section>figure,
-.home-section>p {
+.home-section figure,
+.home-section p {
     padding: 0em 0.5em;
     flex: 1 1 50%;
 }
 
-.home-section>figure {
+.home-section figure {
     text-align: center;
-}
-
-.home-section>iframe {
-    width: 70%;
-    height: 25em;
-    border: var(--border) 0.125em solid;
-    border-radius: 0.625em;
-}
-
-.home-section:has(> iframe) {
-    padding-bottom: 2em;
 }
 
 .home-section img {
@@ -1367,131 +1370,6 @@ PREVENTIVI
 
 
 
-/*
-==========
-SU DI NOI
-==========
-*/
-
-.card {
-    box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.2);
-    transition: 0.3s ease all;
-    width: 80%;
-    text-align: center;
-    border-radius: 1em;
-}
-
-.card>img {
-    width: 95%;
-    margin: 0.5em auto;
-    border-radius: 1em;
-}
-
-.card>p {
-    width: 95%;
-    margin: 0.5em auto;
-}
-
-.card:hover {
-    box-shadow: 0em 0.125em 0.5em 0em var(--link_bgWhite);
-}
-
-
-.grid {
-    display: grid;
-}
-
-.cols-1 {
-    grid-template-columns: 100%;
-}
-
-.cols-2 {
-    grid-template-columns: auto auto;
-}
-
-.cols-3 {
-    grid-template-columns: 33% 33% 33%;
-}
-
-.items-center {
-    justify-items: center;
-}
-
-#certificazioni p {
-    text-align: center;
-    margin-bottom: 5em;
-}
-
-#certificazioni ul {
-    list-style-type: none;
-}
-
-#certificazioni ul li {
-    list-style-image: url('../Images/icons/conetto16.svg');
-    margin-left: 1.5em;
-    padding: 0.5em;
-}
-
-
-
-
-
-/* 
-=============
-AREA PRIVATA
-=============
-*/
-
-#confirm-button {
-    margin-top: 0.2em;
-}
-
-h2#index-danger-zone {
-    color: var(--txtError);
-    background-color: var(--bgError);
-    font-size: 1.5em;
-    margin-bottom: 0.5em;
-}
-
-
-/*
-=======
-404-500
-=======
-*/
-
-.container-error {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-wrap: wrap;
-    max-width: 100%;
-    margin: auto;
-    justify-content: center;
-    text-align: center;
-    font-size: 2em;
-    font-weight: bold;
-}
-
-.container-error span {
-    margin: 0.5em auto;
-}
-
-.container-error img {
-    width: 50%;
-}
-
-.container-error h1 {
-    font-size: 1em;
-    text-transform: none;
-}
-
-#cta-error {
-    margin-bottom: 1em;
-}
-
-
-
 /* 
 =================
 LISTA PREVENTIVI
@@ -1578,3 +1456,128 @@ LISTA PREVENTIVI
     margin: 12% auto;
     display: block;
 }
+
+
+
+/*
+==========
+SU DI NOI
+==========
+*/
+
+.card {
+    box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.2);
+    transition: 0.3s ease all;
+    width: 80%;
+    text-align: center;
+    border-radius: 1em;
+}
+
+.card>img {
+    width: 95%;
+    margin: 0.5em auto;
+    border-radius: 1em;
+}
+
+.card>p {
+    width: 95%;
+    margin: 0.5em auto;
+}
+
+.card:hover {
+    box-shadow: 0em 0.125em 0.5em 0em var(--link_bgWhite);
+}
+
+
+.grid {
+    display: grid;
+}
+
+.cols-1 {
+    grid-template-columns: 100%;
+}
+
+.cols-2 {
+    grid-template-columns: auto auto;
+}
+
+.cols-3 {
+    grid-template-columns: 33% 33% 33%;
+}
+
+.items-center {
+    justify-items: center;
+}
+
+#certificazioni p {
+    text-align: center;
+    margin-bottom: 5em;
+}
+
+#certificazioni ul {
+    list-style-type: none;
+}
+
+#certificazioni ul li {
+    list-style-image: url('../Images/icons/conetto16.svg');
+    margin-left: 1.5em;
+    padding: 0.5em;
+}
+
+
+
+/* 
+=============
+AREA PRIVATA
+=============
+*/
+
+#confirm-button {
+    margin-top: 0.2em;
+}
+
+h2#index-danger-zone {
+    color: var(--txtError);
+    background-color: var(--bgError);
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+
+
+/*
+=======
+404-500
+=======
+*/
+
+.container-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.container-error span {
+    margin: 0.5em auto;
+}
+
+.container-error img {
+    width: 50%;
+}
+
+.container-error h1 {
+    font-size: 1em;
+    text-transform: none;
+}
+
+#cta-error {
+    margin-bottom: 1em;
+}
+
