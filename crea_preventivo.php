@@ -21,20 +21,31 @@ if (AuthController::isAdmin()) {
     {
         $template = str_replace("<!-- errorMessages -->", $err, $template);
         $fields = [
-            'titolo' => 'Titolo',
-            'luogo' => 'Luogo',
-            'descrizione' => 'Descrizione'
+            'titolo' => 'Es.: Estensione fognatura Via Trieste',
+            'luogo' => 'Es.: Via Trieste, 23, Brescia (BS)',
+            'descrizione' => 'Es.: Stiamo portando a termine la costruzione di una casa ed è necessario includerla nella rete fognaria locale. Si tratta di realizzare un\'estensione della fognatura di Via Trieste perchè copra anche il numero civico 23.',
         ];
 
         foreach ($fields as $field => $label) {
             $sessionKey = $field . '*';
             if (isset($_SESSION[$sessionKey]) && $_SESSION[$sessionKey] !== "") {
-                $template = str_replace("placeholder=\"{$label}\"", "value=\"" . $_SESSION[$sessionKey] . "\"", $template);
+                $template = str_replace( "placeholder=\"{$label}\"", "placeholder=\"{$label}\" value=\"" . $_SESSION[$sessionKey] . "\"", $template);
             } else {
                 $template = preg_replace('/name="' . $field . '" value=".*"/', 'placeholder="' . $label . '"', $template);
             }
         }
+
+        if(isset($_SESSION['descrizione*']))
+        {
+            $template = str_replace("</textarea>", $_SESSION['descrizione*']."</textarea>", $template );
+        }
+        else
+        {
+            $template = preg_replace('/name="descrizione">.*<\/textarea>/',
+            'name="descrizione" placeholder="' . $fields['descrizione'] . '"></textarea>', $template);
+        }
     }
+
     include __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "template" . DIRECTORY_SEPARATOR . "header.php";
     echo $template;
     include __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "template" . DIRECTORY_SEPARATOR . "footer.php";
