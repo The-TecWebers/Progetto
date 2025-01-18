@@ -847,7 +847,10 @@ function filterTable() {
   var table = document.querySelector('table');
   var rows = table.getElementsByTagName('tr');
   var startDateObj = startDate ? new Date(startDate) : null;
+  console.log(startDate);
   var endDateObj = endDate ? new Date(endDate) : null;
+  console.log(endDateObj);
+
 
   var filterDiv = document.getElementById('table-filter');
   if (endDateObj != null && startDateObj != null && endDateObj < startDateObj) {
@@ -870,9 +873,10 @@ function filterTable() {
       var cells = rows[i].getElementsByTagName('td');
       var titoloCell = rows[i].getElementsByTagName('th')[0].textContent.toLowerCase();
       var richiedenteCell = cells[0].textContent.toLowerCase();
-      var dateCellText = cells[2].textContent.trim();
+      var dateCellText = cells[3].textContent.trim();
 
       var dateCellObj = new Date(dateCellText);
+      console.log(dateCellObj);
       var dateValid = true;
 
       if (startDateObj && dateCellObj < startDateObj) {
