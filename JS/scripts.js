@@ -846,6 +846,7 @@ function filterTable() {
   var rows = table.getElementsByTagName('tr');
   var startDateObj = startDate ? new Date(startDate) : null;
   var endDateObj = endDate ? new Date(endDate) : null;
+  var numPreventiviTrovati = 0;
 
 
   var existingErrorMessage = document.getElementById('error-date-range');
@@ -889,9 +890,31 @@ function filterTable() {
       ) {
           rows[i].classList.remove('hidden');
           rows[i].removeAttribute("class");
+          numPreventiviTrovati++;
       } else {
           rows[i].classList.add('hidden');
       }
+  }
+
+  var existingCountMessage = document.getElementById('count-preventivi');
+  if (existingCountMessage) {
+    existingCountMessage.remove();
+  }
+
+  if (titoloFilter || richiedenteFilter || startDate || endDate) {
+    var countMessage = document.createElement('p');
+    countMessage.id = 'count-preventivi';
+    countMessage.setAttribute('aria-live', 'assertive');
+    countMessage.setAttribute('role', 'alert');
+    countMessage.classList.add('info-label');
+    countMessage.classList.add('centered');
+    countMessage.classList.add('m-auto');
+    if(numPreventiviTrovati == 1)
+      countMessage.textContent = numPreventiviTrovati + ' preventivo trovato';
+    else
+      countMessage.textContent = numPreventiviTrovati + ' preventivi trovati';
+
+    table.parentElement.insertBefore(countMessage, table);
   }
 }
 

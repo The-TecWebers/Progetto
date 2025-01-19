@@ -1343,6 +1343,10 @@ PREVENTIVI
     margin-right: 13%;
 }
 
+#count-preventivi {
+    width: 75%;
+}
+
 .preventivi-container {
     justify-content: center;
     display: grid;
