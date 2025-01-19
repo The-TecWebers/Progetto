@@ -514,6 +514,18 @@ FORM
 =====
 */
 
+form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 50%;
+    margin-bottom: 1em;
+}
+
+.form-short {
+    width: 30%;
+}
+
 input[type="file"]::file-selector-button {
     background-color: var(--bg_bgGreen);
     text-decoration: none;
@@ -526,18 +538,6 @@ input[type="file"]::file-selector-button {
     font-size: 1.25em;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    width: 50%;
-    margin-bottom: 1em;
-}
-
-.form-short {
-    width: 30%;
 }
 
 .form-input {
