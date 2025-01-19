@@ -188,6 +188,25 @@ PREVENTIVI
 }
 
 
+.preventivo {
+    flex-direction: column; 
+}
+
+.img-preventivo {
+    order: 2; 
+}
+
+.content-preventivo {
+    order: 1; 
+    width: 100%;
+}
+
+.form-preventivo{
+    order: 3;
+}
+
+
+
 
 /*
 ==========
@@ -265,6 +284,8 @@ SU DI NOI
 .container-error  img {
     width: 100%;
 }
+
+
 
 
 
