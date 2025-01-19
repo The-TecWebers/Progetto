@@ -80,13 +80,68 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if ($errorMessages === true) {
                     $utente = AuthController::getAuthUser();
                     if (PreventivoController::authorizeFunction($_POST['id_preventivo'], $utente->getId())) {
-                        $target_dir = 'uploads' . DIRECTORY_SEPARATOR;
-                        $target_file = $target_dir . basename($_FILES["foto"]["name"]);
-                        move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
+                        $target_dir = 'uploads' . DIRECTORY_SEPARATOR . $_POST['titolo'] . DIRECTORY_SEPARATOR;
+                        $file_name = basename($_FILES["foto"]["name"]);
+                        $old_dir = dirname($target->getFoto());
+                        $old_file_name = basename($target->getFoto());
+
+                        // Se è stato cambiato il titolo
+                        if (!file_exists($target_dir)) {
+                            mkdir($target_dir, 0777, true);
+
+                            // Se foto è stata cambiata con una di nome diverso
+                            if($file_name != "" && $file_name != $old_file_name) {
+                                $target_file = $target_dir . $file_name;
+                                move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
+                            }
+                            else {
+                                $target_file = $target_dir . $old_file_name;
+
+                                // Se la foto è stata cambiata con una di nome uguale
+                                if($file_name != ""){
+                                    move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
+                                }
+                                // Se foto non è stata cambiata
+                                else{
+                                    copy($target->getFoto(), $target_file);
+                                }
+                            }
+
+                            // Elimina la vecchia cartella perchè il titolo è stato modificato
+                            if (is_dir($old_dir)) {
+                                array_map('unlink', glob("$old_dir/*.*"));
+                                rmdir($old_dir);
+                            }
+                        }
+                        // Abbiamo già controllato che il titolo non sia duplicato, quindi se la cartella target_dir esiste vuol dire che il titolo con cui è nominata è il titolo del preventivo target
+                        // Se foto è stata cambiata
+                        elseif ($file_name != "" && $file_name != $old_file_name) { // Supponendo che immagini diverse abbiano nomi diversi. Non c'è modo di distinguerle altrimenti
+                            // Pulisce la cartella esistente perchè è stata scelta un'altra immagine per il preventivo
+                            $files = glob($target_dir . '*');
+                            foreach ($files as $file) {
+                                if (is_file($file)) {
+                                    unlink($file);
+                                }
+                            }
+                            $target_file = $target_dir . $file_name;
+                            move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
+                        }
+                        else {
+                            $target_file = $target->getFoto();
+
+                            // Se la foto è stata cambiata con una di nome uguale
+                            if($file_name != ""){
+                                move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
+                            }
+
+                            // Se foto non è stata cambiata
+                            // -> Non serve fare nulla
+                        }
+
                         $_POST['foto'] = $target_file;
                         $_POST['utente'] = $utente->getId();
                         $result = PreventivoController::update($_POST['id_preventivo']);
-                        if ($result == true) {
+                        if ($result === true) {
                             $_SESSION['error-preventivi'] = null;
                             header("Location: lista_preventivi.php");
                         } else {
