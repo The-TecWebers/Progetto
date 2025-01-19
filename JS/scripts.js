@@ -288,6 +288,7 @@ function validateFoto(x) {
   if (file == undefined) {
     node.innerHTML = "Devi inserire una foto!";
     insertAfter(node, x);
+    x.focus();
 
     if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
       var previous_node = document.createElement("p");
@@ -307,6 +308,7 @@ function validateFoto(x) {
   if (file.size > maxSize) {
     node.innerHTML = "La foto deve avere dimensione massima 5 <abbr title='Megabyte' lang='en'>MB</abbr>!";
     insertAfter(node, x);
+    x.focus();
 
     return false;
   }
@@ -337,6 +339,7 @@ function validateEditFoto(x) {
   if (file.size > maxSize) {
     node.innerHTML = "La foto deve avere dimensione massima 5 <abbr title='Megabyte' lang='en'>MB</abbr>!";
     insertAfter(node, x);
+    x.focus();
 
     return false;
   }
@@ -357,6 +360,7 @@ function validateTitolo(x) {
   if (x.value == "") {
     node.innerHTML = "Devi inserire un titolo!";
     insertAfter(node, x);
+    x.focus();
 
     if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
       var previous_node = document.createElement("p");
@@ -376,6 +380,7 @@ function validateTitolo(x) {
   if (!checkTitolo(x.value)) {
     node.innerHTML = "Il titolo può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
     insertAfter(node, x);
+    x.focus();
 
     return false;
   }
@@ -396,6 +401,7 @@ function validateLuogo(x) {
   if (x.value == "") {
     node.innerHTML = "Devi inserire un luogo!";
     insertAfter(node, x);
+    x.focus();
 
     if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
       var previous_node = document.createElement("p");
@@ -415,6 +421,7 @@ function validateLuogo(x) {
   if (!checkLuogo(x.value)) {
     node.innerHTML = "Il luogo può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
     insertAfter(node, x);
+    x.focus();
 
     return false;
   }
@@ -436,6 +443,7 @@ function validateDescrizione(x) {
   if (x.value == "") {
     node.innerHTML = "Devi inserire una descrizione!";
     insertAfter(node, x);
+    x.focus();
 
     if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
       var previous_node = document.createElement("p");
@@ -455,6 +463,7 @@ function validateDescrizione(x) {
   if (!checkDescrizione(x.value)) {
     node.innerHTML = "La descrizione può contenere solo lettere, apostrofi, trattini e spazi e deve essere lunga da 2 a 255 caratteri";
     insertAfter(node, x);
+    x.focus();
     return false;
   }
 
@@ -474,6 +483,7 @@ function validateName(x) {
   if (x.value == "") {
     node.innerHTML = "Devi inserire il tuo nome!";
     insertAfter(node, x);
+    x.focus();
 
     if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
       var previous_node = document.createElement("p");
@@ -493,6 +503,7 @@ function validateName(x) {
   if (!checkName(x.value)) {
     node.innerHTML = "Il nome può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
     insertAfter(node, x);
+    x.focus();
 
     return false;
   }
@@ -513,6 +524,7 @@ function validateSurname(x) {
   if (x.value == "") {
     node.innerHTML = "Devi inserire il tuo cognome!";
     insertAfter(node, x);
+    x.focus();
 
     if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
       var previous_node = document.createElement("p");
@@ -532,6 +544,7 @@ function validateSurname(x) {
   if (!checkSurname(x.value)) {
     node.innerHTML = "Il cognome può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
     insertAfter(node, x);
+    x.focus();
 
     return false;
   }
@@ -552,6 +565,7 @@ function validateEmail(x) {
   if (x.value == "") {
     node.innerHTML = "Devi inserire un'<span lang=\"en\">email</span>!";
     insertAfter(node, x);
+    x.focus();
 
     if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
       var previous_node = document.createElement("p");
@@ -567,6 +581,7 @@ function validateEmail(x) {
   if (x.value.length > 256) {
     node.innerHTML = "L'<span lang=\"en\">email</span> deve essere lunga al massimo 256 caratteri";
     insertAfter(node, x);
+    x.focus();
 
     return false;
   }
@@ -578,6 +593,7 @@ function validateEmail(x) {
   if (!checkEmail(x.value)) {
     node.innerHTML = "<span lang=\"en\">Email</span> non valida";
     insertAfter(node, x);
+    x.focus();
 
     return false;
   }
@@ -598,6 +614,7 @@ function validatePhoneNumber(x) {
   if (x.value == "") {
     node.innerHTML = "Devi inserire un numero di telefono!";
     insertAfter(node, x);
+    x.focus();
 
     if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
       var previous_node = document.createElement("p");
@@ -613,6 +630,7 @@ function validatePhoneNumber(x) {
   if (x.value.length > 256) {
     node.innerHTML = "Il numero di telefono deve essere lungo al massimo 256 caratteri";
     insertAfter(node, x);
+    x.focus();
 
     return false;
   }
@@ -624,6 +642,7 @@ function validatePhoneNumber(x) {
   if (!checkPhoneNumber(x.value)) {
     node.innerHTML = "Numero di telefono non valido. Puoi inserire 9 o 10 cifre dopo il prefisso opzionale. Se hai inserito il prefisso, ricordati di anticiparlo con un \"+\"";
     insertAfter(node, x);
+    x.focus();
 
     return false;
   }
@@ -646,6 +665,7 @@ function validateUsername(x) {
   if (x.value == "") {
     node.innerHTML = "Devi inserire uno <span lang=\"en\">username</span>!";
     insertAfter(node, x);
+    x.focus();
 
     if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
       var previous_node = document.createElement("p");
@@ -667,6 +687,7 @@ function validateUsername(x) {
   if (!checkUsername(x.value)) {
     node.innerHTML = "Lo <span lang=\"en\">Username</span> può contenere solo lettere, numeri, apostrofi, trattini e <span lang=\"en\">underscore</span>, non può contenere spazi e deve essere lungo al massimo 40 caratteri";
     insertAfter(node, x);
+    x.focus();
 
     return false;
   }
@@ -687,6 +708,7 @@ function validatePassword(x) {
   if (x.value == "") {
     node.innerHTML = "Devi inserire una <span lang=\"en\">password</span>!";
     insertAfter(node, x);
+    x.focus();
 
     if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
       var previous_node = document.createElement("p");
@@ -704,6 +726,7 @@ function validatePassword(x) {
   if (x.value.length > 256) {
     node.innerHTML = "La <span lang=\"en\">password</span> deve essere lunga al massimo 256 caratteri";
     insertAfter(node, x);
+    x.focus();
 
     return false;
   }
@@ -715,6 +738,7 @@ function validatePassword(x) {
   if (!checkPassword(x.value)) {
     node.innerHTML = "La <span lang=\"en\">password</span> deve contenere almeno 8 caratteri, di cui almeno una lettera maiuscola, una minuscola, un numero e un carattere speciale";
     insertAfter(node, x);
+    x.focus();
 
     return false;
   }
@@ -736,6 +760,7 @@ function validatePasswordConfirmation(x) {
   if (x.value != x2.value) {
     node.innerHTML = "Le <span lang=\"en\">password</span> non coincidono";
     insertAfter(node, x);
+    x.focus();
 
     return false;
   }
@@ -757,6 +782,7 @@ function validateNewPassword(x) {
     if (x.value.length > 256) {
       node.innerHTML = "La <span lang=\"en\">password</span> deve essere lunga al massimo 256 caratteri";
       insertAfter(node, x);
+      x.focus();
 
       return false;
     }
@@ -768,6 +794,7 @@ function validateNewPassword(x) {
     if (!checkPassword(x.value)) {
       node.innerHTML = "La <span lang=\"en\">password</span> deve contenere almeno 8 caratteri, di cui almeno una lettera maiuscola, una minuscola, un numero e un carattere speciale";
       insertAfter(node, x);
+      x.focus();
 
       return false;
     }
