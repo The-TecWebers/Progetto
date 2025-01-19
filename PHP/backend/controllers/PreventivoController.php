@@ -80,6 +80,10 @@ class PreventivoController
             return "<p class='message-preventivo'>Non ci sono preventivi da mostrare</p>";
         }
 
+        usort($preventivi, function ($a, $b) {
+            return $b['id'] - $a['id'];
+        });
+
         $div = "<div class'grid cols-1'>";
 
         foreach ($preventivi as $preventivo) {
@@ -132,6 +136,10 @@ class PreventivoController
         if (!$preventivi) {
             return "<p class='message-preventivo'>Non ci sono preventivi da mostrare</p>";
         }
+
+        usort($preventivi, function ($a, $b) {
+            return $b['id'] - $a['id'];
+        });
 
         foreach ($preventivi as &$preventivo) { // Usa "&" per passare per riferimento
             $user = DBController::runQuery("SELECT username, email, telefono FROM utente WHERE id = ?", $preventivo['utente']);
