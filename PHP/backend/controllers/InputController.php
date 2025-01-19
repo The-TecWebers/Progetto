@@ -223,7 +223,7 @@ class InputController
 
         $errorMessages .= "</ul>";
 
-        if ($errorMessages != (ERROR_MESSAGES_WRAPPER . "</ul>")) {
+        if ($errorMessages != ERROR_MESSAGES_WRAPPER . "</ul>") {
             return $errorMessages;
         }
 

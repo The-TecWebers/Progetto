@@ -89,6 +89,10 @@ switch ($current_page) {
         $header = str_replace($placeholder, $prefix . '<li><a href="lista_preventivi.php">Preventivi</a></li>'
                   . $current . 'Preventivo Utente' . $suffix, $header);
         break;
+    case "modifica_preventivo.php":
+        $header = str_replace($placeholder, $prefix . '<li><a href="lista_preventivi.php">Preventivi</a></li>'
+                  . $current . 'Modifica preventivo' . $suffix, $header);
+        break;
 
     default:
         break;
