@@ -65,6 +65,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['Messages'] = "<p class='info-label centered mb-0-6'>Preventivo cancellato correttamente!</p>";
         header("Location: lista_preventivi.php");
     } elseif ($action == 'update') {
+        $_SESSION['titolo*'] = $_POST['titolo'] ?? null;
+        $_SESSION['luogo*'] = $_POST['luogo'] ?? null;
+        $_SESSION['descrizione*'] = $_POST['descrizione'] ?? null;
+
         $_POST = InputController::sanitizePreventivo($_POST);
         $target = PreventivoController::getPreventivoById($_POST['id_preventivo']);
 
