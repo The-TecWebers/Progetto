@@ -72,6 +72,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (document.getElementById('preventiviForm')) {
     caricamento_preventivi();
+
+    // Per i messaggi di istruzioni accessibili agli screen reader
+    document.getElementById('titolo').setAttribute('aria-describedby', 'info-titolo');
+    document.getElementById('luogo').setAttribute('aria-describedby', 'info-luogo');
+    document.getElementById('foto').setAttribute('aria-describedby', 'info-foto');
+    document.getElementById('descrizione').setAttribute('aria-describedby', 'info-descrizione');
+
+    // Per la validazione dei campi lato client
     document.getElementById('titolo').onblur = () => { return validateTitolo(document.getElementById('titolo')); };
     document.getElementById('luogo').onblur = () => { return validateLuogo(document.getElementById('luogo')); };
     document.getElementById('foto').onblur = () => { return validateFoto(document.getElementById('foto')); };
@@ -83,6 +91,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (document.getElementById('EditPreventivoForm')) {
     caricamento_preventivi();
+
+    // Per i messaggi di istruzioni accessibili agli screen reader
+    document.getElementById('titolo').setAttribute('aria-describedby', 'info-titolo');
+    document.getElementById('luogo').setAttribute('aria-describedby', 'info-luogo');
+    document.getElementById('foto').setAttribute('aria-describedby', 'info-foto');
+    document.getElementById('descrizione').setAttribute('aria-describedby', 'info-descrizione');
+
+    // Per la validazione dei campi lato client
     document.getElementById('titolo').onblur = () => { return validateTitolo(document.getElementById('titolo')); };
     document.getElementById('luogo').onblur = () => { return validateLuogo(document.getElementById('luogo')); };
     document.getElementById('foto').onblur = () => { return validateEditFoto(document.getElementById('foto')); };
@@ -124,7 +140,7 @@ function caricamento_preventivi() {
   node.id = "info-" + x.id;
   node.classList.add("info-label");
   node.innerHTML =
-    "Una breve descrizione lunga masssimo 255 caratteri";
+    "Una breve descrizione lunga massimo 255 caratteri";
   x.parentElement.insertBefore(node, x);
 
 }
