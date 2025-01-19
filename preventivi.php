@@ -3,6 +3,8 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . 'PHP' . DIRECTORY_SEPARATOR . 'back
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'PHP' . DIRECTORY_SEPARATOR . 'backend' . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . 'AuthController.php';
 session_start();
 
+const ERROR_MESSAGES_WRAPPER = '<ul role="alert" aria-live="assertive" class="errorMessages">';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action = $_GET['action'] ?? null;
 
@@ -49,10 +51,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
         } else {
-            $errorMessages = "<ul class=\"errorMessages\"><li>Esiste già un preventivo registrato con questo titolo</li></ul>";
+            $errorMessages = ERROR_MESSAGES_WRAPPER . "<li>Esiste già un preventivo registrato con questo titolo</li></ul>";
             $_SESSION['error-preventivi'] = $errorMessages;
             header('Location: crea_preventivo.php');
         }
+        
     } elseif ($action == 'delete') {
         $user = AuthController::getAuthUser();
         $id = $user->getId();
@@ -64,6 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         $_SESSION['Messages'] = "<p class='info-label centered mb-0-6'>Preventivo cancellato correttamente!</p>";
         header("Location: lista_preventivi.php");
+
     } elseif ($action == 'update') {
         $_SESSION['titolo*'] = $_POST['titolo'] ?? null;
         $_SESSION['luogo*'] = $_POST['luogo'] ?? null;
@@ -161,7 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
 
         } else {
-            $errorMessages = "<ul class=\"errorMessages\"><li>Esiste già un preventivo registrato con questo titolo</li></ul>";
+            $errorMessages = ERROR_MESSAGES_WRAPPER . "<li>Esiste già un preventivo registrato con questo titolo</li></ul>";
             $_SESSION['error-preventivi'] = $errorMessages;
             header(header: "Location: modifica_preventivo.php?id=" . $_POST['id_preventivo']);
         }

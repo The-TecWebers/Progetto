@@ -118,14 +118,14 @@ function caricamento_preventivi() {
   var node = document.createElement("p");
   node.id = "info-" + x.id;
   node.classList.add("info-label");
-  node.innerHTML = "Un titolo per il preventivo lungo da 2 a 40 caratteri";
+  node.innerHTML = "Un titolo per il preventivo, deve essere lungo da 2 a 40 caratteri";
   x.parentElement.insertBefore(node, x);
 
   x = document.getElementById("luogo");
   node = document.createElement("p");
   node.id = "info-" + x.id;
   node.classList.add("info-label");
-  node.innerHTML = "Il luogo dove verrà svolto il lavoro, deve essere lungo massimo 40 caratteri";
+  node.innerHTML = "Il luogo dove verrà svolto il lavoro, deve essere lungo da 2 a 40 caratteri";
   x.parentElement.insertBefore(node, x);
 
   x = document.getElementById("foto");
@@ -140,7 +140,7 @@ function caricamento_preventivi() {
   node.id = "info-" + x.id;
   node.classList.add("info-label");
   node.innerHTML =
-    "Una breve descrizione lunga massimo 255 caratteri";
+    "Una breve descrizione, deve essere lunga da 2 a 255 caratteri";
   x.parentElement.insertBefore(node, x);
 
 }
@@ -366,7 +366,7 @@ function validateTitolo(x) {
       var previous_node = document.createElement("p");
       previous_node.id = "info-" + x.id;
       previous_node.classList.add("info-label");
-      previous_node.innerHTML = "Un titolo per il preventivo lungo da 2 a 40 caratteri";
+      previous_node.innerHTML = "Un titolo per il preventivo, deve essere lungo da 2 a 40 caratteri";
       x.parentElement.insertBefore(previous_node, x);
     }
 
@@ -407,7 +407,7 @@ function validateLuogo(x) {
       var previous_node = document.createElement("p");
       previous_node.id = "info-" + x.id;
       previous_node.classList.add("info-label");
-      previous_node.innerHTML = "Il luogo dove verrà svolto il lavoro, deve essere lungo massimo 40 caratteri";
+      previous_node.innerHTML = "Il luogo dove verrà svolto il lavoro, deve essere lungo da 2 a 40 caratteri";
       x.parentElement.insertBefore(previous_node, x);
     }
 
@@ -449,7 +449,7 @@ function validateDescrizione(x) {
       var previous_node = document.createElement("p");
       previous_node.id = "info-" + x.id;
       previous_node.classList.add("info-label");
-      previous_node.innerHTML = "Una breve descrizione lunga masssimo 255 caratteri";
+      previous_node.innerHTML = "Una breve descrizione, deve essere lunga da 2 a 255 caratteri";
       x.parentElement.insertBefore(previous_node, x);
     }
 
