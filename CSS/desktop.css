@@ -27,9 +27,10 @@ GENERALE
     --visitedLink_bgGreen: #ffffff;
 
     /* Colori per lo sfondo fucsia */
-    --bg_bgFuchsia: #C935A1;
-    --link_bgFuchsia: #000000;
-    --visitedLink_bgFuchsia: #ffffff;
+    --bg_bgDarkGreen: #0c6b44;
+    --link_bgDarkGreen: #FFFFBD;
+    --visitedLink_bgDarkGreen: #ffffff;
+    --currentLink_bgDarkGreen: #000000;
 
     /* Colori per la Labels o messaggi di errore */
     --borderError: #ff4d4d;
@@ -254,8 +255,8 @@ PULSANTI ACCOUNT
 .sign-buttons a {
     display: inline-block;
     text-decoration: none;
-    background-color: var(--bg_bgFuchsia);
-    color: var(--link_bgFuchsia);
+    background-color: var(--bg_bgDarkGreen);
+    color: var(--link_bgDarkGreen);
     border: none;
     border-radius: 0.357em;
     padding: 0.714em 1.428em;
@@ -267,7 +268,7 @@ PULSANTI ACCOUNT
 }
 
 .sign-buttons a:visited {
-    color: var(--visitedLink_bgFuchsia);
+    color: var(--visitedLink_bgDarkGreen);
 }
 
 .sign-buttons a:hover {
@@ -283,8 +284,8 @@ PULSANTI ACCOUNT
 .sign-buttons div.current-link {
     display: inline-block;
     text-decoration: none;
-    background-color: var(--bg_bgFuchsia);
-    color: var(--link_bgFuchsia);
+    background-color: var(--bg_bgDarkGreen);
+    color: var(--currentLink_bgDarkGreen);
     border: none;
     border-radius: 0.357em;
     padding: 0.714em 1.428em;
@@ -1369,7 +1370,6 @@ PREVENTIVI
     width: 100%;
 }
 
-/* Make the image responsive */
 .preventivo figure img {
     width: 100%;
     height: auto;
