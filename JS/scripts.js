@@ -854,12 +854,18 @@ function filterTable() {
     existingErrorMessage.remove();
   }
 
+  var existingCountMessage = document.getElementById('count-preventivi');
+  if (existingCountMessage) {
+    existingCountMessage.remove();
+  }
+
   var filterDiv = document.getElementById('table-filter');
   if (endDateObj != null && startDateObj != null && endDateObj < startDateObj) {
       var errorMessage = document.createElement('p');
       errorMessage.id = 'error-date-range';
       errorMessage.classList.add('error-label');
       errorMessage.classList.add('push-right');
+      errorMessage.classList.add('centered');
       errorMessage.setAttribute("role", "alert");
       errorMessage.setAttribute("aria-live", "assertive");
       errorMessage.textContent = 'La data di inizio deve essere minore o uguale a quella di fine.';
@@ -894,11 +900,6 @@ function filterTable() {
       } else {
           rows[i].classList.add('hidden');
       }
-  }
-
-  var existingCountMessage = document.getElementById('count-preventivi');
-  if (existingCountMessage) {
-    existingCountMessage.remove();
   }
 
   if (titoloFilter || richiedenteFilter || startDate || endDate) {
