@@ -15,7 +15,7 @@ GENERALE
 }
 
 main {
-    text-align: center;
+    text-align: justify;
 }
 
 p {
@@ -120,7 +120,7 @@ button {
 }
 
 .form-description {
-    text-align: center;
+    text-align: justify;
     font-size: 1.5em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     font-weight: bold;
@@ -132,7 +132,7 @@ button {
 }
 
 .change-form {
-    text-align: center;
+    text-align: justify;
     margin-bottom: 0.5em;
 }
 
@@ -353,5 +353,333 @@ SU DI NOI | PRINT
 
 .items-center{
     justify-items: center;
+}
+
+
+/*
+=============
+TABLE | PRINT
+=============
+*/
+table {
+    margin: 1.2em auto;
+}
+
+table,
+th,
+td {
+    border: 0.0625em solid black;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: justify;
+    padding: 0.5em;
+}
+
+th {
+    text-align: justify;
+}
+
+td[data-title="Descrizione"] {
+    text-align: left;
+}
+
+caption {
+    font-weight: bold;
+    font-size: 1.5em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    margin-bottom: 0.5em;
+}
+
+#desc-tabella {
+    text-indent: -999em;
+}
+/*
+==============
+FILTER | PRINT
+==============
+*/
+.filter-container {
+    visibility: hidden;
+    width: 75%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 1rem;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-container.visible {
+    visibility: visible;
+}
+
+/*
+==================
+PREVENTIVO | PRINT
+==================
+*/
+
+
+.preventivo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 50em;
+    margin: 1.25em auto;
+    border-radius: 5%;
+    box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.2);
+    align-items: center;
+    height: auto;
+
+}
+
+.form-preventivo {
+    background-color: var(--bg_bgWhite);
+    width: 100%;
+    display: flex;
+    padding-top: 1em;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.img-preventivo {
+    margin-left: 1em;
+    margin-right: 1em;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.img-preventivo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.content-preventivo {
+    box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.1);
+    border-left: dashed rgba(0, 0, 0, 0.1);
+    flex: 2;
+    padding: 1.25em;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-preventivo dt {
+    margin-top: 0.625em;
+}
+
+.content-preventivo dd {
+    margin-bottom: 1.25em;
+}
+
+.header-preventivo {
+    padding: 1.25em;
+    text-align: justify;
+}
+
+.header-preventivo p {
+    font-size: 1.5em;
+}
+
+.preventivo-edit-foto {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+#crea-preventivo-btn {
+    display: block;
+    text-align: justify;
+    text-decoration: none;
+    background-color: var(--bg_bgGreen);
+    color: var(--link_bgGreen);
+    border: 0 solid;
+    border-radius: 1em;
+    padding: 0.5em 1em;
+    font-size: 1.25em;
+}
+
+.filter-container {
+    visibility: hidden;
+    width: 75%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 1rem;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-container.visible {
+    visibility: visible;
+}
+
+.push-right {
+    margin-left: 54.5%;
+    margin-right: 13%;
+}
+
+#count-preventivi {
+    width: 75%;
+}
+
+.preventivi-container {
+    justify-content: center;
+    display: grid;
+    grid-template-columns: auto;
+    gap: 0.5em;
+}
+
+.preventivo figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.preventivo figure img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+
+
+/* 
+=================
+LISTA PREVENTIVI
+=================
+*/
+
+.preventivi-container {
+
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 0.5em;
+}
+
+.preventivi-container dt {
+    padding: 1em;
+}
+
+.preventivo dt {
+    padding: 0;
+
+}
+
+.preventivo dl {
+    padding: 0em 2em;
+}
+
+.preventivo figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Make the image responsive */
+.preventivo figure img {
+    margin-top: 1em;
+    width: 85%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 5%;
+    object-fit: cover;
+}
+
+#crea-preventivo-btn {
+    display: block;
+    text-align: justify;
+    text-decoration: none;
+    background-color: var(--bg_bgGreen);
+    color: var(--link_bgGreen);
+    border: 0 solid;
+    border-radius: 1em;
+    padding: 0.5em 1em;
+    font-size: 1.25em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.preventivo-edit-foto {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.message-preventivo {
+    width: 50%;
+    text-align: justify;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--text_bgGreen);
+    background-color: var(--bg_bgGreen);
+    padding: 1rem 2rem;
+    border-radius: 1em;
+    margin: 12% auto;
+    display: block;
+}
+
+
+/*
+=======
+404-500
+=======
+*/
+
+.container-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin: auto;
+    justify-content: center;
+    text-align: justify;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.container-error span {
+    margin: 0.5em auto;
+}
+
+.container-error img {
+    width: 50%;
+}
+
+.container-error h1 {
+    font-size: 1em;
+    text-transform: none;
+}
+
+#cta-error {
+    margin-bottom: 1em;
 }
 

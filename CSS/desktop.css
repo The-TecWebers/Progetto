@@ -27,9 +27,10 @@ GENERALE
     --visitedLink_bgGreen: #ffffff;
 
     /* Colori per lo sfondo fucsia */
-    --bg_bgFuchsia: #C935A1;
-    --link_bgFuchsia: #000000;
+    --bg_bgFuchsia: #0c6b44;
+    --link_bgFuchsia: #FFFFBD;
     --visitedLink_bgFuchsia: #ffffff;
+    --currentLink_bgFuchsia: #000000;
 
     /* Colori per la Labels o messaggi di errore */
     --borderError: #ff4d4d;
@@ -284,7 +285,7 @@ PULSANTI ACCOUNT
     display: inline-block;
     text-decoration: none;
     background-color: var(--bg_bgFuchsia);
-    color: var(--link_bgFuchsia);
+    color: var(--currentLink_bgFuchsia);
     border: none;
     border-radius: 0.357em;
     padding: 0.714em 1.428em;
@@ -1363,7 +1364,6 @@ PREVENTIVI
     width: 100%;
 }
 
-/* Make the image responsive */
 .preventivo figure img {
     width: 100%;
     height: auto;
