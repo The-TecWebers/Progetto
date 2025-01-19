@@ -80,6 +80,7 @@ class PreventivoController
             return "<p class='message-preventivo'>Non ci sono preventivi da mostrare</p>";
         }
 
+        // Ordina per id decrescente
         usort($preventivi, function ($a, $b) {
             return $b['id'] - $a['id'];
         });
@@ -87,6 +88,9 @@ class PreventivoController
         $div = "<div class'grid cols-1'>";
 
         foreach ($preventivi as $preventivo) {
+            // Sostituisce gli '\n' con dei '<br>', così da mantenere gli 'a capo' anche in HTML
+            $preventivo['descrizione'] = nl2br($preventivo['descrizione']);
+
             $div .= "
             <div class='preventivo'>
                 
@@ -137,6 +141,7 @@ class PreventivoController
             return "<p class='message-preventivo'>Non ci sono preventivi da mostrare</p>";
         }
 
+        // Ordina per id decrescente
         usort($preventivi, function ($a, $b) {
             return $b['id'] - $a['id'];
         });
@@ -146,6 +151,9 @@ class PreventivoController
             $preventivo['username'] = $user['username']; // Questo aggiorna direttamente l'array $preventivi
             $preventivo['email'] = $user['email'];
             $preventivo['telefono'] = $user['telefono'];
+
+            // Sostituisce gli '\n' con dei '<br>', così da mantenere gli 'a capo' anche in HTML
+            $preventivo['descrizione'] = nl2br($preventivo['descrizione']);
         }
         unset($preventivo); // Importante per evitare effetti collaterali
 
@@ -216,7 +224,6 @@ class PreventivoController
     }
     public static function getSingoloPreventivo()
     {
-
         $urlId = isset($_GET['id']) ? (int) $_GET['id'] : null;
 
         $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo");
@@ -231,6 +238,10 @@ class PreventivoController
         foreach ($preventivi as &$preventivo) {
             if ((int) $preventivo['id'] === $urlId) {
                 $found = true;
+
+                // Sostituisce gli '\n' con dei '<br>', così da mantenere gli 'a capo' anche in HTML
+                $preventivo['descrizione'] = nl2br($preventivo['descrizione']);
+                
                 $div .= "
             <div class='preventivo'>
                 
