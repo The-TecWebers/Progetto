@@ -77,9 +77,9 @@ class InputController
     private static function isTitolo($titolo): bool|string
     {
         $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
-        $titolo_pattern = '/^[a-zA-Z' . $accentedCharacters . '\'\-\s]{2,40}$/';
+        $titolo_pattern = '/^[a-zA-Z0-9' . $accentedCharacters . '\'\-\s]{2,40}$/';
         if (!preg_match($titolo_pattern, $titolo)) {
-            return "<li>Il titolo può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri</li>";
+            return "<li>Il titolo può contenere solo lettere, numeri, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri</li>";
         }
         return true;
     }
@@ -87,9 +87,9 @@ class InputController
     private static function isLuogo($luogo): bool|string
     {
         $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
-        $luogo_pattern = '/^[a-zA-Z' . $accentedCharacters . '\'\-\s]{2,40}$/';
+        $luogo_pattern = '/^[a-zA-Z0-9' . $accentedCharacters . '\'\-\s]{2,40}$/';
         if (!preg_match($luogo_pattern, $luogo)) {
-            return "<li>Il luogo può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri</li>";
+            return "<li>Il luogo può contenere solo lettere, numeri, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri</li>";
         }
         return true;
     }
@@ -97,9 +97,9 @@ class InputController
     private static function isDescrizione($descrizione): bool|string
     {
         $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
-        $descrizione_pattern = '/^[a-zA-Z' . $accentedCharacters . '\'\-\s]{2,255}$/';
+        $descrizione_pattern = '/^[a-zA-Z0-9' . $accentedCharacters . '\'\-\s]{2,255}$/';
         if (!preg_match($descrizione_pattern, $descrizione)) {
-            return "<li>La descrizione può contenere solo lettere, apostrofi, trattini e spazi e deve essere lunga da 2 a 255 caratteri</li>";
+            return "<li>La descrizione può contenere solo lettere, numeri, apostrofi, trattini e spazi e deve essere lunga da 2 a 255 caratteri</li>";
         }
         return true;
     }
@@ -207,7 +207,7 @@ class InputController
         $foto = $array['foto'];
 
         if (self::isTitolo($titolo) !== true) {
-            $errorMessages .= self::isName($titolo);
+            $errorMessages .= self::isTitolo($titolo);
         }
         if (self::isLuogo($luogo) !== true) {
             $errorMessages .= self::isLuogo($luogo);
@@ -239,7 +239,7 @@ class InputController
         $foto = $array['foto'];
 
         if (self::isTitolo($titolo) !== true) {
-            $errorMessages .= self::isName($titolo);
+            $errorMessages .= self::isTitolo($titolo);
         }
         if (self::isLuogo($luogo) !== true) {
             $errorMessages .= self::isLuogo($luogo);
