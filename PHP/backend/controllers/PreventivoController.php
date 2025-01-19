@@ -171,7 +171,7 @@ class PreventivoController
                 <tr>
                     <th scope='col'>Titolo</th>
                     <th scope='col'>Richiedente</th>
-                    <th scope='col'><span lang='en'>Email</span></th>
+                    <th scope='col' lang='en'>Email</th>
                     <th scope='col' abbr='tel'>Telefono</th>
                     <th scope='col'>Data</th>
                     <th scope='col'>Luogo</th>
