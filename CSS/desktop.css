@@ -1136,7 +1136,7 @@ STORIA - LAVORI SVOLTI
     max-height: 25em;
     object-fit: fill;
     object-position: center;
-    margin: auto
+    margin: auto;
 }
 
 .figure-paragraph-container> :last-child {
@@ -1165,6 +1165,12 @@ MEZZI
     justify-content: center;
     list-style: none;
     padding: 0;
+}
+
+.mezzi-container figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .mezzi-container img {
