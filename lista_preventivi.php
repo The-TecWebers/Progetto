@@ -7,8 +7,8 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "back
 require_once __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "backend" . DIRECTORY_SEPARATOR . "controllers" . DIRECTORY_SEPARATOR . "PreventivoController.php";
 
 session_start();
-$titolo = "Lista preventivi - EdilScavi";
-$descrizione = "Lista dei tuoi preventivi per i lavori di scavi e edilizia con EdilScavi";
+$titolo = "Lista preventivi - Edil Scavi";
+$descrizione = "Lista dei tuoi preventivi per i lavori di scavi e edilizia con Edil Scavi";
 $keywords = "preventivi, scavi, edilizia, scavi brescia, lavori edilizi";
 if (AuthController::isLogged()) {
     $template = file_get_contents(filename: __DIR__ . DIRECTORY_SEPARATOR . "HTML" . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "lista_preventivi.html");

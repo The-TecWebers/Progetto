@@ -6,8 +6,8 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
 
-$titolo = "Modifica preventivo - EdilScavi";
-$descrizione = "Modifica un preventivo per i lavori di scavo ed edilizia con EdilScavi Srl!";
+$titolo = "Modifica preventivo - Edil Scavi";
+$descrizione = "Modifica un preventivo per i lavori di scavo ed edilizia con Edil Scavi Srl!";
 $keywords = "preventivo, modifica, scavi, edilizia, scavi brescia, lavori edilizi";
 $sanitized = InputController::sanitizeAll($_GET);
 

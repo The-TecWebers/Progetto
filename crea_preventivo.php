@@ -2,8 +2,8 @@
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "backend" . DIRECTORY_SEPARATOR . "controllers" . DIRECTORY_SEPARATOR . "AuthController.php";
 
-$titolo = "Crea preventivo - EdilScavi";
-$descrizione = "Crea un preventivo per i lavori di scavo ed edilizia con EdilScavi Srl!";
+$titolo = "Crea preventivo - Edil Scavi";
+$descrizione = "Crea un preventivo per i lavori di scavo ed edilizia con Edil Scavi Srl!";
 $keywords = "preventivo, scavi, edilizia, scavi brescia, lavori edilizi";
 
 session_start();

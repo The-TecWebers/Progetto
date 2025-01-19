@@ -1,5 +1,5 @@
 <?php
-$titolo = "Su di noi - EdilScavi";
+$titolo = "Su di noi - Edil Scavi";
 $descrizione= "Edil Scavi Srl Brescia: i nostri presidenti, la nostra esperienza, le nostre certificazioni";
 $keywords = "Claudio,Oscar,movimento terra,reti gas metano,saldatura,tubazioni,strutture edilizie";
 

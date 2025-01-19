@@ -1,7 +1,7 @@
 <?php
 
-$titolo = "Accedi - EdilScavi";
-$descrizione = "Accedi al tuo account EdilScavi per creare un preventivo o visualizzare i preventivi già creati.";
+$titolo = "Accedi - Edil Scavi";
+$descrizione = "Accedi al tuo account Edil Scavi per creare un preventivo o visualizzare i preventivi già creati.";
 $keywords = "accedi, Edil Scavi, login, account, informazioni personali, accesso";
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "backend" . DIRECTORY_SEPARATOR . "controllers" . DIRECTORY_SEPARATOR . "AuthController.php";
