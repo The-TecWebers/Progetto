@@ -230,33 +230,17 @@ function checkPassword(password) {
 }
 
 function checkTitolo(titolo) {
-  var regex = new RegExp('^[a-zA-Z' + accentedCharacters + '\'\\-\\s]{2,40}$');
+  var regex = new RegExp('^[a-zA-Z0-9' + accentedCharacters + '\'\\-\\s]{2,40}$');
   return regex.test(titolo);
 }
 
 function checkLuogo(luogo) {
-  var regex = new RegExp('^[a-zA-Z' + accentedCharacters + '\'\\-\\s]{2,40}$');
+  var regex = new RegExp('^[a-zA-Z0-9' + accentedCharacters + '\'\\-\\s]{2,40}$');
   return regex.test(luogo);
 }
 
 function checkDescrizione(descrizione) {
-  var regex = new RegExp('^[a-zA-Z' + accentedCharacters + '\'\\-\\s]{2,255}$');
-  return regex.test(descrizione);
-}
-
-/*
-function checkDate(date) {
-  var regex = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
-  return regex.test(date);
-}
-
-function checkLuogo(luogo) {
-  var regex = new RegExp('^[a-zA-Z' + accentedCharacters + '\'\\-\\s]{2,40}$');
-  return regex.test(luogo);
-}
-
-function checkDescrizione(descrizione) {
-  var regex = new RegExp('^[a-zA-Z' + accentedCharacters + '\'\\-\\s]{2,255}$');
+  var regex = new RegExp('^[a-zA-Z0-9' + accentedCharacters + '\'\\-\\s]{2,255}$');
   return regex.test(descrizione);
 }
 
@@ -283,7 +267,7 @@ function validateFoto(x) {
   node.setAttribute("aria-live", "assertive");
 
   const file = x.files[0];
-  const maxSize = 5 * 1024 * 1024;  //5 MB
+  const maxSize = 5 * 1024 * 1024;  // 5 MB
 
   if (file == undefined) {
     node.innerHTML = "Devi inserire una foto!";
@@ -366,7 +350,7 @@ function validateTitolo(x) {
       var previous_node = document.createElement("p");
       previous_node.id = "info-" + x.id;
       previous_node.classList.add("info-label");
-      previous_node.innerHTML = "Il luogo dove verrà svolto il lavoro, deve essere lungo massimo 40 caratteri";
+      previous_node.innerHTML = "Un titolo per il preventivo lungo da 2 a 40 caratteri";
       x.parentElement.insertBefore(previous_node, x);
     }
 
@@ -378,7 +362,7 @@ function validateTitolo(x) {
   }
 
   if (!checkTitolo(x.value)) {
-    node.innerHTML = "Il titolo può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
+    node.innerHTML = "Il titolo può contenere solo lettere, numeri, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
     insertAfter(node, x);
     x.focus();
 
@@ -407,7 +391,7 @@ function validateLuogo(x) {
       var previous_node = document.createElement("p");
       previous_node.id = "info-" + x.id;
       previous_node.classList.add("info-label");
-      previous_node.innerHTML = "Un titolo per il preventivo lungo da 2 a 40 caratteri";
+      previous_node.innerHTML = "Il luogo dove verrà svolto il lavoro, deve essere lungo massimo 40 caratteri";
       x.parentElement.insertBefore(previous_node, x);
     }
 
@@ -419,7 +403,7 @@ function validateLuogo(x) {
   }
 
   if (!checkLuogo(x.value)) {
-    node.innerHTML = "Il luogo può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
+    node.innerHTML = "Il luogo può contenere solo lettere, numeri, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
     insertAfter(node, x);
     x.focus();
 
@@ -461,7 +445,7 @@ function validateDescrizione(x) {
   }
 
   if (!checkDescrizione(x.value)) {
-    node.innerHTML = "La descrizione può contenere solo lettere, apostrofi, trattini e spazi e deve essere lunga da 2 a 255 caratteri";
+    node.innerHTML = "La descrizione può contenere solo lettere, numeri, apostrofi, trattini e spazi e deve essere lunga da 2 a 255 caratteri";
     insertAfter(node, x);
     x.focus();
     return false;
