@@ -1,7 +1,7 @@
 <main id="content">
     <h1>Area privata</h1>
     <a class="link-intestazione"  href="#index-danger-zone">Vai alla prossima intestazione</a>
-    <p class="form-description">Modifica i tuoi dati personali oppure cambia la password!</p>
+    <p class="form-description">Modifica i tuoi dati personali oppure cambia la <span lang="en">password</span>!</p>
     <form id="privateAreaForm" action="auth.php?action=private_area" method="post">
         <!-- errorMessages -->
         <div class="double-column">
@@ -15,16 +15,16 @@
                 <input class="form-input" type="email" id="email" name="email" placeholder="Es: mario.rossi@example.com">
                 <label class="form-label" for="telefono">Telefono</label>
                 <input class="form-input" type="text" id="telefono" name="telefono" placeholder="Es.: +39 333 123 4567">
-                <label class="form-label" for="username">Username</label>
+                <label class="form-label" for="username"><span lang="en">Username</span></label>
                 <input class="form-input" type="text" id="username" name="username" placeholder="Es.: MRossi33">
             </fieldset>
             <fieldset id="cambio_password" class="surrounding-box">
                 <legend>Cambio password</legend>
-                <label class="form-label" for="old_password">Password attuale</label>
+                <label class="form-label" for="old_password"><span lang="en">Password</span> attuale</label>
                 <input class="form-input" type="password" id="old_password" name="old_password" placeholder="Password attuale">
-                <label class="form-label" for="new_password">Nuova Password</label>
+                <label class="form-label" for="new_password">Nuova <span lang="en">Password</span></label>
                 <input class="form-input" type="password" id="new_password" name="new_password" placeholder="Es.: 44Gatti__$">
-                <label class="form-label" for="repeated_password">Ripeti la nuova Password</label>
+                <label class="form-label" for="repeated_password">Ripeti la nuova <span lang="en">Password</span></label>
                 <input class="form-input" type="password" id="repeated_password" name="repeated_password" placeholder="Conferma Password">
             </fieldset>
         </div>
@@ -38,7 +38,7 @@
     <form id="danger-zone" action="auth.php?action=delete_user" method="post">
         <h2 id="index-danger-zone">Zona di Pericolo</h2>
         <p>
-            Questa azione cancellerà definitivamente il tuo account. 
+            Questa azione cancellerà definitivamente il tuo <span lang="en">account</span>. 
             Questa operazione è irreversibile.
         </p>
         <button id="delete-button" type="submit">Cancella Utente</button>

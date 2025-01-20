@@ -85,7 +85,7 @@ class PreventivoController
             return $b['id'] - $a['id'];
         });
 
-        $div = "<div class'grid cols-1'>";
+        $div = "<div class='grid cols-1'>";
 
         foreach ($preventivi as $preventivo) {
             // Sostituisce gli '\n' con dei '<br>', così da mantenere gli 'a capo' anche in HTML
@@ -104,7 +104,7 @@ class PreventivoController
 
             <dl>
                 <dt>Data:</dt>
-                <dd><time datetime='" . $preventivo['data'] . "'/time>" . $preventivo['data'] . "</dd>
+                <dd><time datetime='" . $preventivo['data'] . "'>" . $preventivo['data'] . "</time></dd>
 
                 <dt>Luogo:</dt>
                 <dd>" . $preventivo['luogo'] . "</dd>
@@ -116,15 +116,17 @@ class PreventivoController
              <div class='form-preventivo'>
                   <form method='GET' action='preventivi.php'>
                       <input type='hidden' name='action' value='edit'/>
-                      <input type='hidden' id='id_preventivo' name='id_preventivo' value='" . $preventivo['id'] . "'/>
-                      <button type='submit'>
-                          <img alt='Modifica preventivo' src='Images/icons/edit_white.svg' height=30 width=30>
+                      <input type='hidden' id='id_preventivo_" . $preventivo['id'] . "' name='id_preventivo_" .
+                      $preventivo['id'] . "' value='" . $preventivo['id'] . "'/>
+                      <button type='submit' aria-label='Modifica preventivo'>
+                          <img alt='' src='Images/icons/edit_white.svg' height=30 width=30>
                       </button>
                   </form>
                   <form method='POST' action='preventivi.php?action=delete'>
-                      <input type='hidden' id='id_preventivo' name='id_preventivo' value='" . $preventivo['id'] . "'/>
-                      <button type='submit'>
-                          <img alt='Modifica preventivo' src='Images/icons/delete_white.svg' height=30 width=30>
+                      <input type='hidden' id='id_preventivo_" . $preventivo['id'] . "' name='id_preventivo_" .
+                      $preventivo['id'] . "' value='" . $preventivo['id'] . "'/>
+                      <button type='submit' aria-label='Elimina preventivo'>
+                          <img alt='' src='Images/icons/delete_white.svg' height=30 width=30>
                       </button>
                   </form>
               </div>
@@ -158,8 +160,8 @@ class PreventivoController
         unset($preventivo); // Importante per evitare effetti collaterali
 
         $table = "<p id='desc-tabella'>Lista dei tuoi preventivi. Nelle righe sono elencati i preventivi,
-        per ogni preventivo sono visualizzati l'id, la data, la descrizione, il luogo, il link alla foto ed il link
-        per vederlo singolarmente.</p>";
+        per ogni preventivo sono visualizzati l'id, la data, la descrizione, il luogo, il <span lang='en'>link</span> alla foto ed
+        il <span lang='en'>link</span> per vederlo singolarmente.</p>";
 
         $table .= "<div id='table-filter' class='filter-container'>
         <div class='filter'>
@@ -172,11 +174,11 @@ class PreventivoController
         </div>
         <div class='filter'>
             <label class='form-label' for='start-date'>Filtra dalla data</label>
-            <input class='form-input' type='date' id='start-date' placeholder='Data inizio' onchange='filterTable()'>
+            <input class='form-input' type='date' id='start-date' onchange='filterTable()'>
         </div>
         <div class='filter'>
             <label class='form-label' for='end-date'>Alla data</label>
-            <input class='form-input' type='date' id='end-date' placeholder='Data fine' onchange='filterTable()'>
+            <input class='form-input' type='date' id='end-date' onchange='filterTable()'>
         </div>
     </div>";
 
@@ -255,7 +257,7 @@ class PreventivoController
 
             <dl>
                 <dt>Data:</dt>
-                <dd><time datetime='" . $preventivo['data'] . "'/time>" . $preventivo['data'] . "</dd>
+                <dd><time datetime='" . $preventivo['data'] . "'>" . $preventivo['data'] . "</time></dd>
 
                 <dt>Luogo:</dt>
                 <dd>" . $preventivo['luogo'] . "</dd>
@@ -267,8 +269,8 @@ class PreventivoController
              <div class='form-preventivo'>
                   <form method='POST' action='preventivi.php?action=delete'>
                       <input type='hidden' id='id_preventivo' name='id_preventivo' value='" . $preventivo['id'] . "'/>
-                      <button type='submit'>
-                          <img alt='Modifica preventivo' src='Images/icons/delete_white.svg' height=30 width=30>
+                      <button type='submit' aria-label='Elimina preventivo'>
+                          <img alt='' src='Images/icons/delete_white.svg' height=30 width=30>
                       </button>
                    </form>
               </div>
