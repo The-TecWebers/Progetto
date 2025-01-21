@@ -116,15 +116,15 @@ class PreventivoController
              <div class='form-preventivo'>
                   <form method='GET' action='preventivi.php'>
                       <input type='hidden' name='action' value='edit'/>
-                      <input type='hidden' id='id_preventivo_" . $preventivo['id'] . "' name='id_preventivo_" .
-                      $preventivo['id'] . "' value='" . $preventivo['id'] . "'/>
+                      <input type='hidden' id='id_preventivo_" . $preventivo['id'] . "_GET' name='id_preventivo_" .
+                      $preventivo['id'] . "_GET' value='" . $preventivo['id'] . "'/>
                       <button type='submit' aria-label='Modifica preventivo'>
                           <img alt='' src='Images/icons/edit_white.svg' height=30 width=30>
                       </button>
                   </form>
                   <form method='POST' action='preventivi.php?action=delete'>
-                      <input type='hidden' id='id_preventivo_" . $preventivo['id'] . "' name='id_preventivo_" .
-                      $preventivo['id'] . "' value='" . $preventivo['id'] . "'/>
+                      <input type='hidden' id='id_preventivo_" . $preventivo['id'] . "_POST' name='id_preventivo_" .
+                      $preventivo['id'] . "_POST' value='" . $preventivo['id'] . "'/>
                       <button type='submit' aria-label='Elimina preventivo'>
                           <img alt='' src='Images/icons/delete_white.svg' height=30 width=30>
                       </button>
@@ -160,7 +160,7 @@ class PreventivoController
         unset($preventivo); // Importante per evitare effetti collaterali
 
         $table = "<p id='desc-tabella'>Lista dei tuoi preventivi. Nelle righe sono elencati i preventivi,
-        per ogni preventivo sono visualizzati l'id, la data, la descrizione, il luogo, il <span lang='en'>link</span> alla foto ed
+        per ogni preventivo sono visualizzati il titolo, la data, la descrizione, il luogo, il <span lang='en'>link</span> alla foto ed
         il <span lang='en'>link</span> per vederlo singolarmente.</p>";
 
         $table .= "<div id='table-filter' class='filter-container'>
@@ -194,7 +194,7 @@ class PreventivoController
                     <th scope='col'>Data</th>
                     <th scope='col'>Luogo</th>
                     <th scope='col'>Foto</th>
-                    <th scope='col' abbr='desc'>Descrizione</th>
+                    <th scope='col'>Descrizione</th>
                     <th scope='col' abbr='singolo'>Vista singola</th>
                 </tr>
             </thead>

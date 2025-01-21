@@ -103,12 +103,7 @@ MENÙ AD HAMBURGER
     margin-left: auto;
 }
 
-header #nav-check:checked~nav {
-    opacity: 1;
-    visibility: visible;
-}
-
-header #nav-check:checked~.sign-buttons {
+header #nav-check:checked~nav, header #nav-check:checked~.sign-buttons {
     opacity: 1;
     visibility: visible;
 }
