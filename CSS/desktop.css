@@ -30,7 +30,7 @@ GENERALE
     --bg_bgDarkGreen: #0c6b44;
     --link_bgDarkGreen: #FFFFBD;
     --visitedLink_bgDarkGreen: #ffffff;
-    --currentLink_bgDarkGreen: #000000;
+    --currentLink_bgDarkGreen: #9deb72;
 
     /* Colori per la Labels o messaggi di errore */
     --borderError: #ff4d4d;
@@ -124,7 +124,6 @@ header nav ul li {
 }
 
 header nav ul li a {
-    text-decoration: none;
     display: block;
     font-size: 1.25em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
@@ -153,6 +152,7 @@ header nav ul li.current-link {
 }
 
 header nav ul li a:visited {
+    text-decoration-color: var(--bg_bgGreen);
     color: var(--visitedLink_bgGreen);
 }
 
@@ -254,7 +254,6 @@ PULSANTI ACCOUNT
 
 .sign-buttons a {
     display: inline-block;
-    text-decoration: none;
     background-color: var(--bg_bgDarkGreen);
     color: var(--link_bgDarkGreen);
     border: none;
@@ -268,6 +267,7 @@ PULSANTI ACCOUNT
 }
 
 .sign-buttons a:visited {
+    text-decoration-color: var(--bg_bgDarkGreen);
     color: var(--visitedLink_bgDarkGreen);
 }
 

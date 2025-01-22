@@ -91,7 +91,10 @@ class PreventivoController
             // Sostituisce gli '\n' con dei '<br>', così da mantenere gli 'a capo' anche in HTML
             $preventivo['descrizione'] = nl2br($preventivo['descrizione']);
 
-            $div .= "
+            $div .= "    
+            <a class='link-intestazione'  href='#'>Vai al prossimo preventivo</a>
+
+
             <div class='preventivo'>
                 
         <div class='img-preventivo'>
