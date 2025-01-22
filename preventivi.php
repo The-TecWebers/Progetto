@@ -2,6 +2,10 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'PHP' . DIRECTORY_SEPARATOR . 'backend' . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . 'PreventivoController.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'PHP' . DIRECTORY_SEPARATOR . 'backend' . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . 'AuthController.php';
 session_start();
+ini_set('error_reporting', E_ALL); // Report all errors
+ini_set('display_errors', '0');   // Hide errors from users
+ini_set('log_errors', '1');       // Enable error logging
+ini_set('error_log', '/path/to/php-error.log'); // Specify the log file
 
 const ERROR_MESSAGES_WRAPPER = '<ul role="alert" aria-live="assertive" class="errorMessages">';
 
@@ -60,8 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $user = AuthController::getAuthUser();
         $id = $user->getId();
         $sanitized = InputController::sanitizeAll($_POST);
-        if (AuthController::isAdmin() || PreventivoController::authorizeFunction($sanitized['id_preventivo'], $id)) {
-            PreventivoController::delete($sanitized['id_preventivo']);
+        if (AuthController::isAdmin() || PreventivoController::authorizeFunction($sanitized['delete_preventivo_id'], $id)) {
+            PreventivoController::delete($sanitized['delete_preventivo_id']);
         } else {
             header("Location: 500.php");
         }
@@ -74,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['descrizione*'] = $_POST['descrizione'] ?? null;
 
         $_POST = InputController::sanitizePreventivo($_POST);
-        $target = PreventivoController::getPreventivoById($_POST['id_preventivo']);
+        $target = PreventivoController::getPreventivoById($_POST['edit_preventivo_id']);
 
         if ($_POST['titolo'] == $target->getTitolo() || !PreventivoController::isTitleDuplicated($_POST['titolo'])) {
             $_POST['foto'] = $_FILES['foto'];
@@ -83,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $errorMessages = InputController::validatePreventivoEdit($_POST);
                 if ($errorMessages === true) {
                     $utente = AuthController::getAuthUser();
-                    if (PreventivoController::authorizeFunction($_POST['id_preventivo'], $utente->getId())) {
+                    if (PreventivoController::authorizeFunction($_POST['edit_preventivo_id'], $utente->getId())) {
                         $target_dir = 'uploads' . DIRECTORY_SEPARATOR . $_POST['titolo'] . DIRECTORY_SEPARATOR;
                         $file_name = basename($_FILES["foto"]["name"]);
                         $old_dir = dirname($target->getFoto());
@@ -144,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         $_POST['foto'] = $target_file;
                         $_POST['utente'] = $utente->getId();
-                        $result = PreventivoController::update($_POST['id_preventivo']);
+                        $result = PreventivoController::update($_POST['edit_preventivo_id']);
                         if ($result === true) {
                             $_SESSION['error-preventivi'] = null;
                             header("Location: lista_preventivi.php");
@@ -156,25 +160,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     }
                 } else {
                     $_SESSION['error-preventivi'] = $errorMessages;
-                    header(header: "Location: modifica_preventivo.php?id=" . $_POST['id_preventivo']);
+                    header(header: "Location: modifica_preventivo.php?id=" . $_POST['edit_preventivo_id']);
                 }
 
             } else {
                 $_SESSION['error-preventivi'] = $errorMessages;
-                header(header: "Location: modifica_preventivo.php?id=" . $_POST['id_preventivo']);
+                header(header: "Location: modifica_preventivo.php?id=" . $_POST['edit_preventivo_id']);
             }
 
         } else {
             $errorMessages = ERROR_MESSAGES_WRAPPER . "<li>Esiste già un preventivo registrato con questo titolo</li></ul>";
             $_SESSION['error-preventivi'] = $errorMessages;
-            header(header: "Location: modifica_preventivo.php?id=" . $_POST['id_preventivo']);
+            header(header: "Location: modifica_preventivo.php?id=" . $_POST['edit_preventivo_id']);
         }
 
     }
 } elseif ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'edit') {
     $_GET = InputController::sanitizeAll($_GET);
-    if (PreventivoController::authorizeFunction($_GET['id_preventivo'], (AuthController::getAuthUser())->getId())) {
-        header(header: "Location: modifica_preventivo.php?id=" . $_GET['id_preventivo']);
+    if (PreventivoController::authorizeFunction($_GET['edit_preventivo_id'], (AuthController::getAuthUser())->getId())) {
+        header(header: "Location: modifica_preventivo.php?id=" . $_GET['edit_preventivo_id']);
     } else {
         header("Location: 500.php");
     }

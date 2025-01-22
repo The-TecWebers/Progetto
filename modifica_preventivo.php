@@ -53,7 +53,7 @@ if (AuthController::isLogged()) {
             $template = str_replace("</textarea>", "{$preventivo->getDescrizione()}</textarea>", $template);
         }
         $template = str_replace("<!--Image-->", "<img class=\"preventivo-edit-foto\" src=\"{$preventivo->getFoto()}\" alt=\"Foto scelta per il preventivo\">", $template);
-        $template = str_replace("<!--id_preventivo-->", "<input type=\"hidden\" id=\"id_preventivo\" name=\"id_preventivo\" value=\"{$id}\"/>", $template);
+        $template = str_replace("<!--id_preventivo-->", "<input type=\"hidden\" id=\"edit_preventivo_id\" name=\"edit_preventivo_id\" value=\"{$id}\"/>", $template);
         session_reset();
         session_write_close();
         include __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "template" . DIRECTORY_SEPARATOR . "header.php";
