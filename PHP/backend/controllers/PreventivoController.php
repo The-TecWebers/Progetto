@@ -89,12 +89,12 @@ class PreventivoController
 
         // Verifica se esiste un preventivo successivo
         $linkPreventivoSuccessivo = isset($preventivi[$i + 1])
-            ? "<a class='link-intestazione' href='#" . $preventivi[$i + 1]['id'] . "'>Vai al prossimo preventivo</a>"
+            ? "<a class='link-intestazione' href='#preventivo_" . $preventivi[$i + 1]['id'] . "'>Vai al prossimo preventivo</a>"
             : "";
 
-        $div .= "
-        $linkPreventivoSuccessivo
-        <div id='" . $preventivo['id'] . "' class='preventivo'>
+        $div .=
+        $linkPreventivoSuccessivo .
+        "<div id='preventivo_" . $preventivo['id'] . "' class='preventivo'>
 
             <div class='img-preventivo'>
                 <img src='" . $preventivo['foto'] . "' alt='Foto del preventivo'>

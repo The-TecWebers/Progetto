@@ -684,7 +684,6 @@ footer {
 }
 
 .footer-grid-container a {
-    text-decoration: none;
     color: var(--link_bgGreen);
 }
 
