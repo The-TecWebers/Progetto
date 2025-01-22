@@ -932,8 +932,8 @@ function filterTable() {
   if (titoloFilter || richiedenteFilter || startDate || endDate) {
     var countMessage = document.createElement('p');
     countMessage.id = 'count-preventivi';
-    countMessage.setAttribute('aria-live', 'assertive');
-    countMessage.setAttribute('role', 'alert');
+    countMessage.setAttribute('aria-live', 'polite');
+    countMessage.setAttribute('role', 'region');
     countMessage.classList.add('info-label');
     countMessage.classList.add('centered');
     countMessage.classList.add('m-auto');
