@@ -2,10 +2,6 @@
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'PHP' . DIRECTORY_SEPARATOR . 'backend' . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . 'PreventivoController.php';
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'PHP' . DIRECTORY_SEPARATOR . 'backend' . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . 'AuthController.php';
 session_start();
-ini_set('error_reporting', E_ALL); // Report all errors
-ini_set('display_errors', '0');   // Hide errors from users
-ini_set('log_errors', '1');       // Enable error logging
-ini_set('error_log', '/path/to/php-error.log'); // Specify the log file
 
 const ERROR_MESSAGES_WRAPPER = '<ul role="alert" aria-live="assertive" class="errorMessages">';
 
