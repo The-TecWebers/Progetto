@@ -5,18 +5,14 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'model
 require_once 'DBController.php';
 class PreventivoController
 {
-    static public function create()
+    public static function create()
     {
         $input = InputController::sanitizePreventivo($_POST);
         $preventivo = new Preventivo($input);
         $preventivo->save();
         return true;
     }
-    static public function read()
-    {
-
-    }
-    static public function update($id)
+    public static function update($id)
     {
         $input = InputController::sanitizePreventivo($_POST);
         $target = self::getPreventivoById($id);
@@ -26,7 +22,7 @@ class PreventivoController
         $target->update(array: $input);
         return true;
     }
-    static public function delete($id)
+    public static function delete($id)
     {
         $preventivo = self::getPreventivoById($id);
         $fotoPath = $preventivo->getFoto();
