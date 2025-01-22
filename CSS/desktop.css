@@ -684,10 +684,12 @@ footer {
 }
 
 .footer-grid-container a {
+    text-decoration: none;
     color: var(--link_bgGreen);
 }
 
 .footer-grid-container a:visited {
+    text-decoration-color: var(--bg_bgGreen);
     color: var(--visitedLink_bgGreen);
 }
 

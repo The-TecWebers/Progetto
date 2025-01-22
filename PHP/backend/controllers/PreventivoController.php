@@ -68,72 +68,74 @@ class PreventivoController
     }
 
     public static function getListaPreventivi()
-    {
-        $utente = AuthController::getAuthUser();
-        $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo WHERE utente = ?", $utente->getId());
+{
+    $utente = AuthController::getAuthUser();
+    $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo WHERE utente = ?", $utente->getId());
 
-        if (!$preventivi) {
-            return "<p class='message-preventivo'>Non ci sono preventivi da mostrare</p>";
-        }
-
-        // Ordina per id decrescente
-        usort($preventivi, function ($a, $b) {
-            return $b['id'] - $a['id'];
-        });
-
-        $div = "<div class='grid cols-1'>";
-
-        foreach ($preventivi as $preventivo) {
-            // Sostituisce gli '\n' con dei '<br>', così da mantenere gli 'a capo' anche in HTML
-            $preventivo['descrizione'] = nl2br($preventivo['descrizione']);
-
-            $div .= "    
-            <a class='link-intestazione'  href='#'>Vai al prossimo preventivo</a>
-
-
-            <div class='preventivo'>
-                
-        <div class='img-preventivo'>
-            <img src='" . $preventivo['foto'] . "' alt='Foto del preventivo'>
-        </div>
-        <div class='content-preventivo'>
-            <div class='header-preventivo'>
-                <p>Preventivo - " . $preventivo['titolo'] . "</p>
-            </div>
-
-            <dl>
-                <dt>Data:</dt>
-                <dd><time datetime='" . $preventivo['data'] . "'>" . $preventivo['data'] . "</time></dd>
-
-                <dt>Luogo:</dt>
-                <dd>" . $preventivo['luogo'] . "</dd>
-
-                <dt>Descrizione:</dt>
-                <dd>" . $preventivo['descrizione'] . "</dd>
-            </dl>
-        </div>
-             <div class='form-preventivo'>
-                  <form method='GET' action='preventivi.php'>
-                      <input type='hidden' name='action' value='edit'/>
-                      <input type='hidden' id='id_preventivo_" . $preventivo['id'] . "_GET' name='id_preventivo_" .
-                      $preventivo['id'] . "_GET' value='" . $preventivo['id'] . "'/>
-                      <button type='submit' aria-label='Modifica preventivo'>
-                          <img alt='' src='Images/icons/edit_white.svg' height=30 width=30>
-                      </button>
-                  </form>
-                  <form method='POST' action='preventivi.php?action=delete'>
-                      <input type='hidden' id='id_preventivo_" . $preventivo['id'] . "_POST' name='id_preventivo_" .
-                      $preventivo['id'] . "_POST' value='" . $preventivo['id'] . "'/>
-                      <button type='submit' aria-label='Elimina preventivo'>
-                          <img alt='' src='Images/icons/delete_white.svg' height=30 width=30>
-                      </button>
-                  </form>
-              </div>
-    </div>";
-        }
-        $div .= "</div>";
-        return $div;
+    if (!$preventivi) {
+        return "<p class='message-preventivo'>Non ci sono preventivi da mostrare</p>";
     }
+
+    // Ordina per id decrescente
+    usort($preventivi, function ($a, $b) {
+        return $b['id'] - $a['id'];
+    });
+
+    $div = "<div class='grid cols-1'>";
+
+    for ($i = 0; $i < count($preventivi); $i++) {
+        $preventivo = $preventivi[$i];
+        $preventivo['descrizione'] = nl2br($preventivo['descrizione']);
+
+        // Verifica se esiste un preventivo successivo
+        $linkPreventivoSuccessivo = isset($preventivi[$i + 1])
+            ? "<a class='link-intestazione' href='#" . $preventivi[$i + 1]['id'] . "'>Vai al prossimo preventivo</a>"
+            : "";
+
+        $div .= "
+        $linkPreventivoSuccessivo
+        <div id='" . $preventivo['id'] . "' class='preventivo'>
+
+            <div class='img-preventivo'>
+                <img src='" . $preventivo['foto'] . "' alt='Foto del preventivo'>
+            </div>
+            <div class='content-preventivo'>
+                <div class='header-preventivo'>
+                    <p>Preventivo - " . $preventivo['titolo'] . "</p>
+                </div>
+
+                <dl>
+                    <dt>Data:</dt>
+                    <dd><time datetime='" . $preventivo['data'] . "'>" . $preventivo['data'] . "</time></dd>
+
+                    <dt>Luogo:</dt>
+                    <dd>" . $preventivo['luogo'] . "</dd>
+
+                    <dt>Descrizione:</dt>
+                    <dd>" . $preventivo['descrizione'] . "</dd>
+                </dl>
+            </div>
+            <div class='form-preventivo'>
+                <form method='GET' action='preventivi.php'>
+                    <input type='hidden' name='action' value='edit'/>
+                    <input type='hidden' id='id_preventivo_" . $preventivo['id'] . "_GET' name='id_preventivo_" . $preventivo['id'] . "_GET' value='" . $preventivo['id'] . "'/>
+                    <button type='submit' aria-label='Modifica preventivo'>
+                        <img alt='' src='Images/icons/edit_white.svg' height=30 width=30>
+                    </button>
+                </form>
+                <form method='POST' action='preventivi.php?action=delete'>
+                    <input type='hidden' id='id_preventivo_" . $preventivo['id'] . "_POST' name='id_preventivo_" . $preventivo['id'] . "_POST' value='" . $preventivo['id'] . "'/>
+                    <button type='submit' aria-label='Elimina preventivo'>
+                        <img alt='' src='Images/icons/delete_white.svg' height=30 width=30>
+                    </button>
+                </form>
+            </div>
+        </div>";
+    }
+
+    $div .= "</div>";
+    return $div;
+}
     public static function getTabellaPreventivi()
     {
         $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo");
