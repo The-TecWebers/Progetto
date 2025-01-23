@@ -3,6 +3,7 @@
 require_once 'UserController.php';
 
 const ERROR_MESSAGES_WRAPPER = '<ul role="alert" aria-live="assertive" class="errorMessages">';
+const ACCENTED_CHARACTERS = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
 
 class InputController
 {
@@ -14,8 +15,7 @@ class InputController
 
     private static function isName($name): bool|string
     {
-        $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
-        $name_pattern = '/^[a-zA-Z' . $accentedCharacters . '\'\-\s]{2,40}$/';
+        $name_pattern = '/^[a-zA-Z' . ACCENTED_CHARACTERS . '\'\-\s]{2,40}$/';
         if (!preg_match($name_pattern, $name)) {
             return "<li>Il nome può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri</li>";
         }
@@ -24,8 +24,7 @@ class InputController
 
     private static function isSurname($surname): bool|string
     {
-        $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
-        $surname_pattern = '/^[a-zA-Z' . $accentedCharacters . '\'\-\s]{2,40}$/';
+        $surname_pattern = '/^[a-zA-Z' . ACCENTED_CHARACTERS . '\'\-\s]{2,40}$/';
         if (!preg_match($surname_pattern, $surname)) {
             return "<li>Il cognome può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri</li>";
         }
@@ -59,8 +58,7 @@ class InputController
 
     private static function isUsername($username): bool|string
     {
-        $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
-        $username_pattern = '/^[\w' . $accentedCharacters . '\'\-]{1,40}$/';
+        $username_pattern = '/^[\w' . ACCENTED_CHARACTERS . '\'\-]{1,40}$/';
         if (!preg_match($username_pattern, $username)) {
             return "<li>Lo <span lang=\"en\">Username</span> può contenere solo lettere, numeri, apostrofi, trattini e <span lang=\"en\">underscore</span>, non può contenere spazi e deve essere lungo al massimo 40 caratteri</li>";
         }
@@ -78,9 +76,7 @@ class InputController
 
     private static function isTitolo($titolo): bool|string
     {
-        $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
-    
-        $titolo_pattern = '/^[a-zA-Z0-9' . $accentedCharacters . '\-\s]{2,40}$/';
+        $titolo_pattern = '/^[a-zA-Z0-9' . ACCENTED_CHARACTERS . '\-\s]{2,40}$/';
         if (!preg_match($titolo_pattern, $titolo)) {
             return "<li>Il titolo può contenere solo lettere, numeri, trattini e spazi e deve essere lungo da 2 a 40 caratteri</li>";
         }
@@ -88,11 +84,9 @@ class InputController
         return true;
     }
     
-
     private static function isLuogo($luogo): bool|string
     {
-        $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
-        $luogo_pattern = '/^[a-zA-Z0-9' . $accentedCharacters . '\'\-\s]{2,40}$/';
+        $luogo_pattern = '/^[a-zA-Z0-9' . ACCENTED_CHARACTERS . '\'\-\s]{2,40}$/';
         if (!preg_match($luogo_pattern, $luogo)) {
             return "<li>Il luogo può contenere solo lettere, numeri, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri</li>";
         }
@@ -101,8 +95,7 @@ class InputController
 
     private static function isDescrizione($descrizione): bool|string
     {
-        $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
-        $descrizione_pattern = '/^[a-zA-Z0-9' . $accentedCharacters . '\'\-\s]{2,255}$/';
+        $descrizione_pattern = '/^[a-zA-Z0-9' . ACCENTED_CHARACTERS . '\'\-\s]{2,255}$/';
         if (!preg_match($descrizione_pattern, $descrizione)) {
             return "<li>La descrizione può contenere solo lettere, numeri, apostrofi, trattini e spazi e deve essere lunga da 2 a 255 caratteri</li>";
         }
