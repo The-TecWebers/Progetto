@@ -7,19 +7,19 @@ const ERROR_MESSAGES_WRAPPER = '<ul role="alert" aria-live="assertive" class="er
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action = $_GET['action'] ?? null;
-
+    $raw = $_POST;
     if ($action == 'create') {
         $_SESSION['titolo*'] = $_POST['titolo'] ?? null;
         $_SESSION['luogo*'] = $_POST['luogo'] ?? null;
         $_SESSION['descrizione*'] = $_POST['descrizione'] ?? null;
-
+        
         $_POST = InputController::sanitizePreventivo($_POST);
         if (!PreventivoController::isTitleDuplicated($_POST['titolo'])) {
 
             $_POST['foto'] = $_FILES['foto'];
             $errorMessages = InputController::preventivoFieldsNotEmpty($_POST);
             if ($errorMessages === true) {
-                $errorMessages = InputController::validatePreventivo($_POST);
+                $errorMessages = InputController::validatePreventivo(array: $raw);
                 if ($errorMessages === true) {
                     $target_dir = 'uploads' . DIRECTORY_SEPARATOR . $_POST['titolo'] . DIRECTORY_SEPARATOR;
                     if (!file_exists($target_dir)) {
@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST['foto'] = $_FILES['foto'];
             $errorMessages = InputController::preventivoEditFieldsNotEmpty($_POST);
             if ($errorMessages === true) {
-                $errorMessages = InputController::validatePreventivoEdit($_POST);
+                $errorMessages = InputController::validatePreventivoEdit(array: $raw);
                 if ($errorMessages === true) {
                     $utente = AuthController::getAuthUser();
                     if (PreventivoController::authorizeFunction($_POST['edit_preventivo_id'], $utente->getId())) {

@@ -79,12 +79,15 @@ class InputController
     private static function isTitolo($titolo): bool|string
     {
         $accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
-        $titolo_pattern = '/^[a-zA-Z0-9' . $accentedCharacters . '\'\-\s]{2,40}$/';
+    
+        $titolo_pattern = '/^[a-zA-Z0-9' . $accentedCharacters . '\-\s]{2,40}$/';
         if (!preg_match($titolo_pattern, $titolo)) {
-            return "<li>Il titolo può contenere solo lettere, numeri, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri</li>";
+            return "<li>Il titolo può contenere solo lettere, numeri, trattini e spazi e deve essere lungo da 2 a 40 caratteri</li>";
         }
+        
         return true;
     }
+    
 
     private static function isLuogo($luogo): bool|string
     {
@@ -477,8 +480,7 @@ class InputController
         if (self::isDescrizione($descrizione) !== true) {
             $errorMessages .= self::isDescrizione($descrizione);
         }
-        if(self::validateFoto($foto) !== true)
-        {
+        if (self::validateFoto($foto) !== true) {
             $errorMessages .= self::validateFoto($foto);
         }
 
@@ -509,8 +511,7 @@ class InputController
         if (self::isDescrizione($descrizione) !== true) {
             $errorMessages .= self::isDescrizione($descrizione);
         }
-        if(self::validateFoto($foto) !== true)
-        {
+        if (self::validateFoto($foto) !== true) {
             $errorMessages .= self::validateFotoEdit($foto);
         }
 
@@ -528,10 +529,28 @@ class InputController
         $sanitized = [];
 
         foreach ($array as $key => $value) {
-            $sanitized[$key] = htmlspecialchars(strip_tags(trim($value)));
+            $sanitized[$key] = htmlspecialchars(strip_tags(trim($value)), ENT_QUOTES, 'UTF-8');
         }
 
         return $sanitized;
+    }
+
+    public static function reverseSanitizePreventivo($array): array
+    {
+        $reversed = [];
+
+        foreach ($array as $key => $value) {
+            if ($key !== "foto") {
+                $reversed[$key] = htmlspecialchars_decode($value, ENT_QUOTES);
+
+            }
+            else
+            {
+                $reversed[$key]= htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+            }
+        }
+
+        return $reversed;
     }
 
     public static function sanitizeAll($array): array

@@ -7,7 +7,7 @@ class PreventivoController
 {
     public static function create()
     {
-        $input = InputController::sanitizePreventivo($_POST);
+        $input = $_POST;
         $preventivo = new Preventivo($input);
         $preventivo->save();
         return true;
@@ -85,6 +85,7 @@ class PreventivoController
 
     for ($i = 0; $i < count($preventivi); $i++) {
         $preventivo = $preventivi[$i];
+        $preventivo = InputController::reverseSanitizePreventivo($preventivo);
         $preventivo['descrizione'] = nl2br($preventivo['descrizione']);
 
         // Verifica se esiste un preventivo successivo

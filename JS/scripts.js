@@ -246,9 +246,11 @@ function checkPassword(password) {
 }
 
 function checkTitolo(titolo) {
-  var regex = new RegExp('^[a-zA-Z0-9' + accentedCharacters + '\'\\-\\s]{2,40}$');
+  var accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
+  var regex = new RegExp('^[a-zA-Z0-9' + accentedCharacters + '\\-\\s]{2,40}$');
   return regex.test(titolo);
 }
+
 
 function checkLuogo(luogo) {
   var regex = new RegExp('^[a-zA-Z0-9' + accentedCharacters + '\'\\-\\s]{2,40}$');
