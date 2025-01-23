@@ -160,9 +160,10 @@ class PreventivoController
         }
         unset($preventivo); // Importante per evitare effetti collaterali
 
-        $table = "<p id='desc-tabella'>Lista dei tuoi preventivi. Nelle righe sono elencati i preventivi,
-        per ogni preventivo sono visualizzati il titolo, la data, la descrizione, il luogo, il <span lang='en'>link</span> alla foto ed
-        il <span lang='en'>link</span> per vederlo singolarmente.</p>";
+        $table = "<p id='desc-tabella'>Lista dei preventivi ricevuti da <strong>Edil Scavi</strong>. Nelle righe sono elencati i
+        preventivi; per ogni preventivo sono visualizzati il titolo, il richiedente, l'<span lang='en'>email</span> ed il numero
+        di telefono del richiedente, la data della richiesta, il luogo, il <span lang='en'>link</span> alla foto, la descrizione
+        ed il <span lang='en'>link</span> per vederlo singolarmente.</p>";
 
         $table .= "<div id='table-filter' class='filter-container'>
         <div class='filter'>
