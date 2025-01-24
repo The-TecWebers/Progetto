@@ -48,7 +48,7 @@ try {
         foreach ($fields as $field => $label) {
             $sessionKey = $field . '*';
             if (isset($_SESSION[$sessionKey]) && $_SESSION[$sessionKey] !== "") {
-                $template = str_replace("placeholder=\"{$label}\"", "value=\"" . $_SESSION[$sessionKey] . "\"", $template);
+                $template = str_replace("placeholder=\"{$label}\"", "placeholder=\"{$label}\" value=\"" . $_SESSION[$sessionKey] . "\"", $template);
             } else {
                 $template = preg_replace('/name="' . $field . '" value=".*"/', 'placeholder="' . $label . '"', $template);
             }
