@@ -251,13 +251,11 @@ function checkTitolo(titolo) {
 }
 
 function checkLuogo(luogo) {
-  var accentedCharacters = 'àèéìòùÀÈÉÌÒÙ';
   var regex = new RegExp('^[a-zA-Z0-9' + accentedCharacters + '\\\'\\"\\-\\s]{2,40}$');
   return regex.test(luogo);
 }
 
 function checkDescrizione(descrizione) {
-  var accentedCharacters = 'àèéìòùÀÈÉÌÒÙ';
   var regex = new RegExp('^[a-zA-Z0-9' + accentedCharacters + '\\\'\\"\\-\\s]{2,255}$');
   return regex.test(descrizione);
 }
@@ -382,7 +380,7 @@ function validateTitolo(x) {
   }
 
   if (!checkTitolo(x.value)) {
-    node.innerHTML = "Il titolo può contenere solo lettere, numeri, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
+    node.innerHTML = "Il titolo può contenere solo lettere, numeri, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
     insertAfter(node, x);
     x.focus();
 
@@ -423,7 +421,7 @@ function validateLuogo(x) {
   }
 
   if (!checkLuogo(x.value)) {
-    node.innerHTML = "Il luogo può contenere solo lettere, numeri, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
+    node.innerHTML = "Il luogo può contenere solo lettere, numeri, apostrofi, virgolette, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
     insertAfter(node, x);
     x.focus();
 
@@ -465,7 +463,7 @@ function validateDescrizione(x) {
   }
 
   if (!checkDescrizione(x.value)) {
-    node.innerHTML = "La descrizione può contenere solo lettere, numeri, apostrofi, trattini e spazi e deve essere lunga da 2 a 255 caratteri";
+    node.innerHTML = "La descrizione può contenere solo lettere, numeri, apostrofi, virgolette, trattini e spazi e deve essere lunga da 2 a 255 caratteri";
     insertAfter(node, x);
     x.focus();
     return false;
