@@ -10,10 +10,7 @@ session_start();
 
 try {
     if (AuthController::isLogged()) {
-        /*if (AuthController::isAdmin())
-            header("Location: dashboard.php");
-        else*/
-            header("Location: area_privata.php");
+        header("Location: area_privata.php");
     }
     $template = (file_get_contents('HTML' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . 'accedi.html'));
     
@@ -30,7 +27,7 @@ try {
         elseif($_GET['intended']=="crea_preventivo")
         {
             $template = str_replace("registrati.php", "registrati.php?intended=crea_preventivo", $template);
-            $template = str_replace("auth.php?action=login", "auth.php?action=login&intended=lista_preventivi", $template);
+            $template = str_replace("auth.php?action=login", "auth.php?action=login&intended=crea_preventivo", $template);
             $msg = "<p class='info-label centered mb-0-6'>Accedi per creare un preventivo.</p>";
             $template = str_replace("<!--intendedRedirectMessages-->", $msg, $template);
         }

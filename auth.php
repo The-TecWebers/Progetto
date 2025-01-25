@@ -45,7 +45,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         else {
             $_SESSION['error-reg'] = $result;
-            header("Location: registrati.php");
+            if(!isset($_GET['intended']))
+            {
+                header('Location: registrati.php');
+            }
+            else
+            {
+                $route = $_GET['intended'];
+                if($route == "lista_preventivi")
+                {
+                    header('Location: registrati.php?intended=lista_preventivi');
+        
+                }
+                elseif($route == "crea_preventivo")
+                {
+                    header('Location: registrati.php?intended=crea_preventivo');
+                }
+                else
+                {
+                    header('Location: 404.php');
+                }
+            }
         }
     }
     elseif ($action == "login") {
@@ -79,7 +99,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         else{
             $_SESSION['error-login'] = $result;
-            header("Location: accedi.php");
+            if(!isset($_GET['intended']))
+            {
+                header('Location: accedi.php');
+            }
+            else
+            {
+                $route = $_GET['intended'];
+                if($route == "lista_preventivi")
+                {
+                    header('Location: accedi.php?intended=lista_preventivi');
+        
+                }
+                elseif($route == "crea_preventivo")
+                {
+                    header('Location: accedi.php?intended=crea_preventivo');
+                }
+                else
+                {
+                    header('Location: 404.php');
+                }
+            }
         }
     }
     elseif ($action == "private_area") {
