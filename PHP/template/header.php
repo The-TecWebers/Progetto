@@ -58,6 +58,8 @@ switch ($current_page) {
         if(isset($_GET['intended']) && $_GET['intended']=='lista_preventivi')
         {
             $header = str_replace('<li><a href="lista_preventivi.php">Preventivi</a></li>', '<li class="current-link" aria-current="page">Preventivi</li>', $header);
+        }elseif(isset($_GET['intended']) && $_GET['intended']=='crea_preventivo'){
+            // Nothing to do
         }else{
             $header = str_replace('<a id="btn-register" href="registrati.php">Registrati</a>', '<div id="btn-register" class="current-link" aria-current="page">Registrati</div>', $header);
         }
@@ -66,6 +68,8 @@ switch ($current_page) {
     case "accedi.php":
         if(isset($_GET['intended']) && $_GET['intended']=='lista_preventivi'){
             $header = str_replace('<li><a href="lista_preventivi.php">Preventivi</a></li>', '<li class="current-link" aria-current="page">Preventivi</li>', $header);
+        }elseif(isset($_GET['intended']) && $_GET['intended']=='crea_preventivo'){
+            // Nothing to do
         }else{
             $header = str_replace('<a id="btn-login" href="accedi.php">Accedi</a>', '<div id="btn-login" class="current-link" aria-current="page">Accedi</div>', $header);
         }
