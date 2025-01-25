@@ -9,9 +9,6 @@ session_start();
 
 try {
     if (AuthController::isLogged()) {
-        /*if (AuthController::isAdmin())
-             header("Location: dashboard.php");
-         else */
         header("Location: area_privata.php");
     }
     $template = (file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'HTML' . DIRECTORY_SEPARATOR . 'pages' . DIRECTORY_SEPARATOR . 'registrati.html'));
