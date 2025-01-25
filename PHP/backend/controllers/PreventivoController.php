@@ -175,11 +175,11 @@ class PreventivoController
             <input class='form-input' type='text' id='filter-richiedente' placeholder='Es.: Publici_Comune' onkeyup='filterTable()'>
         </div>
         <div class='filter'>
-            <label class='form-label' for='start-date'>Filtra dalla data</label>
+            <label class='form-label' for='start-date'>Filtra da questa data in poi</label>
             <input class='form-input' type='date' id='start-date' onchange='filterTable()'>
         </div>
         <div class='filter'>
-            <label class='form-label' for='end-date'>Alla data</label>
+            <label class='form-label' for='end-date'>Filtra fino a questa data</label>
             <input class='form-input' type='date' id='end-date' onchange='filterTable()'>
         </div>
     </div>";
