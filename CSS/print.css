@@ -27,7 +27,7 @@ p {
 }
 
 h1::before {
-    content: url('../Images/logo/Edil_Scavi_logo_colore-nuovo.png');
+    content: url('../Images/logo/Edil_Scavi_logo_colore-nuovo.webp');
     display: block;    
 
 }
