@@ -344,7 +344,6 @@ PREVENTIVI
 */
 
 .filter-container {
-    width: 40%;
     margin: auto;
     display: grid;
     grid-template-columns: auto;
@@ -356,13 +355,12 @@ PREVENTIVI
 }
 
 .push-right {
-    width: 40%;
     margin: auto;
     margin-bottom: 0.5em;
 }
 
-#filter-results-container, #reset-message {
-    width: 40%;
+.filter-container, .push-right, #filter-results-container, #reset-message {
+    width: 50%;
 }
 
 

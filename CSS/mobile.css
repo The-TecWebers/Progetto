@@ -173,17 +173,12 @@ PREVENTIVI
 ===========
 */
 
-.filter-container {
-    width: 100%;
-}
-
 .push-right {
-    width: 100%;
     margin: 0;
     margin-bottom: 0.5em;
 }
 
-#filter-results-container, #reset-message {
+.filter-container, .push-right, #filter-results-container, #reset-message {
     width: 100%;
 }
 

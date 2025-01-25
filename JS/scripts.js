@@ -900,7 +900,7 @@ function filterTable() {
     errorMessage.classList.add('error-label', 'push-right', 'centered');
     errorMessage.setAttribute('role', 'alert');
     errorMessage.setAttribute('aria-live', 'assertive');
-    errorMessage.textContent = 'La data di inizio deve essere minore o uguale a quella di fine.';
+    errorMessage.textContent = 'La data minima deve essere precedente o uguale a quella massima.';
     insertAfter(errorMessage, filterDiv);
     return;
   }
