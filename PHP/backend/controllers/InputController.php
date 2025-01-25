@@ -86,22 +86,22 @@ class InputController
     
     private static function isLuogo($luogo): bool|string
     {
-        $luogo_pattern = '/^[a-zA-Z0-9' . ACCENTED_CHARACTERS . '\'\-\s]{2,40}$/';
+        $luogo_pattern = '/^[a-zA-Z0-9' . ACCENTED_CHARACTERS . '\'"\-\\s]{2,40}$/';
         if (!preg_match($luogo_pattern, $luogo)) {
-            return "<li>Il luogo può contenere solo lettere, numeri, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri</li>";
+            return "<li>Il luogo può contenere solo lettere, numeri, apostrofi, virgolette, trattini e spazi e deve essere lungo da 2 a 40 caratteri</li>";
         }
         return true;
     }
+    
 
     private static function isDescrizione($descrizione): bool|string
     {
-        $descrizione_pattern = '/^[a-zA-Z0-9' . ACCENTED_CHARACTERS . '\'\-\s]{2,255}$/';
+        $descrizione_pattern = '/^[a-zA-Z0-9' . ACCENTED_CHARACTERS . '\'"\-\\s]{2,255}$/';
         if (!preg_match($descrizione_pattern, $descrizione)) {
-            return "<li>La descrizione può contenere solo lettere, numeri, apostrofi, trattini e spazi e deve essere lunga da 2 a 255 caratteri</li>";
+            return "<li>La descrizione può contenere solo lettere, numeri, apostrofi, virgolette, trattini e spazi e deve essere lunga da 2 a 255 caratteri</li>";
         }
         return true;
     }
-
 
 
 
@@ -236,7 +236,7 @@ class InputController
 
         foreach ($array as $key => $value) {
             if ($key != 'password' && $key != 'password_confirmation') {
-                $sanitized[$key] = htmlentities(strip_tags(trim($value)));
+                $sanitized[$key] = htmlspecialchars(strip_tags(trim($value)));
             }
         }
 
@@ -270,7 +270,7 @@ class InputController
     {
         $sanitized = [];
 
-        $sanitized['username'] = htmlentities(strip_tags(trim($array['username'])));
+        $sanitized['username'] = htmlspecialchars(strip_tags(trim($array['username'])));
         $sanitized['password'] = strip_tags($array['password']);
 
         return $sanitized;
@@ -402,7 +402,7 @@ class InputController
 
         foreach ($array as $key => $value) {
             if ($key != 'old_password' && $key != 'new_password' && $key != 'repeated_password') {
-                $sanitized[$key] = htmlentities(strip_tags(trim($value)));
+                $sanitized[$key] = htmlspecialchars(strip_tags(trim($value)));
             }
         }
 
@@ -528,30 +528,12 @@ class InputController
         return $sanitized;
     }
 
-    public static function reverseSanitizePreventivo($array): array
-    {
-        $reversed = [];
-
-        foreach ($array as $key => $value) {
-            if ($key !== "foto") {
-                $reversed[$key] = htmlspecialchars_decode($value, ENT_QUOTES);
-
-            }
-            else
-            {
-                $reversed[$key]= htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-            }
-        }
-
-        return $reversed;
-    }
-
     public static function sanitizeAll($array): array
     {
         $sanitized = [];
 
         foreach ($array as $key => $value) {
-            $sanitized[$key] = htmlentities(strip_tags(trim($value)));
+            $sanitized[$key] = htmlspecialchars(strip_tags(trim($value)));
         }
 
         return $sanitized;

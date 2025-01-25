@@ -251,14 +251,18 @@ function checkTitolo(titolo) {
 }
 
 function checkLuogo(luogo) {
-  var regex = new RegExp('^[a-zA-Z0-9' + accentedCharacters + '\'\\-\\s]{2,40}$');
+  var accentedCharacters = 'àèéìòùÀÈÉÌÒÙ';
+  var regex = new RegExp('^[a-zA-Z0-9' + accentedCharacters + '\\\'\\"\\-\\s]{2,40}$');
   return regex.test(luogo);
 }
 
 function checkDescrizione(descrizione) {
-  var regex = new RegExp('^[a-zA-Z0-9' + accentedCharacters + '\'\\-\\s]{2,255}$');
+  var accentedCharacters = 'àèéìòùÀÈÉÌÒÙ';
+  var regex = new RegExp('^[a-zA-Z0-9' + accentedCharacters + '\\\'\\"\\-\\s]{2,255}$');
   return regex.test(descrizione);
 }
+
+
 
 
 

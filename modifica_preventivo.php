@@ -17,7 +17,6 @@ $err = isset($_SESSION['error-preventivi']) ? $_SESSION['error-preventivi'] : nu
 if (AuthController::isLogged()) {
     if (PreventivoController::authorizeFunction($id, (AuthController::getAuthUser())->getId())) {
         $preventivo = PreventivoController::getPreventivoById($id);
-        
         $template = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . "HTML" . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "modifica_preventivo.html");
         if(isset($err))
         {
