@@ -14,7 +14,7 @@ class PreventivoController
     }
     public static function update($id)
     {
-        $input = InputController::sanitizePreventivo($_POST);
+        $input = $_POST;
         $target = self::getPreventivoById($id);
         if ($input['foto'] == "uploads" . DIRECTORY_SEPARATOR) {
             $input['foto'] = $target->getFoto();
@@ -68,34 +68,33 @@ class PreventivoController
     }
 
     public static function getListaPreventivi()
-{
-    $utente = AuthController::getAuthUser();
-    $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo WHERE utente = ?", $utente->getId());
+    {
+        $utente = AuthController::getAuthUser();
+        $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo WHERE utente = ?", $utente->getId());
 
-    if (!$preventivi) {
-        return "<p class='message-preventivo'>Non ci sono preventivi da mostrare</p>";
-    }
+        if (!$preventivi) {
+            return "<p class='message-preventivo'>Non ci sono preventivi da mostrare</p>";
+        }
 
-    // Ordina per id decrescente
-    usort($preventivi, function ($a, $b) {
-        return $b['id'] - $a['id'];
-    });
+        // Ordina per id decrescente
+        usort($preventivi, function ($a, $b) {
+            return $b['id'] - $a['id'];
+        });
 
-    $div = "<div class='grid cols-1'>";
+        $div = "<div class='grid cols-1'>";
 
-    for ($i = 0; $i < count($preventivi); $i++) {
-        $preventivo = $preventivi[$i];
-        $preventivo = InputController::reverseSanitizePreventivo($preventivo);
-        $preventivo['descrizione'] = nl2br($preventivo['descrizione']);
+        for ($i = 0; $i < count($preventivi); $i++) {
+            $preventivo = $preventivi[$i];
+            $preventivo['descrizione'] = nl2br($preventivo['descrizione']);
 
-        // Verifica se esiste un preventivo successivo
-        $linkPreventivoSuccessivo = isset($preventivi[$i + 1])
-            ? "<a class='link-intestazione' href='#preventivo_" . $preventivi[$i + 1]['id'] . "'>Vai al prossimo preventivo</a>"
-            : "";
+            // Verifica se esiste un preventivo successivo
+            $linkPreventivoSuccessivo = isset($preventivi[$i + 1])
+                ? "<a class='link-intestazione' href='#preventivo_" . $preventivi[$i + 1]['id'] . "'>Vai al prossimo preventivo</a>"
+                : "";
 
-        $div .=
-        $linkPreventivoSuccessivo .
-        "<div id='preventivo_" . $preventivo['id'] . "' class='preventivo'>
+            $div .=
+                $linkPreventivoSuccessivo .
+                "<div id='preventivo_" . $preventivo['id'] . "' class='preventivo'>
 
             <div class='img-preventivo'>
                 <img src='" . $preventivo['foto'] . "' alt='Foto del preventivo'>
@@ -132,11 +131,11 @@ class PreventivoController
                 </form>
             </div>
         </div>";
-    }
+        }
 
-    $div .= "</div>";
-    return $div;
-}
+        $div .= "</div>";
+        return $div;
+    }
     public static function getTabellaPreventivi()
     {
         $preventivi = DBController::getPreventivi("SELECT * FROM richiesta_preventivo");
@@ -206,13 +205,13 @@ class PreventivoController
         foreach ($preventivi as $preventivo) {
             $table .= "<tr>
                 <th scope='row'>" . $preventivo['titolo'] . "</th>
-                <td data-title='Richiedente'>" . $preventivo['username'] . "</td>
-                <td data-title='Email'>" . $preventivo['email'] . "</td>
-                <td data-title='Telefono'>" . $preventivo['telefono'] . "</td>
+                <td data-title='Richiedente'>" . $preventivo['username']. "</td>
+                <td data-title='Email'>" . $preventivo['email']. "</td>
+                <td data-title='Telefono'>" . $preventivo['telefono']. "</td>
                 <td data-title='Data'><time datetime='" . $preventivo['data'] . "'>" . $preventivo['data'] . "</time></td>
-                <td data-title='Luogo'>" . $preventivo['luogo'] . "</td>
+                <td data-title='Luogo'>" . $preventivo['luogo']. "</td>
                 <td data-title='Foto'><a href='" . $preventivo['foto'] . "' target='_blank'>Foto del preventivo</a></td>
-                <td data-title='Descrizione'>" . $preventivo['descrizione'] . "</td>
+                <td data-title='Descrizione'>" . $preventivo['descrizione']. "</td>
                 <td data-title='Vista singola'><a href='singolo_preventivo.php?id=" . $preventivo['id'] . "' title='Visualizza il singolo preventivo'>Dettagli</a></td>
             </tr>";
         }
@@ -246,7 +245,7 @@ class PreventivoController
 
                 // Sostituisce gli '\n' con dei '<br>', così da mantenere gli 'a capo' anche in HTML
                 $preventivo['descrizione'] = nl2br($preventivo['descrizione']);
-                
+
                 $div .= "
             <div class='preventivo'>
                 
@@ -255,7 +254,7 @@ class PreventivoController
         </div>
         <div class='content-preventivo'>
             <div class='header-preventivo'>
-                <p>Preventivo - " . $preventivo['titolo'] . "</p>
+                <p>Preventivo - " . $preventivo['titolo']. "</p>
             </div>
 
             <dl>
@@ -263,7 +262,7 @@ class PreventivoController
                 <dd><time datetime='" . $preventivo['data'] . "'>" . $preventivo['data'] . "</time></dd>
 
                 <dt>Luogo:</dt>
-                <dd>" . $preventivo['luogo'] . "</dd>
+                <dd>" . $preventivo['luogo']. "</dd>
 
                 <dt>Descrizione:</dt>
                 <dd>" . $preventivo['descrizione'] . "</dd>

@@ -1278,7 +1278,6 @@ PREVENTIVI
 }
 
 .content-preventivo {
-    box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.1);
     border-left: dashed rgba(0, 0, 0, 0.1);
     flex: 2;
     padding: 1.25em;
