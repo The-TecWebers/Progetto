@@ -831,6 +831,10 @@ GENERIC STYLES
     border: 0;
 }
 
+.fs-1-25 {
+    font-size: 1.25em;
+}
+
 
 
 /* 
@@ -963,6 +967,14 @@ MARGINI
 
 .m-2 {
     margin: 2em;
+}
+
+.mb-0-1 {
+    margin-bottom: 0.1em;
+}
+
+.mb-0-5 {
+    margin-bottom: 0.5em;
 }
 
 .mb-0-6 {
@@ -1350,7 +1362,7 @@ PREVENTIVI
     margin-right: 13%;
 }
 
-#count-preventivi {
+#filter-results-container, #reset-message {
     width: 75%;
 }
 

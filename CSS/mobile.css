@@ -183,7 +183,7 @@ PREVENTIVI
     margin-bottom: 0.5em;
 }
 
-#count-preventivi {
+#filter-results-container, #reset-message {
     width: 100%;
 }
 

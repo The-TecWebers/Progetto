@@ -877,76 +877,107 @@ function filterTable() {
   var endDateObj = endDate ? new Date(endDate) : null;
   var numPreventiviTrovati = 0;
 
-
+  // Rimuove eventuali messaggi esistenti
   var existingErrorMessage = document.getElementById('error-date-range');
   if (existingErrorMessage) {
     existingErrorMessage.remove();
   }
 
-  var existingCountMessage = document.getElementById('count-preventivi');
-  if (existingCountMessage) {
-    existingCountMessage.remove();
+  var existingCountContainer = document.getElementById('filter-results-container');
+  if (existingCountContainer) {
+    existingCountContainer.remove();
+  }
+
+  var existingResetMessage = document.getElementById('reset-message');
+  if (existingResetMessage) {
+    existingResetMessage.remove();
   }
 
   var filterDiv = document.getElementById('table-filter');
   if (endDateObj != null && startDateObj != null && endDateObj < startDateObj) {
-      var errorMessage = document.createElement('p');
-      errorMessage.id = 'error-date-range';
-      errorMessage.classList.add('error-label');
-      errorMessage.classList.add('push-right');
-      errorMessage.classList.add('centered');
-      errorMessage.setAttribute("role", "alert");
-      errorMessage.setAttribute("aria-live", "assertive");
-      errorMessage.textContent = 'La data di inizio deve essere minore o uguale a quella di fine.';
-      insertAfter(errorMessage, filterDiv);
-      return;
+    var errorMessage = document.createElement('p');
+    errorMessage.id = 'error-date-range';
+    errorMessage.classList.add('error-label', 'push-right', 'centered');
+    errorMessage.setAttribute('role', 'alert');
+    errorMessage.setAttribute('aria-live', 'assertive');
+    errorMessage.textContent = 'La data di inizio deve essere minore o uguale a quella di fine.';
+    insertAfter(errorMessage, filterDiv);
+    return;
   }
 
   for (var i = 1; i < rows.length; i++) {
-      var cells = rows[i].getElementsByTagName('td');
-      var titoloCell = rows[i].getElementsByTagName('th')[0].textContent.toLowerCase();
-      var richiedenteCell = cells[0].textContent.toLowerCase();
-      var dateCellText = cells[3].textContent.trim();
+    var cells = rows[i].getElementsByTagName('td');
+    var titoloCell = rows[i].getElementsByTagName('th')[0].textContent.toLowerCase();
+    var richiedenteCell = cells[0].textContent.toLowerCase();
+    var dateCellText = cells[3].textContent.trim();
 
-      var dateCellObj = new Date(dateCellText);
-      var dateValid = true;
+    var dateCellObj = new Date(dateCellText);
+    var dateValid = true;
 
-      if (startDateObj && dateCellObj < startDateObj) {
-          dateValid = false;
-      }
-      if (endDateObj && dateCellObj > endDateObj) {
-          dateValid = false;
-      }
+    if (startDateObj && dateCellObj < startDateObj) {
+      dateValid = false;
+    }
+    if (endDateObj && dateCellObj > endDateObj) {
+      dateValid = false;
+    }
 
-      if (
-          titoloCell.indexOf(titoloFilter) > -1 &&
-          richiedenteCell.indexOf(richiedenteFilter) > -1 &&
-          dateValid
-      ) {
-          rows[i].classList.remove('hidden');
-          rows[i].removeAttribute("class");
-          numPreventiviTrovati++;
-      } else {
-          rows[i].classList.add('hidden');
-      }
+    if (
+      titoloCell.indexOf(titoloFilter) > -1 &&
+      richiedenteCell.indexOf(richiedenteFilter) > -1 &&
+      dateValid
+    ) {
+      rows[i].classList.remove('hidden');
+      rows[i].removeAttribute('class');
+      numPreventiviTrovati++;
+    } else {
+      rows[i].classList.add('hidden');
+    }
   }
 
   if (titoloFilter || richiedenteFilter || startDate || endDate) {
+    var resultsContainer = document.createElement('div');
+    resultsContainer.id = 'filter-results-container';
+    resultsContainer.classList.add('filter-results-container');
+    resultsContainer.setAttribute('aria-live', 'polite');
+    resultsContainer.setAttribute('role', 'region');
+    resultsContainer.classList.add('info-label', 'centered', 'm-auto');
+
     var countMessage = document.createElement('p');
     countMessage.id = 'count-preventivi';
-    countMessage.setAttribute('aria-live', 'polite');
-    countMessage.setAttribute('role', 'region');
-    countMessage.classList.add('info-label');
-    countMessage.classList.add('centered');
-    countMessage.classList.add('m-auto');
-    if(numPreventiviTrovati == 1)
-      countMessage.textContent = numPreventiviTrovati + ' preventivo trovato';
-    else
-      countMessage.textContent = numPreventiviTrovati + ' preventivi trovati';
+    countMessage.classList.add('mb-0-5', 'fs-1-25');
+    countMessage.textContent =
+      numPreventiviTrovati === 1
+        ? numPreventiviTrovati + ' preventivo trovato'
+        : numPreventiviTrovati + ' preventivi trovati';
 
-    table.parentElement.insertBefore(countMessage, table);
+    var resetButton = document.createElement('button');
+    resetButton.id = 'reset-filters';
+    resetButton.classList.add('mb-0-1');
+    resetButton.innerHTML = '<span lang="en">Reset</span> Filtri';
+    resetButton.addEventListener('click', function () {
+      document.getElementById('filter-titolo').value = '';
+      document.getElementById('filter-richiedente').value = '';
+      document.getElementById('start-date').value = '';
+      document.getElementById('end-date').value = '';
+      filterTable();
+
+      // Aggiunge il messaggio "Filtri puliti correttamente"
+      var resetMessage = document.createElement('p');
+      resetMessage.id = 'reset-message';
+      resetMessage.setAttribute('aria-live', 'polite');
+      resetMessage.setAttribute('role', 'region');
+      resetMessage.classList.add('info-label', 'centered', 'm-auto', 'fs-1-25');
+      resetMessage.textContent = 'Filtri puliti correttamente';
+      table.parentElement.insertBefore(resetMessage, table);
+    });
+
+    resultsContainer.appendChild(countMessage);
+    resultsContainer.appendChild(resetButton);
+
+    table.parentElement.insertBefore(resultsContainer, table);
   }
 }
+
 
 
 

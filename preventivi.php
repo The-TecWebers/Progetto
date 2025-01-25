@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             header("Location: 500.php");
         }
-        $_SESSION['Messages'] = "<p class='info-label centered mb-0-6'>Preventivo cancellato correttamente!</p>";
+        $_SESSION['Messages'] = "<p class='info-label centered mb-0-6' aria-live='polite' role='region'>Preventivo cancellato correttamente!</p>";
         header("Location: lista_preventivi.php");
 
     } elseif ($action == 'update') {
