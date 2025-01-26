@@ -6,7 +6,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "back
 session_start();
 $titolo = "Singolo preventivo - Edil Scavi";
 $descrizione = "Singolo preventivo per i lavori di scavi e edilizia con Edil Scavi";
-$keywords = "preventivi, scavi, edilizia, scavi brescia, lavori edilizi";
+$keywords = "singolo preventivo, data, luogo, descrizione";
 
 $template = file_get_contents(filename: __DIR__ . DIRECTORY_SEPARATOR . "HTML" . DIRECTORY_SEPARATOR . "pages" . DIRECTORY_SEPARATOR . "singolo_preventivo.html");
 
@@ -18,5 +18,5 @@ if(AuthController::isAdmin())
 session_write_close();
 include __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "template" . DIRECTORY_SEPARATOR . "header.php";
 echo $template;
-include __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "template" . DIRECTORY_SEPARATOR . "footer.php";
+include __DIR__ . DIRECTORY_SEPARATOR . "PHP" . DIRECTORY_SEPARATOR . "template" . DIRECTORY_SEPARATOR . "footer.php"; 
 

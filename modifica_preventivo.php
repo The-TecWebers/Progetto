@@ -8,7 +8,7 @@ session_start();
 
 $titolo = "Modifica preventivo - Edil Scavi";
 $descrizione = "Modifica un preventivo per i lavori di scavo ed edilizia con Edil Scavi Srl!";
-$keywords = "preventivo, modifica, scavi, edilizia, scavi brescia, lavori edilizi";
+$keywords = "modifica, preventivo, dati, titolo, Luogo, foto, descrizione breve";
 $sanitized = InputController::sanitizeAll($_GET);
 
 $id = $sanitized['id'];
