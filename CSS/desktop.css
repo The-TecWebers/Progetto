@@ -540,6 +540,11 @@ input[type="file"]::file-selector-button {
     transition: background-color 0.3s, transform 0.2s;
 }
 
+input[type="file"]::file-selector-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0.25em 0.375em rgba(0, 0, 0, 0.2);
+}
+
 .form-input {
     border: 0.125em solid var(--border);
     background-color: var(--bg_bgWhite);
@@ -1338,6 +1343,12 @@ PREVENTIVI
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
+
+#crea-preventivo-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0.285em 0.428em rgba(0, 0, 0, 0.2);
+}
+
 
 .filter-container {
     visibility: hidden;
