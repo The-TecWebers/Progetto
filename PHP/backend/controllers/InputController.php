@@ -554,7 +554,7 @@ class InputController
             $fileSize = $_FILES['foto']['size'];
 
             if ($fileSize > $maxFileSize) {
-                $errorMessage = "<li>Il file non può essere più grande di 5MB.</li>";
+                $errorMessage = "<li>Il file non può essere più grande di 5 <abbr title='Megabyte' lang='en'>MB</abbr>.</li>";
             } else {
                 return true;
             }
@@ -573,7 +573,7 @@ class InputController
             $fileSize = $_FILES['foto']['size'];
 
             if ($fileSize > $maxFileSize) {
-                $errorMessage = "<li>Il file non può essere più grande di 5MB.</li>";
+                $errorMessage = "<li>Il file non può essere più grande di 5 <abbr title='Megabyte' lang='en'>MB</abbr>.</li>";
             } else {
                 return true;
             }
