@@ -51,7 +51,7 @@ try {
 
             foreach ($fields as $field => $label) {
                 if (isset($userData[$field]) && $userData[$field] !== "") {
-                    $template = str_replace("placeholder=\"{$label}\"", "placeholder=\"{$label}\" value=\"" . $userData[$field] . "\"", $template);
+                    $template = str_replace("placeholder=\"{$label}\"", "placeholder=\"{$label}\" value=\"" . htmlspecialchars($userData[$field]) . "\"", $template);
                 }
             }
         }

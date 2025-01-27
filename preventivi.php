@@ -11,14 +11,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['titolo*'] = $_POST['titolo'] ?? null;
         $_SESSION['luogo*'] = $_POST['luogo'] ?? null;
         $_SESSION['descrizione*'] = $_POST['descrizione'] ?? null;
-
         $_POST = InputController::sanitizePreventivo($_POST);
 
         if (!PreventivoController::isTitleDuplicated($_POST['titolo'])) {
             $_POST['foto'] = $_FILES['foto'];
             $errorMessages = InputController::preventivoFieldsNotEmpty($_POST);
             if ($errorMessages === true) {
-                $errorMessages = InputController::validatePreventivo(array: $_POST);
+                $errorMessages = InputController::validatePreventivo(array: $raw);
 
                 if ($errorMessages === true) {
                     $targetDir = 'uploads' . DIRECTORY_SEPARATOR . $_POST['titolo'] . DIRECTORY_SEPARATOR;

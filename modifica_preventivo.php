@@ -29,8 +29,8 @@ if (AuthController::isLogged()) {
     
             foreach ($fields as $field => $label) {
                 $sessionKey = $field . '*';
-                if (isset($_SESSION[$sessionKey]) && $_SESSION[$sessionKey] !== "") {
-                    $template = str_replace( "placeholder=\"{$label}\"", "placeholder=\"{$label}\" value=\"" . $_SESSION[$sessionKey] . "\"", $template);
+                if (isset($_SESSION[$sessionKey]) && $_SESSION[$sessionKey] !== "" && $sessionKey !== "descrizione*") {
+                    $template = str_replace( "placeholder=\"{$label}\"", "placeholder=\"{$label}\" value=\"" . htmlspecialchars($_SESSION[$sessionKey]) . "\"", $template);
                 } else {
                     $template = preg_replace('/name="' . $field . '" value=".*"/', 'placeholder="' . $label . '"', $template);
                 }
@@ -38,7 +38,7 @@ if (AuthController::isLogged()) {
     
             if(isset($_SESSION['descrizione*']))
             {
-                $template = str_replace("</textarea>", $_SESSION['descrizione*']."</textarea>", $template );
+                $template = str_replace("</textarea>", htmlspecialchars($_SESSION['descrizione*'])."</textarea>", $template );
             }
             else
             {
