@@ -620,7 +620,7 @@ class InputController
         }
     
         $targetFile = $targetDir . uniqid('img_', true) . '.webp';
-        $quality = filesize($uploadedFile) > $maxFileSize ? 50 : 80;
+        $quality = filesize($uploadedFile) > $maxFileSize ? 50 : 100;
     
         if (!imagewebp($srcImage, $targetFile, $quality)) {
             throw new Exception("Failed to save the processed image.");
@@ -630,5 +630,30 @@ class InputController
     
         return $targetFile;
     }
+
+    public static function processImageEdit($imagePath, $quality = 50) {
+        $imageInfo = getimagesize($imagePath);
+        $imageMime = $imageInfo['mime'];
+        
+        switch ($imageMime) {
+            case 'image/jpeg':
+                $image = imagecreatefromjpeg($imagePath);
+                break;
+            case 'image/png':
+                $image = imagecreatefrompng($imagePath);
+                break;
+            default:
+                return false;
+        }
+    
+        $webpImagePath = pathinfo($imagePath, PATHINFO_DIRNAME) . DIRECTORY_SEPARATOR . pathinfo($imagePath, PATHINFO_FILENAME) . '.webp';
+    
+        imagewebp($image, $webpImagePath, $quality);
+    
+        imagedestroy($image);
+    
+        return $webpImagePath;
+    }
+    
     
 }

@@ -65,10 +65,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['titolo*'] = $_POST['titolo'] ?? null;
         $_SESSION['luogo*'] = $_POST['luogo'] ?? null;
         $_SESSION['descrizione*'] = $_POST['descrizione'] ?? null;
-
+    
         $_POST = InputController::sanitizePreventivo($_POST);
         $target = PreventivoController::getPreventivoById($_POST['edit_preventivo_id']);
-
+    
         if ($_POST['titolo'] == $target->getTitolo() || !PreventivoController::isTitleDuplicated($_POST['titolo'])) {
             $_POST['foto'] = $_FILES['foto'];
             $errorMessages = InputController::preventivoEditFieldsNotEmpty($_POST);
@@ -81,18 +81,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $file_name = basename($_FILES["foto"]["name"]);
                         $old_dir = dirname($target->getFoto());
                         $old_file_name = basename($target->getFoto());
-
+    
                         // Se è stato cambiato il titolo
                         if (!file_exists($target_dir)) {
                             mkdir($target_dir, 0777, true);
-
+    
                             // Se foto è stata cambiata con una di nome diverso
                             if ($file_name != "" && $file_name != $old_file_name) {
                                 $target_file = $target_dir . $file_name;
                                 move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
+    
+                                // Se l'immagine è più grande di 1 MB, compresse in WebP con qualità 50
+                                if (filesize($target_file) > 1 * 1024 * 1024) {
+                                    $webpFile = InputController::processImageEdit($target_file, 50);
+                                    if ($webpFile) {
+                                        $target_file = $webpFile; // Usa la versione compressa
+                                    }
+                                } else {
+                                    // Se è sotto 1 MB, la compressione è fatta con qualità 100
+                                    $webpFile = InputController::processImageEdit($target_file, 100);
+                                    if ($webpFile) {
+                                        $target_file = $webpFile;
+                                    }
+                                }
                             } else {
                                 $target_file = $target_dir . $old_file_name;
-
+    
                                 // Se la foto è stata cambiata con una di nome uguale
                                 if ($file_name != "") {
                                     move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
@@ -102,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     copy($target->getFoto(), $target_file);
                                 }
                             }
-
+    
                             // Elimina la vecchia cartella perchè il titolo è stato modificato
                             if (is_dir($old_dir)) {
                                 array_map('unlink', glob("$old_dir/*.*"));
@@ -121,18 +135,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             }
                             $target_file = $target_dir . $file_name;
                             move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
+    
+                            // Se l'immagine è più grande di 1 MB, compresse in WebP con qualità 50
+                            if (filesize($target_file) > 1 * 1024 * 1024) {
+                                $webpFile = InputController::processImageEdit($target_file, 50);
+                                if ($webpFile) {
+                                    $target_file = $webpFile; // Usa la versione compressa
+                                }
+                            } else {
+                                // Se è sotto 1 MB, la compressione è fatta con qualità 100
+                                $webpFile = InputController::processImageEdit($target_file, 100);
+                                if ($webpFile) {
+                                    $target_file = $webpFile;
+                                }
+                            }
                         } else {
                             $target_file = $target->getFoto();
-
+    
                             // Se la foto è stata cambiata con una di nome uguale
                             if ($file_name != "") {
                                 move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
                             }
-
+    
                             // Se foto non è stata cambiata
                             // -> Non serve fare nulla
                         }
-
+    
                         $_POST['foto'] = $target_file;
                         $_POST['utente'] = $utente->getId();
                         $result = PreventivoController::update($_POST['edit_preventivo_id']);
@@ -149,19 +177,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $_SESSION['error-preventivi'] = $errorMessages;
                     header(header: "Location: modifica_preventivo.php?id=" . $_POST['edit_preventivo_id']);
                 }
-
+    
             } else {
                 $_SESSION['error-preventivi'] = $errorMessages;
                 header(header: "Location: modifica_preventivo.php?id=" . $_POST['edit_preventivo_id']);
             }
-
+    
         } else {
             $errorMessages = ERROR_MESSAGES_WRAPPER . "<li>Esiste già un preventivo registrato con questo titolo</li></ul>";
             $_SESSION['error-preventivi'] = $errorMessages;
             header(header: "Location: modifica_preventivo.php?id=" . $_POST['edit_preventivo_id']);
         }
-
+    
     }
+    
 } elseif ($_SERVER['REQUEST_METHOD'] == 'GET' && $_GET['action'] == 'edit') {
     $_GET = InputController::sanitizeAll($_GET);
     if (PreventivoController::authorizeFunction($_GET['edit_preventivo_id'], (AuthController::getAuthUser())->getId())) {
