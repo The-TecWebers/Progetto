@@ -59,6 +59,13 @@ class Preventivo
         return $this->utente;
     }
 
+    public function setFoto($foto)
+    {
+        $this->foto = $foto;
+
+        DBController::runQuery("UPDATE richiesta_preventivo SET foto = ? WHERE id = ?;", $this->foto, $this->id);
+    }
+
     public function save()
     {
         DBController::runQuery("INSERT INTO richiesta_preventivo (titolo, utente, data, luogo, foto, descrizione)

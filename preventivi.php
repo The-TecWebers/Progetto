@@ -15,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (!PreventivoController::isTitleDuplicated($_POST['titolo'])) {
             $_POST['foto'] = $_FILES['foto'];
+            $raw['foto'] = $_FILES['foto'];
             $errorMessages = InputController::preventivoFieldsNotEmpty($_POST);
             if ($errorMessages === true) {
                 $errorMessages = InputController::validatePreventivo(array: $raw);
@@ -22,6 +23,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if ($errorMessages === true) {
                     $targetDir = 'uploads' . DIRECTORY_SEPARATOR . $_POST['titolo'] . DIRECTORY_SEPARATOR;
                     $processedFile = InputController::processImage(maxFileSize: 1 * 1024 * 1024, targetDir: $targetDir);
+                    if($processedFile === false) {
+                        $errorMessages = ERROR_MESSAGES_WRAPPER . "<li>Errore durante il caricamento dell'immagine</li></ul>";
+                        $_SESSION['error-preventivi'] = $errorMessages;
+                        header('Location: crea_preventivo.php');
+                    }
                     $_POST['foto'] = $processedFile;
 
                     $utente = AuthController::getAuthUser();
@@ -91,25 +97,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 $target_file = $target_dir . $file_name;
                                 move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
     
-                                // Se l'immagine è più grande di 1 MB, compresse in WebP con qualità 50
-                                if (filesize($target_file) > 1 * 1024 * 1024) {
-                                    $webpFile = InputController::processImageEdit($target_file, 50);
-                                    if ($webpFile) {
-                                        $target_file = $webpFile; // Usa la versione compressa
-                                    }
-                                } else {
-                                    // Se è sotto 1 MB, la compressione è fatta con qualità 100
-                                    $webpFile = InputController::processImageEdit($target_file, 100);
-                                    if ($webpFile) {
-                                        $target_file = $webpFile;
-                                    }
-                                }
+                                $compressedImage = compressImage($target_file);
+                                unlink($target_file);
+                                $target->setFoto($compressedImage);
                             } else {
                                 $target_file = $target_dir . $old_file_name;
     
                                 // Se la foto è stata cambiata con una di nome uguale
                                 if ($file_name != "") {
                                     move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
+
+                                    $compressedImage = compressImage($target_file);
                                 }
                                 // Se foto non è stata cambiata
                                 else {
@@ -136,30 +134,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             $target_file = $target_dir . $file_name;
                             move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
     
-                            // Se l'immagine è più grande di 1 MB, compresse in WebP con qualità 50
-                            if (filesize($target_file) > 1 * 1024 * 1024) {
-                                $webpFile = InputController::processImageEdit($target_file, 50);
-                                if ($webpFile) {
-                                    $target_file = $webpFile; // Usa la versione compressa
-                                }
-                            } else {
-                                // Se è sotto 1 MB, la compressione è fatta con qualità 100
-                                $webpFile = InputController::processImageEdit($target_file, 100);
-                                if ($webpFile) {
-                                    $target_file = $webpFile;
-                                }
-                            }
+                            $compressedImage = compressImage($target_file);
+                            unlink($target_file);
+                            $target->setFoto($compressedImage);
                         } else {
                             $target_file = $target->getFoto();
     
                             // Se la foto è stata cambiata con una di nome uguale
                             if ($file_name != "") {
                                 move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
+
+                                $compressedImage = compressImage($target_file);
                             }
     
                             // Se foto non è stata cambiata
                             // -> Non serve fare nulla
                         }
+
+                        // Cambia l'estensione in .webp
+                        $target_file = preg_replace('/\\.[^.\\s]{3,4}$/', '.webp', $target_file);
     
                         $_POST['foto'] = $target_file;
                         $_POST['utente'] = $utente->getId();
@@ -198,4 +191,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         header("Location: 500.php");
     }
+}
+
+function compressImage($target_file) {
+    // Se l'immagine è più grande di 1 MB, viene compressa in WebP con qualità 50
+    if (filesize($target_file) > 1 * 1024 * 1024) {
+        $webpFile = InputController::processImageEdit($target_file, 50);
+        if($webpFile === false) {
+            $errorMessages = ERROR_MESSAGES_WRAPPER . "<li>Errore durante il caricamento dell'immagine</li></ul>";
+            $_SESSION['error-preventivi'] = $errorMessages;
+            header('Location: modifica_preventivo.php');
+        }
+    } else {
+        // Se è sotto 1 MB, la compressione è fatta con qualità 100
+        $webpFile = InputController::processImageEdit($target_file, 100);
+        if($webpFile === false) {
+            $errorMessages = ERROR_MESSAGES_WRAPPER . "<li>Errore durante il caricamento dell'immagine</li></ul>";
+            $_SESSION['error-preventivi'] = $errorMessages;
+            header('Location: modifica_preventivo.php');
+        }
+    }
+
+    return $webpFile;
 }

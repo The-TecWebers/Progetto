@@ -588,14 +588,14 @@ class InputController
     public static function processImage($maxFileSize = 1 * 1024 * 1024, $targetDir = 'uploads/')
     {
         if (!isset($_FILES['foto']) || $_FILES['foto']['error'] !== UPLOAD_ERR_OK) {
-            throw new Exception("No valid image uploaded.");
+            return false;
         }
     
         $uploadedFile = $_FILES['foto']['tmp_name'];
         $imageInfo = getimagesize($uploadedFile);
     
         if ($imageInfo === false) {
-            throw new Exception("Invalid image file.");
+            return false;
         }
     
         list($width, $height, $imageType) = $imageInfo;
@@ -611,19 +611,34 @@ class InputController
             case IMAGETYPE_GIF:
                 $srcImage = imagecreatefromgif($uploadedFile);
                 break;
+            case IMAGETYPE_AVIF:
+                $srcImage = imagecreatefromavif($uploadedFile);
+                break;
+            case IMAGETYPE_WBMP:
+                $srcImage = imagecreatefromwbmp($uploadedFile);
+                break;
+            case IMAGETYPE_WEBP:
+                $srcImage = imagecreatefromwebp($uploadedFile);
+                break;
+            case IMAGETYPE_XBM:
+                $srcImage = imagecreatefromxbm($uploadedFile);
+                break;
             default:
-                throw new Exception("Unsupported image type: $mime");
+                return false;
         }
     
         if (!file_exists($targetDir)) {
             mkdir($targetDir, 0777, true);
         }
+
+        $file_name = basename($_FILES["foto"]["name"]);
+        $file_name = pathinfo($file_name, PATHINFO_FILENAME); // Rimuove l'estensione dal nome del file
     
-        $targetFile = $targetDir . uniqid('img_', true) . '.webp';
+        $targetFile = $targetDir . $file_name . '.webp';
         $quality = filesize($uploadedFile) > $maxFileSize ? 50 : 100;
     
         if (!imagewebp($srcImage, $targetFile, $quality)) {
-            throw new Exception("Failed to save the processed image.");
+            return false;
         }
     
         imagedestroy($srcImage);
@@ -641,6 +656,21 @@ class InputController
                 break;
             case 'image/png':
                 $image = imagecreatefrompng($imagePath);
+                break;
+            case 'image/gif':
+                $image = imagecreatefromgif($imagePath);
+                break;
+            case 'image/avif':
+                $image = imagecreatefromavif($imagePath);
+                break;
+            case 'image/vnd.wap.wbmp':
+                $image = imagecreatefromwbmp($imagePath);
+                break;
+            case 'image/webp':
+                $image = imagecreatefromwebp($imagePath);
+                break;
+            case 'image/xbm':
+                $image = imagecreatefromxbm($imagePath);
                 break;
             default:
                 return false;
