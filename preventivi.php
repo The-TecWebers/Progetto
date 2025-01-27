@@ -98,8 +98,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
     
                                 $compressedImage = compressImage($target_file);
-                                unlink($target_file);
-                                $target->setFoto($compressedImage);
+                                if ($target_file !== $compressedImage) { // Se l'estensione non era già webp
+                                    unlink($target_file);
+                                }
                             } else {
                                 $target_file = $target_dir . $old_file_name;
     
@@ -112,6 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 // Se foto non è stata cambiata
                                 else {
                                     copy($target->getFoto(), $target_file);
+                                    $compressedImage = $target_file;
                                 }
                             }
     
@@ -135,8 +137,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
     
                             $compressedImage = compressImage($target_file);
-                            unlink($target_file);
-                            $target->setFoto($compressedImage);
+                            if ($target_file !== $compressedImage) { // Se l'estensione non era già webp
+                                unlink($target_file);
+                            }
                         } else {
                             $target_file = $target->getFoto();
     
@@ -146,15 +149,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                                 $compressedImage = compressImage($target_file);
                             }
-    
                             // Se foto non è stata cambiata
-                            // -> Non serve fare nulla
+                            else {
+                                $compressedImage = $target_file;
+                            }
                         }
-
-                        // Cambia l'estensione in .webp
-                        $target_file = preg_replace('/\\.[^.\\s]{3,4}$/', '.webp', $target_file);
     
-                        $_POST['foto'] = $target_file;
+                        $_POST['foto'] = $compressedImage;
                         $_POST['utente'] = $utente->getId();
                         $result = PreventivoController::update($_POST['edit_preventivo_id']);
                         if ($result === true) {
