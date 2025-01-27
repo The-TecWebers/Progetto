@@ -80,10 +80,10 @@ class InputController
         if (!preg_match($titolo_pattern, $titolo)) {
             return "<li>Il titolo può contenere solo lettere, numeri, trattini e spazi e deve essere lungo da 2 a 40 caratteri</li>";
         }
-        
+
         return true;
     }
-    
+
     private static function isLuogo($luogo): bool|string
     {
         $luogo_pattern = '/^[a-zA-Z0-9' . ACCENTED_CHARACTERS . '\'"\-\\s]{2,40}$/';
@@ -92,7 +92,7 @@ class InputController
         }
         return true;
     }
-    
+
 
     private static function isDescrizione($descrizione): bool|string
     {
@@ -585,55 +585,50 @@ class InputController
 
     }
 
-    public static function cropImage($file, $maxDimension)
+    public static function processImage($maxFileSize = 1 * 1024 * 1024, $targetDir = 'uploads/')
     {
-        $fileTmpPath = $_FILES["foto"]["tmp_name"];
-        $fileName = $_FILES["foto"]["name"];
-        $fileSize = $_FILES["foto"]["size"];
-        $fileType = $_FILES["foto"]["type"];
-
-        $imageInfo = getimagesize($fileTmpPath);
-        if ($fileSize > $maxDimension) {
-            $image = null;
-
-            switch ($imageInfo['mime']) {
-                case 'image/jpeg':
-                    $image = imagecreatefromjpeg(($fileTmpPath));
-                    break;
-                case 'image/png':
-                    $image = imagecreatefrompng($fileTmpPath);
-                    break;
-                case 'image/gif':
-                    $image = imagecreatefromgif($fileTmpPath);
-                    break;
-                default:
-                    header(header: "Location: 500.php");
-            }
-
-            $originalWidth = imagesx($image);
-            $originalHeight = imagesy($image);
-            $newWidth = $originalWidth;
-            $newHeight = $originalHeight;
-
-            if ($fileSize > $maxDimension) {
-                $aspectRatio = $originalWidth / $originalHeight;
-
-                $newWidth = 1024;
-                $newHeight = $newWidth / $aspectRatio;
-            }
-
-            $resizedImage = imagecreatetruecolor($newWidth, $newHeight);
-            imagecopyresampled($resizedImage, $image, 0, 0, 0, 0, $newWidth, $newHeight, $originalWidth, $originalHeight);
-            $target_dir = 'uploads' . DIRECTORY_SEPARATOR;
-            $target_file = $target_dir . basename($_FILES["foto"]["name"]);
-            imagejpeg($resizedImage, $target_file, 85);
-            imagedestroy($image);
-            imagedestroy($resizedImage);
-
-        } else {
-            $target_dir = 'uploads' . DIRECTORY_SEPARATOR;
-            $target_file = $target_dir . basename($_FILES["foto"]["name"]);
+        if (!isset($_FILES['foto']) || $_FILES['foto']['error'] !== UPLOAD_ERR_OK) {
+            throw new Exception("No valid image uploaded.");
         }
-        return $target_file;
+    
+        $uploadedFile = $_FILES['foto']['tmp_name'];
+        $imageInfo = getimagesize($uploadedFile);
+    
+        if ($imageInfo === false) {
+            throw new Exception("Invalid image file.");
+        }
+    
+        list($width, $height, $imageType) = $imageInfo;
+        $mime = $imageInfo['mime'];
+    
+        switch ($imageType) {
+            case IMAGETYPE_JPEG:
+                $srcImage = imagecreatefromjpeg($uploadedFile);
+                break;
+            case IMAGETYPE_PNG:
+                $srcImage = imagecreatefrompng($uploadedFile);
+                break;
+            case IMAGETYPE_GIF:
+                $srcImage = imagecreatefromgif($uploadedFile);
+                break;
+            default:
+                throw new Exception("Unsupported image type: $mime");
+        }
+    
+        if (!file_exists($targetDir)) {
+            mkdir($targetDir, 0777, true);
+        }
+    
+        $targetFile = $targetDir . uniqid('img_', true) . '.webp';
+        $quality = filesize($uploadedFile) > $maxFileSize ? 50 : 80;
+    
+        if (!imagewebp($srcImage, $targetFile, $quality)) {
+            throw new Exception("Failed to save the processed image.");
+        }
+    
+        imagedestroy($srcImage);
+    
+        return $targetFile;
     }
+    
 }

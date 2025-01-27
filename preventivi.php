@@ -4,7 +4,6 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . 'PHP' . DIRECTORY_SEPARATOR . 'back
 session_start();
 
 const ERROR_MESSAGES_WRAPPER = '<ul role="alert" aria-live="assertive" class="errorMessages">';
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action = $_GET['action'] ?? null;
     $raw = $_POST;
@@ -12,31 +11,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['titolo*'] = $_POST['titolo'] ?? null;
         $_SESSION['luogo*'] = $_POST['luogo'] ?? null;
         $_SESSION['descrizione*'] = $_POST['descrizione'] ?? null;
-        
-        $_POST = InputController::sanitizePreventivo($_POST);
-        if (!PreventivoController::isTitleDuplicated($_POST['titolo'])) {
 
+        $_POST = InputController::sanitizePreventivo($_POST);
+
+        if (!PreventivoController::isTitleDuplicated($_POST['titolo'])) {
             $_POST['foto'] = $_FILES['foto'];
             $errorMessages = InputController::preventivoFieldsNotEmpty($_POST);
             if ($errorMessages === true) {
-                $errorMessages = InputController::validatePreventivo(array: $raw);
+                $errorMessages = InputController::validatePreventivo(array: $_POST);
+
                 if ($errorMessages === true) {
-                    $target_dir = 'uploads' . DIRECTORY_SEPARATOR . $_POST['titolo'] . DIRECTORY_SEPARATOR;
-                    if (!file_exists($target_dir)) {
-                        mkdir($target_dir, 0777, true);
-                    }
-                    $target_file = $target_dir . basename($_FILES["foto"]["name"]);
-                    move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
-                    $_POST['foto'] = $target_file;
+                    $targetDir = 'uploads' . DIRECTORY_SEPARATOR . $_POST['titolo'] . DIRECTORY_SEPARATOR;
+                    $processedFile = InputController::processImage(maxFileSize: 1 * 1024 * 1024, targetDir: $targetDir);
+                    $_POST['foto'] = $processedFile;
+
                     $utente = AuthController::getAuthUser();
                     $_POST['utente'] = $utente->getId();
                     $result = PreventivoController::create();
 
-                    if ($result == true) {
+                    if ($result === true) {
                         $_SESSION['titolo*'] = null;
                         $_SESSION['luogo*'] = null;
                         $_SESSION['descrizione*'] = null;
                         $_SESSION['error-preventivi'] = null;
+
                         header("Location: lista_preventivi.php");
                     }
                 } else {
@@ -47,15 +45,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['error-preventivi'] = $errorMessages;
                 header('Location: crea_preventivo.php');
             }
-
-
-
         } else {
             $errorMessages = ERROR_MESSAGES_WRAPPER . "<li>Esiste già un preventivo registrato con questo titolo</li></ul>";
             $_SESSION['error-preventivi'] = $errorMessages;
             header('Location: crea_preventivo.php');
         }
-        
     } elseif ($action == 'delete') {
         $user = AuthController::getAuthUser();
         $id = $user->getId();
@@ -94,19 +88,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             mkdir($target_dir, 0777, true);
 
                             // Se foto è stata cambiata con una di nome diverso
-                            if($file_name != "" && $file_name != $old_file_name) {
+                            if ($file_name != "" && $file_name != $old_file_name) {
                                 $target_file = $target_dir . $file_name;
                                 move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
-                            }
-                            else {
+                            } else {
                                 $target_file = $target_dir . $old_file_name;
 
                                 // Se la foto è stata cambiata con una di nome uguale
-                                if($file_name != ""){
+                                if ($file_name != "") {
                                     move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
                                 }
                                 // Se foto non è stata cambiata
-                                else{
+                                else {
                                     copy($target->getFoto(), $target_file);
                                 }
                             }
@@ -129,12 +122,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             }
                             $target_file = $target_dir . $file_name;
                             move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
-                        }
-                        else {
+                        } else {
                             $target_file = $target->getFoto();
 
                             // Se la foto è stata cambiata con una di nome uguale
-                            if($file_name != ""){
+                            if ($file_name != "") {
                                 move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
                             }
 
