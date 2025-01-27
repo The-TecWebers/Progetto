@@ -1,8 +1,8 @@
-ErrorDocument 404 /404.php
-ErrorDocument 500 /500.php
-ErrorDocument 501 /500.php
-ErrorDocument 502 /500.php
-ErrorDocument 503 /500.php
-ErrorDocument 504 /500.php
-ErrorDocument 505 /500.php
-ErrorDocument 507 /500.php
+ErrorDocument 404 '<meta http-equiv="refresh" content="0;url=/404.php">'
+ErrorDocument 500 '<meta http-equiv="refresh" content="0;url=/500.php">'
+ErrorDocument 501 '<meta http-equiv="refresh" content="0;url=/500.php">'
+ErrorDocument 502 '<meta http-equiv="refresh" content="0;url=/500.php">'
+ErrorDocument 503 '<meta http-equiv="refresh" content="0;url=/500.php">'
+ErrorDocument 504 '<meta http-equiv="refresh" content="0;url=/500.php">'
+ErrorDocument 505 '<meta http-equiv="refresh" content="0;url=/500.php">'
+ErrorDocument 507 '<meta http-equiv="refresh" content="0;url=/500.php">'
