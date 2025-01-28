@@ -6,3 +6,4 @@ ErrorDocument 503 /500.php
 ErrorDocument 504 /500.php
 ErrorDocument 505 /500.php
 ErrorDocument 507 /500.php
+Options -Indexes

@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
                         // Se è stato cambiato il titolo
                         if (!file_exists($target_dir)) {
-                            mkdir($target_dir, 0777, true);
+                            mkdir($target_dir, 0775, true);
     
                             // Se foto è stata cambiata con una di nome diverso
                             if ($file_name != "" && $file_name != $old_file_name) {
