@@ -937,6 +937,7 @@ function filterTable() {
   if (titoloFilter || richiedenteFilter || startDate || endDate) {
     var resultsContainer = document.createElement('div');
     resultsContainer.id = 'filter-results-container';
+    resultsContainer.setAttribute('aria-label', 'Risultati dei filtri');
     resultsContainer.classList.add('filter-results-container');
     resultsContainer.setAttribute('aria-live', 'polite');
     resultsContainer.setAttribute('role', 'region');
@@ -964,6 +965,7 @@ function filterTable() {
       // Aggiunge il messaggio "Filtri puliti correttamente"
       var resetMessage = document.createElement('p');
       resetMessage.id = 'reset-message';
+      resetMessage.setAttribute('aria-label', 'Filtri puliti correttamente');
       resetMessage.setAttribute('aria-live', 'polite');
       resetMessage.setAttribute('role', 'region');
       resetMessage.classList.add('info-label', 'centered', 'm-auto', 'fs-1-25');
