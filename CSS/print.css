@@ -22,8 +22,22 @@ p {
     text-align: justify;
 }
 
-.link-intestazione, .row, #GoUp, a, #form-preventivi {
+.link-intestazione, .row, #GoUp, a {
     display: none;
+}
+.form-description {
+    text-align: justify;
+    font-size: 1.5em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    margin-bottom: 0.5em;
+}
+
+.insideBoxDescription {
+    margin-top: 0.5em;
+}
+
+.form-short {
+    width: 30%;
 }
 
 h1::before {
