@@ -298,6 +298,7 @@ function validateFoto(x) {
       previous_node.classList.add("info-label");
       previous_node.innerHTML = "Una foto descrittiva obbligatoria con dimensione massima 5 <abbr title='Megabyte' lang='en'>MB</abbr>";
       x.parentElement.insertBefore(previous_node, x);
+      x.setAttribute("aria-describedby", previous_node.id);
     }
 
     return false;
@@ -305,6 +306,7 @@ function validateFoto(x) {
 
   if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
     x.parentElement.removeChild(x.previousElementSibling);
+    x.removeAttribute("aria-describedby");
   }
 
   if (file.size > maxSize) {
@@ -336,6 +338,7 @@ function validateEditFoto(x) {
 
   if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
     x.parentElement.removeChild(x.previousElementSibling);
+    x.removeAttribute("aria-describedby");
   }
 
   if (file.size > maxSize) {
@@ -370,6 +373,7 @@ function validateTitolo(x) {
       previous_node.classList.add("info-label");
       previous_node.innerHTML = "Un titolo per il preventivo, deve essere lungo da 2 a 40 caratteri";
       x.parentElement.insertBefore(previous_node, x);
+      x.setAttribute("aria-describedby", previous_node.id);
     }
 
     return false;
@@ -377,6 +381,7 @@ function validateTitolo(x) {
 
   if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
     x.parentElement.removeChild(x.previousElementSibling);
+    x.removeAttribute("aria-describedby");
   }
 
   if (!checkTitolo(x.value)) {
@@ -411,6 +416,7 @@ function validateLuogo(x) {
       previous_node.classList.add("info-label");
       previous_node.innerHTML = "Il luogo dove verrà svolto il lavoro, deve essere lungo da 2 a 40 caratteri";
       x.parentElement.insertBefore(previous_node, x);
+      x.setAttribute("aria-describedby", previous_node.id);
     }
 
     return false;
@@ -418,6 +424,7 @@ function validateLuogo(x) {
 
   if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
     x.parentElement.removeChild(x.previousElementSibling);
+    x.removeAttribute("aria-describedby");
   }
 
   if (!checkLuogo(x.value)) {
@@ -453,6 +460,7 @@ function validateDescrizione(x) {
       previous_node.classList.add("info-label");
       previous_node.innerHTML = "Una breve descrizione, deve essere lunga da 2 a 255 caratteri";
       x.parentElement.insertBefore(previous_node, x);
+      x.setAttribute("aria-describedby", previous_node.id);
     }
 
     return false;
@@ -460,6 +468,7 @@ function validateDescrizione(x) {
 
   if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
     x.parentElement.removeChild(x.previousElementSibling);
+    x.removeAttribute("aria-describedby");
   }
 
   if (!checkDescrizione(x.value)) {
@@ -493,6 +502,7 @@ function validateName(x) {
       previous_node.classList.add("info-label");
       previous_node.innerHTML = "Esso può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
       x.parentElement.insertBefore(previous_node, x);
+      x.setAttribute("aria-describedby", previous_node.id);
     }
 
     return false;
@@ -500,6 +510,7 @@ function validateName(x) {
 
   if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
     x.parentElement.removeChild(x.previousElementSibling);
+    x.removeAttribute("aria-describedby");
   }
 
   if (!checkName(x.value)) {
@@ -534,6 +545,7 @@ function validateSurname(x) {
       previous_node.classList.add("info-label");
       previous_node.innerHTML = "Esso può contenere solo lettere, apostrofi, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
       x.parentElement.insertBefore(previous_node, x);
+      x.setAttribute("aria-describedby", previous_node.id);
     }
 
     return false;
@@ -541,6 +553,7 @@ function validateSurname(x) {
 
   if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
     x.parentElement.removeChild(x.previousElementSibling);
+    x.removeAttribute("aria-describedby");
   }
 
   if (!checkSurname(x.value)) {
@@ -575,6 +588,7 @@ function validateEmail(x) {
       previous_node.classList.add("info-label");
       previous_node.innerHTML = "Essa deve essere un indirizzo <span lang=\"en\">email</span> valido";
       x.parentElement.insertBefore(previous_node, x);
+      x.setAttribute("aria-describedby", previous_node.id);
     }
 
     return false;
@@ -590,6 +604,7 @@ function validateEmail(x) {
 
   if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
     x.parentElement.removeChild(x.previousElementSibling);
+    x.removeAttribute("aria-describedby");
   }
 
   if (!checkEmail(x.value)) {
@@ -624,6 +639,7 @@ function validatePhoneNumber(x) {
       previous_node.classList.add("info-label");
       previous_node.innerHTML = "Esso deve essere un numero di telefono valido, di 9 o 10 cifre, con spazi o senza spazi, con prefisso o senza prefisso (se lo inserisci, ricordati il \"+\")";
       x.parentElement.insertBefore(previous_node, x);
+      x.setAttribute("aria-describedby", previous_node.id);
     }
 
     return false;
@@ -639,6 +655,7 @@ function validatePhoneNumber(x) {
 
   if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
     x.parentElement.removeChild(x.previousElementSibling);
+    x.removeAttribute("aria-describedby");
   }
 
   if (!checkPhoneNumber(x.value)) {
@@ -677,6 +694,7 @@ function validateUsername(x) {
         "Esso può contenere solo lettere, numeri, apostrofi, trattini e " +
         "<span lang=\"en\">underscore</span>, non può contenere spazi e può essere lungo al massimo 40 caratteri";
       x.parentElement.insertBefore(previous_node, x);
+      x.setAttribute("aria-describedby", previous_node.id);
     }
 
     return false;
@@ -684,6 +702,7 @@ function validateUsername(x) {
 
   if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
     x.parentElement.removeChild(x.previousElementSibling);
+    x.removeAttribute("aria-describedby");
   }
 
   if (!checkUsername(x.value)) {
@@ -720,6 +739,7 @@ function validatePassword(x) {
         "Essa deve essere lunga almeno 8 caratteri e massimo 256, deve contenere almeno un carattere maiuscolo, " +
         "un carattere minuscolo, un numero e un carattere speciale";
       x.parentElement.insertBefore(previous_node, x);
+      x.setAttribute("aria-describedby", previous_node.id);
     }
 
     return false;
@@ -735,6 +755,7 @@ function validatePassword(x) {
 
   if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
     x.parentElement.removeChild(x.previousElementSibling);
+    x.removeAttribute("aria-describedby");
   }
 
   if (!checkPassword(x.value)) {
@@ -791,6 +812,7 @@ function validateNewPassword(x) {
 
     if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
       x.parentElement.removeChild(x.previousElementSibling);
+      x.removeAttribute("aria-describedby");
     }
 
     if (!checkPassword(x.value)) {
@@ -938,7 +960,6 @@ function filterTable() {
     var resultsContainer = document.createElement('div');
     resultsContainer.id = 'filter-results-container';
     resultsContainer.setAttribute('aria-label', 'Risultati dei filtri');
-    resultsContainer.classList.add('filter-results-container');
     resultsContainer.setAttribute('aria-live', 'polite');
     resultsContainer.setAttribute('role', 'region');
     resultsContainer.classList.add('info-label', 'centered', 'm-auto');
