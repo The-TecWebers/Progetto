@@ -401,7 +401,6 @@ BREADCRUMB
 */
 
 .breadcrumb {
-    color: var(--visitedLink_bgGreen);
     padding-left: 4.6em;
 }
 
