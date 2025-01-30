@@ -45,7 +45,7 @@ GENERALE
 
     /* Altezze dell'header senza breadcrumb */
     --headerDesktopHeight: 4.625em;
-    --headerHandheldHeight: 3.875em;
+    --headerHandheldHeight: 4.225em;
 
     /* Altezze del breadcrumb */
     --breadcrumbDesktopHeight: 1.5em;
@@ -355,7 +355,7 @@ MENÙ AD HAMBURGER
 }
 
 .nav-toggler {
-    height: 2.125em;
+    height: 2.75em;
     width: 2.75em;
     background-color: var(--bg_bgWhite);
     border-radius: 0.25em;
