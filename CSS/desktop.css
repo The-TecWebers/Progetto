@@ -42,16 +42,6 @@ GENERALE
     /* Altri colori */
     --hover: #000000;
     --border: #000000;
-
-    /* Altezze dell'header senza breadcrumb */
-    --headerDesktopHeight: 4.625em;
-    --headerHandheldHeight: 4.225em;
-
-    /* Altezze del breadcrumb */
-    --breadcrumbDesktopHeight: 1.5em;
-    --breadcrumbHandheldHeight: 2.226em;
-
-
 }
 
 * {
@@ -59,7 +49,6 @@ GENERALE
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
-
 }
 
 body {
@@ -86,11 +75,7 @@ HEADER
 header {
     background-color: var(--bg_bgGreen);
     padding: 0.75em 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
+    position: relative;
     border-bottom: var(--border) 0.125em solid;
 }
 
@@ -438,14 +423,10 @@ MAIN
 
 main {
     flex: 1;
-    padding-top: calc(1.25em + var(--headerDesktopHeight) + var(--breadcrumbDesktopHeight));
+    padding-top: 1.25em;
     padding-bottom: 1.25em;
     width: 90%;
     margin: auto;
-}
-
-main.no-breadcrumb {
-    padding-top: calc(1.25em + var(--headerDesktopHeight));
 }
 
 main h1 {

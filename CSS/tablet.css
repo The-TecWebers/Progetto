@@ -147,11 +147,7 @@ MAIN
 */
 
 main{
-    padding-top: calc(1.25em + var(--headerHandheldHeight) + var(--breadcrumbHandheldHeight));
-}
-
-main.no-breadcrumb {
-    padding-top: calc(1.25em + var(--headerHandheldHeight));
+    padding-top: 1.25em;
 }
 
 #introductionParagraph {
