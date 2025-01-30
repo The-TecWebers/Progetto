@@ -81,7 +81,7 @@ class PreventivoController
             return $b['id'] - $a['id'];
         });
 
-        $div = "<div class='grid cols-1'>";
+        $div = "<ul class='grid cols-1'>";
 
         for ($i = 0; $i < count($preventivi); $i++) {
             $preventivo = $preventivi[$i];
@@ -94,7 +94,7 @@ class PreventivoController
 
             $div .=
                 $linkPreventivoSuccessivo .
-                "<div id='preventivo_" . $preventivo['id'] . "' class='preventivo'>
+                "<li id='preventivo_" . $preventivo['id'] . "' class='preventivo'>
 
             <div class='img-preventivo'>
                 <img src='" . $preventivo['foto'] . "' alt='Foto del preventivo'>
@@ -130,10 +130,10 @@ class PreventivoController
                     </button>
                 </form>
             </div>
-        </div>";
+        </li>";
         }
 
-        $div .= "</div>";
+        $div .= "</ul>";
         return $div;
     }
     public static function getTabellaPreventivi()
