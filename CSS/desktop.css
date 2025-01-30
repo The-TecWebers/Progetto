@@ -1530,7 +1530,7 @@ SU DI NOI
 }
 
 .cols-2 {
-    grid-template-columns: auto auto;
+    grid-template-columns: 50% 50%;
 }
 
 .cols-3 {
