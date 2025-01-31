@@ -1334,6 +1334,9 @@ PREVENTIVI
     box-shadow: 0 0.285em 0.428em rgba(0, 0, 0, 0.2);
 }
 
+#listaPreventivi {
+    list-style: none;
+}
 
 .filter-container {
     visibility: hidden;

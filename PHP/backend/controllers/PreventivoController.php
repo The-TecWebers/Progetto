@@ -81,7 +81,7 @@ class PreventivoController
             return $b['id'] - $a['id'];
         });
 
-        $div = "<ul class='grid cols-1'>";
+        $div = "<ul id='listaPreventivi' class='grid cols-1'>";
 
         for ($i = 0; $i < count($preventivi); $i++) {
             $preventivo = $preventivi[$i];
@@ -89,46 +89,47 @@ class PreventivoController
 
             // Verifica se esiste un preventivo successivo
             $linkPreventivoSuccessivo = isset($preventivi[$i + 1])
-                ? "<a class='link-intestazione' href='#preventivo_" . $preventivi[$i + 1]['id'] . "'>Vai al prossimo preventivo</a>"
-                : "";
+                ? "<li><a class='link-intestazione' href='#preventivo_" . $preventivi[$i + 1]['id'] . "'>Vai al prossimo preventivo</a>"
+                : "<li>";
 
             $div .=
                 $linkPreventivoSuccessivo .
-                "<li id='preventivo_" . $preventivo['id'] . "' class='preventivo'>
+                "<div id='preventivo_" . $preventivo['id'] . "' class='preventivo'>
 
-            <div class='img-preventivo'>
-                <img src='" . $preventivo['foto'] . "' alt='Foto del preventivo'>
-            </div>
-            <div class='content-preventivo'>
-                <div class='header-preventivo'>
-                    <p>Preventivo - " . $preventivo['titolo'] . "</p>
+                <div class='img-preventivo'>
+                    <img src='" . $preventivo['foto'] . "' alt='Foto del preventivo'>
                 </div>
+                <div class='content-preventivo'>
+                    <div class='header-preventivo'>
+                        <p>Preventivo - " . $preventivo['titolo'] . "</p>
+                    </div>
 
-                <dl>
-                    <dt>Data:</dt>
-                    <dd><time datetime='" . $preventivo['data'] . "'>" . $preventivo['data'] . "</time></dd>
+                    <dl>
+                        <dt>Data:</dt>
+                        <dd><time datetime='" . $preventivo['data'] . "'>" . $preventivo['data'] . "</time></dd>
 
-                    <dt>Luogo:</dt>
-                    <dd>" . $preventivo['luogo'] . "</dd>
+                        <dt>Luogo:</dt>
+                        <dd>" . $preventivo['luogo'] . "</dd>
 
-                    <dt>Descrizione:</dt>
-                    <dd>" . $preventivo['descrizione'] . "</dd>
-                </dl>
-            </div>
-            <div class='form-preventivo'>
-                <form method='GET' action='preventivi.php'>
-                    <input type='hidden' name='action' value='edit'/>
-                    <input type='hidden' name='edit_preventivo_id' value='" . $preventivo['id'] . "'/>
-                    <button type='submit' aria-label='Modifica preventivo'>
-                        <img alt='' src='Images/icons/edit_white.svg' height=30 width=30>
-                    </button>
-                </form>
-                <form method='POST' action='preventivi.php?action=delete'>
-                      <input type='hidden' name='delete_preventivo_id' value='" . $preventivo['id'] . "'/>
-                    <button type='submit' aria-label='Elimina preventivo'>
-                        <img alt='' src='Images/icons/delete_white.svg' height=30 width=30>
-                    </button>
-                </form>
+                        <dt>Descrizione:</dt>
+                        <dd>" . $preventivo['descrizione'] . "</dd>
+                    </dl>
+                </div>
+                <div class='form-preventivo'>
+                    <form method='GET' action='preventivi.php'>
+                        <input type='hidden' name='action' value='edit'/>
+                        <input type='hidden' name='edit_preventivo_id' value='" . $preventivo['id'] . "'/>
+                        <button type='submit' aria-label='Modifica preventivo'>
+                            <img alt='' src='Images/icons/edit_white.svg' height=30 width=30>
+                        </button>
+                    </form>
+                    <form method='POST' action='preventivi.php?action=delete'>
+                        <input type='hidden' name='delete_preventivo_id' value='" . $preventivo['id'] . "'/>
+                        <button type='submit' aria-label='Elimina preventivo'>
+                            <img alt='' src='Images/icons/delete_white.svg' height=30 width=30>
+                        </button>
+                    </form>
+                </div>
             </div>
         </li>";
         }
