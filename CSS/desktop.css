@@ -448,7 +448,7 @@ main a {
     text-decoration: underline;
 }
 
-section {
+section, article {
     padding-bottom: 0.75em;
     border-bottom: var(--border) 0.125em solid;
     margin-bottom: 1.25em;
@@ -1213,10 +1213,11 @@ LAVORI SVOLTI
     align-items: stretch;
     gap: 1em;
     margin: 1em;
+    list-style: none;
 }
 
 .img-list-container img {
-    max-width: 23%;
+    max-width: 20em;
     max-height: 25em;
     object-fit: fill;
     object-position: center;
