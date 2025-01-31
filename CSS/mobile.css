@@ -160,6 +160,11 @@ LAVORI SVOLTI
     align-items: center;
 }
 
+.img-list-container li {
+    max-width: 100%;
+    text-align: center;
+}
+
 
 
 /*

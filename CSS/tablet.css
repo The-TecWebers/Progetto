@@ -311,8 +311,11 @@ LAVORI SVOLTI
 ==============
 */
 
+.img-list-container li {
+    max-width: 30%;
+}
+
 .img-list-container img{
-    max-width: 20em;
     height: auto;
 }
 
