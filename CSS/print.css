@@ -225,6 +225,14 @@ HOME | PRINT
 ============
 */
 
+.home-section a{
+    display: inline;
+}
+
+.home-section a::after{
+    content: " (" attr(href) ") ";
+}
+
 .home-section {
     display: flex;
     flex-wrap: nowrap;
