@@ -1,0 +1,27 @@
+<main id="content">
+    <h1>Modifica preventivo</h1>
+    <div id="form-preventivi">
+        <form method="POST" action="preventivi.php?action=update" enctype="multipart/form-data" id="EditPreventivoForm">
+            <div class="surrounding-box">
+                <p class="form-description insideBoxDescription">Modifica i dati del tuo preventivo</p>
+                <!-- errorMessages -->
+                <!--id_preventivo-->
+                <label class="form-label" for="titolo">Titolo</label>
+                <input class="form-input" type="text" id="titolo" name="titolo"
+                    placeholder="Es.: Estensione fognatura Via Trieste">
+                <label class="form-label" for="luogo">Luogo</label>
+                <input class="form-input" type="text" id="luogo" name="luogo"
+                    placeholder="Es.: Via Trieste, 23, Brescia (BS)">
+                <!--Image-->
+                <label class="form-label" for="foto">Foto</label>
+                <input class="form-input" type="file" id="foto" name="foto" accept="image/*">
+                <label class="form-label" for="descrizione">Descrizione breve</label>
+                <textarea class="form-input" id="descrizione" name="descrizione"
+                    placeholder="Es.: Stiamo portando a termine la costruzione di una casa ed è necessario includerla nella rete fognaria locale. Si tratta di realizzare un'estensione della fognatura di Via Trieste perchè copra anche il numero civico 23."></textarea>
+                <div class="form-buttons">
+                    <button type="submit">Modifica preventivo</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>

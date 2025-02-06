@@ -1,11 +1,59 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OneSports</title>
-    <link rel="stylesheet" type="text/css" href="CSS/style.css"/>
+   <title></title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="description" content="">
+   <meta name="keywords" content="">
+   <meta property="og:image" content="Images/logo/Edil_Scavi_logo_colore-nuovo.webp">
+   <link rel="preload" href="Fonts/roboto-v47-latin-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+   <!-- CSS stylesheets -->
+   <link rel="stylesheet" href="CSS/min/desktop.min.css" media="screen">
+   <link rel="stylesheet" href="CSS/min/tablet.min.css" media="screen and (max-width: 1200px)">
+   <link rel="stylesheet" href="CSS/min/mobile.min.css" media="screen and (max-width: 768px)">
+   <link rel="stylesheet" href="CSS/min/print.min.css" media="print">
+   <!-- JavaScript -->
+   <script src="JS/scripts.min.js" defer></script>
+   <!-- Favicons -->
+   <link rel="apple-touch-icon" sizes="180x180" href="Images/favicons/apple-touch-icon.webp"> 
+   <link rel="icon" type="image/webp" sizes="32x32" href="Images/favicons/favicon-32x32.webp">
+   <link rel="icon" type="image/webp" sizes="16x16" href="Images/favicons/favicon-16x16.webp">
 </head>
+
 <body>
-    <header>
-    </header>
+   <header>
+      <div class="row">
+
+         <h1 id="logo">Edil Scavi</h1>
+
+         <!-- Menù ad hamburger -->
+         <input type="checkbox" id="nav-check" aria-label="Menù ad hamburger">
+         <label for="nav-check" class="nav-toggler" aria-hidden="true" tabindex="-1">
+            Menù
+            <span></span>
+         </label>
+
+         <nav id="menu" aria-label="Menù di navigazione">
+            <ul>
+               <li><a href="#content" class="navigationHelp">Salta il menù di navigazione</a></li>
+               <li><a href="index.php" lang="en">Home</a></li>
+               <li><a href="storia.php">Storia</a></li>
+               <li><a href="mezzi.php">Mezzi</a></li>
+               <li><a href="lavori_svolti.php">Lavori svolti</a></li>
+               <li><a href="lista_preventivi.php">Preventivi</a></li>
+               <li><a href="su_di_noi.php">Su di noi</a></li>
+            </ul>
+         </nav>
+
+         <div class="sign-buttons">
+            <a id="btn-register" href="registrati.php">Registrati</a>
+            <a id="btn-login" href="accedi.php">Accedi</a>
+         </div>
+      </div>
+
+      <!-- <breadcrumb-to-replace> -->
+
+      <a id="goUp" aria-hidden="true" tabindex="-1" href="#" title="Torna su">&#8613;</a>
+   </header>

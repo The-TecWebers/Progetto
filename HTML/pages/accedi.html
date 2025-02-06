@@ -1,0 +1,18 @@
+<main id="content">
+    <h1>Accedi</h1>
+    <form id="loginForm" name="loginForm" class="form-short" onsubmit="" action="auth.php?action=login" method="post" autocomplete="on">
+        <!--intendedRedirectMessages-->
+        <div class="surrounding-box">
+            <p class="form-description insideBoxDescription">Accedi a <strong>Edil Scavi</strong>!</p>
+            <p class="change-form">Non hai un <span lang="en">account</span>? <a href="registrati.php">Registrati qui</a></p>
+            <!-- errorMessages -->
+            <label class="form-label" for="username">Inserisci lo <span lang="en">username</span></label>
+            <input class="form-input" type="text" id="username" name="username" placeholder="Username">
+            <label class="form-label" for="password">Inserisci la <span lang="en">password</span></label>
+            <input class="form-input" type="password" id="password" name="password" placeholder="Password">
+            <div class="form-buttons">
+                <button type="submit" aria-label="Accedi a Edil Scavi">Accedi</button>
+            </div>
+        </div>
+    </form>
+</main>
