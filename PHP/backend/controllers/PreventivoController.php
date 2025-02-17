@@ -120,13 +120,13 @@ class PreventivoController
                     <form method='GET' action='preventivi.php'>
                         <input type='hidden' name='action' value='edit'/>
                         <input type='hidden' name='edit_preventivo_id' value='" . $preventivo['id'] . "'/>
-                        <button type='submit' aria-label='Modifica preventivo'>
+                        <button type='submit' aria-label='Modifica preventivo " . $preventivo['titolo'] . "'>
                             <img alt='' src='Images/icons/edit_white.svg' height=30 width=30>
                         </button>
                     </form>
                     <form method='POST' action='preventivi.php?action=delete'>
                         <input type='hidden' name='delete_preventivo_id' value='" . $preventivo['id'] . "'/>
-                        <button type='submit' aria-label='Elimina preventivo'>
+                        <button type='submit' aria-label='Elimina preventivo " . $preventivo['titolo'] . "'>
                             <img alt='' src='Images/icons/delete_white.svg' height=30 width=30>
                         </button>
                     </form>
@@ -273,7 +273,7 @@ class PreventivoController
              <div class='form-preventivo'>
                   <form method='POST' action='preventivi.php?action=delete'>
                       <input type='hidden' name='delete_preventivo_id' value='" . $preventivo['id'] . "'/>
-                      <button type='submit' aria-label='Elimina preventivo'>
+                      <button type='submit' aria-label='Elimina preventivo " . $preventivo['titolo'] . "'>
                           <img alt='' src='Images/icons/delete_white.svg' height=30 width=30>
                       </button>
                    </form>

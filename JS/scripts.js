@@ -20,6 +20,7 @@ window.onscroll = function () {
 
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.getElementById('menu').focus(); // Ensure the main content has an id of 'main-content'
 }
 
 
