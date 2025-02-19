@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('titolo').setAttribute('aria-describedby', 'info-titolo');
     document.getElementById('luogo').setAttribute('aria-describedby', 'info-luogo');
     document.getElementById('foto').setAttribute('aria-describedby', 'info-foto');
+    document.getElementById('didascalia').setAttribute('aria-describedby', 'info-didascalia');
     document.getElementById('descrizione').setAttribute('aria-describedby', 'info-descrizione');
 
     // Per la validazione dei campi lato client
@@ -85,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('luogo').onblur = () => { return validateLuogo(document.getElementById('luogo')); };
     document.getElementById('foto').onblur = () => { return validateFoto(document.getElementById('foto')); };
     document.getElementById('foto').onchange = () => { return validateFoto(document.getElementById('foto')); };
+    document.getElementById('didascalia').onblur = () => { return validateDidascalia(document.getElementById('didascalia')); };
     document.getElementById('descrizione').onblur = () => { return validateDescrizione(document.getElementById('descrizione')); };
     document.getElementById('preventiviForm').onsubmit = () => { return validatePreventiviForm(); }
 
@@ -97,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('titolo').setAttribute('aria-describedby', 'info-titolo');
     document.getElementById('luogo').setAttribute('aria-describedby', 'info-luogo');
     document.getElementById('foto').setAttribute('aria-describedby', 'info-foto');
+    document.getElementById('didascalia').setAttribute('aria-describedby', 'info-didascalia');
     document.getElementById('descrizione').setAttribute('aria-describedby', 'info-descrizione');
 
     // Per la validazione dei campi lato client
@@ -104,6 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('luogo').onblur = () => { return validateLuogo(document.getElementById('luogo')); };
     document.getElementById('foto').onblur = () => { return validateEditFoto(document.getElementById('foto')); };
     document.getElementById('foto').onchange = () => { return validateEditFoto(document.getElementById('foto')); };
+    document.getElementById('didascalia').onblur = () => { return validateDidascalia(document.getElementById('didascalia')); };
     document.getElementById('descrizione').onblur = () => { return validateDescrizione(document.getElementById('descrizione')); };
     document.getElementById('EditPreventivoForm').onsubmit = () => { return validateEditPreventiviForm(); }
   }
@@ -113,38 +117,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('table-filter').classList.add('visible');
   }
 });
-
-function caricamento_preventivi() {
-  var x = document.getElementById("titolo");
-  var node = document.createElement("p");
-  node.id = "info-" + x.id;
-  node.classList.add("info-label");
-  node.innerHTML = "Un titolo per il preventivo, deve essere lungo da 2 a 40 caratteri";
-  x.parentElement.insertBefore(node, x);
-
-  x = document.getElementById("luogo");
-  node = document.createElement("p");
-  node.id = "info-" + x.id;
-  node.classList.add("info-label");
-  node.innerHTML = "Il luogo dove verrà svolto il lavoro, deve essere lungo da 2 a 40 caratteri";
-  x.parentElement.insertBefore(node, x);
-
-  x = document.getElementById("foto");
-  node = document.createElement("p");
-  node.id = "info-" + x.id;
-  node.classList.add("info-label");
-  node.innerHTML = "Una foto descrittiva obbligatoria con dimensione massima 5 <abbr title='Megabyte' lang='en'>MB</abbr>";
-  x.parentElement.insertBefore(node, x);
-
-  x = document.getElementById("descrizione");
-  node = document.createElement("p");
-  node.id = "info-" + x.id;
-  node.classList.add("info-label");
-  node.innerHTML =
-    "Una breve descrizione, deve essere lunga da 2 a 255 caratteri";
-  x.parentElement.insertBefore(node, x);
-
-}
 
 function caricamento_registrazione() {
   var x = document.getElementById("nome");
@@ -205,6 +177,45 @@ function caricamento_area_privata() {
   x.parentElement.insertBefore(node, x);
 }
 
+function caricamento_preventivi() {
+  var x = document.getElementById("titolo");
+  var node = document.createElement("p");
+  node.id = "info-" + x.id;
+  node.classList.add("info-label");
+  node.innerHTML = "Un titolo per il preventivo, deve essere lungo da 2 a 40 caratteri";
+  x.parentElement.insertBefore(node, x);
+
+  x = document.getElementById("luogo");
+  node = document.createElement("p");
+  node.id = "info-" + x.id;
+  node.classList.add("info-label");
+  node.innerHTML = "Il luogo dove verrà svolto il lavoro, deve essere lungo da 2 a 40 caratteri";
+  x.parentElement.insertBefore(node, x);
+
+  x = document.getElementById("foto");
+  node = document.createElement("p");
+  node.id = "info-" + x.id;
+  node.classList.add("info-label");
+  node.innerHTML = "Una foto descrittiva obbligatoria con dimensione massima 5 <abbr title='Megabyte' lang='en'>MB</abbr>";
+  x.parentElement.insertBefore(node, x);
+
+  x = document.getElementById("didascalia");
+  node = document.createElement("p");
+  node.id = "info-" + x.id;
+  node.classList.add("info-label");
+  node.innerHTML = "Una didascalia per la foto, deve essere lunga da 2 a 75 caratteri";
+  x.parentElement.insertBefore(node, x);
+
+  x = document.getElementById("descrizione");
+  node = document.createElement("p");
+  node.id = "info-" + x.id;
+  node.classList.add("info-label");
+  node.innerHTML =
+    "Una breve descrizione, deve essere lunga da 2 a 255 caratteri";
+  x.parentElement.insertBefore(node, x);
+
+}
+
 
 
 /*
@@ -214,6 +225,9 @@ CONTROLLI SUI CAMPI DEI FORM
 */
 
 var accentedCharacters = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
+var punctuationMarks = '.,;:!?‘’“”«»';
+
+// Registrazione e Area privata
 
 function checkName(name) {
   var regex = new RegExp('^[a-zA-Z' + accentedCharacters + '\'\\-\\s]{2,40}$');
@@ -246,18 +260,26 @@ function checkPassword(password) {
   return regex.test(password);
 }
 
+
+// Preventivi
+
 function checkTitolo(titolo) {
   var regex = new RegExp('^[a-zA-Z0-9' + accentedCharacters + '\\-\\s]{2,40}$');
   return regex.test(titolo);
 }
 
 function checkLuogo(luogo) {
-  var regex = new RegExp('^[a-zA-Z0-9' + accentedCharacters + '\\\'\\"\\-\\s]{2,40}$');
+  var regex = new RegExp('^[a-zA-Z0-9' + accentedCharacters + punctuationMarks + '\\\'\\"\\-\\s]{2,40}$');
   return regex.test(luogo);
 }
 
+function checkDidascalia(didascalia) {
+  var regex = new RegExp('^[a-zA-Z0-9' + accentedCharacters + punctuationMarks + '\\\'\\"\\-\\s]{2,75}$');
+  return regex.test(didascalia);
+}
+
 function checkDescrizione(descrizione) {
-  var regex = new RegExp('^[a-zA-Z0-9' + accentedCharacters + '\\\'\\"\\-\\s]{2,255}$');
+  var regex = new RegExp('^[a-zA-Z0-9' + accentedCharacters + punctuationMarks + '\\\'\\"\\-\\s]{2,255}$');
   return regex.test(descrizione);
 }
 
@@ -275,212 +297,12 @@ function insertAfter(newNode, referenceNode) {
   referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
-function validateFoto(x) {
-  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
-    x.parentElement.removeChild(x.nextElementSibling);
-  }
 
-  const node = document.createElement("p");
-  node.classList.add("error-label");
-  node.setAttribute("role", "alert");
-  node.setAttribute("aria-live", "assertive");
-
-  const file = x.files[0];
-  const maxSize = 5 * 1024 * 1024;  // 5 MB
-
-  if (file == undefined) {
-    node.innerHTML = "Devi inserire una foto!";
-    insertAfter(node, x);
-    x.focus();
-
-    if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
-      var previous_node = document.createElement("p");
-      previous_node.id = "info-" + x.id;
-      previous_node.classList.add("info-label");
-      previous_node.innerHTML = "Una foto descrittiva obbligatoria con dimensione massima 5 <abbr title='Megabyte' lang='en'>MB</abbr>";
-      x.parentElement.insertBefore(previous_node, x);
-      x.setAttribute("aria-describedby", previous_node.id);
-    }
-
-    return false;
-  }
-
-  if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
-    x.parentElement.removeChild(x.previousElementSibling);
-    x.removeAttribute("aria-describedby");
-  }
-
-  if (file.size > maxSize) {
-    node.innerHTML = "La foto deve avere dimensione massima 5 <abbr title='Megabyte' lang='en'>MB</abbr>!";
-    insertAfter(node, x);
-    x.focus();
-
-    return false;
-  }
-  return true;
-}
-
-function validateEditFoto(x) {
-  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
-    x.parentElement.removeChild(x.nextElementSibling);
-  }
-
-  const node = document.createElement("p");
-  node.classList.add("error-label");
-  node.setAttribute("role", "alert");
-  node.setAttribute("aria-live", "assertive");
-
-  const file = x.files[0];
-  const maxSize = 5 * 1024 * 1024;  //5 MB
-
-  if (file == undefined) {
-    return true;
-  }
-
-  if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
-    x.parentElement.removeChild(x.previousElementSibling);
-    x.removeAttribute("aria-describedby");
-  }
-
-  if (file.size > maxSize) {
-    node.innerHTML = "La foto deve avere dimensione massima 5 <abbr title='Megabyte' lang='en'>MB</abbr>!";
-    insertAfter(node, x);
-    x.focus();
-
-    return false;
-  }
-  return true;
-}
-
-
-function validateTitolo(x) {
-  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
-    x.parentElement.removeChild(x.nextElementSibling);
-  }
-
-  const node = document.createElement("p");
-  node.classList.add("error-label");
-  node.setAttribute("role", "alert");
-  node.setAttribute("aria-live", "assertive");
-
-  if (x.value == "") {
-    node.innerHTML = "Devi inserire un titolo!";
-    insertAfter(node, x);
-    x.focus();
-
-    if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
-      var previous_node = document.createElement("p");
-      previous_node.id = "info-" + x.id;
-      previous_node.classList.add("info-label");
-      previous_node.innerHTML = "Un titolo per il preventivo, deve essere lungo da 2 a 40 caratteri";
-      x.parentElement.insertBefore(previous_node, x);
-      x.setAttribute("aria-describedby", previous_node.id);
-    }
-
-    return false;
-  }
-
-  if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
-    x.parentElement.removeChild(x.previousElementSibling);
-    x.removeAttribute("aria-describedby");
-  }
-
-  if (!checkTitolo(x.value)) {
-    node.innerHTML = "Il titolo può contenere solo lettere, numeri, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
-    insertAfter(node, x);
-    x.focus();
-
-    return false;
-  }
-
-  return true;
-}
-
-function validateLuogo(x) {
-  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
-    x.parentElement.removeChild(x.nextElementSibling);
-  }
-
-  const node = document.createElement("p");
-  node.classList.add("error-label");
-  node.setAttribute("role", "alert");
-  node.setAttribute("aria-live", "assertive");
-
-  if (x.value == "") {
-    node.innerHTML = "Devi inserire un luogo!";
-    insertAfter(node, x);
-    x.focus();
-
-    if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
-      var previous_node = document.createElement("p");
-      previous_node.id = "info-" + x.id;
-      previous_node.classList.add("info-label");
-      previous_node.innerHTML = "Il luogo dove verrà svolto il lavoro, deve essere lungo da 2 a 40 caratteri";
-      x.parentElement.insertBefore(previous_node, x);
-      x.setAttribute("aria-describedby", previous_node.id);
-    }
-
-    return false;
-  }
-
-  if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
-    x.parentElement.removeChild(x.previousElementSibling);
-    x.removeAttribute("aria-describedby");
-  }
-
-  if (!checkLuogo(x.value)) {
-    node.innerHTML = "Il luogo può contenere solo lettere, numeri, apostrofi, virgolette, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
-    insertAfter(node, x);
-    x.focus();
-
-    return false;
-  }
-
-  return true;
-}
-
-
-function validateDescrizione(x) {
-  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
-    x.parentElement.removeChild(x.nextElementSibling);
-  }
-
-  const node = document.createElement("p");
-  node.classList.add("error-label");
-  node.setAttribute("role", "alert");
-  node.setAttribute("aria-live", "assertive");
-
-  if (x.value == "") {
-    node.innerHTML = "Devi inserire una descrizione!";
-    insertAfter(node, x);
-    x.focus();
-
-    if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
-      var previous_node = document.createElement("p");
-      previous_node.id = "info-" + x.id;
-      previous_node.classList.add("info-label");
-      previous_node.innerHTML = "Una breve descrizione, deve essere lunga da 2 a 255 caratteri";
-      x.parentElement.insertBefore(previous_node, x);
-      x.setAttribute("aria-describedby", previous_node.id);
-    }
-
-    return false;
-  }
-
-  if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
-    x.parentElement.removeChild(x.previousElementSibling);
-    x.removeAttribute("aria-describedby");
-  }
-
-  if (!checkDescrizione(x.value)) {
-    node.innerHTML = "La descrizione può contenere solo lettere, numeri, apostrofi, virgolette, trattini e spazi e deve essere lunga da 2 a 255 caratteri";
-    insertAfter(node, x);
-    x.focus();
-    return false;
-  }
-
-  return true;
-}
+/*
+===========================================================
+VALIDAZIONE CAMPI DEI FORM DI REGISTRAZIONE E AREA PRIVATA
+===========================================================
+*/
 
 function validateName(x) {
   if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
@@ -670,8 +492,6 @@ function validatePhoneNumber(x) {
   return true;
 }
 
-  
-
 function validateUsername(x) {
   if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
     x.parentElement.removeChild(x.nextElementSibling);
@@ -832,6 +652,260 @@ function validateNewPassword(x) {
 }
 
 
+/*
+==========================================
+VALIDAZIONE CAMPI DEI FORM SUI PREVENTIVI
+==========================================
+*/
+
+function validateTitolo(x) {
+  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
+    x.parentElement.removeChild(x.nextElementSibling);
+  }
+
+  const node = document.createElement("p");
+  node.classList.add("error-label");
+  node.setAttribute("role", "alert");
+  node.setAttribute("aria-live", "assertive");
+
+  if (x.value == "") {
+    node.innerHTML = "Devi inserire un titolo!";
+    insertAfter(node, x);
+    x.focus();
+
+    if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
+      var previous_node = document.createElement("p");
+      previous_node.id = "info-" + x.id;
+      previous_node.classList.add("info-label");
+      previous_node.innerHTML = "Un titolo per il preventivo, deve essere lungo da 2 a 40 caratteri";
+      x.parentElement.insertBefore(previous_node, x);
+      x.setAttribute("aria-describedby", previous_node.id);
+    }
+
+    return false;
+  }
+
+  if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
+    x.parentElement.removeChild(x.previousElementSibling);
+    x.removeAttribute("aria-describedby");
+  }
+
+  if (!checkTitolo(x.value)) {
+    node.innerHTML = "Il titolo può contenere solo lettere, numeri, trattini e spazi e deve essere lungo da 2 a 40 caratteri";
+    insertAfter(node, x);
+    x.focus();
+
+    return false;
+  }
+
+  return true;
+}
+
+function validateLuogo(x) {
+  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
+    x.parentElement.removeChild(x.nextElementSibling);
+  }
+
+  const node = document.createElement("p");
+  node.classList.add("error-label");
+  node.setAttribute("role", "alert");
+  node.setAttribute("aria-live", "assertive");
+
+  if (x.value == "") {
+    node.innerHTML = "Devi inserire un luogo!";
+    insertAfter(node, x);
+    x.focus();
+
+    if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
+      var previous_node = document.createElement("p");
+      previous_node.id = "info-" + x.id;
+      previous_node.classList.add("info-label");
+      previous_node.innerHTML = "Il luogo dove verrà svolto il lavoro, deve essere lungo da 2 a 40 caratteri";
+      x.parentElement.insertBefore(previous_node, x);
+      x.setAttribute("aria-describedby", previous_node.id);
+    }
+
+    return false;
+  }
+
+  if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
+    x.parentElement.removeChild(x.previousElementSibling);
+    x.removeAttribute("aria-describedby");
+  }
+
+  if (!checkLuogo(x.value)) {
+    node.innerHTML = "Il luogo può contenere solo lettere, numeri, apostrofi, virgolette, trattini, spazi e segni di punteggiatura e deve essere lungo da 2 a 40 caratteri";
+    insertAfter(node, x);
+    x.focus();
+
+    return false;
+  }
+
+  return true;
+}
+
+function validateFoto(x) {
+  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
+    x.parentElement.removeChild(x.nextElementSibling);
+  }
+
+  const node = document.createElement("p");
+  node.classList.add("error-label");
+  node.setAttribute("role", "alert");
+  node.setAttribute("aria-live", "assertive");
+
+  const file = x.files[0];
+  const maxSize = 5 * 1024 * 1024;  // 5 MB
+
+  if (file == undefined) {
+    node.innerHTML = "Devi inserire una foto!";
+    insertAfter(node, x);
+    x.focus();
+
+    if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
+      var previous_node = document.createElement("p");
+      previous_node.id = "info-" + x.id;
+      previous_node.classList.add("info-label");
+      previous_node.innerHTML = "Una foto descrittiva obbligatoria con dimensione massima 5 <abbr title='Megabyte' lang='en'>MB</abbr>";
+      x.parentElement.insertBefore(previous_node, x);
+      x.setAttribute("aria-describedby", previous_node.id);
+    }
+
+    return false;
+  }
+
+  if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
+    x.parentElement.removeChild(x.previousElementSibling);
+    x.removeAttribute("aria-describedby");
+  }
+
+  if (file.size > maxSize) {
+    node.innerHTML = "La foto deve avere dimensione massima 5 <abbr title='Megabyte' lang='en'>MB</abbr>!";
+    insertAfter(node, x);
+    x.focus();
+
+    return false;
+  }
+  return true;
+}
+
+function validateEditFoto(x) {
+  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
+    x.parentElement.removeChild(x.nextElementSibling);
+  }
+
+  const node = document.createElement("p");
+  node.classList.add("error-label");
+  node.setAttribute("role", "alert");
+  node.setAttribute("aria-live", "assertive");
+
+  const file = x.files[0];
+  const maxSize = 5 * 1024 * 1024;  //5 MB
+
+  if (file == undefined) {
+    return true;
+  }
+
+  if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
+    x.parentElement.removeChild(x.previousElementSibling);
+    x.removeAttribute("aria-describedby");
+  }
+
+  if (file.size > maxSize) {
+    node.innerHTML = "La foto deve avere dimensione massima 5 <abbr title='Megabyte' lang='en'>MB</abbr>!";
+    insertAfter(node, x);
+    x.focus();
+
+    return false;
+  }
+  return true;
+}
+
+function validateDidascalia(x) {
+  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
+    x.parentElement.removeChild(x.nextElementSibling);
+  }
+
+  const node = document.createElement("p");
+  node.classList.add("error-label");
+  node.setAttribute("role", "alert");
+  node.setAttribute("aria-live", "assertive");
+
+  if (x.value == "") {
+    node.innerHTML = "Devi inserire una didascalia!";
+    insertAfter(node, x);
+    x.focus();
+
+    if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
+      var previous_node = document.createElement("p");
+      previous_node.id = "info-" + x.id;
+      previous_node.classList.add("info-label");
+      previous_node.innerHTML = "Una didascalia per la foto, deve essere lunga da 2 a 75 caratteri";
+      x.parentElement.insertBefore(previous_node, x);
+      x.setAttribute("aria-describedby", previous_node.id);
+    }
+
+    return false;
+  }
+
+  if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
+    x.parentElement.removeChild(x.previousElementSibling);
+    x.removeAttribute("aria-describedby");
+  }
+
+  if (!checkDidascalia(x.value)) {
+    node.innerHTML = "La didascalia può contenere solo lettere, numeri, apostrofi, virgolette, trattini, spazi e segni di punteggiatura e deve essere lunga da 2 a 75 caratteri";
+    insertAfter(node, x);
+    x.focus();
+    return false;
+  }
+
+  return true;
+}
+
+function validateDescrizione(x) {
+  if (x.nextElementSibling && x.nextElementSibling.tagName === 'P' && x.nextElementSibling.classList.contains("error-label")) {
+    x.parentElement.removeChild(x.nextElementSibling);
+  }
+
+  const node = document.createElement("p");
+  node.classList.add("error-label");
+  node.setAttribute("role", "alert");
+  node.setAttribute("aria-live", "assertive");
+
+  if (x.value == "") {
+    node.innerHTML = "Devi inserire una descrizione!";
+    insertAfter(node, x);
+    x.focus();
+
+    if (!(x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label"))) {
+      var previous_node = document.createElement("p");
+      previous_node.id = "info-" + x.id;
+      previous_node.classList.add("info-label");
+      previous_node.innerHTML = "Una breve descrizione, deve essere lunga da 2 a 255 caratteri";
+      x.parentElement.insertBefore(previous_node, x);
+      x.setAttribute("aria-describedby", previous_node.id);
+    }
+
+    return false;
+  }
+
+  if (x.previousElementSibling && x.previousElementSibling.tagName === 'P' && x.previousElementSibling.classList.contains("info-label")) {
+    x.parentElement.removeChild(x.previousElementSibling);
+    x.removeAttribute("aria-describedby");
+  }
+
+  if (!checkDescrizione(x.value)) {
+    node.innerHTML = "La descrizione può contenere solo lettere, numeri, apostrofi, virgolette, trattini, spazi e segni di punteggiatura e deve essere lunga da 2 a 255 caratteri";
+    insertAfter(node, x);
+    x.focus();
+    return false;
+  }
+
+  return true;
+}
+
+
 
 /*
 ==================
@@ -866,7 +940,9 @@ function validatePrivateArea() {
 function validatePreventiviForm() {
   if (!validateTitolo(document.getElementById("titolo")) ||
     !validateLuogo(document.getElementById("luogo")) ||
-    !validateDescrizione(document.getElementById("descrizione")) || !validateFoto(document.getElementById('foto'))) {
+    !validateFoto(document.getElementById('foto')) ||
+    !validateDidascalia(document.getElementById("didascalia")) ||
+    !validateDescrizione(document.getElementById("descrizione"))) {
     return false;
   }
 }
@@ -874,7 +950,9 @@ function validatePreventiviForm() {
 function validateEditPreventiviForm() {
   if (!validateTitolo(document.getElementById("titolo")) ||
     !validateLuogo(document.getElementById("luogo")) ||
-    !validateDescrizione(document.getElementById("descrizione")) || !validateEditFoto(document.getElementById('foto'))) {
+    !validateEditFoto(document.getElementById('foto')) ||
+    !validateDidascalia(document.getElementById("didascalia")) ||
+    !validateDescrizione(document.getElementById("descrizione"))) {
     return false;
   }
 }

@@ -8,7 +8,7 @@ session_start();
 
 $titolo = "Modifica preventivo - Edil Scavi";
 $descrizione = "Modifica un preventivo per i lavori di scavo ed edilizia con Edil Scavi Srl!";
-$keywords = "modifica, preventivo, dati, titolo, Luogo, foto, descrizione breve";
+$keywords = "modifica, preventivo, dati, titolo, luogo, foto, descrizione breve";
 $sanitized = InputController::sanitizeAll($_GET);
 
 $id = $sanitized['id'];
@@ -24,6 +24,7 @@ if (AuthController::isLogged()) {
             $fields = [
                 'titolo' => 'Es.: Estensione fognatura Via Trieste',
                 'luogo' => 'Es.: Via Trieste, 23, Brescia (BS)',
+                'didascalia' => 'Es.: Il cantiere in Via Trieste',
                 'descrizione' => 'Es.: Stiamo portando a termine la costruzione di una casa ed è necessario includerla nella rete fognaria locale. Si tratta di realizzare un\'estensione della fognatura di Via Trieste perchè copra anche il numero civico 23.',
             ];
     
@@ -49,9 +50,10 @@ if (AuthController::isLogged()) {
         else {
             $template = str_replace("placeholder=\"Es.: Estensione fognatura Via Trieste\"", "value=\"{$preventivo->getTitolo()}\" placeholder=\"Es.: Estensione fognatura Via Trieste\"", $template);
             $template = str_replace("placeholder=\"Es.: Via Trieste, 23, Brescia (BS)\"", "placeholder=\"Es.: Via Trieste, 23, Brescia (BS)\" value=\"{$preventivo->getLuogo()}\"", $template);
+            $template = str_replace("placeholder=\"Es.: Il cantiere in Via Trieste\"", "placeholder=\"Es.: Il cantiere in Via Trieste\" value=\"{$preventivo->getDidascalia()}\"", $template);
             $template = str_replace("</textarea>", "{$preventivo->getDescrizione()}</textarea>", $template);
         }
-        $template = str_replace("<!--Image-->", "<img class=\"preventivo-edit-foto\" src=\"{$preventivo->getFoto()}\" alt=\"Foto scelta per il preventivo\">", $template);
+        $template = str_replace("<!--Image-->", "<img class=\"preventivo-edit-foto\" src=\"{$preventivo->getFoto()}\" alt=\"{$preventivo->getDidascalia()}\">", $template);
         $template = str_replace("<!--id_preventivo-->", "<input type=\"hidden\" id=\"edit_preventivo_id\" name=\"edit_preventivo_id\" value=\"{$id}\"/>", $template);
         session_reset();
         session_write_close();

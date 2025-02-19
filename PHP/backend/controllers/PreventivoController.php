@@ -1,6 +1,5 @@
 <?php
 
-
 require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Preventivo.php';
 require_once 'DBController.php';
 class PreventivoController
@@ -64,8 +63,26 @@ class PreventivoController
         } else {
             return true;
         }
-
     }
+
+    public static function isTitleDuplicated($title)
+    {
+        $result = DBController::runQuery("SELECT * FROM richiesta_preventivo WHERE titolo = ?", $title);
+        if ($result && count($result) > 0) {
+            return true;
+        }
+        return false;
+    }
+
+
+
+
+
+    /*
+    =============================
+    PRESENTAZIONE DEI PREVENTIVI
+    =============================
+    */
 
     public static function getListaPreventivi()
     {
@@ -98,7 +115,10 @@ class PreventivoController
                 "<div id='preventivo_" . $preventivo['id'] . "' class='preventivo'>
 
                 <div class='img-preventivo'>
-                    <img src='" . $preventivo['foto'] . "' alt='Foto del preventivo'>
+                    <figure>
+                        <img src='" . $preventivo['foto'] . "' alt=''>
+                        <figcaption>" . $preventivo['didascalia'] . "</figcaption>
+                    </figure>
                 </div>
                 <div class='content-preventivo'>
                     <div class='header-preventivo'>
@@ -220,14 +240,6 @@ class PreventivoController
         return $table . "</tbody></table>";
     }
 
-    public static function isTitleDuplicated($title)
-    {
-        $result = DBController::runQuery("SELECT * FROM richiesta_preventivo WHERE titolo = ?", $title);
-        if ($result && count($result) > 0) {
-            return true;
-        }
-        return false;
-    }
     public static function getSingoloPreventivo()
     {
         $urlId = isset($_GET['id']) ? (int) $_GET['id'] : null;
@@ -252,7 +264,10 @@ class PreventivoController
             <div class='preventivo'>
                 
         <div class='img-preventivo'>
-            <img src='" . $preventivo['foto'] . "' alt='Foto del preventivo'>
+            <figure>
+                <img src='" . $preventivo['foto'] . "' alt=''>
+                <figcaption>" . $preventivo['didascalia'] . "</figcaption>
+            </figure>
         </div>
         <div class='content-preventivo'>
             <div class='header-preventivo'>

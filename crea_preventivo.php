@@ -23,6 +23,7 @@ if (AuthController::isAdmin()) {
         $fields = [
             'titolo' => 'Es.: Estensione fognatura Via Trieste',
             'luogo' => 'Es.: Via Trieste, 23, Brescia (BS)',
+            'didascalia' => 'Es.: Il cantiere in Via Trieste',
             'descrizione' => 'Es.: Stiamo portando a termine la costruzione di una casa ed è necessario includerla nella rete fognaria locale. Si tratta di realizzare un\'estensione della fognatura di Via Trieste perchè copra anche il numero civico 23.',
         ];
 

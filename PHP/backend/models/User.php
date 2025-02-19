@@ -12,20 +12,24 @@ class User
     private $nome;
     private $cognome;
 
-    function __construct(array $array)
+    public function __construct(array $array)
     {
+        if($array['id']!==null)
+        {
+            $this->id=$array['id'];
+        }
         $this->username = $array['username'];
         $this->password = $array['password'];
         $this->email = $array['email'];
         $this->telefono = $array['telefono'];
         $this->nome = $array['nome'];
         $this->cognome = $array['cognome'];
-        if($array['id']!==null)
-        {
-            $this->id=$array['id'];
-        }
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
     public function getUsername()
     {
         return $this->username;
@@ -49,11 +53,6 @@ class User
     public function getCognome()
     {
         return $this->cognome;
-    }
-
-    public function getId()
-    {
-        return $this->id;
     }
     
     public function save()
