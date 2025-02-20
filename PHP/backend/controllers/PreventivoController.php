@@ -104,14 +104,9 @@ class PreventivoController
             $preventivo = $preventivi[$i];
             $preventivo['descrizione'] = nl2br($preventivo['descrizione']);
 
-            // Verifica se esiste un preventivo successivo
-            $linkPreventivoSuccessivo = isset($preventivi[$i + 1])
-                ? "<a class='link-intestazione' href='#preventivo_" . $preventivi[$i + 1]['id'] . "'>Vai al prossimo preventivo</a>"
-                : "";
 
             $div .=
                 "<li>" .
-                $linkPreventivoSuccessivo .
                 "<div id='preventivo_" . $preventivo['id'] . "' class='preventivo'>
 
                 <div class='img-preventivo'>
