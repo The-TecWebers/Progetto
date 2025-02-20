@@ -196,7 +196,7 @@ function caricamento_preventivi() {
   node = document.createElement("p");
   node.id = "info-" + x.id;
   node.classList.add("info-label");
-  node.innerHTML = "Una foto descrittiva obbligatoria con dimensione massima 5 <abbr title='Megabyte' lang='en'>MB</abbr>";
+  node.innerHTML = "Una foto descrittiva con dimensione massima 5 <abbr title='Megabyte' lang='en'>MB</abbr>";
   x.parentElement.insertBefore(node, x);
 
   x = document.getElementById("didascalia");
@@ -766,7 +766,7 @@ function validateFoto(x) {
       var previous_node = document.createElement("p");
       previous_node.id = "info-" + x.id;
       previous_node.classList.add("info-label");
-      previous_node.innerHTML = "Una foto descrittiva obbligatoria con dimensione massima 5 <abbr title='Megabyte' lang='en'>MB</abbr>";
+      previous_node.innerHTML = "Una foto descrittiva con dimensione massima 5 <abbr title='Megabyte' lang='en'>MB</abbr>";
       x.parentElement.insertBefore(previous_node, x);
       x.setAttribute("aria-describedby", previous_node.id);
     }
