@@ -608,17 +608,17 @@ class InputController
         if (!isset($_FILES['foto']) || $_FILES['foto']['error'] !== UPLOAD_ERR_OK) {
             return false;
         }
-    
+
         $uploadedFile = $_FILES['foto']['tmp_name'];
         $imageInfo = getimagesize($uploadedFile);
-    
+
         if ($imageInfo === false) {
             return false;
         }
-    
+
         list($width, $height, $imageType) = $imageInfo;
         $mime = $imageInfo['mime'];
-    
+
         switch ($imageType) {
             case IMAGETYPE_JPEG:
                 $srcImage = imagecreatefromjpeg($uploadedFile);
@@ -644,31 +644,45 @@ class InputController
             default:
                 return false;
         }
-    
+
+        $targetHeight = $height * 0.54;
+
+        $resizedImage = imagecreatetruecolor(550, $targetHeight);
+        imagecopyresized($resizedImage, $srcImage, 0, 0, 0, 0, 550, $targetHeight, $width, $height);
+
+
+        if (filesize($uploadedFile) > $maxFileSize) {
+            $quality = 50;
+        } else {
+            $quality = 100;
+        }
+
         if (!file_exists($targetDir)) {
             mkdir($targetDir, 0777, true);
         }
 
         $file_name = basename($_FILES["foto"]["name"]);
-        $file_name = pathinfo($file_name, PATHINFO_FILENAME); // Rimuove l'estensione dal nome del file
-        $file_name = strtolower(str_replace(' ', '_', $file_name)); // Mette tutto in minuscolo e sostituisce tutti gli spazi con degli underscore
-    
+        $file_name = pathinfo($file_name, PATHINFO_FILENAME); // Remove file extension
+        $file_name = strtolower(str_replace(' ', '_', $file_name)); // Make lowercase and replace spaces with underscores
+
         $targetFile = $targetDir . $file_name . '.webp';
-        $quality = filesize($uploadedFile) > $maxFileSize ? 50 : 100;
-    
-        if (!imagewebp($srcImage, $targetFile, $quality)) {
+
+        if (!imagewebp($resizedImage, $targetFile, $quality)) {
             return false;
         }
-    
+
         imagedestroy($srcImage);
-    
+        imagedestroy($resizedImage);
+
         return $targetFile;
     }
 
-    public static function processImageEdit($imagePath, $quality = 50) {
+
+    public static function processImageEdit($imagePath, $quality = 50)
+    {
         $imageInfo = getimagesize($imagePath);
         $imageMime = $imageInfo['mime'];
-        
+
         switch ($imageMime) {
             case 'image/jpeg':
                 $image = imagecreatefromjpeg($imagePath);
@@ -694,15 +708,23 @@ class InputController
             default:
                 return false;
         }
-    
+
+        list($width, $height) = $imageInfo;
+
+        $targetHeight = $height * 0.54;
+
+        $resizedImage = imagecreatetruecolor(550, $targetHeight);
+        imagecopyresized($resizedImage, $image, 0, 0, 0, 0, 550, $targetHeight, $width, $height);
+
         $webpImagePath = pathinfo($imagePath, PATHINFO_DIRNAME) . DIRECTORY_SEPARATOR . pathinfo($imagePath, PATHINFO_FILENAME) . '.webp';
-    
-        imagewebp($image, $webpImagePath, $quality);
-    
+        imagewebp($resizedImage, $webpImagePath, $quality);
+
         imagedestroy($image);
-    
+        imagedestroy($resizedImage);
+
         return $webpImagePath;
     }
-    
-    
+
+
+
 }
