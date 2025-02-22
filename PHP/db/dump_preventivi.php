@@ -97,4 +97,4 @@ for ($i = 0; $i < count($parameters); $i += 7) {
     trasferisciImmagini($parameters[$i], basename($parameters[$i + 4]));
 }
 
-echo "<br>Preventivi inseriti correttamente!";
+echo "<br>Preventivi inseriti correttamente!" . PHP_EOL;

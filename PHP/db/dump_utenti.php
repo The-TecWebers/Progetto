@@ -36,4 +36,4 @@ for ($i = 1; $i < count($parameters); $i += 7) { // Supponendo che ogni password
 // Esecuzione della query con i parametri hashati
 DBController::runQuery($query, ...$hashedParameters);
 
-echo "Utenti inseriti correttamente!";
+echo "Utenti inseriti correttamente!" . PHP_EOL;
