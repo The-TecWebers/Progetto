@@ -648,7 +648,7 @@ class InputController
         $targetWidth = $width < 550 ? $width : 550;
         $targetHeight = $height * 0.54;
 
-        $resizedImage = imagecreatetruecolor( $targetWidth, $targetHeight);
+        $resizedImage = imagecreatetruecolor($targetWidth, $targetHeight);
         imagecopyresized($resizedImage, $srcImage, 0, 0, 0, 0, $targetWidth, $targetHeight, $width, $height);
 
         if (filesize($uploadedFile) > $maxFileSize) {
