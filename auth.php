@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['error-login'] = null;
             if(!isset($_GET['intended']))
             {
-                header('Location: area_privata.php');
+                header('Location: lista_preventivi.php');
             }
             else
             {
