@@ -645,11 +645,11 @@ class InputController
                 return false;
         }
 
+        $targetWidth = $width < 550 ? $width : 550;
         $targetHeight = $height * 0.54;
 
-        $resizedImage = imagecreatetruecolor(550, $targetHeight);
-        imagecopyresized($resizedImage, $srcImage, 0, 0, 0, 0, 550, $targetHeight, $width, $height);
-
+        $resizedImage = imagecreatetruecolor( $targetWidth, $targetHeight);
+        imagecopyresized($resizedImage, $srcImage, 0, 0, 0, 0, $targetWidth, $targetHeight, $width, $height);
 
         if (filesize($uploadedFile) > $maxFileSize) {
             $quality = 50;
@@ -711,10 +711,11 @@ class InputController
 
         list($width, $height) = $imageInfo;
 
+        $targetWidth = $width < 550 ? $width : 550;
         $targetHeight = $height * 0.54;
 
-        $resizedImage = imagecreatetruecolor(550, $targetHeight);
-        imagecopyresized($resizedImage, $image, 0, 0, 0, 0, 550, $targetHeight, $width, $height);
+        $resizedImage = imagecreatetruecolor($targetWidth, $targetHeight);
+        imagecopyresized($resizedImage, $image, 0, 0, 0, 0, $targetWidth, $targetHeight, $width, $height);
 
         $webpImagePath = pathinfo($imagePath, PATHINFO_DIRNAME) . DIRECTORY_SEPARATOR . pathinfo($imagePath, PATHINFO_FILENAME) . '.webp';
         imagewebp($resizedImage, $webpImagePath, $quality);
