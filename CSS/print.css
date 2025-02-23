@@ -233,6 +233,9 @@ HOME | PRINT
     content: " (" attr(href) ") ";
 }
 
+#maps-link{
+display: none;
+}
 .home-section {
     display: flex;
     flex-wrap: nowrap;
@@ -255,11 +258,14 @@ HOME | PRINT
 }
 
 .home-section img {
-    max-width: none;
-    height: auto;
+    width: 37.5em;
     object-fit: fill;
     object-position: center;
-    
+}
+.home-section figure{
+    width: 37.5em;
+    object-fit: fill;
+    object-position: center;
 }
 
 .reversed > :first-child {
@@ -269,6 +275,7 @@ HOME | PRINT
 .reversed > :last-child {
     order: 1;
 }
+
 
 
 
@@ -419,12 +426,14 @@ SU DI NOI | PRINT
 */
 
 #certificazioni a{
-    display: inline;
+    display: block;
 }
 
 #certificazioni a::after{
     content: " (" attr(href) ") ";
 }
+
+
 
 .card {
     box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.2);
@@ -479,7 +488,8 @@ SU DI NOI | PRINT
 }
 
 #certificazioni ul li {
-    list-style-image: url('../Images/icons/conetto16.svg');
+    display: block;
+
     margin-left: 1.5em;
     padding: 0.5em;
 }
