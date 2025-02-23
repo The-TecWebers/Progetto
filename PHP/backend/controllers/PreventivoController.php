@@ -102,8 +102,9 @@ class PreventivoController
 
         for ($i = 0; $i < count($preventivi); $i++) {
             $preventivo = $preventivi[$i];
-            $preventivo['descrizione'] = nl2br($preventivo['descrizione']);
 
+            // Sostituisce gli '\n' con dei '<br>', così da mantenere gli 'a capo' anche in HTML
+            $preventivo['descrizione'] = nl2br($preventivo['descrizione']);
 
             $div .=
                 "<li>" .

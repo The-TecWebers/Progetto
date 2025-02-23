@@ -1,7 +1,7 @@
 /*
-=========
-GENERALE
-=========
+=================
+GENERALE | PRINT
+=================
 */
 
 @font-face {
@@ -9,6 +9,36 @@ GENERALE
     src: url('../Fonts/RobotoSlab-Regular.ttf') format('truetype');
 }
 
+:root {
+    /* Colori per lo sfondo bianco */
+    --text_bgWhite: #000000;
+    --bg_bgWhite: #fdfffd;
+    --link_bgWhite: #0F8555;
+    --visitedLink_bgWhite: #C935A1;
+
+    /* Colori per lo sfondo verde */
+    --text_bgGreen: #000000;
+    --bg_bgGreen: #0F8555;
+    --link_bgGreen: #FFFFBD;
+    --visitedLink_bgGreen: #ffffff;
+
+    /* Colori per lo sfondo DarkGreen */
+    --bg_bgDarkGreen: #0c6b44;
+    --link_bgDarkGreen: #FFFFBD;
+    --visitedLink_bgDarkGreen: #ffffff;
+    --currentLink_bgDarkGreen: #9deb72;
+
+    /* Colori per la Labels o messaggi di errore */
+    --borderError: #ff4d4d;
+    --bgError: #ffe6e6;
+    --txtError: #d10000;
+    --bgLabel: #f0f8ff;
+    --borderLabel: #1e90ff;
+
+    /* Altri colori */
+    --hover: #000000;
+    --border: #000000;
+}
 
 * {
     font-family: 'Roboto Slab', serif;
@@ -18,33 +48,32 @@ main {
     text-align: justify;
 }
 
-p {
-    text-align: justify;
+h1, h2 {
+    text-align: center;
 }
 
-.link-intestazione, .row, #GoUp, a {
+.link-intestazione, .row > *:not(#logo), #GoUp, a {
     display: none;
 }
+
+#logo {
+    text-indent: -999em;
+    background-image: url('../Images/logo/Edil_Scavi_logo_colore-nuovo.webp');
+    background-size: contain;
+    width: 6.7em;
+    height: 1.2em;
+}
+
 .form-description {
-    text-align: justify;
+    text-align: center;
     font-size: 1.5em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
     margin-bottom: 0.5em;
 }
 
-.insideBoxDescription {
-    margin-top: 0.5em;
-}
-
 .form-short {
     width: 30%;
 }
-
-h1::before, #header-chi-siamo::before {
-    content: url('../Images/logo/Edil_Scavi_logo_colore-nuovo.webp');
-    display: block;    
-}
-
 
 img {
     border-radius: 0.625em;
@@ -53,6 +82,16 @@ img {
 #storia-lavori, #mezzi-escavatori, #mezzi-operativi {
     page-break-before: always; 
     break-before: page; 
+}
+
+#introductionParagraph {
+    margin: auto;
+    margin-bottom: 1.5em;
+    width: 45%;
+}
+
+main h1 {
+    text-transform: uppercase;
 }
 
 
@@ -85,7 +124,7 @@ form {
     display: flex;
     flex-direction: column;
     margin: auto;
-    width: 50%;
+    width: 55%;
     margin-bottom: 1em;
 }
 
@@ -121,7 +160,6 @@ button {
     border-radius: 1em;
     font-size: 1.25em;
     /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-
 }
 
 .surrounding-box {
@@ -133,20 +171,12 @@ button {
     box-shadow: 0 0.125em 0.3125em rgba(0, 0, 0, 0.2);
 }
 
-.form-description {
-    text-align: justify;
-    font-size: 1.5em;
-    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-    font-weight: bold;
-    margin-bottom: 0.5em;
-}
-
 .insideBoxDescription {
     margin-top: 0.5em;
 }
 
 .change-form {
-    text-align: justify;
+    text-align: center;
     margin-bottom: 0.5em;
 }
 
@@ -167,6 +197,25 @@ legend {
     width: 50%;
 }
 
+.change-form a{
+    display: inline;
+}
+
+.info-label {
+    background-color: var(--bgLabel);
+    color: var(--text_bgWhite);
+    border-left: 0.286em solid var(--borderLabel);
+    padding: 0 0.857em;
+    margin-top: 0.286em;
+    border-radius: 0.286em;
+    font-size: 0.875em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+}
+
+label {
+    display: block;
+}
+
 
 
 /*
@@ -179,6 +228,11 @@ FOOTER | PRINT
     list-style-type: none;
     display: block;
     text-decoration: none;
+}
+
+.footer-grid-container #references a::after{
+    display: inline;
+    content: " (" attr(href) ") ";
 }
 
 .footer-grid-container {
@@ -195,6 +249,76 @@ FOOTER | PRINT
 
 footer .contacts {
     font-weight: 600;
+}
+
+
+
+/*
+=============
+TABLE | PRINT
+=============
+*/
+
+table {
+    margin: 1.2em auto;
+}
+
+table,
+th,
+td {
+    border: 0.0625em solid black;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: justify;
+    padding: 0.5em;
+}
+
+th {
+    text-align: center;
+}
+
+caption {
+    font-weight: bold;
+    font-size: 1.5em;
+    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
+    margin-bottom: 0.5em;
+}
+
+#desc-tabella {
+    text-indent: -999em;
+}
+
+td a {
+    display: inline;
+}
+
+
+
+/*
+==============
+FILTER | PRINT
+==============
+*/
+
+.filter-container {
+    visibility: hidden;
+    width: 75%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 1rem;
+}
+
+.filter {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-container.visible {
+    visibility: visible;
 }
 
 
@@ -236,6 +360,7 @@ HOME | PRINT
 #maps-link{
 display: none;
 }
+
 .home-section {
     display: flex;
     flex-wrap: nowrap;
@@ -251,7 +376,6 @@ display: none;
     flex: 1 1 50%;
 }
 
-
 .home-section > iframe {
     width: 70%;
     height: 25em;
@@ -262,6 +386,7 @@ display: none;
     object-fit: fill;
     object-position: center;
 }
+
 .home-section figure{
     width: 37.5em;
     object-fit: fill;
@@ -275,7 +400,6 @@ display: none;
 .reversed > :last-child {
     order: 1;
 }
-
 
 
 
@@ -381,6 +505,8 @@ figure.escavatori figcaption span {
     margin: 0 5%;
 }
 
+
+
 /*
 =======================
 LAVORI SVOLTI  | PRINT
@@ -420,151 +546,6 @@ LAVORI SVOLTI  | PRINT
 
 
 /*
-=================
-SU DI NOI | PRINT
-=================
-*/
-
-#certificazioni a{
-    display: block;
-}
-
-#certificazioni a::after{
-    content: " (" attr(href) ") ";
-}
-
-
-
-.card {
-    box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.2);
-    transition: 0.3s ease all;
-    width: 80%;
-    text-align: justify;
-    border-radius: 1em;
-}
-
-.card>img {
-    width: 95%;
-    margin: 0.5em auto;
-    border-radius: 1em;
-}
-
-.card>p {
-    width: 95%;
-    margin: 0.5em auto;
-}
-
-.card:hover {
-    box-shadow: 0em 0.125em 0.5em 0em var(--link_bgWhite);
-}
-
-.grid {
-    display: grid;
-}
-
-.cols-1 {
-    grid-template-columns: 100%;
-}
-
-.cols-2 {
-    grid-template-columns: 50% 50%;
-}
-
-.cols-3 {
-    grid-template-columns: 33% 33% 33%;
-}
-
-.items-center {
-    justify-items: center;
-}
-
-#certificazioni p {
-    text-align: justify;
-    margin-bottom: 1em;
-}
-
-#certificazioni ul {
-    padding-left: 1.5em; 
-}
-
-#certificazioni ul li {
-    display: list-item ;
-    margin-left: 1.5em;
-    padding: 0.5em;
-}
-
-
-
-/*
-=============
-TABLE | PRINT
-=============
-*/
-
-table {
-    margin: 1.2em auto;
-}
-
-table,
-th,
-td {
-    border: 0.0625em solid black;
-    border-collapse: collapse;
-}
-
-th,
-td {
-    text-align: justify;
-    padding: 0.5em;
-}
-
-th {
-    text-align: justify;
-}
-
-td[data-title="Descrizione"] {
-    text-align: left;
-}
-
-caption {
-    font-weight: bold;
-    font-size: 1.5em;
-    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-    margin-bottom: 0.5em;
-}
-
-#desc-tabella {
-    text-indent: -999em;
-}
-
-
-
-/*
-==============
-FILTER | PRINT
-==============
-*/
-.filter-container {
-    visibility: hidden;
-    width: 75%;
-    margin: auto;
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    gap: 1rem;
-}
-
-.filter {
-    display: flex;
-    flex-direction: column;
-}
-
-.filter-container.visible {
-    visibility: visible;
-}
-
-
-
-/*
 ==================
 PREVENTIVI | PRINT
 ==================
@@ -580,7 +561,6 @@ PREVENTIVI | PRINT
     box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.2);
     align-items: center;
     height: auto;
-
 }
 
 .form-preventivo {
@@ -635,44 +615,6 @@ PREVENTIVI | PRINT
     font-size: 1.5em;
 }
 
-.preventivo-edit-foto {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    border-radius: 0.5em;
-    object-fit: cover;
-}
-
-#crea-preventivo-btn {
-    display: block;
-    text-align: justify;
-    text-decoration: none;
-    background-color: var(--bg_bgGreen);
-    color: var(--link_bgGreen);
-    border: 0 solid;
-    border-radius: 1em;
-    padding: 0.5em 1em;
-    font-size: 1.25em;
-}
-
-.filter-container {
-    visibility: hidden;
-    width: 75%;
-    margin: auto;
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    gap: 1rem;
-}
-
-.filter {
-    display: flex;
-    flex-direction: column;
-}
-
-.filter-container.visible {
-    visibility: visible;
-}
-
 .push-right {
     margin-left: 54.5%;
     margin-right: 13%;
@@ -680,30 +622,6 @@ PREVENTIVI | PRINT
 
 #count-preventivi {
     width: 75%;
-}
-
-.preventivi-container {
-    justify-content: center;
-    display: grid;
-    grid-template-columns: auto;
-    gap: 0.5em;
-}
-
-.preventivo figure {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-
-.preventivo figure img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    border-radius: 0.5em;
-    object-fit: cover;
 }
 
 
@@ -715,7 +633,6 @@ LISTA PREVENTIVI
 */
 
 .preventivi-container {
-
     justify-content: center;
     display: grid;
     grid-template-columns: 100%;
@@ -728,7 +645,6 @@ LISTA PREVENTIVI
 
 .preventivo dt {
     padding: 0;
-
 }
 
 .preventivo dl {
@@ -755,18 +671,7 @@ LISTA PREVENTIVI
 }
 
 #crea-preventivo-btn {
-    display: block;
-    text-align: justify;
-    text-decoration: none;
-    background-color: var(--bg_bgGreen);
-    color: var(--link_bgGreen);
-    border: 0 solid;
-    border-radius: 1em;
-    padding: 0.5em 1em;
-    font-size: 1.25em;
-    /* Essendo cambiato font-size, cambia anche il valore di em per questo elemento */
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+    display: none;
 }
 
 .preventivo-edit-foto {
@@ -788,6 +693,84 @@ LISTA PREVENTIVI
     border-radius: 1em;
     margin: 12% auto;
     display: block;
+}
+
+.form-preventivo button {
+    display: none;
+}
+
+
+
+/*
+=================
+SU DI NOI | PRINT
+=================
+*/
+
+#certificazioni a{
+    display: block;
+}
+
+#certificazioni a::after{
+    content: " (" attr(href) ") ";
+}
+
+.card {
+    box-shadow: 0em 0.125em 0.5em 0em rgba(0, 0, 0, 0.2);
+    transition: 0.3s ease all;
+    width: 80%;
+    text-align: justify;
+    border-radius: 1em;
+}
+
+.card>img {
+    width: 95%;
+    margin: 0.5em 0.65em;
+    border-radius: 1em;
+}
+
+.card>p {
+    width: 95%;
+    margin: 0.5em auto;
+}
+
+.card:hover {
+    box-shadow: 0em 0.125em 0.5em 0em var(--link_bgWhite);
+}
+
+.grid {
+    display: grid;
+}
+
+.cols-1 {
+    grid-template-columns: 100%;
+}
+
+.cols-2 {
+    grid-template-columns: 50% 50%;
+}
+
+.cols-3 {
+    grid-template-columns: 33% 33% 33%;
+}
+
+.items-center {
+    justify-items: center;
+}
+
+#certificazioni p {
+    text-align: justify;
+    margin-bottom: 1em;
+}
+
+#certificazioni ul {
+    padding-left: 1.5em; 
+}
+
+#certificazioni ul li {
+    display: list-item;
+    margin-left: 1.5em;
+    padding: 0.5em;
 }
 
 
