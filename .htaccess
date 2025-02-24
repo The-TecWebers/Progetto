@@ -7,3 +7,4 @@ ErrorDocument 503 '<meta http-equiv="refresh" content="0;url=/500.php">'
 ErrorDocument 504 '<meta http-equiv="refresh" content="0;url=/500.php">'
 ErrorDocument 505 '<meta http-equiv="refresh" content="0;url=/500.php">'
 ErrorDocument 507 '<meta http-equiv="refresh" content="0;url=/500.php">'
+Options -Indexes
