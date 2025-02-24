@@ -4,6 +4,7 @@ require_once 'UserController.php';
 
 const ERROR_MESSAGES_WRAPPER = '<ul role="alert" aria-live="assertive" class="errorMessages">';
 const ACCENTED_CHARACTERS = 'àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ';
+const PUNCTUATION_MARKS = '.,;:!?‘’“”«»';
 
 class InputController
 {
@@ -86,19 +87,27 @@ class InputController
 
     private static function isLuogo($luogo): bool|string
     {
-        $luogo_pattern = '/^[a-zA-Z0-9' . ACCENTED_CHARACTERS . '\'"\-\\s]{2,40}$/';
+        $luogo_pattern = '/^[a-zA-Z0-9' . ACCENTED_CHARACTERS . PUNCTUATION_MARKS . '\'"\-\\s]{2,40}$/';
         if (!preg_match($luogo_pattern, $luogo)) {
-            return "<li>Il luogo può contenere solo lettere, numeri, apostrofi, virgolette, trattini e spazi e deve essere lungo da 2 a 40 caratteri</li>";
+            return "<li>Il luogo può contenere solo lettere, numeri, apostrofi, virgolette, trattini, spazi e segni di punteggiatura e deve essere lungo da 2 a 40 caratteri</li>";
         }
         return true;
     }
 
+    private static function isDidascalia($didascalia): bool|string
+    {
+        $didascalia_pattern = '/^[a-zA-Z0-9' . ACCENTED_CHARACTERS . PUNCTUATION_MARKS . '\'"\-\\s]{2,75}$/';
+        if (!preg_match($didascalia_pattern, $didascalia)) {
+            return "<li>La didascalia della foto può contenere solo lettere, numeri, apostrofi, virgolette, trattini, spazi e segni di punteggiatura e deve essere lunga da 2 a 75 caratteri</li>";
+        }
+        return true;
+    }
 
     private static function isDescrizione($descrizione): bool|string
     {
-        $descrizione_pattern = '/^[a-zA-Z0-9' . ACCENTED_CHARACTERS . '\'"\-\\s]{2,255}$/';
+        $descrizione_pattern = '/^[a-zA-Z0-9' . ACCENTED_CHARACTERS . PUNCTUATION_MARKS . '\'"\-\\s]{2,255}$/';
         if (!preg_match($descrizione_pattern, $descrizione)) {
-            return "<li>La descrizione può contenere solo lettere, numeri, apostrofi, virgolette, trattini e spazi e deve essere lunga da 2 a 255 caratteri</li>";
+            return "<li>La descrizione può contenere solo lettere, numeri, apostrofi, virgolette, trattini, spazi e segni di punteggiatura e deve essere lunga da 2 a 255 caratteri</li>";
         }
         return true;
     }
@@ -431,8 +440,9 @@ class InputController
             empty($array) ||
             empty($array["titolo"]) ||
             empty($array["luogo"]) ||
-            empty($array["descrizione"]) ||
-            empty($array["foto"])
+            empty($array["foto"]) ||
+            empty($array["didascalia"]) ||
+            empty($array["descrizione"])
         ) {
 
             return ERROR_MESSAGES_WRAPPER . "<li>Per favore, compila tutti i campi. Anche la foto!</li></ul>";
@@ -461,8 +471,9 @@ class InputController
 
         $titolo = $array['titolo'];
         $luogo = $array['luogo'];
-        $descrizione = $array['descrizione'];
         $foto = $array['foto'];
+        $didascalia = $array['didascalia'];
+        $descrizione = $array['descrizione'];
 
         if (self::isTitolo($titolo) !== true) {
             $errorMessages .= self::isTitolo($titolo);
@@ -470,11 +481,14 @@ class InputController
         if (self::isLuogo($luogo) !== true) {
             $errorMessages .= self::isLuogo($luogo);
         }
-        if (self::isDescrizione($descrizione) !== true) {
-            $errorMessages .= self::isDescrizione($descrizione);
-        }
         if (self::validateFoto($foto) !== true) {
             $errorMessages .= self::validateFoto($foto);
+        }
+        if (self::isDidascalia($didascalia) !== true) {
+            $errorMessages .= self::isDidascalia($didascalia);
+        }
+        if (self::isDescrizione($descrizione) !== true) {
+            $errorMessages .= self::isDescrizione($descrizione);
         }
 
         $errorMessages .= "</ul>";
@@ -492,8 +506,9 @@ class InputController
 
         $titolo = $array['titolo'];
         $luogo = $array['luogo'];
-        $descrizione = $array['descrizione'];
         $foto = $array['foto'];
+        $didascalia = $array['didascalia'];
+        $descrizione = $array['descrizione'];
 
         if (self::isTitolo($titolo) !== true) {
             $errorMessages .= self::isTitolo($titolo);
@@ -501,11 +516,14 @@ class InputController
         if (self::isLuogo($luogo) !== true) {
             $errorMessages .= self::isLuogo($luogo);
         }
+        if (self::validateFotoEdit($foto) !== true) {
+            $errorMessages .= self::validateFotoEdit($foto);
+        }
+        if (self::isDidascalia($didascalia) !== true) {
+            $errorMessages .= self::isDidascalia($didascalia);
+        }
         if (self::isDescrizione($descrizione) !== true) {
             $errorMessages .= self::isDescrizione($descrizione);
-        }
-        if (self::validateFoto($foto) !== true) {
-            $errorMessages .= self::validateFotoEdit($foto);
         }
 
         $errorMessages .= "</ul>";
@@ -547,7 +565,7 @@ class InputController
     =======
     */
 
-    public static function validateFotoEdit($foto): bool|string
+    public static function validateFoto($foto): bool|string
     {
         if (isset($foto) && $foto['error'] == 0) {
             $maxFileSize = 5 * 1024 * 1024;
@@ -566,7 +584,7 @@ class InputController
 
     }
 
-    public static function validateFoto($foto): bool|string
+    public static function validateFotoEdit($foto): bool|string
     {
         if (isset($foto) && $foto['error'] == 0) {
             $maxFileSize = 5 * 1024 * 1024;
@@ -590,17 +608,17 @@ class InputController
         if (!isset($_FILES['foto']) || $_FILES['foto']['error'] !== UPLOAD_ERR_OK) {
             return false;
         }
-    
+
         $uploadedFile = $_FILES['foto']['tmp_name'];
         $imageInfo = getimagesize($uploadedFile);
-    
+
         if ($imageInfo === false) {
             return false;
         }
-    
+
         list($width, $height, $imageType) = $imageInfo;
         $mime = $imageInfo['mime'];
-    
+
         switch ($imageType) {
             case IMAGETYPE_JPEG:
                 $srcImage = imagecreatefromjpeg($uploadedFile);
@@ -626,30 +644,45 @@ class InputController
             default:
                 return false;
         }
-    
+
+        $targetWidth = $width < 550 ? $width : 550;
+        $targetHeight = $height * 0.54;
+
+        $resizedImage = imagecreatetruecolor($targetWidth, $targetHeight);
+        imagecopyresized($resizedImage, $srcImage, 0, 0, 0, 0, $targetWidth, $targetHeight, $width, $height);
+
+        if (filesize($uploadedFile) > $maxFileSize) {
+            $quality = 50;
+        } else {
+            $quality = 100;
+        }
+
         if (!file_exists($targetDir)) {
             mkdir($targetDir, 0777, true);
         }
 
         $file_name = basename($_FILES["foto"]["name"]);
-        $file_name = pathinfo($file_name, PATHINFO_FILENAME); // Rimuove l'estensione dal nome del file
-    
+        $file_name = pathinfo($file_name, PATHINFO_FILENAME); // Remove file extension
+        $file_name = strtolower(str_replace(' ', '_', $file_name)); // Make lowercase and replace spaces with underscores
+
         $targetFile = $targetDir . $file_name . '.webp';
-        $quality = filesize($uploadedFile) > $maxFileSize ? 50 : 100;
-    
-        if (!imagewebp($srcImage, $targetFile, $quality)) {
+
+        if (!imagewebp($resizedImage, $targetFile, $quality)) {
             return false;
         }
-    
+
         imagedestroy($srcImage);
-    
+        imagedestroy($resizedImage);
+
         return $targetFile;
     }
 
-    public static function processImageEdit($imagePath, $quality = 50) {
+
+    public static function processImageEdit($imagePath, $quality = 50)
+    {
         $imageInfo = getimagesize($imagePath);
         $imageMime = $imageInfo['mime'];
-        
+
         switch ($imageMime) {
             case 'image/jpeg':
                 $image = imagecreatefromjpeg($imagePath);
@@ -675,15 +708,24 @@ class InputController
             default:
                 return false;
         }
-    
+
+        list($width, $height) = $imageInfo;
+
+        $targetWidth = $width < 550 ? $width : 550;
+        $targetHeight = $height * 0.54;
+
+        $resizedImage = imagecreatetruecolor($targetWidth, $targetHeight);
+        imagecopyresized($resizedImage, $image, 0, 0, 0, 0, $targetWidth, $targetHeight, $width, $height);
+
         $webpImagePath = pathinfo($imagePath, PATHINFO_DIRNAME) . DIRECTORY_SEPARATOR . pathinfo($imagePath, PATHINFO_FILENAME) . '.webp';
-    
-        imagewebp($image, $webpImagePath, $quality);
-    
+        imagewebp($resizedImage, $webpImagePath, $quality);
+
         imagedestroy($image);
-    
+        imagedestroy($resizedImage);
+
         return $webpImagePath;
     }
-    
-    
+
+
+
 }

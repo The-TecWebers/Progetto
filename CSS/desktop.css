@@ -448,6 +448,11 @@ main a {
     text-decoration: underline;
 }
 
+main a:visited {
+    text-decoration-color: var(--bg_bgWhite);
+    color: var(--visitedLink_bgWhite);
+}
+
 section, article {
     padding-bottom: 0.75em;
     border-bottom: var(--border) 0.125em solid;

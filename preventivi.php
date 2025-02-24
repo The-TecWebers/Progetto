@@ -4,12 +4,14 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . 'PHP' . DIRECTORY_SEPARATOR . 'back
 session_start();
 
 const ERROR_MESSAGES_WRAPPER = '<ul role="alert" aria-live="assertive" class="errorMessages">';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action = $_GET['action'] ?? null;
     $raw = $_POST;
     if ($action == 'create') {
         $_SESSION['titolo*'] = $_POST['titolo'] ?? null;
         $_SESSION['luogo*'] = $_POST['luogo'] ?? null;
+        $_SESSION['didascalia*'] = $_POST['didascalia'] ?? null;
         $_SESSION['descrizione*'] = $_POST['descrizione'] ?? null;
         $_POST = InputController::sanitizePreventivo($_POST);
 
@@ -21,7 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $errorMessages = InputController::validatePreventivo(array: $raw);
 
                 if ($errorMessages === true) {
-                    $targetDir = 'uploads' . DIRECTORY_SEPARATOR . $_POST['titolo'] . DIRECTORY_SEPARATOR;
+                    $titolo_formatted = strtolower(str_replace(' ', '_', $_POST['titolo'])); // Mette tutto in minuscolo e sostituisce tutti gli spazi con degli underscore
+                    $targetDir = 'uploads' . DIRECTORY_SEPARATOR . $titolo_formatted . DIRECTORY_SEPARATOR;
                     $processedFile = InputController::processImage(maxFileSize: 1 * 1024 * 1024, targetDir: $targetDir);
                     if($processedFile === false) {
                         $errorMessages = ERROR_MESSAGES_WRAPPER . "<li>Errore durante il caricamento dell'immagine</li></ul>";
@@ -37,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     if ($result === true) {
                         $_SESSION['titolo*'] = null;
                         $_SESSION['luogo*'] = null;
+                        $_SESSION['didascalia*'] = null;
                         $_SESSION['descrizione*'] = null;
                         $_SESSION['error-preventivi'] = null;
 
@@ -70,6 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } elseif ($action == 'update') {
         $_SESSION['titolo*'] = $_POST['titolo'] ?? null;
         $_SESSION['luogo*'] = $_POST['luogo'] ?? null;
+        $_SESSION['didascalia*'] = $_POST['didascalia'] ?? null;
         $_SESSION['descrizione*'] = $_POST['descrizione'] ?? null;
     
         $_POST = InputController::sanitizePreventivo($_POST);
@@ -83,8 +88,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if ($errorMessages === true) {
                     $utente = AuthController::getAuthUser();
                     if (PreventivoController::authorizeFunction($_POST['edit_preventivo_id'], $utente->getId())) {
-                        $target_dir = 'uploads' . DIRECTORY_SEPARATOR . $_POST['titolo'] . DIRECTORY_SEPARATOR;
-                        $file_name = basename($_FILES["foto"]["name"]);
+                        $titolo_formatted = strtolower(str_replace(' ', '_', $_POST['titolo'])); // Mette tutto in minuscolo e sostituisce tutti gli spazi con degli underscore
+                        $target_dir = 'uploads' . DIRECTORY_SEPARATOR . $titolo_formatted . DIRECTORY_SEPARATOR;
+                        $raw_file_name = basename($_FILES["foto"]["name"]);
+                        $file_name = strtolower(str_replace(' ', '_', $raw_file_name)); // Mette tutto in minuscolo e sostituisce tutti gli spazi con degli underscore
                         $old_dir = dirname($target->getFoto());
                         $old_file_name = basename($target->getFoto());
     
@@ -204,7 +211,7 @@ function compressImage($target_file) {
             header('Location: modifica_preventivo.php');
         }
     } else {
-        // Se è sotto 1 MB, la compressione è fatta con qualità 100
+        // Se l'immagine è più piccola di 1 MB, viene compressa in WebP con qualità 100
         $webpFile = InputController::processImageEdit($target_file, 100);
         if($webpFile === false) {
             $errorMessages = ERROR_MESSAGES_WRAPPER . "<li>Errore durante il caricamento dell'immagine</li></ul>";

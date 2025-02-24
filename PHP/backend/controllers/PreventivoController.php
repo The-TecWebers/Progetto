@@ -1,6 +1,5 @@
 <?php
 
-
 require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . 'Preventivo.php';
 require_once 'DBController.php';
 class PreventivoController
@@ -64,8 +63,26 @@ class PreventivoController
         } else {
             return true;
         }
-
     }
+
+    public static function isTitleDuplicated($title)
+    {
+        $result = DBController::runQuery("SELECT * FROM richiesta_preventivo WHERE titolo = ?", $title);
+        if ($result && count($result) > 0) {
+            return true;
+        }
+        return false;
+    }
+
+
+
+
+
+    /*
+    =============================
+    PRESENTAZIONE DEI PREVENTIVI
+    =============================
+    */
 
     public static function getListaPreventivi()
     {
@@ -85,20 +102,19 @@ class PreventivoController
 
         for ($i = 0; $i < count($preventivi); $i++) {
             $preventivo = $preventivi[$i];
-            $preventivo['descrizione'] = nl2br($preventivo['descrizione']);
 
-            // Verifica se esiste un preventivo successivo
-            $linkPreventivoSuccessivo = isset($preventivi[$i + 1])
-                ? "<a class='link-intestazione' href='#preventivo_" . $preventivi[$i + 1]['id'] . "'>Vai al prossimo preventivo</a>"
-                : "";
+            // Sostituisce gli '\n' con dei '<br>', così da mantenere gli 'a capo' anche in HTML
+            $preventivo['descrizione'] = nl2br($preventivo['descrizione']);
 
             $div .=
                 "<li>" .
-                $linkPreventivoSuccessivo .
                 "<div id='preventivo_" . $preventivo['id'] . "' class='preventivo'>
 
                 <div class='img-preventivo'>
-                    <img src='" . $preventivo['foto'] . "' alt='Foto del preventivo'>
+                    <figure>
+                        <img src='" . $preventivo['foto'] . "' alt=''>
+                        <figcaption>" . $preventivo['didascalia'] . "</figcaption>
+                    </figure>
                 </div>
                 <div class='content-preventivo'>
                     <div class='header-preventivo'>
@@ -120,13 +136,13 @@ class PreventivoController
                     <form method='GET' action='preventivi.php'>
                         <input type='hidden' name='action' value='edit'/>
                         <input type='hidden' name='edit_preventivo_id' value='" . $preventivo['id'] . "'/>
-                        <button type='submit' aria-label='Modifica preventivo'>
+                        <button type='submit' aria-label='Modifica preventivo " . $preventivo['titolo'] . "'>
                             <img alt='' src='Images/icons/edit_white.svg' height=30 width=30>
                         </button>
                     </form>
                     <form method='POST' action='preventivi.php?action=delete'>
                         <input type='hidden' name='delete_preventivo_id' value='" . $preventivo['id'] . "'/>
-                        <button type='submit' aria-label='Elimina preventivo'>
+                        <button type='submit' aria-label='Elimina preventivo " . $preventivo['titolo'] . "'>
                             <img alt='' src='Images/icons/delete_white.svg' height=30 width=30>
                         </button>
                     </form>
@@ -220,14 +236,6 @@ class PreventivoController
         return $table . "</tbody></table>";
     }
 
-    public static function isTitleDuplicated($title)
-    {
-        $result = DBController::runQuery("SELECT * FROM richiesta_preventivo WHERE titolo = ?", $title);
-        if ($result && count($result) > 0) {
-            return true;
-        }
-        return false;
-    }
     public static function getSingoloPreventivo()
     {
         $urlId = isset($_GET['id']) ? (int) $_GET['id'] : null;
@@ -252,7 +260,10 @@ class PreventivoController
             <div class='preventivo'>
                 
         <div class='img-preventivo'>
-            <img src='" . $preventivo['foto'] . "' alt='Foto del preventivo'>
+            <figure>
+                <img src='" . $preventivo['foto'] . "' alt=''>
+                <figcaption>" . $preventivo['didascalia'] . "</figcaption>
+            </figure>
         </div>
         <div class='content-preventivo'>
             <div class='header-preventivo'>
@@ -273,7 +284,7 @@ class PreventivoController
              <div class='form-preventivo'>
                   <form method='POST' action='preventivi.php?action=delete'>
                       <input type='hidden' name='delete_preventivo_id' value='" . $preventivo['id'] . "'/>
-                      <button type='submit' aria-label='Elimina preventivo'>
+                      <button type='submit' aria-label='Elimina preventivo " . $preventivo['titolo'] . "'>
                           <img alt='' src='Images/icons/delete_white.svg' height=30 width=30>
                       </button>
                    </form>
