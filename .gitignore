@@ -1,1 +1,33 @@
+# Ambiente
+.env
+
+# OS
 .DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Hosting artifacts
+httpdocs/.cagefs/
+httpdocs/.cl.selector/
+
+# Docker volumes
+db_data/
+
+# Upload utenti
+httpdocs/uploads/*
+!httpdocs/uploads/index.php
+
+# Vecchia cartella progetto (ora il sito è in httpdocs/)
+Progetto/
+
+# Log
+httpdocs/debug_log.txt
+
+# CSS/JS minificati (rigenerabili)
+httpdocs/CSS/min/
+httpdocs/JS/scripts.min.js
